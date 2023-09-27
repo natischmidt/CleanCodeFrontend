@@ -12,10 +12,18 @@ export default function Header() {
                 <button id="Customers" style={styles.customers}>Customers</button>
                 <button id="GDPR" style={styles.gdpr}>GDPR</button>
                 <button id="SignOut" style={styles.signout}>Sign Out</button>
+                {/*<a href="#" className="custom-link" onClick={handleClick}>*/}
+                {/*    Klicka här*/}
+                {/*</a>*/}
+
             </div>
         </div>
     )
 }
+
+// function handleClick() {
+//
+// }
 
 const styles = {
     header: {
@@ -27,12 +35,12 @@ const styles = {
         alignItems: 'center',
     },
     logo: {
-        width: '320px',
-        height: '180px',
+        width: '460px',
+        height: '220px',
     },
     menuButtons: {
         display: 'flex',
-        marginLeft: '45%',
+        marginLeft: '40%',
         color: '#000001',
     },
     booking: {
