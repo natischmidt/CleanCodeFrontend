@@ -1,15 +1,12 @@
 #root {
   margin: 0;
   padding: 0;
-  text-align: center;
 }
 
 .container {
-  margin: 0;
-  padding: 0;
+  background-color: #E2FFF8;
   height: 100vh;
   width: 100vw;
-  background-color: #E2FFF8;
 }
 
 .bookingContainer {
@@ -32,38 +29,42 @@
   background-color: #E2FFF8;
 }
 
-/*.logo {*/
-/*  height: 6em;*/
-/*  padding: 1.5em;*/
-/*  will-change: filter;*/
-/*  transition: filter 300ms;*/
-/*}*/
-/*.logo:hover {*/
-/*  filter: drop-shadow(0 0 2em #646cffaa);*/
-/*}*/
-/*.logo.react:hover {*/
-/*  filter: drop-shadow(0 0 2em #61dafbaa);*/
-/*}*/
+.headerContainer {
+  height: 13vh;
+  width: 100vw;
+  background-color: #E2FFF8;
+  border-bottom: 5px solid #52af66;
+  display: flex;
+  padding: 20px;
+}
 
-/*@keyframes logo-spin {*/
-/*  from {*/
-/*    transform: rotate(0deg);*/
-/*  }*/
-/*  to {*/
-/*    transform: rotate(360deg);*/
-/*  }*/
-/*}*/
+#logo3 {
+  width: 320px;
+  height: 180px;
+}
 
-/*@media (prefers-reduced-motion: no-preference) {*/
-/*  a:nth-of-type(2) .logo {*/
-/*    animation: logo-spin infinite 20s linear;*/
-/*  }*/
-/*}*/
+.menuButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-top: 50px;
+  margin-left: 45%;
+  color: #000001;
+}
 
-/*.card {*/
-/*  padding: 2em;*/
-/*}*/
+#Booking, #Employees, #Customers, #GDPR, #SignOut{
+  background-color: #53b067;
+  margin-left: 5%;
+  width: 180px;
+  height: 60px;
+  font-size: 1.2rem;
+  font-weight: normal;
+}
 
-/*.read-the-docs {*/
-/*  color: #888;*/
-/*}*/
+#SignOut {
+  /*margin-left: 72%;*/
+}
+
+@media screen and (max-height: 800px){
+
+}
