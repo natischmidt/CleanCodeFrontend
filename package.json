@@ -12,7 +12,10 @@
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@types/react-input-mask": "^3.0.3",
     "@types/react-router-dom": "^5.3.3",
+    "axios": "^1.5.1",
+    "quicktype-typescript-input": "^23.0.75",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0"

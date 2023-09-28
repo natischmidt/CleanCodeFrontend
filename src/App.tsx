@@ -2,6 +2,7 @@ import './App.css'
 import Footer from './reusableComponents/footer'
 import Routing from "./Routing";
 import Header from "./reusableComponents/header";
+import LoginPage from "./pages/loginpage";
 
 function App() {
 

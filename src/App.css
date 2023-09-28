@@ -28,6 +28,55 @@
   background-color: #E2FFF8;
 }
 
+.login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginBox{
+  width: 350px;
+  height: 300px;
+  margin-top: 8rem;
+  background-color: #53b067;
+  padding: 30px;
+  border-radius: 5px;
+}
+.loginBox:hover {
+  background-color: #028602;
+}
+.loginHeader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: xx-large;
+  font-weight: bolder;
+}
+.inputs{
+  padding: 30px;
+}
+.email{
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
+  border-width: 2px;
+  margin-bottom: 25px;
+}
+.password{
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
+  border-width: 2px;
+}
+.logButton{
+  width: 120px;
+  height: 50px;
+  background-color: #407fef;
+  color: white;
+  border-radius: 5px;
+}
+.logButton:hover{
+  background-color: blue;
+}
 /*.logo {*/
 /*  height: 6em;*/
 /*  padding: 1.5em;*/
