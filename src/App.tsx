@@ -1,7 +1,7 @@
 import './App.css'
 import Footer from './reusableComponents/footer'
+import Routing from "./Routing";
 import Header from "./reusableComponents/header";
-import Table2 from './reusableComponents/table2';
 
 function App() {
 
@@ -9,10 +9,10 @@ function App() {
         <>
             {/*<Header></Header>*/}
             <div className="container">
-
+                <Routing/>
             </div>
             {/*<Table2></Table2>*/}
-            <Footer></Footer>
+            <Footer/>
         </>
     )
 }
