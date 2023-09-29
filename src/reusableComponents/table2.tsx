@@ -4,10 +4,10 @@ export default function Table2() {
     return (
         <div className="table2" style={styles.tableContainer}>
             <div className="tableBody" style={styles.tableBody}>
-                <h1>Booking</h1>
+                <h1>Employees</h1>
                 <div className="tableBody2" style={styles.tableBody2}>
-                    <p>Här ska en lista med alla bokningar visas:</p>
-                    <button className="deleteButton" style={styles.deleteButton}></button>
+                    <p>Här ska en lista med alla anställda visas:</p>
+                    {/*<button className="deleteButton" style={styles.deleteButton}></button>*/}
                 </div>
             </div>
         </div>
@@ -32,16 +32,17 @@ export default function Table2() {
 
 const styles = {
     tableContainer: {
+        height: '100vh',
+        width: '100vw',
+        backgroundColor: '#E2FFF8',
         position: 'absolute',
-        top: '70%',
-        left: '50%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
     },
     tableBody: {
-        transform: 'translate(-50%, -50%)',
+        position: 'relative',
         width: '620px',
         height: '1000px',
         backgroundColor: '#a1decc',
@@ -54,13 +55,13 @@ const styles = {
         borderRadius: '10px',
         marginLeft: '40px',
     },
-    deleteButton: {
-        margin: '10px', // Lägg till lite mellanrum runt knappen
-        padding: '20px 30px', // Anpassa storleken efter dina behov
-        backgroundColor: 'red', // Ändra färgen om så önskas
-        color: 'black', // Ändra textfärgen om så önskas
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-    }
+    // deleteButton: {
+    //     margin: '10px',
+    //     padding: '20px 30px',
+    //     backgroundColor: 'red',
+    //     color: 'black',
+    //     border: 'none',
+    //     borderRadius: '5px',
+    //     cursor: 'pointer',
+    // }
 }

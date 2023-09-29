@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 const AddUserForm = () => {
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
-    const [ssNumber, setSSNumber] = useState('');
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [adress, setAdress] = useState('');
     const [password, setPassword] = useState('');
+    const [company, setCompany] = useState('');
+    const [orgNr, setOrgNr] = useState('');
     const [role, setRole] = useState('');
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
@@ -31,13 +32,6 @@ const AddUserForm = () => {
                     style={styles.input}
                     value={lastname}
                     onChange={(e) => setLastname(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder="Social Security Number"
-                    style={styles.input}
-                    value={ssNumber}
-                    onChange={(e) => setSSNumber(e.target.value)}
                 />
                 <input
                     type="text"
@@ -67,6 +61,20 @@ const AddUserForm = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
+                <input
+                    type="text"
+                    placeholder="Company name"
+                    style={styles.input}
+                    value={company}
+                    onChange={(e) => setCompany(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Organisation Number"
+                    style={styles.input}
+                    value={orgNr}
+                    onChange={(e) => setOrgNr(e.target.value)}
+                />
                 <select
                     style={styles.select}
                     value={role}
@@ -75,6 +83,8 @@ const AddUserForm = () => {
                     <option value="Role">Role</option>
                     <option value="Admin">Admin</option>
                     <option value="Employee">Employee</option>
+                    <option value="Private Customer">Private Customer</option>
+                    <option value="Business Customer">Business Customer</option>
                 </select>
                 <button type="submit" style={styles.button}>
                     Add User
@@ -89,7 +99,7 @@ export default AddUserForm;
 const styles = {
     container: {
         display: 'flex',
-        flexDirection: 'column',
+        // flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         height: '100vh',
@@ -103,7 +113,7 @@ const styles = {
         borderRadius: '5px',
         backgroundColor: '#53af67',
         width: "600px",
-        height: '910px',
+        height: '1000px',
     },
     input: {
         marginTop: '25px',

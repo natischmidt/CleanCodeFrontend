@@ -1,12 +1,10 @@
-import { useNavigate } from 'react-router-dom';
 import React from "react";
+import Header from "../reusableComponents/header";
 
-export const GDPR = () => {
-    const navigate = useNavigate();
+export default function GDPRPage() {
     return (
-        <div className="gdprContainer">
-            <h1>GDPR Page</h1>
-
-        </div>
+        <>
+            <Header/>
+        </>
     )
 }

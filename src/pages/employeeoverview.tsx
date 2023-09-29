@@ -1,9 +1,12 @@
-//import './App.css'
+import Header from "../reusableComponents/header";
+import Table2 from "../reusableComponents/table2";
+import React from "react";
 
 export default function EmployeePage() {
     return (
-        <div className="employeeContainer">
-
-        </div>
+        <>
+            <Header/>
+            <Table2/>
+        </>
     )
 }

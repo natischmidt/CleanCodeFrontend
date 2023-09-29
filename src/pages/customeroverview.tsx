@@ -1,12 +1,12 @@
-//import './App.css'
-
 import React from "react";
+import Header from "../reusableComponents/header";
+import Table2 from "../reusableComponents/table2";
 
 export default function CustomerPage() {
     return (
-        <div className="customerContainer">
-
-
-        </div>
+        <>
+            <Header/>
+            <Table2/>
+        </>
     )
 }

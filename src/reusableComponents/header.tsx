@@ -1,18 +1,26 @@
 import logo from "../assets/logo3.png";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import React from "react";
 export default function Header() {
+
+    const goToBooking = useNavigate()
+    const goToEmployees = useNavigate()
+    const goToCustomers = useNavigate()
+    const goToGDPR = useNavigate()
+    const goToAddUser = useNavigate()
+
     return (
         <div className="headerContainer" style={styles.header}>
             <div className="logo">
                 <img id="logo3" src={logo} alt="logo3" style={styles.logo}/>
             </div>
             <div className="menuButtons" style={styles.menuButtons}>
-                <button id="Booking" style={styles.booking}>Booking</button>
-                <button id="Employees" style={styles.employees}>Employees</button>
-                <button id="Customers" style={styles.customers}>Customers</button>
-                <button id="GDPR" style={styles.gdpr}>GDPR</button>
-                <button id="SignOut" style={styles.signout}>Sign Out</button>
+                <button id="Booking" style={styles.btn} onClick={() => {{goToBooking(("/Booking"))}}}>Booking</button>
+                <button id="Employees" style={styles.btn} onClick={() => {{goToEmployees(("/Employees"))}}}>Employees</button>
+                <button id="Customers" style={styles.btn} onClick={() => {{goToCustomers(("/Customers"))}}}>Customers</button>
+                <button id="GDPR" style={styles.btn}onClick={() => {{goToGDPR(("/GDPR"))}}}>GDPR</button>
+                <button id="AddUser" style={styles.btn}onClick={() => {{goToAddUser(("/AddUser"))}}}>Add User</button>
+                <button id="SignOut" style={styles.btn}>Sign Out</button>
                 {/*<a href="#" className="custom-link" onClick={handleClick}>*/}
                 {/*    Klicka här*/}
                 {/*</a>*/}
@@ -22,9 +30,9 @@ export default function Header() {
     )
 }
 
-// function handleClick() {
-//
-// }
+function handleClick() {
+
+}
 
 
 const styles = {
@@ -45,7 +53,7 @@ const styles = {
         marginLeft: '40%',
         color: '#000001',
     },
-    booking: {
+    btn: {
         backgroundColor: '#53b067',
         marginLeft: '5%',
         width: '180px',
@@ -53,36 +61,36 @@ const styles = {
         fontSize: '1.2rem',
         fontWeight: 'normal',
     },
-    employees: {
-        backgroundColor: '#53b067',
-        marginLeft: '5%',
-        width: '180px',
-        height: '60px',
-        fontSize: '1.2rem',
-        fontWeight: 'normal',
-    },
-    customers: {
-        backgroundColor: '#53b067',
-        marginLeft: '5%',
-        width: '180px',
-        height: '60px',
-        fontSize: '1.2rem',
-        fontWeight: 'normal',
-    },
-    gdpr: {
-        backgroundColor: '#53b067',
-        marginLeft: '5%',
-        width: '180px',
-        height: '60px',
-        fontSize: '1.2rem',
-        fontWeight: 'normal',
-    },
-    signout: {
-        backgroundColor: '#53b067',
-        marginLeft: '5%',
-        width: '180px',
-        height: '60px',
-        fontSize: '1.2rem',
-        fontWeight: 'normal',
-    },
+    // employees: {
+    //     backgroundColor: '#53b067',
+    //     marginLeft: '5%',
+    //     width: '180px',
+    //     height: '60px',
+    //     fontSize: '1.2rem',
+    //     fontWeight: 'normal',
+    // },
+    // customers: {
+    //     backgroundColor: '#53b067',
+    //     marginLeft: '5%',
+    //     width: '180px',
+    //     height: '60px',
+    //     fontSize: '1.2rem',
+    //     fontWeight: 'normal',
+    // },
+    // gdpr: {
+    //     backgroundColor: '#53b067',
+    //     marginLeft: '5%',
+    //     width: '180px',
+    //     height: '60px',
+    //     fontSize: '1.2rem',
+    //     fontWeight: 'normal',
+    // },
+    // signout: {
+    //     backgroundColor: '#53b067',
+    //     marginLeft: '5%',
+    //     width: '180px',
+    //     height: '60px',
+    //     fontSize: '1.2rem',
+    //     fontWeight: 'normal',
+    // },
 }

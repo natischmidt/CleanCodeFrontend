@@ -1,10 +1,7 @@
-//import './App.css'
+import Header from "../reusableComponents/header";
 
-export default function Home() {
+export default function HomePage() {
     return (
-        <div className="homeContainer">
-            <h1>Home Page</h1>
-
-        </div>
+        <Header/>
     )
 }

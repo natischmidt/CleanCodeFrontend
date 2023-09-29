@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import logInBtn from "../reusableComponents/button";
+import {useNavigate} from "react-router-dom";
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const goToHomePage= useNavigate();
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        console.log('Email:', email);
-        console.log('Password:', password);
     };
 
     return (
@@ -28,7 +29,9 @@ const LoginForm = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type="submit" style={styles.button}>
+                <button type="submit" style={styles.button}
+                        onClick={() => {{goToHomePage(("/Home"))}}}
+                >
                     Login
                 </button>
             </form>
