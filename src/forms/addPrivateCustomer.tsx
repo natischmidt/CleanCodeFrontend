@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 
-const AddUserForm = () => {
+const AddPrivateCustomerForm = () => {
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [adress, setAdress] = useState('');
     const [password, setPassword] = useState('');
+    const [salary, setSalary] = useState('')
     const [company, setCompany] = useState('');
     const [orgNr, setOrgNr] = useState('');
     const [role, setRole] = useState('');
+
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
@@ -18,13 +20,14 @@ const AddUserForm = () => {
     return (
         <div style={styles.container}>
             <form style={styles.form} onSubmit={handleSubmit}>
-                <h1>Add User</h1>
+                <h1>Add Admin</h1>
                 <input
                     type="text"
                     placeholder="Firstname"
                     style={styles.input}
                     value={firstname}
                     onChange={(e) => setFirstname(e.target.value)}
+                    required
                 />
                 <input
                     type="text"
@@ -32,6 +35,7 @@ const AddUserForm = () => {
                     style={styles.input}
                     value={lastname}
                     onChange={(e) => setLastname(e.target.value)}
+                    required
                 />
                 <input
                     type="text"
@@ -39,6 +43,7 @@ const AddUserForm = () => {
                     style={styles.input}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                 />
                 <input
                     type="text"
@@ -46,6 +51,7 @@ const AddUserForm = () => {
                     style={styles.input}
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
+                    required
                 />
                 <input
                     type="text"
@@ -53,6 +59,7 @@ const AddUserForm = () => {
                     style={styles.input}
                     value={adress}
                     onChange={(e) => setAdress(e.target.value)}
+                    required
                 />
                 <input
                     type="password"
@@ -60,49 +67,32 @@ const AddUserForm = () => {
                     style={styles.input}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    required
                 />
                 <input
                     type="text"
-                    placeholder="Company name"
+                    placeholder="Salary"
                     style={styles.input}
-                    value={company}
-                    onChange={(e) => setCompany(e.target.value)}
+                    value={salary}
+                    onChange={(e) => setSalary(e.target.value)}
+                    required
                 />
-                <input
-                    type="text"
-                    placeholder="Organisation Number"
-                    style={styles.input}
-                    value={orgNr}
-                    onChange={(e) => setOrgNr(e.target.value)}
-                />
-                <select
-                    style={styles.select}
-                    value={role}
-                    onChange={(e) => setRole(e.target.value)}
-                >
-                    <option value="Role">Role</option>
-                    <option value="Admin">Admin</option>
-                    <option value="Employee">Employee</option>
-                    <option value="Private Customer">Private Customer</option>
-                    <option value="Business Customer">Business Customer</option>
-                </select>
                 <button type="submit" style={styles.button}>
-                    Add User
+                    Add Admin
                 </button>
             </form>
         </div>
     );
 };
 
-export default AddUserForm;
+export default AddPrivateCustomerForm;
 
 const styles = {
     container: {
         display: 'flex',
-        // flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100vh',
+        marginTop: '5%',
     },
     form: {
         display: 'flex',
@@ -116,11 +106,12 @@ const styles = {
         height: '1000px',
     },
     input: {
-        marginTop: '25px',
+        marginTop: '15px',
         marginBottom: '15px',
-        padding: '10px',
+        padding: '15px',
         width: '75%',
         fontSize: '1.2rem',
+        borderRadius: '5px',
     },
     button: {
         padding: '13px 25px',
@@ -140,5 +131,6 @@ const styles = {
         fontSize: '1.2rem',
         textAlign: 'center',
         backgroundColor: "#ffffff",
+        borderRadius: '5px',
     },
 }

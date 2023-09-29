@@ -1,9 +1,9 @@
 import '../App.css'
 import React from 'react'
-import LoginForm from "../components/formLogin";
+import LoginAdminOrEmployee from "../forms/loginAdminOrEmployee";
 
 export default function LoginPage() {
     return (
-        <LoginForm/>
+        <LoginAdminOrEmployee/>
     )
 }

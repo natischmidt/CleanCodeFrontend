@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import logInBtn from "../reusableComponents/button";
 import {useNavigate} from "react-router-dom";
 
-const LoginForm = () => {
+const LoginAdminOrEmployeeForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const goToHomePage= useNavigate();
@@ -39,7 +38,7 @@ const LoginForm = () => {
     );
 };
 
-export default LoginForm;
+export default LoginAdminOrEmployeeForm;
 
 const styles = {
     container: {

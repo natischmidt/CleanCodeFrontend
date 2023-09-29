@@ -19,8 +19,8 @@ export default function Header() {
                 <button id="Employees" style={styles.btn} onClick={() => {{goToEmployees(("/Employees"))}}}>Employees</button>
                 <button id="Customers" style={styles.btn} onClick={() => {{goToCustomers(("/Customers"))}}}>Customers</button>
                 <button id="GDPR" style={styles.btn}onClick={() => {{goToGDPR(("/GDPR"))}}}>GDPR</button>
-                <button id="AddUser" style={styles.btn}onClick={() => {{goToAddUser(("/AddUser"))}}}>Add User</button>
-                <button id="SignOut" style={styles.btn}>Sign Out</button>
+                <button id="AddUser" style={styles.btn}onClick={() => {{goToAddUser(("/AddUser"))}}}>AddUser</button>
+                <button id="SignOut" style={styles.btn}>SignOut</button>
                 {/*<a href="#" className="custom-link" onClick={handleClick}>*/}
                 {/*    Klicka här*/}
                 {/*</a>*/}
@@ -50,7 +50,7 @@ const styles = {
     },
     menuButtons: {
         display: 'flex',
-        marginLeft: '40%',
+        marginLeft: '30%',
         color: '#000001',
     },
     btn: {
