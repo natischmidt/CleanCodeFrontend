@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useNavigate} from "react-router-dom";
 
 const AddAdminForm = () => {
     const [firstname, setFirstname] = useState('');
@@ -11,6 +12,8 @@ const AddAdminForm = () => {
     // const [orgNr, setOrgNr] = useState('');
     // const [role, setRole] = useState('');
 
+    const goBackToAddUser = useNavigate();
+
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
@@ -19,7 +22,7 @@ const AddAdminForm = () => {
     return (
         <div style={styles.container}>
             <form style={styles.form} onSubmit={handleSubmit}>
-                <h1>Add Admin</h1>
+                <h1>Create new Admin</h1>
                 <input
                     type="text"
                     placeholder="Firstname"
@@ -69,7 +72,10 @@ const AddAdminForm = () => {
                     required
                 />
                 <button type="submit" style={styles.button}>
-                    Add Admin
+                    Create new Admin
+                </button>
+                <button type="submit" style={styles.button} onClick={() => {{goBackToAddUser(("/AddUser"))}}}>
+                    Go Back
                 </button>
             </form>
         </div>
@@ -83,7 +89,6 @@ const styles = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: '5%',
     },
     form: {
         display: 'flex',
@@ -94,7 +99,8 @@ const styles = {
         borderRadius: '5px',
         backgroundColor: '#53af67',
         width: "600px",
-        height: '1000px',
+        height: '800px',
+        marginTop: '120px'
     },
     input: {
         marginTop: '15px',
@@ -113,15 +119,5 @@ const styles = {
         cursor: 'pointer',
         marginTop: '25px',
         fontSize: '1.2rem',
-    },
-    select: {
-        marginTop: '25px',
-        marginBottom: '15px',
-        padding: '10px',
-        width: '40%',
-        fontSize: '1.2rem',
-        textAlign: 'center',
-        backgroundColor: "#ffffff",
-        borderRadius: '5px',
     },
 }

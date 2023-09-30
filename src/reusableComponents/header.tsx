@@ -8,23 +8,23 @@ export default function Header() {
     const goToCustomers = useNavigate()
     const goToGDPR = useNavigate()
     const goToAddUser = useNavigate()
+    const goToLogin = useNavigate()
 
     return (
         <div className="headerContainer" style={styles.header}>
             <div className="logo">
-                <img id="logo3" src={logo} alt="logo3" style={styles.logo}/>
+                <img id="logo3" src={logo} alt="logo3" style={styles.logo} />
             </div>
             <div className="menuButtons" style={styles.menuButtons}>
                 <button id="Booking" style={styles.btn} onClick={() => {{goToBooking(("/Booking"))}}}>Booking</button>
                 <button id="Employees" style={styles.btn} onClick={() => {{goToEmployees(("/Employees"))}}}>Employees</button>
                 <button id="Customers" style={styles.btn} onClick={() => {{goToCustomers(("/Customers"))}}}>Customers</button>
-                <button id="GDPR" style={styles.btn}onClick={() => {{goToGDPR(("/GDPR"))}}}>GDPR</button>
-                <button id="AddUser" style={styles.btn}onClick={() => {{goToAddUser(("/AddUser"))}}}>AddUser</button>
-                <button id="SignOut" style={styles.btn}>SignOut</button>
+                <button id="GDPR" style={styles.btn} onClick={() => {{goToGDPR(("/GDPR"))}}}>GDPR</button>
+                <button id="AddUser" style={styles.btn} onClick={() => {{goToAddUser(("/AddUser"))}}}>CreateNewUser</button>
+                <button id="SignOut" style={styles.btn} onClick={() => {{goToLogin(("/"))}}}>SignOut</button>
                 {/*<a href="#" className="custom-link" onClick={handleClick}>*/}
                 {/*    Klicka här*/}
                 {/*</a>*/}
-
             </div>
         </div>
     )
