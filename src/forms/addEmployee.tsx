@@ -31,7 +31,7 @@ const AddEmployeeForm = () => {
                 email,
                 phonenumber,
                 address,
-                role,
+                role: 'EMPLOYEE',
                 salary,
             };
 
@@ -44,12 +44,10 @@ const AddEmployeeForm = () => {
             setEmail('');
             setPhoneNumber('');
             setSs('');
-            setSalary(0);
+            // setSalary(0);
             setAddress('');
             setPassword('');
-            setCompany('');
-            setOrgNr('');
-            setRole('');
+            setRole('EMPLOYEE');
 
         } catch (error) {
             console.error('Error creating employee', error);
