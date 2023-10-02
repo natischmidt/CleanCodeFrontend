@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
-import { adminCreateEmp } from "../API/admin";
+import axios from "axios";
 
 const AddEmployeeForm = () => {
     const [firstname, setFirstname] = useState('');
@@ -8,6 +8,7 @@ const AddEmployeeForm = () => {
     const [email, setEmail] = useState('');
     const [phonenumber, setPhoneNumber] = useState('');
     const [ss, setSs] = useState('');
+    const [salary, setSalary] = useState <number> (0);
     const [address, setAddress] = useState('');
     const [password, setPassword] = useState('');
     const [company, setCompany] = useState('');
@@ -16,12 +17,58 @@ const AddEmployeeForm = () => {
 
     const goBackToAddUser = useNavigate();
 
- 
-    const handleSubmit = () => {
-        adminCreateEmp( firstname, lastname, email, phonenumber,address,password,ss,role,
-        );
+
+    const adminCreateEmp = async (
+        firstname: string,
+        lastname: string,
+        email: string,
+        password: string,
+        ss: string,
+        phonenumber: string,
+        address: string,
+        salary: number,
+        role: any,
+    ) => {
+        try {
+            const Url = 'http://localhost:8080/api/employee/createEmployee';
+
+            const employeeData = {
+                firstname,
+                lastname,
+                ss,
+                email,
+                phonenumber,
+                address,
+                password,
+                salary,
+                role,
+            };
+
+            const response = await axios.post(Url, employeeData);
+
+            console.log('Employee was created', response.data);
+
+        } catch (error) {
+            console.error('Error creating employee', error);
+        }
     };
 
+    const handleSubmit = (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+
+
+        adminCreateEmp(
+            firstname,
+            lastname,
+            email,
+            password,
+            ss,
+            phonenumber,
+            address,
+            salary,
+            role,
+        );
+    };
 
     return (
         <div style={styles.container}>
@@ -76,6 +123,14 @@ const AddEmployeeForm = () => {
                     required
                 />
                 <input
+                    type="number"
+                    placeholder="Salary"
+                    style={styles.input}
+                    value={salary}
+                    onChange={(e) => setSalary(parseFloat(e.target.value))}
+                    required
+                />
+                <input
                     type="password"
                     placeholder="Password"
                     style={styles.input}
@@ -83,7 +138,7 @@ const AddEmployeeForm = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-                <button type="submit" style={styles.button} onClick={handleSubmit}>
+                <button type="submit" style={styles.button}>
                     Create new Employee
                 </button>
                 <button type="submit" style={styles.button} onClick={() => {{goBackToAddUser(("/AddUser"))}}}>
