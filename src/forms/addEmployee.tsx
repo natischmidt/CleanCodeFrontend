@@ -11,9 +11,9 @@ const AddEmployeeForm = () => {
     const [salary, setSalary] = useState <number> (0);
     const [address, setAddress] = useState('');
     const [password, setPassword] = useState('');
-    const [company, setCompany] = useState('');
-    const [orgNr, setOrgNr] = useState('');
-    const [role, setRole] = useState('');
+    // const [company, setCompany] = useState('');
+    // const [orgNr, setOrgNr] = useState('');
+    // const [role, setRole] = useState('');
 
     const goBackToAddUser = useNavigate();
 
@@ -31,23 +31,13 @@ const AddEmployeeForm = () => {
                 email,
                 phonenumber,
                 address,
-                role: 'EMPLOYEE',
+                role: "EMPLOYEE",
                 salary,
             };
 
             const response = await axios.post(Url, employeeData);
 
             console.log('Employee was created', response.data);
-
-            setFirstname('');
-            setLastname('');
-            setEmail('');
-            setPhoneNumber('');
-            setSs('');
-            // setSalary(0);
-            setAddress('');
-            setPassword('');
-            setRole('EMPLOYEE');
 
         } catch (error) {
             console.error('Error creating employee', error);
