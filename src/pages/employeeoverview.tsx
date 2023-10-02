@@ -1,12 +1,15 @@
 import Header from "../reusableComponents/header";
-import Table2 from "../reusableComponents/table2";
 import React from "react";
+import {EmployeeTable} from "../components/EmployeeTable";
+import Footer from "../reusableComponents/footer";
 
 export default function EmployeePage() {
     return (
         <>
             <Header/>
-            <Table2/>
+            <h2>Employee Table</h2>
+            <EmployeeTable />
+            <Footer/>
         </>
     )
 }

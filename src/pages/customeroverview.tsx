@@ -1,12 +1,15 @@
 import React from "react";
 import Header from "../reusableComponents/header";
-import Table2 from "../reusableComponents/table2";
+import Footer from "../reusableComponents/footer";
+import {CustomerTable} from "../components/CustomerTable";
 
 export default function CustomerPage() {
     return (
         <>
             <Header/>
-            <Table2/>
+            <h2>Customer Table</h2>
+            <CustomerTable />
+            <Footer/>
         </>
     )
 }
