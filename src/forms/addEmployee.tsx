@@ -24,15 +24,15 @@ const AddEmployeeForm = () => {
             const Url = 'http://localhost:8080/api/employee/createEmployee';
 
             const employeeData = {
-                firstname,
-                lastname,
-                password,
-                ss,
-                email,
-                phonenumber,
-                address,
+                firstName: firstname,
+                lastName: lastname,
+                password: password,
+                ssNumber: ss,
+                email: email,
+                phoneNumber: phonenumber,
+                address: address,
                 role: "EMPLOYEE",
-                salary,
+                salary: salary,
             };
 
             const response = await axios.post(Url, employeeData);
