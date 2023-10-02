@@ -20,6 +20,7 @@ const LoginAdminOrEmployeeForm = () => {
                     style={styles.input}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                 />
                 <input
                     type="password"
@@ -27,6 +28,7 @@ const LoginAdminOrEmployeeForm = () => {
                     style={styles.input}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    required
                 />
                 <button type="submit" style={styles.button}
                         onClick={() => {{goToHomePage(("/Home"))}}}

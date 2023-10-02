@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
+import { adminCreateEmp } from "../API/admin";
 
 const AddEmployeeForm = () => {
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [adress, setAdress] = useState('');
+    const [phonenumber, setPhoneNumber] = useState('');
+    const [ss, setSs] = useState('');
+    const [address, setAddress] = useState('');
     const [password, setPassword] = useState('');
     const [company, setCompany] = useState('');
     const [orgNr, setOrgNr] = useState('');
@@ -14,9 +16,12 @@ const AddEmployeeForm = () => {
 
     const goBackToAddUser = useNavigate();
 
-    const handleSubmit = (e: { preventDefault: () => void; }) => {
-        e.preventDefault();
+ 
+    const handleSubmit = () => {
+        adminCreateEmp( firstname, lastname, email, phonenumber,address,password,ss,role,
+        );
     };
+
 
     return (
         <div style={styles.container}>
@@ -40,6 +45,14 @@ const AddEmployeeForm = () => {
                 />
                 <input
                     type="text"
+                    placeholder="Social Security Number"
+                    style={styles.input}
+                    value={ss}
+                    onChange={(e) => setSs(e.target.value)}
+                    required
+                />
+                <input
+                    type="text"
                     placeholder="Email"
                     style={styles.input}
                     value={email}
@@ -50,16 +63,16 @@ const AddEmployeeForm = () => {
                     type="text"
                     placeholder="Phone Number"
                     style={styles.input}
-                    value={phoneNumber}
+                    value={phonenumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     required
                 />
                 <input
                     type="text"
-                    placeholder="Adress"
+                    placeholder="Address"
                     style={styles.input}
-                    value={adress}
-                    onChange={(e) => setAdress(e.target.value)}
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
                     required
                 />
                 <input
@@ -70,7 +83,7 @@ const AddEmployeeForm = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-                <button type="submit" style={styles.button}>
+                <button type="submit" style={styles.button} onClick={handleSubmit}>
                     Create new Employee
                 </button>
                 <button type="submit" style={styles.button} onClick={() => {{goBackToAddUser(("/AddUser"))}}}>
