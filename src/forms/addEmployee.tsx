@@ -11,64 +11,37 @@ const AddEmployeeForm = () => {
     const [salary, setSalary] = useState <number> (0);
     const [address, setAddress] = useState('');
     const [password, setPassword] = useState('');
-    const [company, setCompany] = useState('');
-    const [orgNr, setOrgNr] = useState('');
-    const [role, setRole] = useState('');
+    // const [company, setCompany] = useState('');
+    // const [orgNr, setOrgNr] = useState('');
+    // const [role, setRole] = useState('');
 
     const goBackToAddUser = useNavigate();
 
+    const handleSubmit = async (e : React.FormEvent) => {
+        e.preventDefault();
 
-    const adminCreateEmp = async (
-        firstname: string,
-        lastname: string,
-        email: string,
-        password: string,
-        ss: string,
-        phonenumber: string,
-        address: string,
-        salary: number,
-        role: string,
-    ) => {
         try {
             const Url = 'http://localhost:8080/api/employee/createEmployee';
 
             const employeeData = {
-                firstname,
-                lastname,
-                password,
-                ss,
-                email,
-                phonenumber,
-                address,
-                role,
-                salary,
+                firstName: firstname,
+                lastName: lastname,
+                password: password,
+                ssNumber: ss,
+                email: email,
+                phoneNumber: phonenumber,
+                address: address,
+                role: "EMPLOYEE",
+                salary: salary,
             };
 
             const response = await axios.post(Url, employeeData);
 
             console.log('Employee was created', response.data);
 
-        }
-        catch (error) {
+        } catch (error) {
             console.error('Error creating employee', error);
         }
-    };
-
-    const handleSubmit = (e: { preventDefault: () => void; }) => {
-        e.preventDefault();
-
-
-        adminCreateEmp(
-            firstname,
-            lastname,
-            email,
-            password,
-            ss,
-            phonenumber,
-            address,
-            salary,
-            role,
-        );
     };
 
     return (
