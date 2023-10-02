@@ -17,18 +17,9 @@ const AddEmployeeForm = () => {
 
     const goBackToAddUser = useNavigate();
 
+    const handleSubmit = async (e : React.FormEvent) => {
+        e.preventDefault();
 
-    const adminCreateEmp = async (
-        firstname: string,
-        lastname: string,
-        email: string,
-        password: string,
-        ss: string,
-        phonenumber: string,
-        address: string,
-        salary: number,
-        role: string,
-    ) => {
         try {
             const Url = 'http://localhost:8080/api/employee/createEmployee';
 
@@ -48,27 +39,21 @@ const AddEmployeeForm = () => {
 
             console.log('Employee was created', response.data);
 
-        }
-        catch (error) {
+            setFirstname('');
+            setLastname('');
+            setEmail('');
+            setPhoneNumber('');
+            setSs('');
+            setSalary(0);
+            setAddress('');
+            setPassword('');
+            setCompany('');
+            setOrgNr('');
+            setRole('');
+
+        } catch (error) {
             console.error('Error creating employee', error);
         }
-    };
-
-    const handleSubmit = (e: { preventDefault: () => void; }) => {
-        e.preventDefault();
-
-
-        adminCreateEmp(
-            firstname,
-            lastname,
-            email,
-            password,
-            ss,
-            phonenumber,
-            address,
-            salary,
-            role,
-        );
     };
 
     return (
