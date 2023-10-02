@@ -11,6 +11,11 @@ import AddAdmin from "./forms/addAdmin";
 import AddPrivateCustomer from "./forms/addPrivateCustomer";
 import AddBusinessCustomer from "./forms/addBusinessCustomer";
 import AddEmployee from "./forms/addEmployee";
+import UpdateBooking from "./adminForms/updateBooking";
+import CancelBooking from "./adminForms/cancelBooking";
+import CreateNewBooking from "./adminForms/createBooking";
+import GettingIdNumber from "./adminForms/gettingIdNumber";
+import CancelWithNumber from "./adminForms/cancelWithNumber";
 //import OverviewPage from "./pages/overviewpage";
 //import TransactionPage from "./pages/transactionoverview";
 
@@ -31,6 +36,11 @@ function Routing() {
                     <Route path="/AddEmployee" element={<AddEmployee/>}/>
                     <Route path="/AddPrivateCustomer" element={<AddPrivateCustomer/>}/>
                     <Route path="/AddBusinessCustomer" element={<AddBusinessCustomer/>}/>
+                    <Route path="/CreateNewBooking" element={<CreateNewBooking/>}/>
+                    <Route path="/UpdateBooking" element={<UpdateBooking/>}/>
+                    {/*<Route path="/CancelBooking" element={<CancelBooking/>}/>*/}
+                    <Route path="/GettingIdNumber" element={<GettingIdNumber/>}/>
+                    <Route path="/CancelWithNumber" element={<CancelWithNumber/>}/>
                     {/* <Route path="/Overview" element={<OverviewPage/>}/>
                     <Route path="/Transaction" element={<TransactionPage/>}/>*/}
                 </Routes>

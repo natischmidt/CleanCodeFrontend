@@ -7,6 +7,22 @@
   width: 100vw;
   background-color: #E2FFF8;
 }
+.addBookOptCon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+  color: #000001;
+}
+.addBookOptBtn {
+  background-color: #53b067;
+  margin-left: 5%;
+  width: 200px;
+  height: 60px;
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
 
 /*.bookingContainer {*/
 /*  background-color: #E2FFF8;*/
