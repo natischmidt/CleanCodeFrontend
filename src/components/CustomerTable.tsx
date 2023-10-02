@@ -7,7 +7,7 @@ export const CustomerTable: React.FC = () => {
 
     useEffect(() => {
 
-        axios.get('http://localhost:8080/api/customer/getAllCustomers')
+        axios.get('http://localhost:8080/api/customer/all')
             .then((response) => {
                 setCustomerData(response.data);
             })
@@ -19,14 +19,14 @@ export const CustomerTable: React.FC = () => {
 
     const columns = [
         { key: 'id', title: 'Customer ID' },
-        { key: 'firstname', title: 'First Name' },
-        { key: 'lastname', title: 'Last Name' },
-        { key: 'companyname', title: 'Company Name' },
-        { key: 'orgnumber', title: 'Organisation Number' },
+        { key: 'firstName', title: 'First Name' },
+        { key: 'lastName', title: 'Last Name' },
+        { key: 'companyName', title: 'Company Name' },
+        { key: 'orgNumber', title: 'Organisation Number' },
         { key: 'email', title: 'Email' },
-        { key: 'phonenumber', title: 'Phone Number' },
+        { key: 'phoneNumber', title: 'Phone Number' },
         { key: 'adress', title: 'Adress' },
-        { key: 'customertype', title: 'Customer Type' },
+        { key: 'customerType', title: 'Customer Type' },
     ];
 
     return <Table columns={columns} data={customerData} />;
