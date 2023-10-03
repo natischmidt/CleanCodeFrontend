@@ -1,28 +1,53 @@
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 const AddPrivateCustomerForm = () => {
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [adress, setAdress] = useState('');
+    const [phonenumber, setPhoneNumber] = useState('');
+    const [address, setAdress] = useState('');
     const [password, setPassword] = useState('');
-    const [salary, setSalary] = useState('')
-    const [company, setCompany] = useState('');
-    const [orgNr, setOrgNr] = useState('');
-    const [role, setRole] = useState('');
+    const [company, setCompany] = useState(null);
+    const [orgNr, setOrgNr] = useState(null);
+
+    const[showCompany, setShowCompany] = useState(false)
+    const[showOrgNr, setShowOrgNr] = useState(false)
 
     const goBackToAddUser = useNavigate();
 
-    const handleSubmit = (e: { preventDefault: () => void; }) => {
+    const handleSubmit = async (e : React.FormEvent) => {
         e.preventDefault();
+
+        try {
+            const Url = 'http://localhost:8080/api/customer/create';
+
+            const BusinessCustomerData = {
+                firstName: firstname,
+                lastName: lastname,
+                // password: password,
+                companyName: company,
+                orgNumber: orgNr,
+                email: email,
+                phoneNumber: phonenumber,
+                address: address,
+                customerType: "PRIVATE"
+            };
+
+            const response = await axios.post(Url, BusinessCustomerData);
+
+            console.log('Private Customer was created', response.data);
+
+        } catch (error) {
+            console.error('Error creating private customer', error);
+        }
     };
 
     return (
         <div style={styles.container}>
             <form style={styles.form} onSubmit={handleSubmit}>
-                <h1>Create new Private Customer</h1>
+                <h2>Create new Private Customer</h2>
                 <input
                     type="text"
                     placeholder="Firstname"
@@ -51,34 +76,44 @@ const AddPrivateCustomerForm = () => {
                     type="text"
                     placeholder="Phone Number"
                     style={styles.input}
-                    value={phoneNumber}
+                    value={phonenumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     required
                 />
                 <input
                     type="text"
-                    placeholder="Adress"
+                    placeholder="Address"
                     style={styles.input}
-                    value={adress}
+                    value={address}
                     onChange={(e) => setAdress(e.target.value)}
                     required
                 />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    style={styles.input}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Salary"
-                    style={styles.input}
-                    value={salary}
-                    onChange={(e) => setSalary(e.target.value)}
-                    required
-                />
+                {/*<input*/}
+                {/*    type="password"*/}
+                {/*    placeholder="Password"*/}
+                {/*    style={styles.input}*/}
+                {/*    value={password}*/}
+                {/*    onChange={(e) => setPassword(e.target.value)}*/}
+                {/*    required*/}
+                {/*/>*/}
+                {showOrgNr && (
+                    <input
+                        type="text"
+                        placeholder="Organisation Number"
+                        style={styles.input}
+                        value={orgNr}
+                        onChange={(e) => setOrgNr(e.target.value)}
+                    />
+                )}
+                {showCompany && (
+                    <input
+                        type="text"
+                        placeholder="Company name"
+                        style={styles.input}
+                        value={company}
+                        onChange={(e) => setCompany(e.target.value)}
+                    />
+                )}
                 <button type="submit" style={styles.button}>
                     Create new Private Customer
                 </button>
@@ -106,36 +141,24 @@ const styles = {
         border: '2px solid silver',
         borderRadius: '5px',
         backgroundColor: '#53af67',
-        width: "600px",
-        height: '960px',
-        marginTop: '120px'
+        width: "500px",
+        height: '630px',
+        marginTop: '6%'
     },
     input: {
-        marginTop: '15px',
+        marginTop: '10px',
         marginBottom: '15px',
-        padding: '15px',
+        padding: '10px',
         width: '75%',
-        fontSize: '1.2rem',
         borderRadius: '5px',
     },
     button: {
-        padding: '13px 25px',
+        padding: '10px 20px',
         backgroundColor: '#0d714a',
         color: 'white',
         border: 'none',
         borderRadius: '10px',
         cursor: 'pointer',
         marginTop: '25px',
-        fontSize: '1.2rem',
-    },
-    select: {
-        marginTop: '25px',
-        marginBottom: '15px',
-        padding: '10px',
-        width: '40%',
-        fontSize: '1.2rem',
-        textAlign: 'center',
-        backgroundColor: "#ffffff",
-        borderRadius: '5px',
     },
 }

@@ -19,8 +19,17 @@
   margin-left: 5%;
   width: 200px;
   height: 60px;
-  font-size: 1.2rem;
+  /*font-size: 1.2rem;*/
   font-weight: normal;
+}
+
+.Btns {
+  display: flex;
+}
+
+.h1 {
+  justify-content: center;
+  text-align: center;
 }
 
 

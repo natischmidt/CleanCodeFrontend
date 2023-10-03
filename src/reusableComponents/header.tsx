@@ -20,8 +20,8 @@ export default function Header() {
                 <button id="Employees" style={styles.btn} onClick={() => {{goToEmployees(("/Employees"))}}}>Employees</button>
                 <button id="Customers" style={styles.btn} onClick={() => {{goToCustomers(("/Customers"))}}}>Customers</button>
                 <button id="GDPR" style={styles.btn} onClick={() => {{goToGDPR(("/GDPR"))}}}>GDPR</button>
-                <button id="AddUser" style={styles.btn} onClick={() => {{goToAddUser(("/AddUser"))}}}>CreateNewUser</button>
-                <button id="SignOut" style={styles.btn} onClick={() => {{goToLogin(("/"))}}}>SignOut</button>
+                <button id="AddUser" style={styles.btn} onClick={() => {{goToAddUser(("/AddUser"))}}}>Create New User</button>
+                <button id="SignOut" style={styles.btn} onClick={() => {{goToLogin(("/"))}}}>Sign Out</button>
                 {/*<a href="#" className="custom-link" onClick={handleClick}>*/}
                 {/*    Klicka här*/}
                 {/*</a>*/}
@@ -34,7 +34,6 @@ function handleClick() {
 
 }
 
-
 const styles = {
     header: {
         backgroundColor: '#E2FFF8',
@@ -45,52 +44,20 @@ const styles = {
         alignItems: 'center',
     },
     logo: {
-        width: '460px',
-        height: '220px',
+        // marginLeft: "-40%",
+        width: '320px',
+        height: '160px',
     },
     menuButtons: {
         display: 'flex',
-        marginLeft: '30%',
         color: '#000001',
+        marginLeft: "15%",
     },
     btn: {
         backgroundColor: '#53b067',
         marginLeft: '5%',
-        width: '180px',
+        width: '200px',
         height: '60px',
-        fontSize: '1.2rem',
         fontWeight: 'normal',
     },
-    // employees: {
-    //     backgroundColor: '#53b067',
-    //     marginLeft: '5%',
-    //     width: '180px',
-    //     height: '60px',
-    //     fontSize: '1.2rem',
-    //     fontWeight: 'normal',
-    // },
-    // customers: {
-    //     backgroundColor: '#53b067',
-    //     marginLeft: '5%',
-    //     width: '180px',
-    //     height: '60px',
-    //     fontSize: '1.2rem',
-    //     fontWeight: 'normal',
-    // },
-    // gdpr: {
-    //     backgroundColor: '#53b067',
-    //     marginLeft: '5%',
-    //     width: '180px',
-    //     height: '60px',
-    //     fontSize: '1.2rem',
-    //     fontWeight: 'normal',
-    // },
-    // signout: {
-    //     backgroundColor: '#53b067',
-    //     marginLeft: '5%',
-    //     width: '180px',
-    //     height: '60px',
-    //     fontSize: '1.2rem',
-    //     fontWeight: 'normal',
-    // },
 }

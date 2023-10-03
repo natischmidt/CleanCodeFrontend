@@ -11,9 +11,6 @@ const AddEmployeeForm = () => {
     const [salary, setSalary] = useState <number> (0);
     const [address, setAddress] = useState('');
     const [password, setPassword] = useState('');
-    // const [company, setCompany] = useState('');
-    // const [orgNr, setOrgNr] = useState('');
-    // const [role, setRole] = useState('');
 
     const goBackToAddUser = useNavigate();
 
@@ -47,7 +44,7 @@ const AddEmployeeForm = () => {
     return (
         <div style={styles.container}>
             <form style={styles.form} onSubmit={handleSubmit}>
-                <h1>Create new Employee</h1>
+                <h2>Create new Employee</h2>
                 <input
                     type="text"
                     placeholder="Firstname"
@@ -139,36 +136,25 @@ const styles = {
         border: '2px solid silver',
         borderRadius: '5px',
         backgroundColor: '#53af67',
-        width: "600px",
-        height: '820px',
-        marginTop: '120px'
+        width: "500px",
+        height: '760px',
+        marginTop: '4%'
     },
     input: {
-        marginTop: '15px',
+        marginTop: '10px',
         marginBottom: '15px',
-        padding: '15px',
+        padding: '10px',
         width: '75%',
-        fontSize: '1.2rem',
+        // fontSize: '1.2rem',
         borderRadius: '5px',
     },
     button: {
-        padding: '13px 25px',
+        padding: '10px 20px',
         backgroundColor: '#0d714a',
         color: 'white',
         border: 'none',
         borderRadius: '10px',
         cursor: 'pointer',
         marginTop: '25px',
-        fontSize: '1.2rem',
-    },
-    select: {
-        marginTop: '25px',
-        marginBottom: '15px',
-        padding: '10px',
-        width: '40%',
-        fontSize: '1.2rem',
-        textAlign: 'center',
-        backgroundColor: "#ffffff",
-        borderRadius: '5px',
     },
 }
