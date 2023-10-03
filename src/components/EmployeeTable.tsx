@@ -19,16 +19,27 @@ export const EmployeeTable: React.FC = () => {
 
     const columns = [
         { key: 'id', title: 'Employee ID' },
-        { key: 'firstName', title: 'First Name' },
-        { key: 'lastName', title: 'Last Name' },
+        { key: 'firstName', title: 'Firstname' },
+        { key: 'lastName', title: 'Lastname' },
         { key: 'password', title: 'Password' },
-        { key: 'ssNumber', title: 'SS' },
+        { key: 'ssNumber', title: 'SSN' },
         { key: 'email', title: 'Email' },
         { key: 'phoneNumber', title: 'Phone Number' },
-        { key: 'adress', title: 'Address' },
+        { key: 'address', title: 'Address' },
         { key: 'role', title: 'Role' },
         { key: 'salary', title: 'Salary' },
     ];
 
-    return <Table columns={columns} data={employeeData} />;
+    return (
+        <div className="employee-table" style={styles.employeeTable}>
+            <Table columns={columns} data={employeeData} />
+        </div>
+    );
 };
+
+const styles = {
+    employeeTable: {
+        textAlign: "left",
+    },
+}
+

@@ -7,7 +7,7 @@ const AddPrivateCustomerForm = () => {
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
     const [phonenumber, setPhoneNumber] = useState('');
-    const [address, setAdress] = useState('');
+    const [address, setAddress] = useState('');
     const [password, setPassword] = useState('');
     const [company, setCompany] = useState(null);
     const [orgNr, setOrgNr] = useState(null);
@@ -26,7 +26,7 @@ const AddPrivateCustomerForm = () => {
             const BusinessCustomerData = {
                 firstName: firstname,
                 lastName: lastname,
-                // password: password,
+                password: password,
                 companyName: company,
                 orgNumber: orgNr,
                 email: email,
@@ -85,17 +85,17 @@ const AddPrivateCustomerForm = () => {
                     placeholder="Address"
                     style={styles.input}
                     value={address}
-                    onChange={(e) => setAdress(e.target.value)}
+                    onChange={(e) => setAddress(e.target.value)}
                     required
                 />
-                {/*<input*/}
-                {/*    type="password"*/}
-                {/*    placeholder="Password"*/}
-                {/*    style={styles.input}*/}
-                {/*    value={password}*/}
-                {/*    onChange={(e) => setPassword(e.target.value)}*/}
-                {/*    required*/}
-                {/*/>*/}
+                <input
+                    type="password"
+                    placeholder="Password"
+                    style={styles.input}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
                 {showOrgNr && (
                     <input
                         type="text"

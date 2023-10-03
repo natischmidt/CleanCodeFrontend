@@ -12,7 +12,7 @@ interface Props {
 
 const Table: React.FC<Props> = ({ columns, data }) => {
     return (
-        <table className="data-table">
+        <table className="data-table" style={styles.dataTable}>
             <thead>
             <tr>
                 {columns.map((column) => (
@@ -34,3 +34,13 @@ const Table: React.FC<Props> = ({ columns, data }) => {
 };
 
 export default Table;
+
+const styles = {
+    dataTable: {
+        marginLeft: "23%",
+        backgroundColor: "#a1decc",
+        borderRadius: "5px",
+        padding: "15px",
+        marginTop: "3%"
+    }
+}

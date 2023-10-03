@@ -12,7 +12,7 @@ import AddPrivateCustomer from "./forms/addPrivateCustomer";
 import AddBusinessCustomer from "./forms/addBusinessCustomer";
 import AddEmployee from "./forms/addEmployee";
 import UpdateBooking from "./adminForms/updateBooking";
-import CancelBooking from "./adminForms/cancelBooking";
+// import CancelBooking from "./adminForms/cancelBooking";
 import CreateNewBooking from "./adminForms/createBooking";
 import GettingIdNumber from "./adminForms/gettingIdNumber";
 import CancelWithNumber from "./adminForms/cancelWithNumber";

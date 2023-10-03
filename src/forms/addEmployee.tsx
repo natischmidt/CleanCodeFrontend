@@ -95,7 +95,7 @@ const AddEmployeeForm = () => {
                 />
                 <input
                     type="number"
-                    placeholder="Salary"
+                    placeholder=" Hourly Salary"
                     style={styles.input}
                     value={salary}
                     onChange={(e) => setSalary(parseFloat(e.target.value))}
@@ -145,7 +145,6 @@ const styles = {
         marginBottom: '15px',
         padding: '10px',
         width: '75%',
-        // fontSize: '1.2rem',
         borderRadius: '5px',
     },
     button: {

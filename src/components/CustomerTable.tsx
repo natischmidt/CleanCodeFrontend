@@ -16,19 +16,28 @@ export const CustomerTable: React.FC = () => {
             });
     }, []);
 
-
     const columns = [
         { key: 'id', title: 'Customer ID' },
-        { key: 'firstName', title: 'First Name' },
-        { key: 'lastName', title: 'Last Name' },
-        { key: 'companyName', title: 'Company Name' },
-        { key: 'orgNumber', title: 'Organisation Number' },
+        { key: 'firstName', title: 'Firstname' },
+        { key: 'lastName', title: 'Lastname' },
         { key: 'email', title: 'Email' },
         { key: 'phoneNumber', title: 'Phone Number' },
-        { key: 'adress', title: 'Adress' },
+        { key: 'address', title: 'Address' },
+        { key: 'companyName', title: 'Company Name' },
+        { key: 'orgNumber', title: 'Organisation Number' },
         { key: 'customerType', title: 'Customer Type' },
     ];
 
-    return <Table columns={columns} data={customerData} />;
+    return (
+        <div className="customer-table" style={styles.customerTable}>
+            <Table columns={columns} data={customerData} />
+        </div>
+    );
 };
+
+const styles = {
+    customerTable: {
+        textAlign: "left",
+    },
+}
 

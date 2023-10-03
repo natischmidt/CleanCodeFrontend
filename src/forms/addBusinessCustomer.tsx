@@ -8,7 +8,7 @@ const AddBusinessCustomerForm = () => {
     const [email, setEmail] = useState('');
     const [phonenumber, setPhoneNumber] = useState('');
     const [address, setAdress] = useState('');
-    // const [password, setPassword] = useState('');
+    const [password, setPassword] = useState('');
     const [company, setCompany] = useState('');
     const [orgNr, setOrgNr] = useState('');
 
@@ -23,7 +23,7 @@ const AddBusinessCustomerForm = () => {
             const BusinessCustomerData = {
                 firstName: firstname,
                 lastName: lastname,
-                // password: password,
+                password: password,
                 companyName: company,
                 orgNumber: orgNr,
                 email: email,
@@ -85,14 +85,14 @@ const AddBusinessCustomerForm = () => {
                     onChange={(e) => setAdress(e.target.value)}
                     required
                 />
-                {/*<input*/}
-                {/*    type="password"*/}
-                {/*    placeholder="Password"*/}
-                {/*    style={styles.input}*/}
-                {/*    value={password}*/}
-                {/*    onChange={(e) => setPassword(e.target.value)}*/}
-                {/*    required*/}
-                {/*/>*/}
+                <input
+                    type="password"
+                    placeholder="Password"
+                    style={styles.input}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
                 <input
                     type="text"
                     placeholder="Company name"
@@ -143,7 +143,6 @@ const styles = {
         marginBottom: '15px',
         padding: '10px',
         width: '75%',
-        // fontSize: '1.2rem',
         borderRadius: '5px',
     },
     button: {

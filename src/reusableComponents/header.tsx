@@ -1,5 +1,5 @@
 import logo from "../assets/logo3.png";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import React from "react";
 export default function Header() {
 
@@ -22,16 +22,9 @@ export default function Header() {
                 <button id="GDPR" style={styles.btn} onClick={() => {{goToGDPR(("/GDPR"))}}}>GDPR</button>
                 <button id="AddUser" style={styles.btn} onClick={() => {{goToAddUser(("/AddUser"))}}}>Create New User</button>
                 <button id="SignOut" style={styles.btn} onClick={() => {{goToLogin(("/"))}}}>Sign Out</button>
-                {/*<a href="#" className="custom-link" onClick={handleClick}>*/}
-                {/*    Klicka här*/}
-                {/*</a>*/}
             </div>
         </div>
     )
-}
-
-function handleClick() {
-
 }
 
 const styles = {
@@ -44,7 +37,6 @@ const styles = {
         alignItems: 'center',
     },
     logo: {
-        // marginLeft: "-40%",
         width: '320px',
         height: '160px',
     },

@@ -32,6 +32,13 @@
   text-align: center;
 }
 
+h2 {
+  justify-content: center;
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 5%;
+}
+
 
 /*.bookingContainer {*/
 /*  background-color: #E2FFF8;*/
