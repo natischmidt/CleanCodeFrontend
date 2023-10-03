@@ -8,7 +8,7 @@ const AddEmployeeForm = () => {
     const [email, setEmail] = useState('');
     const [phonenumber, setPhoneNumber] = useState('');
     const [ss, setSs] = useState('');
-    const [salary, setSalary] = useState <number> (0);
+    const [salary, setSalary] = useState <number> ();
     const [address, setAddress] = useState('');
     const [password, setPassword] = useState('');
 
@@ -94,7 +94,7 @@ const AddEmployeeForm = () => {
                     required
                 />
                 <input
-                    type="number"
+                    type="text"
                     placeholder=" Hourly Salary"
                     style={styles.input}
                     value={salary}
