@@ -17,6 +17,7 @@ export const EmployeeTable: React.FC = () => {
             });
     }, []);
 
+
     const columns = [
         { key: 'id', title: 'Employee ID' },
         { key: 'firstName', title: 'Firstname' },
@@ -30,9 +31,22 @@ export const EmployeeTable: React.FC = () => {
         { key: 'salary', title: 'Salary' },
     ];
 
+    const handleDelete = (id: number) => {
+
+    };
+
+    const handleUpdate = (id: number) => {
+
+    };
+
     return (
         <div className="employee-table" style={styles.employeeTable}>
-            <Table columns={columns} data={employeeData} />
+
+            <Table columns={columns}
+                   data={employeeData}
+                   onDelete={handleDelete}
+                   onUpdate={handleUpdate}
+            />
         </div>
     );
 };
