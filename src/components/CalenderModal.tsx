@@ -1,52 +1,43 @@
-import React from "react";
+import React, {useState} from 'react';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+
+type ValuePiece = Date | null;
+
+type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 export const CalenderModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
+    const [value, onChange] = useState<Value>(new Date());
+    const [datePicked, setDatePicked] = useState(false)
+    const [timeOfDay, setTimeOfDay] = useState("Morning")
 
-    // Create an array of numbers from 1 to 30
-    const days = Array.from({ length: 30 }, (_, index) => index + 1);
-
-// Render the table rows
-    const rows = [];
-    for (let i = 0; i < days.length; i += 7) {
-        const row = days.slice(i, i + 7);
-        rows.push(
-            <tr key={i}>
-                {row.map((day) => (
-                    <td key={day} style={styles.cell}>
-                        {day}
-                    </td>
-                ))}
-            </tr>
-        );
+    const onClick = (e: Value) => {
+        onChange(e)
+        console.log(e)
+        setDatePicked(true)
     }
 
     return (
-        <div className="modal">
-            <div className="modal-content">
-                <h3>Boking calender</h3>
-                <table style={styles.table} className="calender-table">
-                    <tbody>
-                    {rows}
-                    </tbody>
-                </table>
-                <button
-                    onClick={onClose}> Close
-                </button>
-            </div>
+        <div>
+            <Calendar onChange={(e) => {
+                onClick(e)
+            }} value={value}/>
+            {datePicked ? <div>
+                <button onClick={() => setTimeOfDay("Morning")}>Morning</button>
+                <button onClick={() => setTimeOfDay("Noon")}>Noon</button>
+                <button onClick={() => setTimeOfDay("Afternoon")}>Afternoon</button>
+                <button onClick={() => setTimeOfDay("Evening")}>Evening</button>
+            </div> : <></>}
+            <button
+                onClick={onClose}> Close
+            </button>
+            <button
+                onClick={onClose}> Confirm
+            </button>
+            {datePicked ? <div>
+                <p>Tid: {timeOfDay}</p>
+            </div> : <></>
+            }
         </div>
     );
-};
-
-const styles = {
-    table: {
-        width: '100%'
-    },
-    cell: {
-        border: '1px solid #ccc',
-        padding: '30px'
-    }
-};
-
-
-
-
+}
