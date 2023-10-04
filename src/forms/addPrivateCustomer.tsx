@@ -9,11 +9,6 @@ const AddPrivateCustomerForm = () => {
     const [phonenumber, setPhoneNumber] = useState('');
     const [address, setAddress] = useState('');
     const [password, setPassword] = useState('');
-    const [company, setCompany] = useState(null);
-    const [orgNr, setOrgNr] = useState(null);
-
-    const[showCompany, setShowCompany] = useState(false)
-    const[showOrgNr, setShowOrgNr] = useState(false)
 
     const goBackToAddUser = useNavigate();
 
@@ -27,8 +22,6 @@ const AddPrivateCustomerForm = () => {
                 firstName: firstname,
                 lastName: lastname,
                 password: password,
-                companyName: company,
-                orgNumber: orgNr,
                 email: email,
                 phoneNumber: phonenumber,
                 address: address,
@@ -38,6 +31,13 @@ const AddPrivateCustomerForm = () => {
             const response = await axios.post(Url, BusinessCustomerData);
 
             console.log('Private Customer was created', response.data);
+
+            setFirstname('')
+            setLastname('')
+            setEmail('')
+            setPhoneNumber('')
+            setLastname('')
+            setPassword('')
 
         } catch (error) {
             console.error('Error creating private customer', error);
@@ -96,24 +96,6 @@ const AddPrivateCustomerForm = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-                {showOrgNr && (
-                    <input
-                        type="text"
-                        placeholder="Organisation Number"
-                        style={styles.input}
-                        value={orgNr}
-                        onChange={(e) => setOrgNr(e.target.value)}
-                    />
-                )}
-                {showCompany && (
-                    <input
-                        type="text"
-                        placeholder="Company name"
-                        style={styles.input}
-                        value={company}
-                        onChange={(e) => setCompany(e.target.value)}
-                    />
-                )}
                 <button type="submit" style={styles.button}>
                     Create new Private Customer
                 </button>

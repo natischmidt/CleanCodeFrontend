@@ -13,6 +13,7 @@ interface Props {
 }
 
 const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate}) => {
+
     return (
         <table className="data-table" style={styles.dataTable}>
             <thead>
@@ -29,8 +30,8 @@ const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate}) => {
                         <td key={column.key}>{item[column.key]}</td>
                     ))}
                     <td>
-                        <button onClick={() => onDelete(item.id)}>Delete</button>
                         <button onClick={() => onUpdate(item.id)}>Update</button>
+                        <button onClick={() => onDelete(item.id)}>Delete</button>
                     </td>
                 </tr>
             ))}
@@ -43,7 +44,7 @@ export default Table;
 
 const styles = {
     dataTable: {
-        marginLeft: "23%",
+        // marginLeft: "23%",
         backgroundColor: "#a1decc",
         borderRadius: "5px",
         padding: "15px",

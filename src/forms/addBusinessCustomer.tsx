@@ -36,6 +36,14 @@ const AddBusinessCustomerForm = () => {
 
             console.log('Business Customer was created', response.data);
 
+            setFirstname('')
+            setLastname('')
+            setEmail('')
+            setPhoneNumber('')
+            setPassword('')
+            setCompany('')
+            setOrgNr('')
+
         } catch (error) {
             console.error('Error creating business customer', error);
         }

@@ -36,6 +36,15 @@ const AddAdminForm = () => {
 
             console.log('Admin was created', response.data);
 
+            setFirstname('')
+            setLastname('')
+            setEmail('')
+            setPhoneNumber('')
+            setSs('')
+            setSalary(0)
+            setAddress('')
+            setPassword('')
+
         } catch (error) {
             console.error('Error creating admin', error);
         }

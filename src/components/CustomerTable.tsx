@@ -5,6 +5,8 @@ import Table from "../reusableComponents/table";
 export const CustomerTable: React.FC = () => {
     const [customerData, setCustomerData] = useState<any[]>([]);
 
+    const [deleted, setDeleted] = useState(0);
+
     useEffect(() => {
 
         axios.get('http://localhost:8080/api/customer/all')
@@ -14,7 +16,7 @@ export const CustomerTable: React.FC = () => {
             .catch((error) => {
                 console.error('Error fetching customer data:', error);
             });
-    }, []);
+    }, [deleted]);
 
     const columns = [
         { key: 'id', title: 'Customer ID' },
@@ -28,8 +30,20 @@ export const CustomerTable: React.FC = () => {
         { key: 'customerType', title: 'Customer Type' },
     ];
 
-    const handleDelete = (id: number) => {
+    const handleDelete = async (id: number) => {
 
+        try {
+            const Url = `http://localhost:8080/api/customer/delete/${id}`;
+
+            const response = await axios.delete(Url);
+
+            console.log('Deleting employee was successful', response.data);
+
+            setDeleted(x => x +1)
+
+        } catch (error) {
+            console.error('Error deleting employee', error);
+        }
     };
 
     const handleUpdate = (id: number) => {
@@ -48,6 +62,8 @@ export const CustomerTable: React.FC = () => {
 const styles = {
     customerTable: {
         textAlign: "left" as 'left',
+        display: "flex" as 'flex',
+        justifyContent: "center" as 'center'
     },
 }
 

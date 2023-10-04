@@ -33,6 +33,8 @@ export const BookingTable: React.FC = () => {
 
 const styles = {
     bookingTable: {
-        textAlign: 'left' as 'left',
+        textAlign: "left" as 'left',
+        display: "flex" as 'flex',
+        justifyContent: "center" as 'center'
     },
 }
