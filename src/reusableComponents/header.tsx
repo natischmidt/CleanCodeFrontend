@@ -45,7 +45,7 @@ const styles = {
     menuButtons: {
         display: 'flex',
         color: '#000001',
-        marginLeft: "7%",
+        // marginLeft: "7%",
         flexBasis: 'auto',
         flexGrow: 1,
         justifyContent: 'flex-end',
@@ -53,7 +53,7 @@ const styles = {
     },
     btn: {
         backgroundColor: '#53b067',
-        marginLeft: '5%',
+        marginLeft: '1%',
         width: '200px',
         height: '60px',
         fontWeight: 'normal',
