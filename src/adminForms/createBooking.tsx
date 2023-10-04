@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import {CalenderModal} from "../components/CalenderModal";
 
 const CreateNewBooking: React.FC = () => {
     const [jobType, setJobType] = useState('');
@@ -12,8 +13,13 @@ const CreateNewBooking: React.FC = () => {
     const [employee, setEmployee] = useState('');
     const [customer, setCustomer] = useState('')
     const [role, setRole] = useState('');
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const goBackToBooking = useNavigate();
+
+    const handleDateAndTimeClick = () => {
+        setIsModalOpen(!isModalOpen);
+    };
 
     const handleSubmit = async (e : React.FormEvent) => {
         e.preventDefault();
@@ -40,6 +46,7 @@ const CreateNewBooking: React.FC = () => {
     };
     return (
         <div style={styles.container}>
+            {!isModalOpen && (
             <form style={styles.form} onSubmit={handleSubmit}>
                 <h2>Create new Booking</h2>
                 {/*<input*/}
@@ -69,6 +76,8 @@ const CreateNewBooking: React.FC = () => {
                     onChange={(e) => setDateAndTime(e.target.value)}
                     required
                 />
+                <button type="text" onClick={handleDateAndTimeClick}>Calender</button>
+
                 {/*<input*/}
                 {/*    type="text"*/}
                 {/*    placeholder="Time Slot"*/}
@@ -175,7 +184,11 @@ const CreateNewBooking: React.FC = () => {
                 <button type="submit" style={styles.button} onClick={() => {{goBackToBooking(("/Booking"))}}}>
                     Go Back
                 </button>
-            </form>
+            </form> )}
+
+            {isModalOpen && (
+                <CalenderModal onClose={() => setIsModalOpen(false)} />
+            )}
         </div>
     );
 };
