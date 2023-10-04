@@ -8,9 +8,11 @@ interface Column {
 interface Props {
     columns: Column[];
     data: any[];
+    onDelete: (id: number) => void;
+    onUpdate: (id: number) => void;
 }
 
-const Table: React.FC<Props> = ({ columns, data }) => {
+const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate}) => {
     return (
         <table className="data-table" style={styles.dataTable}>
             <thead>
@@ -26,6 +28,10 @@ const Table: React.FC<Props> = ({ columns, data }) => {
                     {columns.map((column) => (
                         <td key={column.key}>{item[column.key]}</td>
                     ))}
+                    <td>
+                        <button onClick={() => onDelete(item.id)}>Delete</button>
+                        <button onClick={() => onUpdate(item.id)}>Update</button>
+                    </td>
                 </tr>
             ))}
             </tbody>
