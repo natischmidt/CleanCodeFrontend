@@ -45,14 +45,14 @@ export default LoginAdminOrEmployeeForm;
 const styles = {
     container: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column' as 'column',
         alignItems: 'center',
         justifyContent: 'center',
         height: '100vh',
     },
     form: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column' as 'column',
         alignItems: 'center',
         padding: '20px',
         border: '2px solid silver',

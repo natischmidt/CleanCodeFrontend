@@ -26,13 +26,13 @@ export const BookingTable: React.FC = () => {
 
     return (
         <div className="booking-table" style={styles.bookingTable}>
-            <Table columns={columns} data={bookingData} />
+            <Table columns={columns} data={bookingData}  onDelete={ () => {}} onUpdate={ () => {}}/>
         </div>
     );
 };
 
 const styles = {
     bookingTable: {
-        textAlign: "left",
+        textAlign: 'left' as 'left',
     },
 }

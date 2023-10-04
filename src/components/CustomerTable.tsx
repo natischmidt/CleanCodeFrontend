@@ -47,7 +47,7 @@ export const CustomerTable: React.FC = () => {
 
 const styles = {
     customerTable: {
-        textAlign: "left",
+        textAlign: "left" as 'left',
     },
 }
 

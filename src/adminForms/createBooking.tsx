@@ -76,7 +76,7 @@ const CreateNewBooking: React.FC = () => {
                     onChange={(e) => setDateAndTime(e.target.value)}
                     required
                 />
-                <button type="text" onClick={handleDateAndTimeClick}>Calender</button>
+                <button onClick={handleDateAndTimeClick}>Calender</button>
 
                 {/*<input*/}
                 {/*    type="text"*/}
@@ -203,7 +203,7 @@ const styles = {
     },
     form: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column' as 'column',
         alignItems: 'center',
         padding: '20px',
         border: '2px solid silver',

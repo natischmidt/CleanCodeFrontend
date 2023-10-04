@@ -53,7 +53,7 @@ export const EmployeeTable: React.FC = () => {
 
 const styles = {
     employeeTable: {
-        textAlign: "left",
+        textAlign: "left" as 'left',
     },
 }
 
