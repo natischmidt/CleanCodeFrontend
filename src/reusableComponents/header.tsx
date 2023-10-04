@@ -32,18 +32,24 @@ const styles = {
         backgroundColor: '#E2FFF8',
         borderBottom: '5px solid #52af66',
         display: 'flex',
+        position: 'relative',
         padding: '20px',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
+        flexWrap: 'wrap',
     },
     logo: {
-        width: '320px',
-        height: '160px',
+        maxWidth: '200px',
+        marginBottom: '10px',
     },
     menuButtons: {
         display: 'flex',
         color: '#000001',
-        marginLeft: "15%",
+        marginLeft: "7%",
+        flexBasis: 'auto',
+        flexGrow: 1,
+        justifyContent: 'flex-end',
+        marginTop: '10px',
     },
     btn: {
         backgroundColor: '#53b067',
@@ -52,4 +58,4 @@ const styles = {
         height: '60px',
         fontWeight: 'normal',
     },
-}
+};
