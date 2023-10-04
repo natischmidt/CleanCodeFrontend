@@ -28,9 +28,19 @@ export const CustomerTable: React.FC = () => {
         { key: 'customerType', title: 'Customer Type' },
     ];
 
+    const handleDelete = (id: number) => {
+
+    };
+
+    const handleUpdate = (id: number) => {
+
+    };
     return (
         <div className="customer-table" style={styles.customerTable}>
-            <Table columns={columns} data={customerData} />
+            <Table columns={columns}
+                   data={customerData}
+                   onDelete={handleDelete}
+                   onUpdate={handleUpdate}/>
         </div>
     );
 };
