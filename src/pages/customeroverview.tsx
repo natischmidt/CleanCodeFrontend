@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../reusableComponents/header";
 // import Footer from "../reusableComponents/footer";
 import {CustomerTable} from "../components/CustomerTable";
+import Footer from "../reusableComponents/footer";
 
 export default function CustomerPage() {
     return (
@@ -9,6 +10,7 @@ export default function CustomerPage() {
             <Header/>
             <h2>Customer Table</h2>
             <CustomerTable />
+            <Footer/>
         </>
     )
 }
