@@ -29,7 +29,7 @@ export default function Header() {
 
 const styles = {
     header: {
-        backgroundColor: '#E2FFF8',
+        backgroundColor: '#E2FFF8' as '#E2FFF8',
         borderBottom: '5px solid #52af66',
         display: 'flex',
         position: 'relative',

@@ -117,7 +117,7 @@ const styles = {
     },
     form: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column' as 'column',
         alignItems: 'center',
         padding: '20px',
         border: '2px solid silver',
@@ -144,3 +144,4 @@ const styles = {
         marginTop: '25px',
     },
 }
+

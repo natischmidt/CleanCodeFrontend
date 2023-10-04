@@ -28,6 +28,6 @@ export const BookingTable2: React.FC = () => {
         { key: 'customerId', title: 'Customer Id' },
     ];
 
-    return <Table columns={columns} data={customerData} />;
+    return <Table columns={columns} data={customerData}  onDelete={ () => {}} onUpdate={ () =>{}}/>;
 
 };
