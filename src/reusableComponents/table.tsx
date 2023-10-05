@@ -1,4 +1,6 @@
 import React from 'react';
+import { AiFillDelete } from "react-icons/ai";
+import { GrUpdate } from "react-icons/gr";
 
 interface Column {
     key: string;
@@ -30,8 +32,8 @@ const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate}) => {
                         <td key={column.key}>{item[column.key]}</td>
                     ))}
                     <td>
-                        <button onClick={() => onUpdate(item.id)}>Update</button>
-                        <button onClick={() => onDelete(item.id)}>Delete</button>
+                        <button style={styles.update} onClick={() => onUpdate(item.id)}><GrUpdate/></button>
+                        <button style={styles.delete} onClick={() => onDelete(item.id)}><AiFillDelete/></button>
                     </td>
                 </tr>
             ))}
@@ -49,5 +51,12 @@ const styles = {
         borderRadius: "5px",
         padding: "15px",
         marginTop: "3%"
+    },
+    delete: {
+        backgroundColor: "#f83f3f"
+    },
+    update: {
+        backgroundColor: "#6e6efc",
+        justifyContent: 'space-between'
     }
 }
