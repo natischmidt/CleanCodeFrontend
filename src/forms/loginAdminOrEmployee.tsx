@@ -30,11 +30,24 @@ const LoginAdminOrEmployeeForm = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
+                Temporary buttons:
+                <div className="buttonContainer">
                 <button type="submit" style={styles.button}
                         onClick={() => {{goToHomePage(("/Home"))}}}
                 >
-                    Login
+                    Login admin
                 </button>
+                <button type="submit" style={styles.button}
+                        onClick={() => {{goToHomePage(("/CustomerHome"))}}}
+                >
+                    Login customer
+                </button>
+                <button type="submit" style={styles.button}
+                        onClick={() => {{goToHomePage(("/EmployeeHome"))}}}
+                >
+                    Login employee
+                </button>
+                    </div>
             </form>
         </div>
     );
@@ -43,6 +56,10 @@ const LoginAdminOrEmployeeForm = () => {
 export default LoginAdminOrEmployeeForm;
 
 const styles = {
+    buttonContainer: {
+
+    },
+
     container: {
         display: 'flex',
         flexDirection: 'column' as 'column',
@@ -77,5 +94,6 @@ const styles = {
         cursor: 'pointer',
         marginTop: '20px',
         fontSize: '1.2rem',
+        margin: '5px',
     },
 };
