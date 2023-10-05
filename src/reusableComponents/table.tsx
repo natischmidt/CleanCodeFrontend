@@ -1,6 +1,4 @@
 import React from 'react';
-import { AiFillDelete } from "react-icons/ai";
-import { GrUpdate } from "react-icons/gr";
 
 interface Column {
     key: string;
@@ -32,8 +30,8 @@ const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate}) => {
                         <td key={column.key}>{item[column.key]}</td>
                     ))}
                     <td>
-                        <button style={styles.update} onClick={() => onUpdate(item.id)}><GrUpdate/></button>
-                        <button style={styles.delete} onClick={() => onDelete(item.id)}><AiFillDelete/></button>
+                        <button style={styles.update} onClick={() => onUpdate(item.id)}>update</button>
+                        <button style={styles.delete} onClick={() => onDelete(item.id)}><delete/></button>
                     </td>
                 </tr>
             ))}
