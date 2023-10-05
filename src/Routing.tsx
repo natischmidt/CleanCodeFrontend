@@ -16,6 +16,7 @@ import UpdateBooking from "./adminForms/updateBooking";
 import CreateNewBooking from "./adminForms/createBooking";
 import GettingIdNumber from "./adminForms/gettingIdNumber";
 import CancelWithNumber from "./adminForms/cancelWithNumber";
+import EditEmployeeForm from "./forms/editEmployee";
 //import OverviewPage from "./pages/overviewpage";
 //import TransactionPage from "./pages/transactionoverview";
 
@@ -34,6 +35,7 @@ function Routing() {
 
                     <Route path="/AddAdmin" element={<AddAdmin/>}/>
                     <Route path="/AddEmployee" element={<AddEmployee/>}/>
+                    <Route path="/EditEmployeeForm" element={<EditEmployeeForm/>}/>
                     <Route path="/AddPrivateCustomer" element={<AddPrivateCustomer/>}/>
                     <Route path="/AddBusinessCustomer" element={<AddBusinessCustomer/>}/>
                     <Route path="/CreateNewBooking" element={<CreateNewBooking/>}/>

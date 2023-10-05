@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Table from "../reusableComponents/table";
+// import EditEmployeeForm from "../forms/editEmployee";
+// import {useNavigate} from "react-router-dom";
 
 export const CustomerTable: React.FC = () => {
     const [customerData, setCustomerData] = useState<any[]>([]);
@@ -49,12 +51,14 @@ export const CustomerTable: React.FC = () => {
     const handleUpdate = (id: number) => {
 
     };
+
     return (
         <div className="customer-table" style={styles.customerTable}>
             <Table columns={columns}
                    data={customerData}
                    onDelete={handleDelete}
-                   onUpdate={handleUpdate}/>
+                   onUpdate={handleUpdate}
+            />
         </div>
     );
 };
