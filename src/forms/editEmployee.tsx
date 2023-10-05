@@ -14,11 +14,12 @@ const EditEmployeeForm = () => {
 
 
     const navigate = useNavigate();
-    const handleSubmit = async (e : React.FormEvent) => {
-        e.preventDefault();
+
+    const handleSubmit = async (empId: number) => {
+        // e.preventDefault();
 
         try {
-            const Url = 'http://localhost:8080/api/employee/editEmployee/${empId}';
+            const Url = `http://localhost:8080/api/employee/editEmployee`;
 
             const editEmployeeData = {
                 firstName: firstname,
@@ -29,8 +30,13 @@ const EditEmployeeForm = () => {
                 phoneNumber: phonenumber,
                 address: address,
                 role: "EMPLOYEE",
-                salary: salary,
+                hourlySalary: salary,
             };
+
+            const headers = {
+                'empId' : empId.toString()
+            }
+
             setFirstname('')
             setLastname('')
             setEmail('')
@@ -39,7 +45,8 @@ const EditEmployeeForm = () => {
             setSalary (0)
             setAddress('')
             setPassword('')
-            const response = await axios.post(Url, editEmployeeData);
+
+            const response = await axios.put(Url, editEmployeeData, {headers});
             console.log('Employee was updated', response.data);
             navigate(`/EmployeePage/`)
 
