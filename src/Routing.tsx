@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import LoginPage from "./pages/loginpage";
 import BookingPage from "./pages/bookingoverview";
-import EmployeePage from "./pages/employeeoverview";
+import EmployeePage from "./pages/employeePage";
 import CustomerPage from "./pages/customeroverview";
 import GDPRPage from "./pages/gdpr";
 import HomePage from "./pages/home";
@@ -35,7 +35,6 @@ function Routing() {
 
                     <Route path="/AddAdmin" element={<AddAdmin/>}/>
                     <Route path="/AddEmployee" element={<AddEmployee/>}/>
-                    <Route path="/EditEmployeeForm" element={<EditEmployeeForm/>}/>
                     <Route path="/AddPrivateCustomer" element={<AddPrivateCustomer/>}/>
                     <Route path="/AddBusinessCustomer" element={<AddBusinessCustomer/>}/>
                     <Route path="/CreateNewBooking" element={<CreateNewBooking/>}/>

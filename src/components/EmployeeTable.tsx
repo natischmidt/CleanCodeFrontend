@@ -4,20 +4,18 @@ import Table from "../reusableComponents/table";
 import {useNavigate} from "react-router-dom";
 import editEmployee from "../forms/editEmployee";
 
-export const EmployeeTable: React.FC = () => {
+interface employeeTableProps {
+    onUpdate: (empId : number) => void;
+}
 
-    // const [firstname, setFirstname] = useState('');
-    // const [lastname, setLastname] = useState('');
-    // const [email, setEmail] = useState('');
-    // const [phonenumber, setPhoneNumber] = useState('');
-    // const [ss, setSs] = useState('');
-    // const [salary, setSalary] = useState <number> ();
-    // const [address, setAddress] = useState('');
-    // const [password, setPassword] = useState('');
+export const EmployeeTable: React.FC<employeeTableProps> = ({ onUpdate }) => {
+
+
+
 
     const [deleted, setDeleted] = useState(0);
 
-    const navigate = useNavigate();
+
 
     const [employeeData, setEmployeeData] = useState<any[]>([]);
 
@@ -50,24 +48,19 @@ export const EmployeeTable: React.FC = () => {
 
             try {
                 const Url = `http://localhost:8080/api/employee/deleteEmployee`;
-
                 const headers = {
                     'empId' : empId.toString()
                 }
-
                 const response = await axios.delete(Url, {headers});
-
                 console.log('Deleting employee was successful', response.data);
-
                 setDeleted(x => x +1)
-
             } catch (error) {
                 console.error('Error deleting employee', error);
             }
     };
 
-    const handleUpdate =  () => {
-            navigate(`/EditEmployeeForm/`)
+    const handleUpdate =  (empId: number) => {
+            onUpdate(empId);
     };
 
     return (

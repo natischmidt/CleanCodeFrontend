@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
-import {useNavigate} from "react-router-dom";
+import React, {useEffect, useState} from 'react';
 import axios from "axios";
+interface editEmployeeProps {
+    empId: number | null;
+    doneWithEdit: () => void;
+}
+const EditEmployeeForm: React.FC<editEmployeeProps> = ({ empId, doneWithEdit }) => {
 
-const EditEmployeeForm = () => {
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
@@ -13,13 +16,14 @@ const EditEmployeeForm = () => {
     const [password, setPassword] = useState('');
 
 
-    const navigate = useNavigate();
 
-    const handleSubmit = async (empId: number) => {
-        // e.preventDefault();
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
 
         try {
             const Url = `http://localhost:8080/api/employee/editEmployee`;
+
+
 
             const editEmployeeData = {
                 firstName: firstname,
@@ -34,8 +38,9 @@ const EditEmployeeForm = () => {
             };
 
             const headers = {
-                'empId' : empId.toString()
+                'empId' : empId?.toString()  // ? tar bort rödmarkering, avbryter det om det är null/undefined
             }
+
 
             setFirstname('')
             setLastname('')
@@ -48,8 +53,7 @@ const EditEmployeeForm = () => {
 
             const response = await axios.put(Url, editEmployeeData, {headers});
             console.log('Employee was updated', response.data);
-            navigate(`/EmployeePage/`)
-
+            doneWithEdit();
         } catch (error) {
             console.error('Error updating employee', error);
         }
@@ -126,7 +130,7 @@ const EditEmployeeForm = () => {
                 <button type="submit" style={styles.button}>
                     Update Employee
                 </button>
-                <button type="submit" style={styles.button} onClick={() => {{navigate(("/Employees"))}}}>
+                <button type="button" style={styles.button} onClick={doneWithEdit} >
                     Go Back
                 </button>
             </form>
