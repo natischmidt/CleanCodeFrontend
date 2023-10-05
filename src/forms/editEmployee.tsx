@@ -15,7 +15,26 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({ empId, doneWithEdit }) 
     const [address, setAddress] = useState('');
     const [password, setPassword] = useState('');
 
+    useEffect(() => {
+        const preFillForm = async () => {
+            const url = `http://localhost:8080/api/employee/getEmployee`
+            const headers = {
+                'empId' : empId?.toString()  // ? tar bort rödmarkering, avbryter det om det är null/undefined
+            }
+            const response = await axios.get(url, {headers})
+            const data = response.data
 
+            setFirstname(data.firstName)
+            setLastname(data.lastName)
+            setEmail(data.email)
+            setPhoneNumber(data.phoneNumber)
+            setSs(data.ssNumber)
+            setSalary(data.salary)
+            setAddress(data.address)
+            //lösenord skickas inte med i DTO:n
+        }
+        preFillForm();
+    }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
