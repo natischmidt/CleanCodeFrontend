@@ -12,13 +12,13 @@ const EditEmployeeForm = () => {
     const [address, setAddress] = useState('');
     const [password, setPassword] = useState('');
 
-    const goBackToEmployees = useNavigate();
 
+    const navigate = useNavigate();
     const handleSubmit = async (e : React.FormEvent) => {
         e.preventDefault();
 
         try {
-            const Url = 'http://localhost:8080/api/employee/editEmployee';
+            const Url = 'http://localhost:8080/api/employee/editEmployee/${empId}';
 
             const editEmployeeData = {
                 firstName: firstname,
@@ -32,18 +32,19 @@ const EditEmployeeForm = () => {
                 salary: salary,
             };
 
+
+
+            // setFirstname('')
+            // setLastname('')
+            // setEmail('')
+            // setPhoneNumber('')
+            // setSs('')
+            // setSalary (0)
+            // setAddress('')
+            // setPassword('')
             const response = await axios.post(Url, editEmployeeData);
-
             console.log('Employee was updated', response.data);
-
-            setFirstname('')
-            setLastname('')
-            setEmail('')
-            setPhoneNumber('')
-            setSs('')
-            setSalary (0)
-            setAddress('')
-            setPassword('')
+            navigate(`/EmployeePage/`)
 
         } catch (error) {
             console.error('Error updating employee', error);
@@ -121,7 +122,7 @@ const EditEmployeeForm = () => {
                 <button type="submit" style={styles.button}>
                     Update Employee
                 </button>
-                <button type="submit" style={styles.button} onClick={() => {{goBackToEmployees(("/Employees"))}}}>
+                <button type="submit" style={styles.button} onClick={() => {{navigate(("/Employees"))}}}>
                     Go Back
                 </button>
             </form>
