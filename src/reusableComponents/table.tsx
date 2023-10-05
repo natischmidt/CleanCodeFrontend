@@ -31,7 +31,7 @@ const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate}) => {
                     ))}
                     <td>
                         <button style={styles.update} onClick={() => onUpdate(item.id)}>update</button>
-                        <button style={styles.delete} onClick={() => onDelete(item.id)}><delete/></button>
+                        <button style={styles.delete} onClick={() => onDelete(item.id)}>Delete</button>
                     </td>
                 </tr>
             ))}
