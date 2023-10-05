@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Table from "../reusableComponents/table";
 import {useNavigate} from "react-router-dom";
+import editEmployee from "../forms/editEmployee";
 
 export const EmployeeTable: React.FC = () => {
 
@@ -16,7 +17,7 @@ export const EmployeeTable: React.FC = () => {
 
     const [deleted, setDeleted] = useState(0);
 
-    const goToEditEmployeeForm = useNavigate()
+    const navigate = useNavigate();
 
     const [employeeData, setEmployeeData] = useState<any[]>([]);
 
@@ -65,32 +66,9 @@ export const EmployeeTable: React.FC = () => {
             }
     };
 
-    // const handleUpdate = async (employeeDTO: any) => {
-    //
-    //     try {
-    //         const Url = `http://localhost:8080/api/employee/editEmployee`;
-    //
-    //         const employeeData = {
-    //             id: employeeDTO.id,
-    //             firstName: firstname,
-    //             lastName: lastname,
-    //             password: password,
-    //             ssNumber: ss,
-    //             email: email,
-    //             phoneNumber: phonenumber,
-    //             address: address,
-    //             role: "EMPLOYEE",
-    //             salary: salary,
-    //         };
-    //
-    //         const response = await axios.put(Url, employeeData);
-    //
-    //         console.log('Updating employee was successful', response.data);
-    //
-    //     } catch (error) {
-    //         console.error('Error updating employee', error);
-    //     }
-    // };
+    const handleUpdate =  () => {
+            navigate(`/EditEmployeeForm/`)
+    };
 
     return (
         <div className="employee-table" style={styles.employeeTable}>
@@ -98,7 +76,7 @@ export const EmployeeTable: React.FC = () => {
             <Table columns={columns}
                    data={employeeData}
                    onDelete={handleDelete}
-                   onUpdate={goToEditEmployeeForm}
+                   onUpdate={handleUpdate}
             />
         </div>
     );

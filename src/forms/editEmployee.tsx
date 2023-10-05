@@ -53,7 +53,7 @@ const EditEmployeeForm = () => {
     return (
         <div style={styles.container}>
             <form style={styles.form} onSubmit={handleSubmit}>
-                <h2>Create new Employee</h2>
+                <h2>Edit Employee</h2>
                 <input
                     type="text"
                     placeholder="Firstname"
