@@ -31,17 +31,14 @@ const EditEmployeeForm = () => {
                 role: "EMPLOYEE",
                 salary: salary,
             };
-
-
-
-            // setFirstname('')
-            // setLastname('')
-            // setEmail('')
-            // setPhoneNumber('')
-            // setSs('')
-            // setSalary (0)
-            // setAddress('')
-            // setPassword('')
+            setFirstname('')
+            setLastname('')
+            setEmail('')
+            setPhoneNumber('')
+            setSs('')
+            setSalary (0)
+            setAddress('')
+            setPassword('')
             const response = await axios.post(Url, editEmployeeData);
             console.log('Employee was updated', response.data);
             navigate(`/EmployeePage/`)
