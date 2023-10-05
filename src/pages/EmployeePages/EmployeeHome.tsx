@@ -5,6 +5,7 @@ export default function EmployeeHomePage() {
     return (
         <>
             <Header/>
+            EMPLOYEE PAGE
             <Footer/>
         </>
     )

@@ -30,7 +30,6 @@ const LoginAdminOrEmployeeForm = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-                Temporary buttons:
                 <div className="buttonContainer">
                 <button type="submit" style={styles.button}
                         onClick={() => {{goToHomePage(("/Home"))}}}

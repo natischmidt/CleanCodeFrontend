@@ -4,7 +4,7 @@ import Footer from "../../reusableComponents/footer";
 export default function CustomerHomePage() {
     return (
         <>
-            <Header/>
+            <Header/>CUSTOMER PAGE
             <Footer/>
         </>
     )
