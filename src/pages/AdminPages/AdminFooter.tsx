@@ -1,29 +1,17 @@
 import React from 'react';
 import logo from "../assets/logo3.png";
 
-export default function Footer() {
+export default function AdminFooter() {
     return (
         <div className="footer-container" style={styles.footer}>
             <div className="footer-logo">
-                <img src="src/assets/logo3.png" alt="Logo" style={styles.logo} />
             </div>
-            <div className="footer-social-icons" style={styles.socialIcon}>
-                <a href="">
-                    <div className="social-facebok"></div>
-                </a>
-                <a href="">
-                    <div className="social-twitter"></div>
-                </a>
-                <a href="">
-                    <div className="social-instagram"></div>
-                </a>
-            </div>
+
             <div className="footer-categories" style={styles.categoriesContainer}>
                 <div className="footer-category" style={styles.category}>
                     <h3>Om oss</h3>
                     <ul style={styles.subCategory}>
-                        <li>Vilka vi är</li>
-                        <li>Vår policy</li>
+
                     </ul>
                 </div>
                 <div className="footer-category" style={styles.category}>

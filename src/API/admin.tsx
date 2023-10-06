@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import axios, { AxiosResponse, AxiosError } from 'axios';
 
 
-
 export function adminLogIn() {
 
     const [email, setEmail] = useState <string>('');
     const [password, setPassword] = useState <string>('');
-
 
     const handleLogin = () => {
 
@@ -31,6 +29,8 @@ export function adminLogIn() {
         })
 
     }
+
+
 
 
 
