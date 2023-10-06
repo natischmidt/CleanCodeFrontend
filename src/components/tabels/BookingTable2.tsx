@@ -54,7 +54,6 @@ const BookingTable2: React.FC<bookingTableProps> = ({ onUpdate }) => {
     };
 
     const handleUpdate =  (jobId: number) => {
-        console.log("jobId inside myOnUpdateFunction:", jobId);
         onUpdate(jobId);
     };
 
