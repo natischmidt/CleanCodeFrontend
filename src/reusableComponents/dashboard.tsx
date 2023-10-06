@@ -1,4 +1,7 @@
 import React from 'react';
+import {EmployeeDashboard} from "../components/EmployeeDashboard";
+import {CustomerDashboard} from "../components/CustomerDashboard";
+import {AdminDashboard} from "../components/AdminDashboard";
 
 interface DashboardProps {
     userType: 'customer' | 'employee' | 'admin';
@@ -18,30 +21,6 @@ const Dashboard: React.FC<DashboardProps> = ({ userType }) => {
             ) : (
                 <div>User type not recognized</div>
             )}
-        </div>
-    );
-};
-
-const CustomerDashboard: React.FC = () => {
-    return (
-        <div>
-            <p>Customer Dashboard </p>
-        </div>
-    );
-};
-
-const EmployeeDashboard: React.FC = () => {
-    return (
-        <div>
-            <p>Employee Dashboard</p>
-        </div>
-    );
-};
-
-const AdminDashboard: React.FC = () => {
-    return (
-        <div>
-            <p>Admin Dashboard </p>
         </div>
     );
 };
