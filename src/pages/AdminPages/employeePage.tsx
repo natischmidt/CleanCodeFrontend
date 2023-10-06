@@ -1,8 +1,8 @@
-import Header from "../reusableComponents/header";
+import Header from "../../reusableComponents/header";
 import React, {useState} from "react";
-import {EmployeeTable} from "../components/EmployeeTable";
-import Footer from "../reusableComponents/footer";
-import EditEmployeeForm from "../forms/editEmployee";
+import {EmployeeTable} from "../../components/EmployeeTable";
+import Footer from "../../reusableComponents/footer";
+import EditEmployeeForm from "../../forms/editEmployee";
 
 
 export default function EmployeePage() {
