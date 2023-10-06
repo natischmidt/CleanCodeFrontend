@@ -1,13 +1,12 @@
 import Header from "../../reusableComponents/header";
+import AddUserOption from "../../components/addUserOption";
 import Footer from "../../reusableComponents/footer";
-import {CustomerDashboard} from "../../components/CustomerDashboard";
 
-export default function CustomerHomePage() {
+export default function AddUserPage() {
     return (
         <>
             <Header/>
-            <CustomerDashboard/>
-            CUSTOMER PAGE
+            <AddUserOption/>
             <Footer/>
         </>
     )

@@ -1,37 +1,38 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 interface editEmployeeProps {
-    empId: number | null;
+    cusId: number | null;
     doneWithEdit: () => void;
 }
-const EditEmployeeForm: React.FC<editEmployeeProps> = ({ empId, doneWithEdit }) => {
+const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) => {
 
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
     const [phonenumber, setPhoneNumber] = useState('');
-    const [ss, setSs] = useState('');
-    const [salary, setSalary] = useState <number> (0);
     const [address, setAddress] = useState('');
+    const [orgNr, setOrgNr] = useState('');
+    const [compName, setCompName] = useState  ("");
+    const [cusType, setCusType] = useState("")
     const [password, setPassword] = useState('');
 
     useEffect(() => {
         const preFillForm = async () => {
-            const url = `http://localhost:8080/api/employee/getEmployee`
-            const headers = {
-                'empId' : empId?.toString()  // ? tar bort rödmarkering, avbryter det om det är null/undefined
-            }
-            const response = await axios.get(url, {headers})
+            const url = `http://localhost:8080/api/customer/${cusId}`;
+            const response = await axios.get(url)
+
             const data = response.data
 
             setFirstname(data.firstName)
             setLastname(data.lastName)
             setEmail(data.email)
             setPhoneNumber(data.phoneNumber)
-            setSs(data.ssNumber)
-            setSalary(data.salary)
             setAddress(data.address)
-            setPassword(data.password)
+            setCompName(data.companyName || "")
+            setOrgNr(data.orgNumber || "")
+            setCusType(data.customerType)
+            setPassword(data.password|| "")
+            // || "" för att det inte ska va null/undefined o slippa lång utahelvete röd text i consolen
         }
         preFillForm();
     }, []);
@@ -40,48 +41,46 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({ empId, doneWithEdit }) 
         e.preventDefault();
 
         try {
-            const Url = `http://localhost:8080/api/employee/editEmployee`;
+            const url = `http://localhost:8080/api/customer/update/${cusId}`;
 
 
 
-            const editEmployeeData = {
+            const editCustomerData = {
                 firstName: firstname,
                 lastName: lastname,
                 password: password,
-                ssNumber: ss,
                 email: email,
                 phoneNumber: phonenumber,
                 address: address,
-                role: "EMPLOYEE",
-                hourlySalary: salary,
+                companyName: compName,
+                orgNumber: orgNr,
+                customerType: cusType
             };
 
-            const headers = {
-                'empId' : empId?.toString()  // ? tar bort rödmarkering, avbryter det om det är null/undefined
-            }
+
 
 
             setFirstname('')
             setLastname('')
             setEmail('')
             setPhoneNumber('')
-            setSs('')
-            setSalary (0)
             setAddress('')
+            setCompName('')
+            setOrgNr("")
+            setCusType("")
             setPassword('')
 
-            const response = await axios.put(Url, editEmployeeData, {headers});
+            const response = await axios.patch(url, editCustomerData);
             console.log('Employee was updated', response.data);
             doneWithEdit();
         } catch (error) {
             console.error('Error updating employee', error);
         }
     };
-
     return (
         <div style={styles.container}>
             <form style={styles.form} onSubmit={handleSubmit}>
-                <h2>Edit Employee</h2>
+                <h2>Edit Customer</h2>
                 <input
                     type="text"
                     placeholder="Firstname"
@@ -96,14 +95,6 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({ empId, doneWithEdit }) 
                     style={styles.input}
                     value={lastname}
                     onChange={(e) => setLastname(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Social Security Number"
-                    style={styles.input}
-                    value={ss}
-                    onChange={(e) => setSs(e.target.value)}
                     required
                 />
                 <input
@@ -132,19 +123,30 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({ empId, doneWithEdit }) 
                 />
                 <input
                     type="text"
-                    placeholder=" Hourly Salary"
+                    placeholder="Company name"
                     style={styles.input}
-                    value={salary}
-                    onChange={(e) => setSalary(parseFloat(e.target.value))}
+                    value={compName}
+                    onChange={(e) => setCompName(e.target.value)}
                     required
                 />
                 <input
+                    type="text"
+                    placeholder="Organisation number"
+                    style={styles.input}
+                    value={orgNr}
+                    onChange={(e) => setOrgNr(e.target.value)}
+                    required
+                />
+
+
+
+                <input
                     type="password"
-                    placeholder="Password"
+                    placeholder="Password, låt va tills vidare"
                     style={styles.input}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    required
+                    //required
                 />
                 <button type="submit" style={styles.button}>
                     Update Employee
@@ -157,7 +159,7 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({ empId, doneWithEdit }) 
     );
 };
 
-export default EditEmployeeForm;
+export default EditCustomerForm;
 
 const styles = {
     container: {
