@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Table from "../reusableComponents/table";
+import Table from "../../reusableComponents/table";
 
 export const BookingTable: React.FC = () => {
     const [bookingData, setBookingData] = useState<any[]>([]);

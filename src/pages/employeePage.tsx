@@ -1,6 +1,6 @@
 import Header from "../reusableComponents/header";
 import React, {useState} from "react";
-import {EmployeeTable} from "../components/EmployeeTable";
+import {EmployeeTable} from "../components/tabels/EmployeeTable";
 import Footer from "../reusableComponents/footer";
 import EditEmployeeForm from "../forms/editEmployee";
 
@@ -14,9 +14,9 @@ export default function EmployeePage() {
         setSelectedEmployeeId(empId);
         setShowUpdateEmployee(true);
     }
-    const handleUpdateComplete = () => [
+    const handleUpdateComplete = () => {
         setShowUpdateEmployee(false)
-    ]
+    }
 
     return (
         <>

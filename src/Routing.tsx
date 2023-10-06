@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import LoginPage from "./pages/loginpage";
-import BookingPage from "./pages/bookingoverview";
+import BookingPage from "./pages/bookingPage";
 import EmployeePage from "./pages/employeePage";
 import CustomerPage from "./pages/customerPage";
 import GDPRPage from "./pages/gdpr";

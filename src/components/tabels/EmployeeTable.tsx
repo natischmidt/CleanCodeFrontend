@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Table from "../reusableComponents/table";
-import {useNavigate} from "react-router-dom";
-import editEmployee from "../forms/editEmployee";
+import Table from "../../reusableComponents/table";
+
 
 interface employeeTableProps {
     onUpdate: (empId : number) => void;

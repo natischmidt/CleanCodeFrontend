@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Header from "../reusableComponents/header";
 // import Footer from "../reusableComponents/footer";
-import {CustomerTable} from "../components/CustomerTable";
+import {CustomerTable} from "../components/tabels/CustomerTable";
 import Footer from "../reusableComponents/footer";
 import EditCustomerForm from "../forms/editCustomerForm";
 
