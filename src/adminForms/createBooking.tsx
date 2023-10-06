@@ -1,25 +1,57 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
-import {CalenderModal} from "../components/CalenderModal";
+// import {CalenderModal} from "../components/CalenderModal";
+import Calendar from "react-calendar";
+import {getAvailableEmp} from "../API/admin";
 
 const CreateNewBooking: React.FC = () => {
     const [jobType, setJobType] = useState('');
     const [dateAndTime, setDateAndTime] = useState('');
-    const [timeSlot, setTimeSlot] = useState('');
-    const [jobStatus, setJobStatus] = useState('');
+    const [timeSlotList, setTimeSlotList] = useState<string[]>([]);
     const [squareMeters, setSquareMeters] = useState ('');
     const [payment, setPayment] = useState('');
-    const [employee, setEmployee] = useState('');
     const [customer, setCustomer] = useState('')
-    const [role, setRole] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const [showCalender, setShowCalender] = useState(false)
+
+    const [hours, setHours] = useState(0)
 
     const goBackToBooking = useNavigate();
 
     const handleDateAndTimeClick = () => {
         setIsModalOpen(!isModalOpen);
     };
+
+    type Value = Date | null;
+
+    const [date, setDate] = useState<Value>(new Date());
+
+    function handleJobType(jobType: string) {
+        if (jobType == "BASIC") {
+            setHours(1)
+        }
+        else if (jobType == "ADVANCED") {
+            setHours(2)
+        }
+        else if (jobType == "DIAMOND") {
+            setHours(3)
+        }
+        else if (jobType == "WINDOW") {
+            setHours(2)
+        }
+        setJobType(jobType)
+        setShowCalender(true)
+    }
+
+    function checkDay(day: Value) {
+        setDate(day)
+        console.log(day)
+
+        getAvailableEmp(date, hours)
+            .then(r => {})
+    }
 
     const handleSubmit = async (e : React.FormEvent) => {
         e.preventDefault();
@@ -30,7 +62,7 @@ const CreateNewBooking: React.FC = () => {
             const bookingData = {
                 jobtype: jobType,
                 date: dateAndTime,
-                timeSlot: timeSlot,
+                timeSlotList: timeSlotList,
                 squareMeters: squareMeters,
                 paymentOption: payment,
                 customerId: customer
@@ -46,21 +78,13 @@ const CreateNewBooking: React.FC = () => {
     };
     return (
         <div style={styles.container}>
-            {!isModalOpen && (
+            {/*{!isModalOpen && (*/}
             <form style={styles.form} onSubmit={handleSubmit}>
                 <h2>Create new Booking</h2>
-                {/*<input*/}
-                {/*    type="text"*/}
-                {/*    placeholder="Job Type"*/}
-                {/*    style={styles.input}*/}
-                {/*    value={jobType}*/}
-                {/*    onChange={(e) => setJobType(e.target.value)}*/}
-                {/*    required*/}
-                {/*/>*/}
                 <select
                     value={jobType}
                     style={styles.select}
-                    onChange={(e) => setJobType(e.target.value)}
+                    onChange={(e) => handleJobType(e.target.value)}
                 >
                     <option >Choose Cleaning Service:</option>
                     <option value="BASIC">Basic Cleaning</option>
@@ -68,68 +92,9 @@ const CreateNewBooking: React.FC = () => {
                     <option value="DIAMOND">Diamond Cleaner</option>
                     <option value="WINDOW">Window Washing</option>
                 </select>
-                <input
-                    type="text"
-                    placeholder="Date and Time (Ex. 2023-10-03T10:00:00)"
-                    style={styles.input}
-                    value={dateAndTime}
-                    onChange={(e) => setDateAndTime(e.target.value)}
-                    required
-                />
-                <button onClick={handleDateAndTimeClick}>Calender</button>
 
-                {/*<input*/}
-                {/*    type="text"*/}
-                {/*    placeholder="Time Slot"*/}
-                {/*    style={styles.input}*/}
-                {/*    value={timeSlot}*/}
-                {/*    onChange={(e) => setTimeSlot(e.target.value)}*/}
-                {/*    required*/}
-                {/*/>*/}
-                <select
-                    value={timeSlot}
-                    style={styles.select}
-                    onChange={(e) => setTimeSlot(e.target.value)}
-                >
-                    <option >What time of the day?</option>
-                    <option value="MORNING">Morning</option>
-                    <option value="NOON">Noon</option>
-                    <option value="AFTERNOON">Afternoon</option>
-                    <option value="EVENING">Evening</option>
-                </select>
-                {/*<input*/}
-                {/*    type="text"*/}
-                {/*    placeholder="Job Status"*/}
-                {/*    style={styles.input}*/}
-                {/*    value={jobStatus}*/}
-                {/*    onChange={(e) => setJobStatus(e.target.value)}*/}
-                {/*    required*/}
-                {/*/>*/}
-                {/*<select*/}
-                {/*    value={role}*/}
-                {/*    onChange={(e) => setRole(e.target.value)}*/}
-                {/*>*/}
-                {/*    <option value="Pending">Pending</option>*/}
-                {/*    <option value="Done">Done</option>*/}
-                {/*    <option value="Approved">Approved</option>*/}
-                {/*    <option value="Unapproved">Unapproved</option>*/}
-                {/*    <option value="Paid">Paid</option>*/}
-                {/*</select>*/}
-                {/*<input*/}
-                {/*    type="text"*/}
-                {/*    placeholder="Payment"*/}
-                {/*    style={styles.input}*/}
-                {/*    value={jobStatus}*/}
-                {/*    onChange={(e) => setJobStatus(e.target.value)}*/}
-                {/*    required*/}
-                {/*/>*/}
-                {/*<select*/}
-                {/*    value={role}*/}
-                {/*    onChange={(e) => setRole(e.target.value)}*/}
-                {/*>*/}
-                {/*    <option value="Klarna">Klarna</option>*/}
-                {/*    <option value="Cash">Cash</option>*/}
-                {/*</select>*/}
+                {/*<button onClick={handleDateAndTimeClick}>Calender</button>*/}
+
                 <input
                     type="text"
                     placeholder="Square Meters"
@@ -138,14 +103,6 @@ const CreateNewBooking: React.FC = () => {
                     onChange={(e) => setSquareMeters(e.target.value)}
                     required
                 />
-                {/*<input*/}
-                {/*    type="text"*/}
-                {/*    placeholder="Employee"*/}
-                {/*    style={styles.input}*/}
-                {/*    value={employee}*/}
-                {/*    onChange={(e) => setEmployee(e.target.value)}*/}
-                {/*    required*/}
-                {/*/>*/}
                 <select
                     value={payment}
                     style={styles.select}
@@ -155,14 +112,6 @@ const CreateNewBooking: React.FC = () => {
                     <option value="KLARNA">Klarna</option>
                     <option value="CASH">Cash</option>
                 </select>
-                {/*<input*/}
-                {/*    type="text"*/}
-                {/*    placeholder="Payment Option"*/}
-                {/*    style={styles.input}*/}
-                {/*    value={payment}*/}
-                {/*    onChange={(e) => setPayment(e.target.value)}*/}
-                {/*    required*/}
-                {/*/>*/}
                 <input
                     type="number"
                     placeholder="Customer ID"
@@ -171,24 +120,21 @@ const CreateNewBooking: React.FC = () => {
                     onChange={(e) => setCustomer(e.target.value)}
                     required
                 />
-                {/*<select*/}
-                {/*    value={role}*/}
-                {/*    onChange={(e) => setRole(e.target.value)}*/}
-                {/*>*/}
-                {/*    <option value="PrivateCustomer">Private</option>*/}
-                {/*    <option value="BusinessCustomer">Business</option>*/}
-                {/*</select>*/}
+
                 <button type="submit" style={styles.button}>
                     Create new Booking
                 </button>
                 <button type="submit" style={styles.button} onClick={() => {{goBackToBooking(("/Booking"))}}}>
                     Go Back
                 </button>
-            </form> )}
 
-            {isModalOpen && (
-                <CalenderModal onClose={() => setIsModalOpen(false)} />
-            )}
+                {showCalender ?
+                    <Calendar onChange={(day) => {
+                        checkDay(day)
+                    }} value={date}/> : <></>}
+
+                {/*{checkDay(date)}*/}
+            </form>
         </div>
     );
 };
