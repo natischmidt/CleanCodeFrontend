@@ -32,11 +32,11 @@ const styles = {
         backgroundColor: '#E2FFF8' as '#E2FFF8',
         borderBottom: '5px solid #52af66',
         display: 'flex',
-        position: 'relative',
+        position: 'relative' as 'relative',
         padding: '20px',
         justifyContent: 'space-between',
         alignItems: 'center',
-        flexWrap: 'wrap',
+        flexWrap: 'wrap' as 'wrap',
     },
     logo: {
         maxWidth: '200px',
