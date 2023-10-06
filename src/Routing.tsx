@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import LoginPage from "./pages/loginpage";
 import BookingPage from "./pages/bookingoverview";
 import EmployeePage from "./pages/employeePage";
-import CustomerPage from "./pages/customeroverview";
+import CustomerPage from "./pages/customerPage";
 import GDPRPage from "./pages/gdpr";
 import HomePage from "./pages/home";
 import AddUserPage from "./pages/adduser";

@@ -10,13 +10,7 @@ interface employeeTableProps {
 
 export const EmployeeTable: React.FC<employeeTableProps> = ({ onUpdate }) => {
 
-
-
-
     const [deleted, setDeleted] = useState(0);
-
-
-
     const [employeeData, setEmployeeData] = useState<any[]>([]);
 
     useEffect(() => {

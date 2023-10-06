@@ -3,10 +3,12 @@ import axios from 'axios';
 import Table from "../reusableComponents/table";
 // import EditEmployeeForm from "../forms/editEmployee";
 // import {useNavigate} from "react-router-dom";
+interface customerTableProps {
+    onUpdate: (cusId : number) => void;
+}
+export const CustomerTable: React.FC<customerTableProps> = ({onUpdate}) => {
 
-export const CustomerTable: React.FC = () => {
     const [customerData, setCustomerData] = useState<any[]>([]);
-
     const [deleted, setDeleted] = useState(0);
 
     useEffect(() => {
@@ -36,11 +38,8 @@ export const CustomerTable: React.FC = () => {
 
         try {
             const Url = `http://localhost:8080/api/customer/delete/${id}`;
-
             const response = await axios.delete(Url);
-
             console.log('Deleting employee was successful', response.data);
-
             setDeleted(x => x +1)
 
         } catch (error) {
@@ -48,8 +47,8 @@ export const CustomerTable: React.FC = () => {
         }
     };
 
-    const handleUpdate = (id: number) => {
-
+    const handleUpdate = (cusId: number) => {
+        onUpdate(cusId)
     };
 
     return (
