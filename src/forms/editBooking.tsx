@@ -24,31 +24,26 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
         if (jobId !== null) {
             const preFillForm = async () => {
                 try {
-                    const url = `http://localhost:8080/api/jobs/getJob`
+                    const url = `http://localhost:8080/api/jobs/getJob`;
                     const headers = {
-                        'jobId': jobId || '',  // ? tar bort rödmarkering, avbryter det om det är null/undefined
+                        'jobId': jobId?.toString() || '',
                     };
-                    const response = await axios.get(url, {headers});
+                    const response = await axios.get(url, { headers });
                     const data = response.data;
 
-                    if (Object.keys(data).length == 0) {
-                        console.log(data + ' job with thsi id not found')
-                        console.log(data.jobId)
+                    if (!data || !data.jobId) {
+                        console.log('Job with this id not found');
                     } else {
                         setDate(data.date || '');
-                        setLoadedJobId(data.jobId !== undefined && data.jobId !== null ? data.jobId.toString() : '');
-                        // setLoadedJobId(data.jobId?.toString() || '');
+                        setLoadedJobId(data.jobId?.toString() || '');
                         setJobStatus(data.jobStatus || '');
                         setJobType(data.jobType || '');
                         setPaymentOption(data.paymentOption || '');
                         setSquareMeters(data.squareMeters?.toString() || '');
                         setTimeSlot(data.timeSlot || '');
-                        console.log(data.jobId)
                     }
-
-
                 } catch (error) {
-                    console.log(error)
+                    console.error(error);
                 }
             };
             preFillForm();
@@ -75,7 +70,9 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                     'jobId': jobId,
                 };
 
-                await axios.put(url, editJobData, { headers });
+                await axios.put(url, editJobData,
+                    { headers }
+                );
                 console.log('Job was updated');
                 doneWithEdit();
             }
@@ -149,8 +146,6 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                     onChange={(e) => setPaymentOption(e.target.value)}
                     required
                 />
-
-
 
                 <button type="submit" style={styles.button}>
                     Update Booking
