@@ -46,8 +46,9 @@ const admin = {
             };
 
             const response = await axios.post(Url, checkEmployees);
+            // console.log(response.data);
+            return response.data;
 
-            console.log(response.data);
 
         } catch (error) {
             console.error('Error creating employee', error);
@@ -81,7 +82,6 @@ const admin = {
         }
     }
 };
-
 export default admin;
 
 

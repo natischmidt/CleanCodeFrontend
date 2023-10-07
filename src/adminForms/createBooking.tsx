@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import axios from "axios";
 // import {CalenderModal} from "../components/CalenderModal";
 import Calendar from "react-calendar";
-import admin, {getAvailableEmp} from "../API/admin";
+import admin from "../API/admin";
 
 const CreateNewBooking: React.FC = () => {
     const [jobType, setJobType] = useState('');
@@ -13,7 +13,7 @@ const CreateNewBooking: React.FC = () => {
     const [payment, setPayment] = useState('');
     const [customer, setCustomer] = useState('')
     const [isModalOpen, setIsModalOpen] = useState(false);
-
+    const [availableEmployeesMap, setAvailableEmployeesMap] = useState<Map<number, boolean>>()
     const [showCalender, setShowCalender] = useState(false)
 
     const [hours, setHours] = useState(0)
@@ -45,11 +45,14 @@ const CreateNewBooking: React.FC = () => {
         setShowCalender(true)
     }
 
-    function checkDay(day: Value) {
+    async function checkDay(day: Value) {
         setDate(day)
         console.log(day)
 
-        admin.getAvailableEmp(date, hours).then(r => {})
+        let availableEmployeesMap = await admin.getAvailableEmp(date, hours).then(response => {
+            setAvailableEmployeesMap(response)
+        })
+        console.log("this is the typescript map: " + availableEmployeesMap)
     }
 
     const handleSubmit = async (e : React.FormEvent) => {
@@ -116,11 +119,11 @@ const CreateNewBooking: React.FC = () => {
                 </button>
 
                 {showCalender ?
-                    <Calendar onChange={(day) => {
+                    <Calendar onClickDay={(day) => {
                         checkDay(day)
                     }} value={date}/> : <></>}
 
-                {/*{checkDay(date)}*/}
+
             </form>
         </div>
     );
