@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import axios from "axios";
 // import {CalenderModal} from "../components/CalenderModal";
 import Calendar from "react-calendar";
-import {getAvailableEmp} from "../API/admin";
+import admin, {getAvailableEmp} from "../API/admin";
 
 const CreateNewBooking: React.FC = () => {
     const [jobType, setJobType] = useState('');
@@ -49,33 +49,20 @@ const CreateNewBooking: React.FC = () => {
         setDate(day)
         console.log(day)
 
-        getAvailableEmp(date, hours)
-            .then(r => {})
+        admin.getAvailableEmp(date, hours).then(r => {})
     }
 
     const handleSubmit = async (e : React.FormEvent) => {
         e.preventDefault();
 
         try {
-            const Url = 'http://localhost:8080/api/jobs/createJob/';
-
-            const bookingData = {
-                jobtype: jobType,
-                date: dateAndTime,
-                timeSlotList: timeSlotList,
-                squareMeters: squareMeters,
-                paymentOption: payment,
-                customerId: customer
-            };
-
-            const response = await axios.post(Url, bookingData);
-
-            console.log('Booking was created', response.data);
+            await admin.createBooking(jobType, dateAndTime, timeSlotList, squareMeters, payment, customer);
 
         } catch (error) {
             console.error('Error creating booking', error);
         }
     };
+
     return (
         <div style={styles.container}>
             {/*{!isModalOpen && (*/}
