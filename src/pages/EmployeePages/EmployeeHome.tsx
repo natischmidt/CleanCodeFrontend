@@ -1,5 +1,6 @@
 import Header from "../../reusableComponents/header";
 import {EmployeeDashboard} from "../../components/EmployeeDashboard";
+import EmployeeFooter from "./EmployeeFooter";
 
 export default function EmployeeHomePage() {
     return (
@@ -7,6 +8,7 @@ export default function EmployeeHomePage() {
             <Header/>
             <EmployeeDashboard/>
             EMPLOYEE PAGE
+            <EmployeeFooter/>
         </>
     )
 }

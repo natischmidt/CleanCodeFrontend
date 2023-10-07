@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function AdminFooter() {
+export default function EmployeeFooter() {
     return (
         <div className="footer-container" style={styles.footer}>
             <div className="footer-logo">
