@@ -4,6 +4,7 @@ import axios from "axios";
 // import {CalenderModal} from "../components/CalenderModal";
 import Calendar from "react-calendar";
 import admin from "../API/admin";
+import loginAdminOrEmployee from "../forms/loginAdminOrEmployee";
 
 const CreateNewBooking: React.FC = () => {
     const [jobType, setJobType] = useState('');
@@ -15,11 +16,17 @@ const CreateNewBooking: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [availableEmployeesMap, setAvailableEmployeesMap] = useState<Map<number, boolean>>()
     const [showCalender, setShowCalender] = useState(false)
-
     const [hours, setHours] = useState(0)
-
     const goBackToBooking = useNavigate();
-
+    const [eight, setEight] = useState(false)
+    const [nine, setNine] = useState(false)
+    const [ten, setTen] = useState(false)
+    const [eleven, setEleven] = useState(false)
+    const [twelve, setTwelve] = useState(false)
+    const [thirteen, setThirteen] = useState(false)
+    const [fourteen, setFourteen] = useState(false)
+    const [fifteen, setFifteen] = useState(false)
+    const [sixteen, setSixteen] = useState(false)
     const handleDateAndTimeClick = () => {
         setIsModalOpen(!isModalOpen);
     };
@@ -49,10 +56,30 @@ const CreateNewBooking: React.FC = () => {
         setDate(day)
         console.log(day)
 
-        let availableEmployeesMap = await admin.getAvailableEmp(date, hours).then(response => {
-            setAvailableEmployeesMap(response)
-        })
-        console.log("this is the typescript map: " + availableEmployeesMap)
+      await admin.getAvailableEmp(date, hours).then(response => {
+
+          if (response) {
+              console.log(".-.-.-.-.-.-.-.-.-.-.-." + response.at(0))
+              console.log(".-.-.-.-.-.-.-.-.-.-.-." + response.at(1))
+              console.log(".-.-.-.-.-.-.-.-.-.-.-." + response.at(2))
+              console.log(".-.-.-.-.-.-.-.-.-.-.-." + response.at(3))
+              console.log(".-.-.-.-.-.-.-.-.-.-.-." + response.at(4))
+              console.log(".-.-.-.-.-.-.-.-.-.-.-." + response.at(5))
+              console.log(".-.-.-.-.-.-.-.-.-.-.-." + response.at(6))
+              console.log(".-.-.-.-.-.-.-.-.-.-.-." + response.at(7))
+              console.log(".-.-.-.-.-.-.-.-.-.-.-." + response.at(8))
+
+              setEight(response.at(0))
+              setNine(response.at(1))
+              setTen(response.at(2))
+              setEleven(response.at(3))
+              setTwelve(response.at(4))
+              setThirteen(response.at(5))
+              setFourteen(response.at(6))
+              setFifteen(response.at(7))
+              setSixteen(response.at(8))
+          }
+      })
     }
 
     const handleSubmit = async (e : React.FormEvent) => {
@@ -122,8 +149,15 @@ const CreateNewBooking: React.FC = () => {
                     <Calendar onClickDay={(day) => {
                         checkDay(day)
                     }} value={date}/> : <></>}
-
-
+                {eight ? <button>08.00</button> : <></>}
+                {eight ? <button>09.00</button> : <></>}
+                {nine ? <button>10.00</button> : <></>}
+                {ten ? <button>11.00</button> : <></>}
+                {eleven ? <button>12.00</button> : <></>}
+                {twelve ? <button>13.00</button> : <></>}
+                {thirteen ? <button>14.00</button> : <></>}
+                {fifteen ? <button>15.00</button> : <></>}
+                {sixteen ? <button>16.00</button> : <></>}
             </form>
         </div>
     );

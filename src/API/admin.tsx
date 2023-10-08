@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
 import axios, {AxiosResponse, AxiosError} from 'axios';
 
+
+
 const admin = {
+
     adminLogIn: () => {
 
         const [email, setEmail] = useState<string>('');
@@ -32,21 +35,27 @@ const admin = {
 
     getAvailableEmp: async (date: Date | null, hours: number) => {
 
+
         if (!date) {
             console.error('Ogiltigt datum.');
             return;
         }
+        const [dateToBackend, setDateToBackend] = useState('');
+        setDateToBackend(date.toString)
 
         try {
             const Url = 'http://localhost:8080/api/jobs/getAvailableEmployees';
 
             const checkEmployees = {
-                date: date,
+                date: date.toString(),
                 lookForAvailableThisManyHours: hours
             };
+            console.log("<><>>>>><><<<><>" + dateToBackend)
 
             const response = await axios.post(Url, checkEmployees);
             // console.log(response.data);
+
+
             return response.data;
 
 
