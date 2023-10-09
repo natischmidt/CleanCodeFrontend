@@ -1,4 +1,6 @@
 import React from 'react';
+import BookingHistoryTable from "../components/tabels/BookingHistoryTable";
+import {BookingTable} from "../components/tabels/BookingTable";
 
 
 interface DashboardProps {
@@ -26,7 +28,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userType, userData }) => {
                             : 'My Upcoming Shifts'}
                 </div>
                 <div className="section-content">
-
+                <BookingTable/>
                 </div>
             </div>
 
@@ -56,19 +58,21 @@ const Dashboard: React.FC<DashboardProps> = ({ userType, userData }) => {
 
             <div className="section" style={styles.section}>
                 <div className="section-title" style={styles.sectionTitle}>
-                    User-Specific Content
+                    (Specific Content)
                 </div>
                 <div className="section-content">
                     {userType === 'admin' ? (
-                        <div>Admin-specific content</div>
+                        <div>Transaction Overview</div>
                     ) : userType === 'customer' ? (
-                        <div>Customer-specific content</div>
+                        <div>(Customer-specific content)</div>
                     ) : (
-                        <div>Employee-specific content</div>
+                        <div>(Employee-specific content)</div>
                     )}
+
+                    <BookingHistoryTable />
                 </div>
             </div>
-        </div>
+            </div>
     );
 };
 
