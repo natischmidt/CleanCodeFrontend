@@ -33,31 +33,22 @@ const admin = {
         }
     },
 
-    getAvailableEmp: async (date: Date | null, hours: number) => {
-
+    getAvailableEmp: async (date: string, hours: number) => {
 
         if (!date) {
             console.error('Ogiltigt datum.');
             return;
         }
-        const [dateToBackend, setDateToBackend] = useState('');
-        setDateToBackend(date.toString)
-
         try {
             const Url = 'http://localhost:8080/api/jobs/getAvailableEmployees';
 
             const checkEmployees = {
-                date: date.toString(),
+                date: date,
                 lookForAvailableThisManyHours: hours
             };
-            console.log("<><>>>>><><<<><>" + dateToBackend)
-
             const response = await axios.post(Url, checkEmployees);
-            // console.log(response.data);
-
-
+            console.log(response.data);
             return response.data;
-
 
         } catch (error) {
             console.error('Error creating employee', error);
@@ -72,6 +63,8 @@ const admin = {
         payment: string,
         customer: string
     ) => {
+
+        console.log("................*********" + timeSlotList)
         try {
             const Url = 'http://localhost:8080/api/jobs/createJob/';
 

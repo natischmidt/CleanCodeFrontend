@@ -1,10 +1,13 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 // import {CalenderModal} from "../components/CalenderModal";
 import Calendar from "react-calendar";
 import admin from "../API/admin";
 import loginAdminOrEmployee from "../forms/loginAdminOrEmployee";
+import {Simulate} from "react-dom/test-utils";
+import error = Simulate.error;
+import * as events from "events";
 
 const CreateNewBooking: React.FC = () => {
     const [jobType, setJobType] = useState('');
@@ -14,7 +17,6 @@ const CreateNewBooking: React.FC = () => {
     const [payment, setPayment] = useState('');
     const [customer, setCustomer] = useState('')
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [availableEmployeesMap, setAvailableEmployeesMap] = useState<Map<number, boolean>>()
     const [showCalender, setShowCalender] = useState(false)
     const [hours, setHours] = useState(0)
     const goBackToBooking = useNavigate();
@@ -27,9 +29,14 @@ const CreateNewBooking: React.FC = () => {
     const [fourteen, setFourteen] = useState(false)
     const [fifteen, setFifteen] = useState(false)
     const [sixteen, setSixteen] = useState(false)
-    const handleDateAndTimeClick = () => {
-        setIsModalOpen(!isModalOpen);
-    };
+    // const [timeList, setTimeList] = useState<[]>([])
+    let timeList: string[] = []
+    const monthCorr = useRef(0)
+    const monthToUse = useRef('')
+    const monthString = useRef('')
+    const yearToUse = useRef(0)
+    const dateToUse = useRef('')
+    let times = ["EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN", "FOURTEEN", "FIFTEEN", "SIXTEEN", "notbookable", "notbookable", "notbookable"]
 
     type Value = Date | null;
 
@@ -43,6 +50,7 @@ const CreateNewBooking: React.FC = () => {
             setHours(2)
         }
         else if (jobType == "DIAMOND") {
+
             setHours(3)
         }
         else if (jobType == "WINDOW") {
@@ -52,51 +60,120 @@ const CreateNewBooking: React.FC = () => {
         setShowCalender(true)
     }
 
-    async function checkDay(day: Value) {
-        setDate(day)
-        console.log(day)
+    async function checkDay(day: any) {
+        if(day) {
 
-      await admin.getAvailableEmp(date, hours).then(response => {
+            yearToUse.current = day.getFullYear().valueOf()
+            monthCorr.current = day.getMonth() + 1
 
-          if (response) {
-              console.log(".-.-.-.-.-.-.-.-.-.-.-." + response.at(0))
-              console.log(".-.-.-.-.-.-.-.-.-.-.-." + response.at(1))
-              console.log(".-.-.-.-.-.-.-.-.-.-.-." + response.at(2))
-              console.log(".-.-.-.-.-.-.-.-.-.-.-." + response.at(3))
-              console.log(".-.-.-.-.-.-.-.-.-.-.-." + response.at(4))
-              console.log(".-.-.-.-.-.-.-.-.-.-.-." + response.at(5))
-              console.log(".-.-.-.-.-.-.-.-.-.-.-." + response.at(6))
-              console.log(".-.-.-.-.-.-.-.-.-.-.-." + response.at(7))
-              console.log(".-.-.-.-.-.-.-.-.-.-.-." + response.at(8))
+            if (monthCorr.current < 10) {
+                monthToUse.current = 0 + monthCorr.current.toString()
+                monthString.current = '0' + monthToUse.current
+            } else {
+                monthToUse.current = monthCorr.current.toString()
+                monthString.current = monthToUse.current
+            }
 
-              setEight(response.at(0))
-              setNine(response.at(1))
-              setTen(response.at(2))
-              setEleven(response.at(3))
-              setTwelve(response.at(4))
-              setThirteen(response.at(5))
-              setFourteen(response.at(6))
-              setFifteen(response.at(7))
-              setSixteen(response.at(8))
-          }
-      })
+            dateToUse.current = yearToUse.current + "-" + monthString.current + "-" + day.getDate()
+
+            await admin.getAvailableEmp(dateToUse.current, hours).then(response => {
+                if (response) {
+                    setEight(response.at(0))
+                    setNine(response.at(1))
+                    setTen(response.at(2))
+                    setEleven(response.at(3))
+                    setTwelve(response.at(4))
+                    setThirteen(response.at(5))
+                    setFourteen(response.at(6))
+                    setFifteen(response.at(7))
+                    setSixteen(response.at(8))
+                }
+            })
+        }
     }
 
-    const handleSubmit = async (e : React.FormEvent) => {
-        e.preventDefault();
+    const handleSelectTime = async (event : React.MouseEvent<HTMLButtonElement>, startTime: number) => {
+        event.preventDefault();
 
-        try {
-            await admin.createBooking(jobType, dateAndTime, timeSlotList, squareMeters, payment, customer);
 
-        } catch (error) {
-            console.error('Error creating booking', error);
+        timeList = []
+        console.log("!#!#!#!#!#!#!!#!##!#!#!#!" + startTime)
+
+        const doTheLoop = (start: number) => {
+
+            for(let i = 0; i < hours; i++) {
+                timeList.push(times[i + start])
+            }
+        }
+
+        switch (startTime) {
+            case 8: {
+                doTheLoop(startTime-8)
+                console.log(timeList)
+                break
+            }
+            case 9: {
+                doTheLoop(startTime-8)
+                console.log(timeList)
+                break
+            }
+            case 10: {
+                doTheLoop(startTime-8)
+                console.log(timeList)
+                break
+            }
+            case 11: {
+                doTheLoop(startTime-8)
+                console.log(timeList)
+                break
+            }
+            case 12: {
+                doTheLoop(startTime-8)
+                console.log(timeList)
+                break
+            }
+            case 13: {
+                doTheLoop(startTime-8)
+                console.log(timeList)
+                break
+            }
+            case 14: {
+                doTheLoop(startTime-8)
+                console.log(timeList)
+                break
+            }
+            case 15: {
+                doTheLoop(startTime-8)
+                console.log(timeList)
+                break
+            }
+            case 16: {
+                doTheLoop(startTime-8)
+                console.log(timeList)
+                break
+            }
+            default: {
+                console.log("we shouldnt end up here")
+                break
+            }
         }
     };
+
+    const handleBooking = () => {
+        // e.preventDefault();
+        console.log("HHHAAANNNNDDDDLLLLLEEE")
+        try {
+            admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, payment, customer).then(r => {})
+
+            } catch (error) {
+                console.log(error + "this is not right dude")
+            }
+        }
 
     return (
         <div style={styles.container}>
             {/*{!isModalOpen && (*/}
-            <form style={styles.form} onSubmit={handleSubmit}>
+            <form style={styles.form} onSubmit={() => handleSelectTime}>
                 <h2>Create new Booking</h2>
                 <select
                     value={jobType}
@@ -138,7 +215,9 @@ const CreateNewBooking: React.FC = () => {
                     required
                 />
 
-                <button type="submit" style={styles.button}>
+                <button type="submit" style={styles.button}
+                    onClick={() => handleBooking()}
+                >
                     Create new Booking
                 </button>
                 <button type="submit" style={styles.button} onClick={() => {{goBackToBooking(("/Booking"))}}}>
@@ -146,18 +225,22 @@ const CreateNewBooking: React.FC = () => {
                 </button>
 
                 {showCalender ?
-                    <Calendar onClickDay={(day) => {
-                        checkDay(day)
-                    }} value={date}/> : <></>}
-                {eight ? <button>08.00</button> : <></>}
-                {eight ? <button>09.00</button> : <></>}
-                {nine ? <button>10.00</button> : <></>}
-                {ten ? <button>11.00</button> : <></>}
-                {eleven ? <button>12.00</button> : <></>}
-                {twelve ? <button>13.00</button> : <></>}
-                {thirteen ? <button>14.00</button> : <></>}
-                {fifteen ? <button>15.00</button> : <></>}
-                {sixteen ? <button>16.00</button> : <></>}
+                    <Calendar
+                        onClickDay={(day) => {
+                            checkDay(day)
+                        }}
+                        value={date}
+                    /> : <></>}
+                {eight ? <button onClick={(e) => handleSelectTime(e, 8)}>08.00</button> : <></>}
+                {nine ? <button onClick={(e) => handleSelectTime(e,9)}>09.00</button> : <></>}
+                {ten ? <button onClick={(e) => handleSelectTime(e,10)}>10.00</button> : <></>}
+                {eleven ? <button onClick={(e) => handleSelectTime(e,11)}>11.00</button> : <></>}
+                {twelve ? <button onClick={(e) => handleSelectTime(e,12)}>12.00</button> : <></>}
+                {thirteen ? <button onClick={(e) => handleSelectTime(e,13)}>13.00</button> : <></>}
+                {fourteen ? <button onClick={(e) => handleSelectTime(e,14)}>14.00</button> : <></>}
+                {fifteen ? <button onClick={(e) => handleSelectTime(e,15)}>15.00</button> : <></>}
+                {sixteen ? <button onClick={(e) => handleSelectTime(e,16)}>16.00</button> : <></>}
+
             </form>
         </div>
     );
@@ -207,3 +290,5 @@ const styles = {
         borderRadius: '5px',
     }
 }
+
+
