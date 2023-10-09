@@ -1,13 +1,14 @@
 import Header from "../../reusableComponents/header";
 import Footer from "../../reusableComponents/footer";
-import {CustomerDashboard} from "../../components/CustomerDashboard";
+import Dashboard from "../../reusableComponents/dashboard";
+
 
 export default function CustomerHomePage() {
     return (
         <>
             <Header/>
-            <CustomerDashboard/>
             CUSTOMER PAGE
+            {/*<Dashboard userType="customer" userData={ } />*/}
             <Footer/>
         </>
     )
