@@ -4,16 +4,14 @@ import axios from "axios";
 // import {CalenderModal} from "../components/CalenderModal";
 import Calendar from "react-calendar";
 import admin from "../API/admin";
-import loginAdminOrEmployee from "../forms/loginAdminOrEmployee";
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
-import * as events from "events";
+
+import 'react-calendar/dist/Calendar.css';
 
 const CreateNewBooking: React.FC = () => {
     const [jobType, setJobType] = useState('');
     const [dateAndTime, setDateAndTime] = useState('');
     const [timeSlotList, setTimeSlotList] = useState<string[]>([]);
-    const [squareMeters, setSquareMeters] = useState ('');
+    const [squareMeters, setSquareMeters] = useState('');
     const [payment, setPayment] = useState('');
     const [customer, setCustomer] = useState('')
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,7 +28,7 @@ const CreateNewBooking: React.FC = () => {
     const [fifteen, setFifteen] = useState(false)
     const [sixteen, setSixteen] = useState(false)
     // const [timeList, setTimeList] = useState<[]>([])
-    let timeList: string[] = []
+    const [timeList,setTimeList] = useState([])
     const monthCorr = useRef(0)
     const monthToUse = useRef('')
     const monthString = useRef('')
@@ -42,26 +40,28 @@ const CreateNewBooking: React.FC = () => {
 
     const [date, setDate] = useState<Value>(new Date());
 
+    const handleModal = () => {
+        setIsModalOpen(!isModalOpen);
+    }
+
     function handleJobType(jobType: string) {
         if (jobType == "BASIC") {
             setHours(1)
-        }
-        else if (jobType == "ADVANCED") {
+        } else if (jobType == "ADVANCED") {
             setHours(2)
-        }
-        else if (jobType == "DIAMOND") {
+        } else if (jobType == "DIAMOND") {
 
             setHours(3)
-        }
-        else if (jobType == "WINDOW") {
+        } else if (jobType == "WINDOW") {
             setHours(2)
         }
         setJobType(jobType)
         setShowCalender(true)
+        handleModal()
     }
 
     async function checkDay(day: any) {
-        if(day) {
+        if (day) {
 
             yearToUse.current = day.getFullYear().valueOf()
             monthCorr.current = day.getMonth() + 1
@@ -92,63 +92,64 @@ const CreateNewBooking: React.FC = () => {
         }
     }
 
-    const handleSelectTime = async (event : React.MouseEvent<HTMLButtonElement>, startTime: number) => {
+    const handleSelectTime = async (event: React.MouseEvent<HTMLButtonElement>, startTime: number) => {
         event.preventDefault();
 
-
-        timeList = []
+        timeList.length = 0;
         console.log("!#!#!#!#!#!#!!#!##!#!#!#!" + startTime)
 
         const doTheLoop = (start: number) => {
 
-            for(let i = 0; i < hours; i++) {
+            for (let i = 0; i < hours; i++) {
+                // @ts-ignore
                 timeList.push(times[i + start])
             }
         }
 
         switch (startTime) {
             case 8: {
-                doTheLoop(startTime-8)
+                doTheLoop(startTime - 8)
                 console.log(timeList)
+                // @ts-ignore
                 break
             }
             case 9: {
-                doTheLoop(startTime-8)
+                doTheLoop(startTime - 8)
                 console.log(timeList)
                 break
             }
             case 10: {
-                doTheLoop(startTime-8)
+                doTheLoop(startTime - 8)
                 console.log(timeList)
                 break
             }
             case 11: {
-                doTheLoop(startTime-8)
+                doTheLoop(startTime - 8)
                 console.log(timeList)
                 break
             }
             case 12: {
-                doTheLoop(startTime-8)
+                doTheLoop(startTime - 8)
                 console.log(timeList)
                 break
             }
             case 13: {
-                doTheLoop(startTime-8)
+                doTheLoop(startTime - 8)
                 console.log(timeList)
                 break
             }
             case 14: {
-                doTheLoop(startTime-8)
+                doTheLoop(startTime - 8)
                 console.log(timeList)
                 break
             }
             case 15: {
-                doTheLoop(startTime-8)
+                doTheLoop(startTime - 8)
                 console.log(timeList)
                 break
             }
             case 16: {
-                doTheLoop(startTime-8)
+                doTheLoop(startTime - 8)
                 console.log(timeList)
                 break
             }
@@ -160,88 +161,118 @@ const CreateNewBooking: React.FC = () => {
     };
 
     const handleBooking = () => {
-        // e.preventDefault();
-        console.log("HHHAAANNNNDDDDLLLLLEEE")
         try {
-            admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, payment, customer).then(r => {})
+            admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, payment, customer).then(r => {
+            })
 
-            } catch (error) {
-                console.log(error + "this is not right dude")
-            }
+        } catch (error) {
+            console.log(error + "this is not right dude")
         }
+    }
 
     return (
         <div style={styles.container}>
-            {/*{!isModalOpen && (*/}
-            <form style={styles.form} onSubmit={() => handleSelectTime}>
-                <h2>Create new Booking</h2>
-                <select
-                    value={jobType}
-                    style={styles.select}
-                    onChange={(e) => handleJobType(e.target.value)}
-                >
-                    <option >Choose Cleaning Service:</option>
-                    <option value="BASIC">Basic Cleaning</option>
-                    <option value="ADVANCED">Advanced Cleaning</option>
-                    <option value="DIAMOND">Diamond Cleaner</option>
-                    <option value="WINDOW">Window Washing</option>
-                </select>
+            {!isModalOpen && (
+                <form style={styles.form} onSubmit={() => handleSelectTime}>
+                    <h2>Create new Booking</h2>
+                    <select
+                        value={jobType}
+                        style={styles.select}
+                        onChange={(e) => handleJobType(e.target.value)}
+                    >
+                        <option>Choose Cleaning Service:</option>
+                        <option value="BASIC">Basic Cleaning</option>
+                        <option value="ADVANCED">Advanced Cleaning</option>
+                        <option value="DIAMOND">Diamond Cleaner</option>
+                        <option value="WINDOW">Window Washing</option>
+                    </select>
 
-                {/*<button onClick={handleDateAndTimeClick}>Calender</button>*/}
+                    <input
+                        type="text"
+                        placeholder="Date and Time: "
+                        style={styles.input}
+                        value={dateToUse.current}
+                        onChange={(e) => setDateAndTime(e.target.value)}
+                        readOnly
+                        required
+                    />
+                    <input
+                        type="text"
+                        placeholder="Hours: "
+                        style={styles.input}
+                        value={"Estimated time for cleaning: " +hours +" hour"}
+                        onChange={(e) => setDateAndTime(e.target.value)}
+                        readOnly
+                        required
+                    />
+                    <input
+                        type="text"
+                        placeholder="Square Meters"
+                        style={styles.input}
+                        value={squareMeters}
+                        onChange={(e) => setSquareMeters(e.target.value)}
+                        required
+                    />
+                    <select
+                        value={payment}
+                        style={styles.select}
+                        onChange={(e) => setPayment(e.target.value)}
+                    >
+                        <option>Choose payment option:</option>
+                        <option value="KLARNA">Klarna</option>
+                        <option value="CASH">Cash</option>
+                    </select>
+                    <input
+                        type="number"
+                        placeholder="Customer ID"
+                        style={styles.input}
+                        value={customer}
+                        onChange={(e) => setCustomer(e.target.value)}
+                        required
+                    />
 
-                <input
-                    type="text"
-                    placeholder="Square Meters"
-                    style={styles.input}
-                    value={squareMeters}
-                    onChange={(e) => setSquareMeters(e.target.value)}
-                    required
-                />
-                <select
-                    value={payment}
-                    style={styles.select}
-                    onChange={(e) => setPayment(e.target.value)}
-                >
-                    <option >Choose payment option:</option>
-                    <option value="KLARNA">Klarna</option>
-                    <option value="CASH">Cash</option>
-                </select>
-                <input
-                    type="number"
-                    placeholder="Customer ID"
-                    style={styles.input}
-                    value={customer}
-                    onChange={(e) => setCustomer(e.target.value)}
-                    required
-                />
+                    <button type="submit" style={styles.button}
+                            onClick={() => handleBooking()}
+                    >
+                        Create new Booking
+                    </button>
+                    <button type="submit" style={styles.button} onClick={() => {
+                        {
+                            goBackToBooking(("/Booking"))
+                        }
+                    }}>
+                        Go Back
+                    </button>
 
-                <button type="submit" style={styles.button}
-                    onClick={() => handleBooking()}
-                >
-                    Create new Booking
-                </button>
-                <button type="submit" style={styles.button} onClick={() => {{goBackToBooking(("/Booking"))}}}>
-                    Go Back
-                </button>
-
-                {showCalender ?
+                </form>)}
+            <div style={styles.calenderContainer}>
+                {showCalender && isModalOpen ?
                     <Calendar
                         onClickDay={(day) => {
                             checkDay(day)
                         }}
                         value={date}
                     /> : <></>}
-                {eight ? <button onClick={(e) => handleSelectTime(e, 8)}>08.00</button> : <></>}
-                {nine ? <button onClick={(e) => handleSelectTime(e,9)}>09.00</button> : <></>}
-                {ten ? <button onClick={(e) => handleSelectTime(e,10)}>10.00</button> : <></>}
-                {eleven ? <button onClick={(e) => handleSelectTime(e,11)}>11.00</button> : <></>}
-                {twelve ? <button onClick={(e) => handleSelectTime(e,12)}>12.00</button> : <></>}
-                {thirteen ? <button onClick={(e) => handleSelectTime(e,13)}>13.00</button> : <></>}
-                {fourteen ? <button onClick={(e) => handleSelectTime(e,14)}>14.00</button> : <></>}
-                {fifteen ? <button onClick={(e) => handleSelectTime(e,15)}>15.00</button> : <></>}
-                {sixteen ? <button onClick={(e) => handleSelectTime(e,16)}>16.00</button> : <></>}
 
-            </form>
+                {isModalOpen && (
+                    <>
+                        <div style={styles.slotsContainer}>
+                            {eight ? <button style={styles.slots} onClick={(e) => handleSelectTime(e, 8)}>08.00</button> : <></>}
+                            {nine ? <button style={styles.slots} onClick={(e) => handleSelectTime(e, 9)}>09.00</button> : <></>}
+                            {ten ? <button style={styles.slots} onClick={(e) => handleSelectTime(e, 10)}>10.00</button> : <></>}
+                            {eleven ? <button style={styles.slots} onClick={(e) => handleSelectTime(e, 11)}>11.00</button> : <></>}
+                            {twelve ? <button style={styles.slots} onClick={(e) => handleSelectTime(e, 12)}>12.00</button> : <></>}
+                            {thirteen ? <button style={styles.slots} onClick={(e) => handleSelectTime(e, 13)}>13.00</button> : <></>}
+                            {fourteen ? <button style={styles.slots} onClick={(e) => handleSelectTime(e, 14)}>14.00</button> : <></>}
+                            {fifteen ? <button style={styles.slots} onClick={(e) => handleSelectTime(e, 15)}>15.00</button> : <></>}
+                            {sixteen ? <button style={styles.slots} onClick={(e) => handleSelectTime(e, 16)}>16.00</button> : <></>}
+                        </div>
+
+                        <button type="submit" style={styles.button} onClick={handleModal}>Confirm</button>
+                        <button type="submit" style={styles.button} onClick={handleModal}>Close</button>
+                    </>
+                )}
+            </div>
         </div>
     );
 };
@@ -288,6 +319,20 @@ const styles = {
         padding: '10px',
         width: '80%',
         borderRadius: '5px',
+    },
+    calenderContainer: {
+        display: 'flex',
+        flexDirection: 'column' as 'column',
+        alignItems: 'center',
+    },
+    slotsContainer: {
+        display: 'flex' as 'flex',
+        padding: 20,
+        flexWrap: 'wrap' as 'wrap',
+        justifyContent: 'center' as 'center'
+    },
+    slots: {
+        margin: 10,
     }
 }
 
