@@ -32,7 +32,7 @@ const LoginAdminOrEmployeeForm = () => {
                 />
                 <div className="buttonContainer">
                 <button type="submit" style={styles.button}
-                        onClick={() => {{goToHomePage(("/Home"))}}}
+                        onClick={() => {{goToHomePage(("/AdminHome"))}}}
                 >
                     Login admin
                 </button>

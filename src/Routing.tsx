@@ -5,7 +5,7 @@ import BookingPage from "./pages/bookingPage";
 import EmployeePage from "./pages/AdminPages/employeePage";
 import CustomerPage from "./pages/customerPage";
 import GDPRPage from "./pages/AdminPages/gdpr";
-import HomePage from "./pages/AdminPages/AdminHome";
+import {AdminHome} from "./pages/AdminPages/AdminHome";
 import AddUserPage from "./pages//AdminPages/adduser";
 import AddAdmin from "./forms/addAdmin";
 import AddPrivateCustomer from "./forms/addPrivateCustomer";
@@ -28,7 +28,7 @@ function Routing() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<LoginPage/>} />
-                    <Route path="/Home" element={<HomePage/>}/>
+                    <Route path="/AdminHome" element={<AdminHome/>}/>
                     <Route path="/CustomerHome" element={<CustomerHomePage/>}/>
                     <Route path="/EmployeeHome" element={<EmployeeHomePage/>}/>
                     <Route path="/Booking" element={<BookingPage/>}/>
