@@ -17,7 +17,10 @@ const BookingTable2: React.FC<bookingTableProps> = ({ onUpdate }) => {
                 const formattedData = response.data.map((job: any) => {
                     const date = new Date(job.date);
                     const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-                    return { ...job, date: formattedDate, id : job.jobId };
+                    return { ...job,
+                        date: formattedDate,
+                        id : job.jobId,
+                        customerId: job.customer ? job.customer.id : 'N/A' }; // kollar om job.cusomer finns, finns det, sätter dess id, ananrs N/A
                 });
                 setCustomerData(formattedData);
                 console.log(response.data)
