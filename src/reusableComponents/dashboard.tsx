@@ -1,6 +1,7 @@
 import React from 'react';
 import BookingHistoryTable from "../components/tabels/BookingHistoryTable";
-import {BookingTable} from "../components/tabels/BookingTable";
+import BookingTable from "../components/tabels/BookingTable";
+import updateBooking from "../adminForms/updateBooking";
 
 
 interface DashboardProps {
@@ -16,7 +17,13 @@ interface DashboardProps {
     }
 }
 
+
+
 const Dashboard: React.FC<DashboardProps> = ({ userType, userData }) => {
+
+    const handleBookingUpdate = (jobId: number) => {
+        console.log(`Booking ${jobId} was updated.`);
+    };
     return (
         <div className="dashboard" style={styles.dashboard}>
             <div className="section" style={styles.section}>
@@ -28,7 +35,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userType, userData }) => {
                             : 'My Upcoming Shifts'}
                 </div>
                 <div className="section-content">
-                <BookingTable/>
+                <BookingTable onUpdate={handleBookingUpdate}/>
                 </div>
             </div>
 
@@ -68,7 +75,6 @@ const Dashboard: React.FC<DashboardProps> = ({ userType, userData }) => {
                     ) : (
                         <div>(Employee-specific content)</div>
                     )}
-
                     <BookingHistoryTable />
                 </div>
             </div>
