@@ -4,6 +4,8 @@ import Dashboard from "../../reusableComponents/dashboard";
 import {customerStyles} from "../../styles/styles";
 import React from "react";
 import {useUserType} from "../../components/UserTypeContext";
+import NavBar from "../../reusableComponents/CustomerHeader";
+import imagePath from "../../assets/logo3.png";
 
 
 export const CustomerHomePage: React.FC = () => {
@@ -22,10 +24,11 @@ export const CustomerHomePage: React.FC = () => {
         phoneNumber: '555-555-5555',
     };
 
+    let items = ["Home","My Page", "Services"];
+
     return (
         <>
-
-            <Header />
+        <NavBar brandName="StädaFint AB" imageSrcPath={imagePath} navItems={items}/>
             <div style={{ ...selectedStyles }}>
                 CUSTOMER PAGE
                 <Dashboard userType="customer" userData={testUserData} />

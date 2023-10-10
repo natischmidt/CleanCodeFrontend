@@ -18,7 +18,6 @@ export default function EmployeeHomePage() {
             <div style={{ ...selectedStyles }}>
             {/*<Dashboard userType="employee" userData={ } />*/}
             </div>
-            <EmployeeFooter/>
         </>
     )
 }

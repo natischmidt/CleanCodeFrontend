@@ -27,8 +27,6 @@ export const AdminHome : React.FC = () => {
             <div style={{ ...selectedStyles }}>
             <Dashboard userType="admin" userData={testUserData} />
             </div>
-            <AdminFooter/>
-
         </>
     )
 }

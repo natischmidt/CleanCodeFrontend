@@ -1,17 +1,11 @@
 export const adminStyles: React.CSSProperties = {
-    backgroundColor: '#89b6ac',
+    backgroundColor: '#E2FFF8',
 };
 
 export const employeeStyles: React.CSSProperties = {
-    backgroundColor: '#2115d2',
-
+    backgroundColor: '#5343ec',
 };
 
 export const customerStyles: React.CSSProperties = {
-    backgroundColor: "#a60303",
-    padding: "20px",
-    border: "1px solid #ccc",
-    borderRadius: "5px",
-    boxShadow: "0 0 5px rgba(0, 0, 0, 0.2)",
-    textAlign: "center",
+    backgroundColor: "#f5f0f0",
 };

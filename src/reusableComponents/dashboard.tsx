@@ -17,8 +17,6 @@ interface DashboardProps {
     }
 }
 
-
-
 const Dashboard: React.FC<DashboardProps> = ({ userType, userData }) => {
 
     const handleBookingUpdate = (jobId: number) => {
