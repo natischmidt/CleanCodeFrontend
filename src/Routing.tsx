@@ -17,7 +17,7 @@ import CreateNewBooking from "./adminForms/createBooking";
 import GettingIdNumber from "./adminForms/gettingIdNumber";
 import CancelWithNumber from "./adminForms/cancelWithNumber";
 import EditEmployeeForm from "./forms/editEmployee";
-import CustomerHomePage from "./pages/CustomerPages/CustomerHome";
+import {CustomerHomePage} from "./pages/CustomerPages/CustomerHome";
 import EmployeeHomePage from "./pages/EmployeePages/EmployeeHome";
 //import OverviewPage from "./pages/overviewpage";
 //import TransactionPage from "./pages/transactionoverview";
