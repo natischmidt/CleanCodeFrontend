@@ -40,6 +40,7 @@ const AddBusinessCustomerForm = () => {
             setLastname('')
             setEmail('')
             setPhoneNumber('')
+            setAdress("")
             setPassword('')
             setCompany('')
             setOrgNr('')
