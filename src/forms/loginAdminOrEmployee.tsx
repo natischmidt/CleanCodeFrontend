@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
+import {  useUserType} from "../components/UserTypeContext";
 
 const LoginAdminOrEmployeeForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const goToHomePage= useNavigate();
+    const goToHomePage = useNavigate();
+    const { setUserType } = useUserType();
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
+    };
+
+
+    const handleLogin = (userType: 'Admin' | 'Customer' | 'Employee') => {
+        setUserType(userType);
+        goToHomePage(`/${userType}Home`);
     };
 
     return (
@@ -31,26 +39,33 @@ const LoginAdminOrEmployeeForm = () => {
                     required
                 />
                 <div className="buttonContainer">
-                <button type="submit" style={styles.button}
-                        onClick={() => {{goToHomePage(("/AdminHome"))}}}
-                >
-                    Login admin
-                </button>
-                <button type="submit" style={styles.button}
-                        onClick={() => {{goToHomePage(("/CustomerHome"))}}}
-                >
-                    Login customer
-                </button>
-                <button type="submit" style={styles.button}
-                        onClick={() => {{goToHomePage(("/EmployeeHome"))}}}
-                >
-                    Login employee
-                </button>
-                    </div>
+                    <button
+                        type="button"
+                        style={styles.button}
+                        onClick={() => handleLogin('Admin')}
+                    >
+                        Login admin
+                    </button>
+                    <button
+                        type="button"
+                        style={styles.button}
+                        onClick={() => handleLogin('Customer')}
+                    >
+                        Login customer
+                    </button>
+                    <button
+                        type="button"
+                        style={styles.button}
+                        onClick={() => handleLogin('Employee')}
+                    >
+                        Login employee
+                    </button>
+                </div>
             </form>
         </div>
     );
 };
+
 
 export default LoginAdminOrEmployeeForm;
 
