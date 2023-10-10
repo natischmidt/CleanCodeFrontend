@@ -1,10 +1,9 @@
 import Header from "../reusableComponents/header";
 import AddBookingOption from "../components/addBookingOption";
-
 import Footer from "../reusableComponents/footer";
-import BookingTable2 from "../components/tabels/BookingTable2";
 import {useState} from "react";
 import EditBookingForm from "../forms/editBooking";
+import BookingTable from "../components/tabels/BookingTable";
 
 
 export default function BookingPage() {
@@ -25,7 +24,7 @@ export default function BookingPage() {
         <>
             <Header/>
             {! showUpdateBooking ?<div className="bookingCont">
-                    <AddBookingOption/> && <BookingTable2 onUpdate={(jobId : number) => handleUpdate(jobId) } />
+                    <AddBookingOption/> && <BookingTable onUpdate={(jobId : number) => handleUpdate(jobId) } />
             </div>  :
             <EditBookingForm jobId={selectedBookingId} doneWithEdit={handleUpdateComplete} />
             }
