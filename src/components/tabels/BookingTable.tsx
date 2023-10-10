@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Table from "../../reusableComponents/table";
 
+
+//denna används inte, bookingTable2 som gäller
 export const BookingTable: React.FC = () => {
     const [bookingData, setBookingData] = useState<any[]>([]);
 

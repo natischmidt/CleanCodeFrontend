@@ -5,6 +5,7 @@ import Footer from "../../reusableComponents/footer";
 // import CancelWithNumber from "../adminForms/cancelWithNumber";
 // import CancelBooking from "../adminForms/cancelBooking";
 
+/*
 export default function BookingPage() {
     return (
         <>
@@ -14,4 +15,4 @@ export default function BookingPage() {
             <Footer/>
         </>
     )
-}
+}*/

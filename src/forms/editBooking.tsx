@@ -14,12 +14,12 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
     const [paymentOption, setPaymentOption] = useState("")
     const [squareMeters, setSquareMeters] = useState("")
     const [timeSlot, setTimeSlot] = useState("")
+    const [message, setMessage] = useState<string>("");
 
-    console.log(jobId + " ????????????????")
+
 
     useEffect(() => {
 
-        console.log(jobId + " !!!!!!!!!!!!!!!!!")
 
         if (jobId !== null) {
             const preFillForm = async () => {
@@ -54,7 +54,7 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
         e.preventDefault();
         try {
             if (jobId !== null) {
-                const url = `http://localhost:8080/api/jobs/update/${jobId}`;
+                const url = `http://localhost:8080/api/jobs/update/`;
 
                 const editJobData = {
                     date,
@@ -66,13 +66,8 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                     timeSlot,
                 };
 
-                const headers = {
-                    'jobId': jobId,
-                };
 
-                await axios.put(url, editJobData,
-                    { headers }
-                );
+                await axios.put(url, editJobData, {params: {message}});
                 console.log('Job was updated');
                 doneWithEdit();
             }
@@ -121,14 +116,20 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                     disabled={true}
                     required
                 />
-                <input
-                    type="text"
-                    placeholder="Job Status"
-                    style={styles.input}
+                <select
                     value={jobStatus}
+                    style={styles.input}
                     onChange={(e) => setJobStatus(e.target.value)}
-                    required
-                />
+                >
+                    <option value="">Choose job status:</option>
+                    <option value="PENDING">Pending</option>
+                    <option value="DONE">Done</option>
+                    <option value="COMPLETED">Completed</option>
+                    <option value="APPROVED">Approved</option>
+                    <option value="UNAPPROVED">Unapproved</option>
+                    <option value="PAID">Paid</option>
+                    <option value="CANCELLED">Cancelled</option>
+                </select>
                 <input
                     type="text"
                     placeholder="sqm"
@@ -138,13 +139,21 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                     disabled={true}
                     required
                 />
+                <select
+                    value={paymentOption}
+                    style={styles.input}
+                    onChange={(e) => setPaymentOption(e.target.value)}
+                >
+                    <option value="">Choose payment option:</option>
+                    <option value="KLARNA">Klarna</option>
+                    <option value="CASH">Cash</option>
+                </select>
                 <input
                     type="text"
-                    placeholder="Payment option"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="send a message?"
                     style={styles.input}
-                    value={paymentOption}
-                    onChange={(e) => setPaymentOption(e.target.value)}
-                    required
                 />
 
                 <button type="submit" style={styles.button}>
