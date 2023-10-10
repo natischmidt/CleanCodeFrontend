@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Table from "../../reusableComponents/table";
-
 interface bookingTableProps {
     onUpdate: (jobId : number) => void;
 }
+const BookingTable: React.FC<bookingTableProps> = ({ onUpdate }) => {
 
-export const BookingTable: React.FC <bookingTableProps> = ({ onUpdate }) => {
     const [deleted, setDeleted] = useState(0);
     const [customerData, setCustomerData] = useState<any[]>([]);
 
@@ -69,6 +68,8 @@ export const BookingTable: React.FC <bookingTableProps> = ({ onUpdate }) => {
         </div>
     )
 };
+
+export default BookingTable
 
 const styles = {
     bookingTable: {
