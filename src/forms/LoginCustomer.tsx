@@ -3,8 +3,8 @@ import {useNavigate} from "react-router-dom";
 import {  useUserType} from "../components/UserTypeContext";
 import axios from "axios";
 
-const LoginAdminOrEmployeeForm = () => {
-    const [email, setEmail] = useState('lisa.gronberg@stadafint.se');
+const LoginCustomer = () => {
+    const [email, setEmail] = useState('lars.olofsson@malari.se');
     const [password, setPassword] = useState('password');
     const goToHomePage = useNavigate();
     const { setUserType } = useUserType();
@@ -13,27 +13,24 @@ const LoginAdminOrEmployeeForm = () => {
         e.preventDefault();
     };
 
-    //userType: 'Admin' | 'Employee'
-    //setUserType(userType);
-    //goToHomePage(`/${userType}Home`);
     const handleLogin = async () => {
-        const url = "http://localhost:8080/api/auth/loginEmployee"
+        const url = "http://localhost:8080/api/auth/loginCustomer"
         const content = {
             email,
             password
         }
 
         try {
-            const resp = await axios.post(url, content)
+            const resp = await axios.post(url, content);
             const response = resp.data
 
-            if (response.id && (response.role === "ADMIN" || response.role ==="EMPLOYEE")){
-                setUserType(response.role) // sätter det i context
-                goToHomePage(`/${response.role}Home`)
+            if (response) {
+                setUserType(null) // sätter det i context + att detta kan dra sig, nån får fixa :))
+                goToHomePage(`/CustomerHome`)
             } else {
                 console.log("hur tusan hamna vi här?")
             }
-        } catch (error){
+        } catch (error) {
             console.log("neeeej?")
             console.log(error)
         }
@@ -41,12 +38,8 @@ const LoginAdminOrEmployeeForm = () => {
 
     return (
         <div style={styles.container}>
-            <div>
-                <p style={styles.introText}>admin dummy : lisa.gronberg@stadafint.se pw : password </p>
-                <p style={styles.introText}>employee dummy : kent.andersson@stadafint.se pw : password </p>
-            </div>
             <form style={styles.form} onSubmit={handleSubmit}>
-                <h1>Login Employee/Admin</h1>
+                <h1>Login Customer</h1>
                 <input
                     type="text"
                     placeholder="Email"
@@ -80,7 +73,7 @@ const LoginAdminOrEmployeeForm = () => {
 };
 
 
-export default LoginAdminOrEmployeeForm;
+export default LoginCustomer;
 
 const styles = {
     buttonContainer: {
@@ -94,7 +87,6 @@ const styles = {
         display: 'flex',
         flexDirection: 'column' as 'column',
         alignItems: 'center',
-        justifyContent: 'center'
     },
     form: {
         display: 'flex',
