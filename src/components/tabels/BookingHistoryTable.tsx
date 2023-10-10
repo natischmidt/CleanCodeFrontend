@@ -1,28 +1,15 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Table from "../../reusableComponents/table";
+import admin from "../../API/admin";
 
 const BookingHistoryTable = () => {
 
     const [historyData, setHistoryData] = useState<any[]>([])
 
     useEffect(() => {
-        const fetchJobs = async () => {
-            try {
-                const statuses = ['DONE', 'APPROVED', 'UNAPPROVED', 'PAID', 'CANCELLED'];
-                const response = await axios.get('http://localhost:8080/api/jobs/getByStatus', {
-                    params: { statuses },
-                    paramsSerializer: params => {
-                        return `statuses=${statuses.join('&statuses=')}`
-                    }
-                });
-
-                const formattedData = response.data.map((job: { date: string | number | Date; }) => {
-                    const date = new Date(job.date);
-                    const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-                    return { ...job, date: formattedDate };
-                });
-
+        const fetchData = async () => {
+            try {const formattedData = await admin.getJobByStatus();
                 setHistoryData(formattedData);
                 console.log(formattedData);
 
@@ -31,7 +18,7 @@ const BookingHistoryTable = () => {
             }
         };
 
-        fetchJobs();
+        fetchData().then(r => {});
     }, []);
 
     const columns = [
