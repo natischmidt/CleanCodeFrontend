@@ -1,13 +1,16 @@
 import Header from "../../reusableComponents/header";
 import Footer from "../../reusableComponents/footer";
 import Dashboard from "../../reusableComponents/dashboard";
-import { adminStyles, customerStyles, employeeStyles} from "../../styles/styles";
-import React, {useState} from "react";
-
+import {customerStyles} from "../../styles/styles";
+import React from "react";
+import {useUserType} from "../../components/UserTypeContext";
 
 
 export const CustomerHomePage: React.FC = () => {
-    const [userType, setUserType] = useState("customer");
+    const { userType } = useUserType();
+    const selectedStyles =
+        userType === "Customer" ? customerStyles : {};
+
 
     const testUserData = {
         firstname: 'Testkund',
@@ -19,33 +22,15 @@ export const CustomerHomePage: React.FC = () => {
         phoneNumber: '555-555-5555',
     };
 
-    let pageStyles: React.CSSProperties;
-
-    //this can be replaced with a context to check the usertype instead
-    if (userType === "admin") {
-        pageStyles = adminStyles;
-    } else if (userType === "user") {
-        pageStyles = employeeStyles;
-    } else {
-        pageStyles = customerStyles;
-    }
-
     return (
         <>
-            <div className="custom-style-customer" style={pageStyles}>
+
             <Header />
+            <div style={{ ...selectedStyles }}>
                 CUSTOMER PAGE
                 <Dashboard userType="customer" userData={testUserData} />
-            <Footer />
             </div>
+            <Footer />
         </>
     );
 };
-// const customerStyles: React.CSSProperties = {
-//     backgroundColor: "#f0f0f0",
-//     padding: "20px",
-//     border: "1px solid #ccc",
-//     borderRadius: "5px",
-//     boxShadow: "0 0 5px rgba(0, 0, 0, 0.2)",
-//     textAlign: "center",
-// };

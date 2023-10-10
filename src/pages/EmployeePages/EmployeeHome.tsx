@@ -1,32 +1,24 @@
 import Header from "../../reusableComponents/header";
 import EmployeeFooter from "./EmployeeFooter";
-import {adminStyles, customerStyles, employeeStyles} from "../../styles/styles";
-import React, {useState} from "react";
-
-
-
+import {employeeStyles} from "../../styles/styles";
+import React from "react";
+import {useUserType} from "../../components/UserTypeContext";
 
 export default function EmployeeHomePage() {
-    const [userType, setUserType] = useState("employee");
 
-    let pageStyles: React.CSSProperties;
+    const { userType } = useUserType();
 
-    //this can be replaced with a context to check the usertype instead
-    if (userType === "admin") {
-        pageStyles = adminStyles;
-    } else if (userType === "user") {
-        pageStyles = employeeStyles;
-    } else {
-        pageStyles = customerStyles;
-    }
+    const selectedStyles =
+        userType === "Employee" ? employeeStyles : {};
 
     return (
         <>
-            <div className="custom-style-emp" style={pageStyles}>
+
             <Header/>
+            <div style={{ ...selectedStyles }}>
             {/*<Dashboard userType="employee" userData={ } />*/}
-            <EmployeeFooter/>
             </div>
+            <EmployeeFooter/>
         </>
     )
 }

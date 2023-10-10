@@ -1,13 +1,15 @@
 import Header from "../../reusableComponents/header";
 import AdminFooter from "./AdminFooter";
 import Dashboard from "../../reusableComponents/dashboard";
-import React, {useState} from "react";
-import {adminStyles, customerStyles, employeeStyles} from "../../styles/styles";
+import React from "react";
+import {useUserType} from "../../components/UserTypeContext";
+import { adminStyles } from "../../styles/styles";
 
 export const AdminHome : React.FC = () => {
-    const [userType, setUserType] = useState("admin");
+    const { userType } = useUserType();
 
-
+    const selectedStyles =
+        userType === "Admin" ? adminStyles : {};
 
     const testUserData = {
         firstname: 'Test',
@@ -19,24 +21,14 @@ export const AdminHome : React.FC = () => {
         phoneNumber: '555-555-5555',
     };
 
-    let pageStyles: React.CSSProperties;
-
-    //this can be replaced with a context to check the usertype instead
-    if (userType === "admin") {
-        pageStyles = adminStyles;
-    } else if (userType === "user") {
-        pageStyles = employeeStyles;
-    } else {
-        pageStyles = customerStyles;
-    }
-
     return (
         <>
-            <div className="custom-style-admin" style={pageStyles}>
             <Header/>
+            <div style={{ ...selectedStyles }}>
             <Dashboard userType="admin" userData={testUserData} />
+            </div>
             <AdminFooter/>
-                </div>
+
         </>
     )
 }
