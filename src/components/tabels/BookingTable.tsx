@@ -15,15 +15,15 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate}) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const formattedData = await admin.getAllJobs();
-                setCustomerData(formattedData);
+                const formattedData = await admin.getAllJobs()
+                setCustomerData(formattedData)
             } catch (error) {
-                console.error('Error fetching jobs:', error);
+                console.error('Error fetching jobs:', error)
             }
-        };
+        }
         fetchData().then(r => {
-        });
-    }, [deleted]);
+        })
+    }, [deleted])
 
 
     const columns = [
@@ -63,7 +63,7 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate}) => {
                 data={customerData}
                 onDelete={handleDelete}
                 onUpdate={handleUpdate}
-            />;
+            />
         </div>
     )
 };
