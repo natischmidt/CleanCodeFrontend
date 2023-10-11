@@ -86,6 +86,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
+        color: 'black',
     },
     section: {
         flex: 1,

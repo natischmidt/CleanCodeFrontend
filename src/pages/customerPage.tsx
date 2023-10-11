@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import Header from "../reusableComponents/header";
-// import Footer from "../reusableComponents/footer";
+// import CustomerFooter from "../reusableComponents/footer";
 import {CustomerTable} from "../components/tabels/CustomerTable";
-import Footer from "../reusableComponents/footer";
+import CustomerFooter from "../components/CustomerComponents/CustomerFooter";
 import EditCustomerForm from "../forms/editCustomerForm";
 
 export default function CustomerPage() {
@@ -24,7 +24,7 @@ export default function CustomerPage() {
             <h2>Customer Table</h2>
             {!showUpdateCustomer ? <CustomerTable onUpdate={(cusId: number) => handleUpdate(cusId)} /> :
             <EditCustomerForm cusId={selectedCustomerId} doneWithEdit={handleUpdateComplete} /> }
-            {/*<Footer/>*/}
+            {/*<CustomerFooter/>*/}
         </>
     )
 }

@@ -1,6 +1,6 @@
 import Header from "../reusableComponents/header";
 import AddBookingOption from "../components/addBookingOption";
-import Footer from "../reusableComponents/footer";
+import CustomerFooter from "../components/CustomerComponents/CustomerFooter";
 import {useState} from "react";
 import EditBookingForm from "../forms/editBooking";
 import BookingTable from "../components/tabels/BookingTable";
@@ -28,7 +28,7 @@ export default function BookingPage() {
             </div>  :
             <EditBookingForm jobId={selectedBookingId} doneWithEdit={handleUpdateComplete} />
             }
-            {/*<Footer/>*/}
+            {/*<CustomerFooter/>*/}
         </>
     )
 }

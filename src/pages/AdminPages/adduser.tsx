@@ -1,13 +1,13 @@
 import Header from "../../reusableComponents/header";
 import AddUserOption from "../../components/addUserOption";
-import Footer from "../../reusableComponents/footer";
+import CustomerFooter from "../../components/CustomerComponents/CustomerFooter";
 
 export default function AddUserPage() {
     return (
         <>
             <Header/>
             <AddUserOption/>
-            <Footer/>
+            <CustomerFooter/>
         </>
     )
 }

@@ -17,6 +17,7 @@ import CreateNewBooking from "./adminForms/createBooking";
 import GettingIdNumber from "./adminForms/gettingIdNumber";
 import CancelWithNumber from "./adminForms/cancelWithNumber";
 import EditEmployeeForm from "./forms/editEmployee";
+import {CustomerMyPages} from "./pages/CustomerPages/CustomerMyPages"
 import {CustomerHomePage} from "./pages/CustomerPages/CustomerHome";
 import EmployeeHomePage from "./pages/EmployeePages/EmployeeHome";
 //import OverviewPage from "./pages/overviewpage";
@@ -30,6 +31,7 @@ function Routing() {
                     <Route path="/" element={<LoginPage/>} />
                     <Route path="/AdminHome" element={<AdminHome/>}/>
                     <Route path="/CustomerHome" element={<CustomerHomePage/>}/>
+                    <Route path="/CustomerMyPages" element={<CustomerMyPages/>}/>
                     <Route path="/EmployeeHome" element={<EmployeeHomePage/>}/>
                     <Route path="/Booking" element={<BookingPage/>}/>
                     <Route path="/Employees" element={<EmployeePage/>}/>
