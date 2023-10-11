@@ -1,7 +1,7 @@
 import Header from "../../reusableComponents/header";
 import React, {useState} from "react";
 import {EmployeeTable} from "../../components/tabels/EmployeeTable";
-// import Footer from "../reusableComponents/footer";
+// import CustomerFooter from "../reusableComponents/footer";
 import EditEmployeeForm from "../../forms/editEmployee";
 
 
@@ -24,7 +24,7 @@ export default function EmployeePage() {
             <h2>Employee Table</h2>
             { !showUpdateEmployee ? <EmployeeTable onUpdate={(empId: number) => handleUpdate(empId)} /> :
                 <EditEmployeeForm  empId={selectedEmployeeId} doneWithEdit={handleUpdateComplete}/>}
-            {/*<Footer/>*/}
+            {/*<CustomerFooter/>*/}
         </>
     )
 }

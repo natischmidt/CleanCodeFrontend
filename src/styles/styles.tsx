@@ -1,5 +1,5 @@
 export const adminStyles: React.CSSProperties = {
-    backgroundColor: '#E2FFF8',
+    backgroundColor: '#73ccb7',
 };
 
 export const employeeStyles: React.CSSProperties = {
@@ -7,5 +7,5 @@ export const employeeStyles: React.CSSProperties = {
 };
 
 export const customerStyles: React.CSSProperties = {
-    backgroundColor: "#f5f0f0",
+    backgroundColor: 'white',
 };
