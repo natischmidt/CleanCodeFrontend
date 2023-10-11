@@ -223,7 +223,7 @@ const CreateNewBooking: React.FC = () => {
                         <option value="CASH">Cash</option>
                     </select>
                     <input
-                        type="number"
+                        type="text"
                         placeholder="Customer ID"
                         style={styles.input}
                         value={customer}
