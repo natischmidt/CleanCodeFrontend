@@ -106,7 +106,7 @@ const admin = {
 
             console.log("................*********" + timeSlotList)
             try {
-                const Url = 'http://localhost:8080/api/jobs/createJob/';
+                const Url = 'http://localhost:8080/api/jobs/createJob';
 
                 const bookingData = {
                     jobtype: jobType,
