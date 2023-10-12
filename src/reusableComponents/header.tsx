@@ -1,4 +1,4 @@
-import logo from "../assets/logo3.png";
+import logo from "../assets/stadaFint.png";
 import {useNavigate} from "react-router-dom";
 import React from "react";
 export default function Header() {

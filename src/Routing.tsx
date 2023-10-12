@@ -20,6 +20,7 @@ import EditEmployeeForm from "./forms/editEmployee";
 import {CustomerMyPages} from "./pages/CustomerPages/CustomerMyPages"
 import {CustomerHomePage} from "./pages/CustomerPages/CustomerHome";
 import EmployeeHomePage from "./pages/EmployeePages/EmployeeHome";
+import CustomerBookingPage from "./pages/CustomerPages/CustomerBookingPage";
 //import OverviewPage from "./pages/overviewpage";
 //import TransactionPage from "./pages/transactionoverview";
 
@@ -32,6 +33,7 @@ function Routing() {
                     <Route path="/AdminHome" element={<AdminHome/>}/>
                     <Route path="/CustomerHome" element={<CustomerHomePage/>}/>
                     <Route path="/CustomerMyPages" element={<CustomerMyPages/>}/>
+                    <Route path="/CustomerBooking" element={<CustomerBookingPage/>}/>
                     <Route path="/EmployeeHome" element={<EmployeeHomePage/>}/>
                     <Route path="/Booking" element={<BookingPage/>}/>
                     <Route path="/Employees" element={<EmployeePage/>}/>
