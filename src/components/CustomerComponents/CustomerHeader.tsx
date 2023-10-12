@@ -63,7 +63,7 @@ const CustomerHeader: React.FC = () => {
                     <a href="/CustomerMyPages" style={styles.link}>My Pages</a>
                 </li>
                 <li style={styles.navItem}>
-                    <a href="/Book" style={styles.link}>Book</a>
+                    <a href="/CustomerBooking" style={styles.link}>Book</a>
                 </li>
                 <li style={styles.navItem}>
                     <a href="/MyBookings" style={styles.link}>My Bookings</a>
