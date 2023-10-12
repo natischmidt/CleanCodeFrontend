@@ -38,7 +38,7 @@ const styles = {
 const CustomerFooter: React.FC = () => {
     return (
         <footer style={styles.footer}>
-            <img src="src/assets/logo3.png" alt="Logo" style={styles.logo} />
+            <img src="src/assets/stadaFint.png" alt="Logo" style={styles.logo} />
             <div className="footer-category" style={styles.category}>
                 <h3>Om oss</h3>
                 <ul style={styles.subCategory}>
