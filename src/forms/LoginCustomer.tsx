@@ -25,7 +25,7 @@ const LoginCustomer = () => {
             const response = resp.data
 
             if (response) {
-                setUserType(null) // sätter det i context + att detta kan dra sig, nån får fixa :))
+                setUserType("Customer") // sätter det i context + att detta kan dra sig, nån får fixa :))
                 goToHomePage(`/CustomerHome`)
             } else {
                 console.log("hur tusan hamna vi här?")
