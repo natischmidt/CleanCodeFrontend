@@ -4,7 +4,7 @@ const styles = {
     footer: {
         backgroundColor: 'white',
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-        padding: '20px',
+        padding: '10px',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -65,7 +65,7 @@ const CustomerFooter: React.FC = () => {
                 <h3>Profil</h3>
                 <ul style={styles.subCategory}>
                     <li>
-                        <a href="/MyPages" style={styles.link}>Mina sidor</a>
+                        <a href="/CustomerMyPages" style={styles.link}>Mina sidor</a>
                     </li>
                     <li>
                         <a href="/Settings" style={styles.link}>Inställningar</a>

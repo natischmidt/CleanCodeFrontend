@@ -33,7 +33,7 @@ const styles = {
     },
     button: {
         color: 'black',
-        backgroundColor: 'white',
+        backgroundColor: '#b3d9e3',
         cursor: 'pointer',
         padding: '5px 10px',
         borderRadius: '5px',

@@ -44,11 +44,11 @@ export default Table;
 
 const styles = {
     dataTable: {
-        // marginLeft: "23%",
-        backgroundColor: "#a1decc",
         borderRadius: "5px",
         padding: "15px",
-        marginTop: "3%"
+        marginTop: "3%",
+        boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
+        backgroundColor : "#b3d9e3",
     },
     delete: {
         backgroundColor: "#f83f3f"
