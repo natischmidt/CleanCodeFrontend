@@ -122,7 +122,7 @@ const AddEmployeeForm = () => {
                     Create new Employee
                 </button>
                 <button type="submit" style={styles.button} onClick={() => {{goBackToAddUser(("/AddUser"))}}}>
-                    Go Back
+                    Go back
                 </button>
             </form>
         </div>

@@ -13,10 +13,10 @@ const AddBookingOption = () => {
                 <h1>Booking</h1>
                 <div className="Btns">
                     <button type="submit" className="addBookOptBtn" onClick={() => {{goToCreateNewBooking(("/CreateNewBooking"))}}}>
-                        Create new Booking
+                        Create new booking
                     </button>
                     <button type="submit" className="addBookOptBtn" onClick={() => {{goToUpdateBooking(("/GettingIdNumber"))}}}>
-                        Update Booking
+                        Update booking
                     </button>
                     {/*<button type="submit" className="addBookOptBtn" onClick={() => {{goToCancelBooking(("/CancelWithNumber"))}}}>*/}
                     {/*    Cancel Booking*/}

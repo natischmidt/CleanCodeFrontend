@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 
 import Calendar from "react-calendar";
@@ -36,6 +36,7 @@ const CreateNewBooking: React.FC = () => {
     let times = ["EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN", "FOURTEEN", "FIFTEEN", "SIXTEEN", "notbookable", "notbookable", "notbookable"]
 
     type Value = Date | null;
+
     const [date, setDate] = useState<Value>(new Date());
 
     const handleModal = () => {
@@ -172,7 +173,7 @@ const CreateNewBooking: React.FC = () => {
         <div style={styles.container}>
             {!isModalOpen && (
                 <form style={styles.form} onSubmit={() => handleSelectTime}>
-                    <h2>Create new booking</h2>
+                    <h2>Create new Booking</h2>
                     <select
                         value={jobType}
                         style={styles.select}
@@ -232,14 +233,14 @@ const CreateNewBooking: React.FC = () => {
                     <button type="submit" style={styles.button}
                             onClick={() => handleBooking()}
                     >
-                        Create new booking
+                        Create new Booking
                     </button>
                     <button type="submit" style={styles.button} onClick={() => {
                         {
                             goBackToBooking(("/Booking"))
                         }
                     }}>
-                        Go back
+                        Go Back
                     </button>
 
                 </form>)}
