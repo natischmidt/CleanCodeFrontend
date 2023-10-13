@@ -20,7 +20,6 @@ export const CustomerMyPages: React.FC = () => {
         phoneNumber: '555-555-5555',
     };
 
-    let items = ["Home","My Page", "Services"];
 
     return (
         <>
