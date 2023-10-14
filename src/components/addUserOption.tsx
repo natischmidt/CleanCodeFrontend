@@ -46,7 +46,7 @@ const styles = {
         marginTop: '10%',
     },
     button: {
-        backgroundColor: '#53b067',
+        backgroundColor: '#b3d9e3',
         marginLeft: '5%',
         width: '180px',
         height: '60px',

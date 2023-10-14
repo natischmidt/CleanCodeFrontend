@@ -133,7 +133,7 @@ const styles = {
         padding: '20px',
         border: '2px solid silver',
         borderRadius: '5px',
-        backgroundColor: '#53af67',
+        backgroundColor: '#b3d9e3',
         width: "600px",
         height: '800px',
         marginTop: '120px'
@@ -148,7 +148,7 @@ const styles = {
     },
     button: {
         padding: '13px 25px',
-        backgroundColor: '#0d714a',
+        backgroundColor: '#2b7285',
         color: 'white',
         border: 'none',
         borderRadius: '10px',

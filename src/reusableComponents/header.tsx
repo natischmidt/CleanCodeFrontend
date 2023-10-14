@@ -52,7 +52,7 @@ const styles = {
         marginTop: '10px',
     },
     btn: {
-        backgroundColor: '#53b067',
+        backgroundColor: '#b3d9e3',
         marginLeft: '1%',
         width: '200px',
         height: '60px',
