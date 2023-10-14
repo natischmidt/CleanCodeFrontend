@@ -1,6 +1,4 @@
 import '../../App.css'
-import BookingTable from "../tabels/BookingTable";
-import BookingHistoryTable from "../tabels/BookingHistoryTable";
 import React, {useRef, useState} from "react";
 import Calendar from "react-calendar";
 import admin from "../../API/admin";
@@ -8,9 +6,13 @@ import admin from "../../API/admin";
 const AddCustomerBookingOption = () => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isSquareModalOpen, setIsSquareModalOpen] = useState(false);
+    const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
     const [hours, setHours] = useState(0)
     const [jobType, setJobType] = useState('');
     const [showCalender, setShowCalender] = useState(false)
+    const [squareMeters, setSquareMeters] = useState('');
+    const [paymentOption, setPaymentOption] = useState("")
 
     type Value = Date | null;
     const [date, setDate] = useState<Value>(new Date());
@@ -34,6 +36,18 @@ const AddCustomerBookingOption = () => {
 
     const handleModal = () => {
         setIsModalOpen(!isModalOpen);
+    }
+
+    const handleSquarePaymentModal = () => {
+        setIsSquareModalOpen(!isSquareModalOpen);
+    }
+
+    const handleCalender = () => {
+        setShowCalender(!showCalender);
+    }
+
+    const handleConfirm = () => {
+        setIsConfirmModalOpen(!isConfirmModalOpen)
     }
 
     function handleJobType(jobType: string) {
@@ -174,12 +188,12 @@ const AddCustomerBookingOption = () => {
                             <button onClick={() => handleJobType("WINDOW")}>WINDOW</button>
                         </div>
                     </div>
-                    {jobType}
+                    {/*{jobType}*/}
                 </div>)}
 
             <div style={styles.container}>
                 {showCalender && isModalOpen ? (
-                    <div>
+                    <div style={styles.calenderStyles}>
                         <div style={styles.sectionTitle}>
                             <p>Choose date and time</p>
                         </div>
@@ -198,31 +212,102 @@ const AddCustomerBookingOption = () => {
                 {isModalOpen && (
                     <>
                         <div style={styles.slotsContainer}>
-                                {eight &&
-                                    <button style={styles.slots} onClick={(e) => handleSelectTime(e, 8)}>08.00</button>}
-                                {nine &&
-                                    <button style={styles.slots} onClick={(e) => handleSelectTime(e, 9)}>09.00</button>}
-                                {ten && <button style={styles.slots}
-                                                onClick={(e) => handleSelectTime(e, 10)}>10.00</button>}
-                                {eleven && <button style={styles.slots}
-                                                   onClick={(e) => handleSelectTime(e, 11)}>11.00</button>}
-                                {twelve && <button style={styles.slots}
-                                                   onClick={(e) => handleSelectTime(e, 12)}>12.00</button>}
-                                {thirteen && <button style={styles.slots}
-                                                     onClick={(e) => handleSelectTime(e, 13)}>13.00</button>}
-                                {fourteen && <button style={styles.slots}
-                                                     onClick={(e) => handleSelectTime(e, 14)}>14.00</button>}
-                                {fifteen && <button style={styles.slots}
-                                                    onClick={(e) => handleSelectTime(e, 15)}>15.00</button>}
-                                {sixteen && <button style={styles.slots}
-                                                    onClick={(e) => handleSelectTime(e, 16)}>16.00</button>}
+                            {eight &&
+                                <button style={styles.slots} onClick={(e) => handleSelectTime(e, 8)}>08.00</button>}
+                            {nine &&
+                                <button style={styles.slots} onClick={(e) => handleSelectTime(e, 9)}>09.00</button>}
+                            {ten && <button style={styles.slots}
+                                            onClick={(e) => handleSelectTime(e, 10)}>10.00</button>}
+                            {eleven && <button style={styles.slots}
+                                               onClick={(e) => handleSelectTime(e, 11)}>11.00</button>}
+                            {twelve && <button style={styles.slots}
+                                               onClick={(e) => handleSelectTime(e, 12)}>12.00</button>}
+                            {thirteen && <button style={styles.slots}
+                                                 onClick={(e) => handleSelectTime(e, 13)}>13.00</button>}
+                            {fourteen && <button style={styles.slots}
+                                                 onClick={(e) => handleSelectTime(e, 14)}>14.00</button>}
+                            {fifteen && <button style={styles.slots}
+                                                onClick={(e) => handleSelectTime(e, 15)}>15.00</button>}
+                            {sixteen && <button style={styles.slots}
+                                                onClick={(e) => handleSelectTime(e, 16)}>16.00</button>}
 
-                            <div>
-                                <button type="submit" style={styles.button} onClick={handleModal}>Confirm</button>
-                                <button type="submit" style={styles.button} onClick={handleModal}>Close</button>
-                            </div>
+                            {showCalender && (<div>
+                                <button type="submit" style={styles.button} onClick={() => {
+                                    handleSquarePaymentModal();
+                                    handleCalender()
+                                }}>Next
+                                </button>
+                                <button type="submit" style={styles.button} onClick={handleModal}>Go back
+                                </button>
+                            </div>)}
+
+                            {isSquareModalOpen &&
+                                <div style={styles.form}>
+                                    <form style={styles.form} onSubmit={() => {
+                                    }}>
+                                        <div style={styles.sectionTitle}>
+                                            <p>Whats the size of your accommodation?</p>
+                                        </div>
+                                        <input
+                                            type="square"
+                                            placeholder="Square meters"
+                                            style={styles.input}
+                                            value={squareMeters}
+                                            onChange={(e) => setSquareMeters(e.target.value)}
+                                            required
+                                        />
+                                        <div style={styles.sectionTitle}>
+                                            <p>Choose payment method</p>
+                                        </div>
+                                        <select
+                                            value={paymentOption}
+                                            style={styles.input}
+                                            onChange={(e) => setPaymentOption(e.target.value)}
+                                        >
+                                            <option value="">Choose payment option:</option>
+                                            <option value="KLARNA">Klarna</option>
+                                            <option value="CASH">Cash</option>
+                                        </select>
+                                    </form>
+                                    <div style={styles.button}>
+                                        <button type="submit" style={styles.button} onClick={() => {
+                                            handleConfirm();
+                                            handleSquarePaymentModal();
+                                        }}>Next
+                                        </button>
+                                        <button type="submit" style={styles.button} onClick={() => {
+                                            handleSquarePaymentModal()
+                                            handleCalender()
+                                        }}>Go back
+                                        </button>
+                                    </div>
+                                </div>
+                            }
                         </div>
-
+                        {isConfirmModalOpen &&
+                            <div>
+                                <div style={styles.sectionTitle}>
+                                    <p>Confirm your booking: </p>
+                                </div>
+                                {"Jobtype: " + jobType}
+                                <p></p>
+                                {"Date: " + date}
+                                <p></p>
+                                {"Square meters: " + squareMeters}
+                                <p></p>
+                                {"Payment method: " + paymentOption}
+                                <div style={styles.button}>
+                                    <button type="submit" style={styles.button} onClick={() => {
+                                    }}>Confirm booking
+                                    </button>
+                                    <button type="submit" style={styles.button} onClick={() => {
+                                        handleConfirm();
+                                        handleModal();
+                                    }}>Cancel booking
+                                    </button>
+                                </div>
+                            </div>
+                        }
                     </>
                 )}
             </div>
@@ -245,6 +330,12 @@ const styles: { [key: string]: React.CSSProperties } = {
         alignItems: 'center',
         textAlign: 'center',
         marginTop: '10%'
+    },
+    form: {
+        display: 'flex',
+        alignItems: 'center',
+        textAlign: 'center',
+        flexDirection: 'column'
     },
     sectionTitle: {
         fontWeight: 'bold',
@@ -270,4 +361,10 @@ const styles: { [key: string]: React.CSSProperties } = {
         flexDirection: 'column' as 'column',
         alignItems: 'center',
     },
+    calenderStyles: {
+        backgroundColor: "#b3d9e3"
+    },
+    button: {
+        margin: 25,
+    }
 };
