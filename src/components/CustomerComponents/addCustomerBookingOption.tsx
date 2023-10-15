@@ -391,7 +391,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         display: 'flex',
         width: '20%',
         height: '180px',
-        border: '1px solid #ccc',
+        border: '3px solid #ccc',
         padding: '10px',
         margin: '10px',
         justifyContent: 'center',
