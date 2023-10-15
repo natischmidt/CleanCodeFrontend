@@ -2,6 +2,10 @@ import '../../App.css'
 import React, {useRef, useState} from "react";
 import Calendar from "react-calendar";
 import admin from "../../API/admin";
+import diamond from "../../assets/diamond3.png";
+import basic from "../../assets/basic.png";
+import advanced from "../../assets/advanced.png";
+import windoww from "../../assets/window.png";
 
 const AddCustomerBookingOption = () => {
 
@@ -203,16 +207,16 @@ const AddCustomerBookingOption = () => {
                         <p>What cleaning are you interested in?</p>
                     </div>
                     <div style={styles.boxContainer}>
-                        <div style={styles.box}>
+                        <div style={{ ...styles.box, backgroundImage: `url(${basic})` }}>
                             <button onClick={() => handleJobType("BASIC")}>BASIC</button>
                         </div>
-                        <div style={styles.box}>
+                        <div style={{ ...styles.box, backgroundImage: `url(${advanced})` }}>
                             <button onClick={() => handleJobType("ADVANCED")}>ADVANCED</button>
                         </div>
-                        <div style={styles.box}>
+                        <div style={{ ...styles.box, backgroundImage: `url(${diamond})` }}>
                             <button onClick={() => handleJobType("DIAMOND")}>DIAMOND</button>
                         </div>
-                        <div style={styles.box}>
+                        <div style={{ ...styles.box, backgroundImage: `url(${windoww})` }}>
                             <button onClick={() => handleJobType("WINDOW")}>WINDOW</button>
                         </div>
                     </div>
@@ -383,6 +387,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         justifyContent: 'center',
     },
     box: {
+        backgroundImage: `url(${diamond})`,
         display: 'flex',
         width: '20%',
         height: '180px',
