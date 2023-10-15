@@ -28,6 +28,10 @@ const CreateNewBooking: React.FC = () => {
     const [sixteen, setSixteen] = useState(false)
     // const [timeList, setTimeList] = useState<[]>([])
     const [timeList,setTimeList] = useState([])
+
+    const dayCorr = useRef(0)
+    const dayToUse = useRef('')
+    const dayString = useRef('')
     const monthCorr = useRef(0)
     const monthToUse = useRef('')
     const monthString = useRef('')
@@ -63,16 +67,25 @@ const CreateNewBooking: React.FC = () => {
 
             yearToUse.current = day.getFullYear().valueOf()
             monthCorr.current = day.getMonth() + 1
+            dayCorr.current = day.getDate();
 
             if (monthCorr.current < 10) {
                 monthToUse.current = 0 + monthCorr.current.toString()
-                monthString.current = '0' + monthToUse.current
+                monthString.current = '' + monthToUse.current
             } else {
                 monthToUse.current = monthCorr.current.toString()
                 monthString.current = monthToUse.current
             }
 
-            dateToUse.current = yearToUse.current + "-" + monthString.current + "-" + day.getDate()
+            if (dayCorr.current < 10) {
+                dayToUse.current = 0 + dayCorr.current.toString()
+                dayString.current = '' + dayToUse.current
+            } else {
+                dayToUse.current = dayCorr.current.toString()
+                dayString.current = dayToUse.current
+            }
+
+            dateToUse.current = yearToUse.current + "-" + monthString.current + "-" + dayToUse.current;
 
             await admin.getAvailableEmp(dateToUse.current, hours).then(response => {
                 if (response) {

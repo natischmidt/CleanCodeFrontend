@@ -19,6 +19,9 @@ const AddCustomerBookingOption = () => {
     const [date, setDate] = useState<Value>(new Date());
     const [timeList, setTimeList] = useState([])
 
+    const dayCorr = useRef(0)
+    const dayToUse = useRef('')
+    const dayString = useRef('')
     const monthCorr = useRef(0)
     const monthToUse = useRef('')
     const monthString = useRef('')
@@ -78,16 +81,26 @@ const AddCustomerBookingOption = () => {
 
             yearToUse.current = day.getFullYear().valueOf()
             monthCorr.current = day.getMonth() + 1
+            dayCorr.current = day.getDate();
 
             if (monthCorr.current < 10) {
                 monthToUse.current = 0 + monthCorr.current.toString()
-                monthString.current = '0' + monthToUse.current
+                monthString.current = '' + monthToUse.current
             } else {
                 monthToUse.current = monthCorr.current.toString()
                 monthString.current = monthToUse.current
             }
 
-            dateToUse.current = yearToUse.current + "-" + monthString.current + "-" + day.getDate()
+            if (dayCorr.current < 10) {
+                dayToUse.current = 0 + dayCorr.current.toString()
+                dayString.current = '' + dayToUse.current
+            } else {
+                dayToUse.current = dayCorr.current.toString()
+                dayString.current = dayToUse.current
+            }
+
+            dateToUse.current = yearToUse.current + "-" + monthString.current + "-" + dayToUse.current;
+            // @ts-ignore
 
             await admin.getAvailableEmp(dateToUse.current, hours).then(response => {
                 if (response) {
@@ -103,10 +116,12 @@ const AddCustomerBookingOption = () => {
                 }
             })
         }
+        // @ts-ignore
+        setDate(dateToUse.current);
         setShowTimeSlots(true);
         console.log(dateToUse.current);
         // @ts-ignore
-        setDate(dateToUse.current);
+
     }
 
     const handleSelectTime = async (event: React.MouseEvent<HTMLButtonElement>, startTime: number) => {
@@ -266,7 +281,7 @@ const AddCustomerBookingOption = () => {
                                             <p>Whats the size of your accommodation?</p>
                                         </div>
                                         <input
-                                            type="square"
+                                            type="number"
                                             placeholder="Square meters"
                                             style={styles.input}
                                             value={squareMeters}
@@ -287,10 +302,11 @@ const AddCustomerBookingOption = () => {
                                         </select>
                                     </form>
                                     <div style={styles.button}>
-                                        <button type="submit" style={styles.bookButton} onClick={() => {
-                                            handleConfirm();
-                                            handleSquarePaymentModal();
-                                        }}>Next
+                                        <button type="submit" style={styles.bookButton}
+                                            onClick={() => {
+                                                handleConfirm();
+                                                handleSquarePaymentModal();
+                                            }}>Next
                                         </button>
                                         <button type="submit" style={styles.bookButton} onClick={() => {
                                             handleSquarePaymentModal()
@@ -308,9 +324,12 @@ const AddCustomerBookingOption = () => {
                                 </div>
                                 {
                                     <div>
-                                        You want to have your accommodation cleaned on {date}, {timeList.toString().toLowerCase()} a'clock.
-                                        You have chosen our {jobType.toLowerCase()} service which takes {hours} hour(s) for completion.<br />
-                                        The size of your accommodation is {squareMeters} square meters and you wish to pay with {paymentOption}.
+                                        You want to have your accommodation cleaned
+                                        on {date}, {timeList.toString().toLowerCase()} a'clock.
+                                        You have chosen our {jobType.toLowerCase()} service which takes {hours} hour(s)
+                                        for completion.<br/>
+                                        The size of your accommodation is {squareMeters} square meters and you wish to
+                                        pay with {paymentOption}.
                                     </div>
                                 }
 
