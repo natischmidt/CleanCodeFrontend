@@ -336,6 +336,7 @@ const AddCustomerBookingOption = () => {
                                             value={paymentOption}
                                             style={styles.input}
                                             onChange={(e) => setPaymentOption(e.target.value)}
+                                            required
                                         >
                                             <option value="">Choose payment option:</option>
                                             <option value="KLARNA">Klarna</option>
@@ -351,7 +352,6 @@ const AddCustomerBookingOption = () => {
                                             </button>
                                         </div>
                                     </form>
-
                                 </div>
                             }
                         </div>
@@ -363,7 +363,7 @@ const AddCustomerBookingOption = () => {
                                 {
                                     <div>
                                         You want to have your accommodation cleaned
-                                        on {date}, {timeList.toString().toLowerCase()} a'clock.
+                                        on {date}, {timeList[0].toLowerCase()} a'clock.
                                         You have chosen our {jobType.toLowerCase()} service which takes {hours} hour(s)
                                         for completion.<br/>
                                         The size of your accommodation is {squareMeters} square meters and you wish to
