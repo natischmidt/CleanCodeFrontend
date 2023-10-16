@@ -3,14 +3,14 @@ import React, {useRef, useState} from "react";
 import Calendar from "react-calendar";
 import admin from "../../API/admin";
 import diamond from "../../assets/diamond3.png";
-import basic from "../../assets/basic.png";
-import advanced from "../../assets/advanced.png";
-import windowclean from "../../assets/window.png";
+import basic from "../../assets/basic2.png";
+import advanced from "../../assets/advanced2.jpg";
+import windowclean from "../../assets/www.png";
 import {useUserType} from "../UserTypeContext";
 
 const AddCustomerBookingOption = () => {
 
-    const { userType ,id} = useUserType();
+    const {userType, id} = useUserType();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isSquareModalOpen, setIsSquareModalOpen] = useState(false);
     const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
@@ -21,6 +21,7 @@ const AddCustomerBookingOption = () => {
     const [showTimeSlots, setShowTimeSlots] = useState(false)
     const [squareMeters, setSquareMeters] = useState('');
     const [paymentOption, setPaymentOption] = useState("")
+    const [message, setMessage] = useState("")
     const [showCalNext, setShowCalNext] = useState(false)
 
     type Value = Date | null;
@@ -74,8 +75,10 @@ const AddCustomerBookingOption = () => {
 
     const handleBooking = () => {
         try {
-            admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, paymentOption, id).then(r => {
-            })
+            if (id != null) {
+                admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, paymentOption, id, message).then(r => {
+                })
+            }
 
         } catch (error) {
             console.log(error + "this is not right dude")
@@ -219,17 +222,22 @@ const AddCustomerBookingOption = () => {
     // @ts-ignore
     // @ts-ignore
     // @ts-ignore
+    // @ts-ignore
     return (
         <>{!isModalOpen
             && (
                 <div style={styles.container}>
                     <div style={styles.sectionTitle}>
-                        <p>What cleaning are you interested in?</p>
-                        {/*<p>{"ID:" +id}</p>*/}
+                        <h2>What cleaning are you interested in?</h2>
                     </div>
                     <div style={styles.boxContainer}>
-                        <div style={{...styles.box, backgroundImage: `url(${basic})`}}>
-                            <button onClick={() => handleJobType("BASIC")}>BASIC</button>
+                        <div style={{
+                            ...styles.box,
+                            backgroundImage: `url(${basic})`
+                        }}>
+                            <div>
+                                <button onClick={() => handleJobType("BASIC")}>BASIC</button>
+                            </div>
                         </div>
                         <div style={{...styles.box, backgroundImage: `url(${advanced})`}}>
                             <button onClick={() => handleJobType("ADVANCED")}>ADVANCED</button>
@@ -339,7 +347,6 @@ const AddCustomerBookingOption = () => {
                                     }}>
                                         <div style={styles.sectionTitle}>
                                             <p>Whats the size of your accommodation?</p>
-
                                         </div>
                                         <input
                                             type="number"
@@ -362,6 +369,17 @@ const AddCustomerBookingOption = () => {
                                             <option value="KLARNA">Klarna</option>
                                             <option value="CASH">Cash</option>
                                         </select>
+
+                                        <div style={styles.sectionTitle}>
+                                            <p>Is anything you want to add?</p>
+                                        </div>
+                                        <textarea
+                                            placeholder="Write a message..."
+                                            style={styles.textarea}
+                                            value={message}
+                                            onChange={(e) => setMessage(e.target.value)}
+                                        />
+
                                         <div style={styles.button}>
                                             <button type="submit" style={styles.bookButton}>Next</button>
 
@@ -407,9 +425,10 @@ const AddCustomerBookingOption = () => {
                             </div>
                         }
                         {isBookingDone &&
-                        <div>
-                            <h3>Your booking was successfully created. <br/>You will have a confirmation email sent to you. Thank you!</h3>
-                        </div>}
+                            <div>
+                                <h3>Your booking was successfully created. <br/>You will have a confirmation email sent
+                                    to you. Thank you!</h3>
+                            </div>}
                     </>
                 )}
             </div>
@@ -431,7 +450,8 @@ const styles: { [key: string]: React.CSSProperties } = {
         flexDirection: 'column',
         alignItems: 'center',
         textAlign: 'center',
-        marginTop: '10%'
+        fontSize: "1.2rem",
+        marginTop: '2%',
     },
     form: {
         display: 'flex',
@@ -446,18 +466,23 @@ const styles: { [key: string]: React.CSSProperties } = {
     boxContainer: {
         display: 'flex',
         justifyContent: 'center',
+        width: '100%',
     },
     box: {
         backgroundImage: `url(${diamond})`,
         display: 'flex',
-        width: '20%',
-        height: '180px',
+        width: '15rem',
+        height: '25rem',
         border: '3px solid #ccc',
-        padding: '10px',
-        margin: '10px',
+        padding: '2rem',
+        margin: '1rem',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#b3d9e3',
+        backgroundSize: 'cover',
+    },
+    boxText: {
+        display: 'flex',
     },
     calenderContainer: {
         display: 'flex',
@@ -479,4 +504,8 @@ const styles: { [key: string]: React.CSSProperties } = {
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
         margin: 25,
     },
+    textarea: {
+        width: "16rem",
+        height: "8rem"
+    }
 };

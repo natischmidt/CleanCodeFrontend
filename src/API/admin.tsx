@@ -100,7 +100,8 @@ const admin = {
             timeSlotList: string[],
             squareMeters: string,
             payment: string,
-            customer: string
+            customerId: string,
+            message: string
         ) => {
 
             console.log("................*********" + timeSlotList)
@@ -113,7 +114,8 @@ const admin = {
                     timeSlotList: timeSlotList,
                     squareMeters: squareMeters,
                     paymentOption: payment,
-                    customerId: customer
+                    customerId: customerId,
+                    message: message
                 };
 
                 const response = await axios.post(Url, bookingData);
