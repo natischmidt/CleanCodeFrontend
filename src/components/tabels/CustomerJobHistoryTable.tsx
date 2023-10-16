@@ -3,15 +3,18 @@ import axios from "axios";
 import AnotherTable from "../../reusableComponents/AnotherTable";
 interface CustomerComingJobsHistoryTableProps {
     cusId: string | null;
+    change: number
+    setChange: React.Dispatch<React.SetStateAction<number>>
 }
-const CustomerComingJobsHistoryTable: React.FC<CustomerComingJobsHistoryTableProps> = ({cusId }) => {
+const CustomerComingJobsHistoryTable: React.FC<CustomerComingJobsHistoryTableProps> = ({cusId, change, setChange }) => {
 
     const [theData, setTheData] = useState([])
-    const [change, setChange] = useState(0)
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+                console.log(`Fetching data for cusId: ${cusId}`);
+
                 const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForCustomerWithStatus/${cusId}`, {
                     params: {
                         statuses: ["APPROVED", "UNAPPROVED", "PAID", "CANCELLED"]

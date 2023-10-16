@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from "react-router-dom";
 
 const styles = {
     header: {
@@ -57,13 +58,13 @@ const CustomerHeader: React.FC = () => {
             <div style={styles.logo}>Städafint AB</div>
             <ul style={styles.navbar}>
                 <li style={styles.navItem}>
-                    <a href="/CustomerHome" style={styles.link}>Home</a>
+                    <Link to="/CustomerHome" style={styles.link}>Home</Link>
                 </li>
                 <li style={styles.navItem}>
-                    <a href="/CustomerMyPages" style={styles.link}>My Pages</a>
+                    <Link to="/CustomerMyPages" style={styles.link}>My Pages</Link>
                 </li>
                 <li style={styles.navItem}>
-                    <a href="/CustomerBooking" style={styles.link}>Book</a>
+                    <Link to="/CustomerBooking" style={styles.link}>Book</Link>
                 </li>
                 <li style={styles.navItem}>
                     <a href="/MyBookings" style={styles.link}>My Bookings</a>

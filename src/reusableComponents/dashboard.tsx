@@ -2,6 +2,7 @@ import React from 'react';
 import BookingHistoryTable from "../components/tabels/BookingHistoryTable";
 import BookingTable from "../components/tabels/BookingTable";
 import updateBooking from "../adminForms/updateBooking";
+import CustomerJobCheck from "../components/CustomerJobCheck";
 
 
 interface DashboardProps {
@@ -33,7 +34,9 @@ const Dashboard: React.FC<DashboardProps> = ({ userType, userData }) => {
                             : 'My Upcoming Shifts'}
                 </div>
                 <div className="section-content">
-                <BookingTable onUpdate={handleBookingUpdate}/>
+                    {userType === "admin" && <BookingTable onUpdate={handleBookingUpdate}/>}
+                    {userType === "customer" && <CustomerJobCheck />}
+
                 </div>
             </div>
 

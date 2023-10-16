@@ -73,7 +73,6 @@ export const CustomerHomePage: React.FC = () => {
             <CustomerHeader />
             <div style={{ ...selectedStyles }}>
                 <div style={styles.container}>
-
                     <div style={styles.halfContainer}>
                         <div style={styles.whiteSection}>
                             <div style={styles.textContainer}>
