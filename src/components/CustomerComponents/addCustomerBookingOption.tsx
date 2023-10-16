@@ -18,6 +18,7 @@ const AddCustomerBookingOption = () => {
     const [showTimeSlots, setShowTimeSlots] = useState(false)
     const [squareMeters, setSquareMeters] = useState('');
     const [paymentOption, setPaymentOption] = useState("")
+    const [showCalNext, setShowCalNext] = useState(false)
 
     type Value = Date | null;
     const [date, setDate] = useState<Value>(new Date());
@@ -207,16 +208,16 @@ const AddCustomerBookingOption = () => {
                         <p>What cleaning are you interested in?</p>
                     </div>
                     <div style={styles.boxContainer}>
-                        <div style={{ ...styles.box, backgroundImage: `url(${basic})` }}>
+                        <div style={{...styles.box, backgroundImage: `url(${basic})`}}>
                             <button onClick={() => handleJobType("BASIC")}>BASIC</button>
                         </div>
-                        <div style={{ ...styles.box, backgroundImage: `url(${advanced})` }}>
+                        <div style={{...styles.box, backgroundImage: `url(${advanced})`}}>
                             <button onClick={() => handleJobType("ADVANCED")}>ADVANCED</button>
                         </div>
-                        <div style={{ ...styles.box, backgroundImage: `url(${diamond})` }}>
+                        <div style={{...styles.box, backgroundImage: `url(${diamond})`}}>
                             <button onClick={() => handleJobType("DIAMOND")}>DIAMOND</button>
                         </div>
-                        <div style={{ ...styles.box, backgroundImage: `url(${windoww})` }}>
+                        <div style={{...styles.box, backgroundImage: `url(${windoww})`}}>
                             <button onClick={() => handleJobType("WINDOW")}>WINDOW</button>
                         </div>
                     </div>
@@ -231,6 +232,7 @@ const AddCustomerBookingOption = () => {
                         </div>
                         <Calendar
                             onClickDay={(day) => {
+                                setShowCalNext(false);
                                 checkDay(day).then(r => {
                                 })
                             }}
@@ -245,44 +247,79 @@ const AddCustomerBookingOption = () => {
                             {showTimeSlots && (
                                 <>
                                     {eight &&
-                                        <button style={styles.slots}
-                                                onClick={(e) => handleSelectTime(e, 8)}>08.00</button>}
+                                        <button style={styles.slots} onClick={(e) => {
+                                            handleSelectTime(e, 8);
+                                            setShowCalNext(true);
+                                        }}>
+                                            08.00
+                                        </button>
+                                    }
                                     {nine &&
                                         <button style={styles.slots}
-                                                onClick={(e) => handleSelectTime(e, 9)}>09.00</button>}
+                                                onClick={(e) => {
+                                                    handleSelectTime(e, 9);
+                                                    setShowCalNext(true)
+                                                }}>09.00</button>}
                                     {ten && <button style={styles.slots}
-                                                    onClick={(e) => handleSelectTime(e, 10)}>10.00</button>}
+                                                    onClick={(e) => {
+                                                        handleSelectTime(e, 10);
+                                                        setShowCalNext(true)
+                                                    }}>10.00</button>}
                                     {eleven && <button style={styles.slots}
-                                                       onClick={(e) => handleSelectTime(e, 11)}>11.00</button>}
+                                                       onClick={(e) => {
+                                                           handleSelectTime(e, 11);
+                                                           setShowCalNext(true)
+                                                       }}>11.00</button>}
                                     {twelve && <button style={styles.slots}
-                                                       onClick={(e) => handleSelectTime(e, 12)}>12.00</button>}
+                                                       onClick={(e) => {
+                                                           handleSelectTime(e, 12);
+                                                           setShowCalNext(true)
+                                                       }}>12.00</button>}
                                     {thirteen && <button style={styles.slots}
-                                                         onClick={(e) => handleSelectTime(e, 13)}>13.00</button>}
+                                                         onClick={(e) => {
+                                                             handleSelectTime(e, 13);
+                                                             setShowCalNext(true)
+                                                         }}>13.00</button>}
                                     {fourteen && <button style={styles.slots}
-                                                         onClick={(e) => handleSelectTime(e, 14)}>14.00</button>}
+                                                         onClick={(e) => {
+                                                             handleSelectTime(e, 14);
+                                                             setShowCalNext(true)
+                                                         }}>14.00</button>}
                                     {fifteen && <button style={styles.slots}
-                                                        onClick={(e) => handleSelectTime(e, 15)}>15.00</button>}
+                                                        onClick={(e) => {
+                                                            handleSelectTime(e, 15);
+                                                            setShowCalNext(true)
+                                                        }}>15.00</button>}
                                     {sixteen && <button style={styles.slots}
-                                                        onClick={(e) => handleSelectTime(e, 16)}>16.00</button>}
+                                                        onClick={(e) => {
+                                                            handleSelectTime(e, 16);
+                                                            setShowCalNext(true)
+                                                        }}>16.00</button>}
                                 </>)}
 
                             {showCalender && (<div>
-                                <button type="submit" style={styles.bookButton} onClick={() => {
+
+                                {showCalNext && <button type="submit" style={styles.bookButton} onClick={() => {
                                     handleSquarePaymentModal();
                                     handleCalender();
                                     setShowTimeSlots(false);
                                 }}>Next
-                                </button>
+                                </button>}
+
                                 <button type="submit" style={styles.bookButton} onClick={handleModal}>Go back
                                 </button>
                             </div>)}
 
                             {isSquareModalOpen &&
                                 <div style={styles.form}>
-                                    <form style={styles.form} onSubmit={() => {
+                                    <form style={styles.form} onSubmit={(e) => {
+                                        e.preventDefault();
+                                        handleConfirm();
+                                        handleSquarePaymentModal();
                                     }}>
                                         <div style={styles.sectionTitle}>
                                             <p>Whats the size of your accommodation?</p>
+
                                         </div>
                                         <input
                                             type="number"
@@ -304,20 +341,17 @@ const AddCustomerBookingOption = () => {
                                             <option value="KLARNA">Klarna</option>
                                             <option value="CASH">Cash</option>
                                         </select>
+                                        <div style={styles.button}>
+                                            <button type="submit" style={styles.bookButton}>Next</button>
+
+                                            <button style={styles.bookButton} onClick={() => {
+                                                handleSquarePaymentModal()
+                                                handleCalender()
+                                            }}>Go back
+                                            </button>
+                                        </div>
                                     </form>
-                                    <div style={styles.button}>
-                                        <button type="submit" style={styles.bookButton}
-                                            onClick={() => {
-                                                handleConfirm();
-                                                handleSquarePaymentModal();
-                                            }}>Next
-                                        </button>
-                                        <button type="submit" style={styles.bookButton} onClick={() => {
-                                            handleSquarePaymentModal()
-                                            handleCalender()
-                                        }}>Go back
-                                        </button>
-                                    </div>
+
                                 </div>
                             }
                         </div>
