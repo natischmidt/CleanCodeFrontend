@@ -122,7 +122,7 @@ const AddEmployeeForm = () => {
                     Create new Employee
                 </button>
                 <button type="submit" style={styles.button} onClick={() => {{goBackToAddUser(("/AddUser"))}}}>
-                    Go Back
+                    Go back
                 </button>
             </form>
         </div>
@@ -144,7 +144,7 @@ const styles = {
         padding: '20px',
         border: '2px solid silver',
         borderRadius: '5px',
-        backgroundColor: '#53af67',
+        backgroundColor: '#b3d9e3',
         width: "500px",
         height: '760px',
         marginTop: '4%'
@@ -158,7 +158,7 @@ const styles = {
     },
     button: {
         padding: '10px 20px',
-        backgroundColor: '#0d714a',
+        backgroundColor: '#2b7285',
         color: 'white',
         border: 'none',
         borderRadius: '10px',

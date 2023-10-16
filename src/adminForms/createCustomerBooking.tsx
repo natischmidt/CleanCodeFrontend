@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 
 import Calendar from "react-calendar";
@@ -28,10 +28,6 @@ const CreateNewBooking: React.FC = () => {
     const [sixteen, setSixteen] = useState(false)
     // const [timeList, setTimeList] = useState<[]>([])
     const [timeList,setTimeList] = useState([])
-
-    const dayCorr = useRef(0)
-    const dayToUse = useRef('')
-    const dayString = useRef('')
     const monthCorr = useRef(0)
     const monthToUse = useRef('')
     const monthString = useRef('')
@@ -40,6 +36,7 @@ const CreateNewBooking: React.FC = () => {
     let times = ["EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN", "FOURTEEN", "FIFTEEN", "SIXTEEN", "notbookable", "notbookable", "notbookable"]
 
     type Value = Date | null;
+
     const [date, setDate] = useState<Value>(new Date());
 
     const handleModal = () => {
@@ -67,25 +64,16 @@ const CreateNewBooking: React.FC = () => {
 
             yearToUse.current = day.getFullYear().valueOf()
             monthCorr.current = day.getMonth() + 1
-            dayCorr.current = day.getDate();
 
             if (monthCorr.current < 10) {
                 monthToUse.current = 0 + monthCorr.current.toString()
-                monthString.current = '' + monthToUse.current
+                monthString.current = '0' + monthToUse.current
             } else {
                 monthToUse.current = monthCorr.current.toString()
                 monthString.current = monthToUse.current
             }
 
-            if (dayCorr.current < 10) {
-                dayToUse.current = 0 + dayCorr.current.toString()
-                dayString.current = '' + dayToUse.current
-            } else {
-                dayToUse.current = dayCorr.current.toString()
-                dayString.current = dayToUse.current
-            }
-
-            dateToUse.current = yearToUse.current + "-" + monthString.current + "-" + dayToUse.current;
+            dateToUse.current = yearToUse.current + "-" + monthString.current + "-" + day.getDate()
 
             await admin.getAvailableEmp(dateToUse.current, hours).then(response => {
                 if (response) {
@@ -185,7 +173,7 @@ const CreateNewBooking: React.FC = () => {
         <div style={styles.container}>
             {!isModalOpen && (
                 <form style={styles.form} onSubmit={() => handleSelectTime}>
-                    <h2>Create new booking</h2>
+                    <h2>Create new Booking</h2>
                     <select
                         value={jobType}
                         style={styles.select}
@@ -245,14 +233,14 @@ const CreateNewBooking: React.FC = () => {
                     <button type="submit" style={styles.button}
                             onClick={() => handleBooking()}
                     >
-                        Create new booking
+                        Create new Booking
                     </button>
                     <button type="submit" style={styles.button} onClick={() => {
                         {
                             goBackToBooking(("/Booking"))
                         }
                     }}>
-                        Go back
+                        Go Back
                     </button>
 
                 </form>)}

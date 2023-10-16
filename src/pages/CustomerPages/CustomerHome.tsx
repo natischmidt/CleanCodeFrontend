@@ -5,14 +5,14 @@ import {useUserType} from "../../components/UserTypeContext";
 import CustomerHeader from "../../components/CustomerComponents/CustomerHeader";
 import image from '/src/assets/customer-homepage-picture.png';
 import { CSSProperties } from 'react';
-
+import {BookingComponent} from "../../components/CustomerComponents/BookingComponent";
 
 
 const styles: {
     container: CSSProperties;
     halfContainer: CSSProperties;
     imageSection: CSSProperties;
-    // bookingSection: CSSProperties;
+    bookingSection: CSSProperties;
     whiteSection: CSSProperties;
     textContainer: CSSProperties;
     headerText: CSSProperties;
@@ -56,15 +56,8 @@ const styles: {
     subText: {
         fontSize: '25px',
     },
-    // bookingSection: {
-    //     flex: 1,
-    //     background: 'white',
-    //     display: 'flex',
-    //     flexDirection: 'column',
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    // },
-
+    bookingSection: {
+    },
 };
 
 
@@ -78,6 +71,7 @@ export const CustomerHomePage: React.FC = () => {
             <CustomerHeader />
             <div style={{ ...selectedStyles }}>
                 <div style={styles.container}>
+
                     <div style={styles.halfContainer}>
                         <div style={styles.whiteSection}>
                             <div style={styles.textContainer}>
@@ -86,13 +80,13 @@ export const CustomerHomePage: React.FC = () => {
                             </div>
                         </div>
                         <div style={styles.imageSection}></div>
-
-                        {/*<div style={styles.bookingSection}>*/}
-                        {/*    <BookingComponent />*/}
-                        {/*</div>*/}
+                    </div>
+                    <div style={styles.bookingSection}>
+                        <BookingComponent />
                     </div>
                 </div>
             </div>
+
             <CustomerFooter />
         </>
     );

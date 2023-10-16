@@ -81,7 +81,6 @@ const admin = {
             }
             try {
                 const Url = 'http://localhost:8080/api/jobs/getAvailableEmployees';
-
                 const checkEmployees = {
                     date: date,
                     lookForAvailableThisManyHours: hours

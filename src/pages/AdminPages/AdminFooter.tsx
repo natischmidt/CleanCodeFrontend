@@ -51,7 +51,7 @@ const styles = {
     },
     categoriesContainer: {
         display: 'flex',
-        color: '#53b067',
+        color: '#b3d9e3',
     },
     category: {
         flex: '1',
