@@ -5,13 +5,16 @@ import admin from "../../API/admin";
 import diamond from "../../assets/diamond3.png";
 import basic from "../../assets/basic.png";
 import advanced from "../../assets/advanced.png";
-import windoww from "../../assets/window.png";
+import windowclean from "../../assets/window.png";
+import {useUserType} from "../UserTypeContext";
 
 const AddCustomerBookingOption = () => {
 
+    const { userType ,id} = useUserType();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isSquareModalOpen, setIsSquareModalOpen] = useState(false);
     const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+    const [isBookingDone, setIsBookingDone] = useState(false);
     const [hours, setHours] = useState(0)
     const [jobType, setJobType] = useState('');
     const [showCalender, setShowCalender] = useState(false)
@@ -62,6 +65,21 @@ const AddCustomerBookingOption = () => {
 
     const handleTimeSlots = () => {
         setShowTimeSlots(!showTimeSlots)
+    }
+
+    const handleBookingDone = () => {
+        setIsBookingDone(!isBookingDone);
+    }
+
+
+    const handleBooking = () => {
+        try {
+            admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, paymentOption, id).then(r => {
+            })
+
+        } catch (error) {
+            console.log(error + "this is not right dude")
+        }
     }
 
 
@@ -200,12 +218,14 @@ const AddCustomerBookingOption = () => {
 
     // @ts-ignore
     // @ts-ignore
+    // @ts-ignore
     return (
         <>{!isModalOpen
             && (
                 <div style={styles.container}>
                     <div style={styles.sectionTitle}>
                         <p>What cleaning are you interested in?</p>
+                        {/*<p>{"ID:" +id}</p>*/}
                     </div>
                     <div style={styles.boxContainer}>
                         <div style={{...styles.box, backgroundImage: `url(${basic})`}}>
@@ -217,7 +237,7 @@ const AddCustomerBookingOption = () => {
                         <div style={{...styles.box, backgroundImage: `url(${diamond})`}}>
                             <button onClick={() => handleJobType("DIAMOND")}>DIAMOND</button>
                         </div>
-                        <div style={{...styles.box, backgroundImage: `url(${windoww})`}}>
+                        <div style={{...styles.box, backgroundImage: `url(${windowclean})`}}>
                             <button onClick={() => handleJobType("WINDOW")}>WINDOW</button>
                         </div>
                     </div>
@@ -372,10 +392,13 @@ const AddCustomerBookingOption = () => {
                                 }
 
                                 <div style={styles.button}>
-                                    <button type="submit" style={styles.bookButton} onClick={() => {
+                                    <button type="button" style={styles.bookButton} onClick={() => {
+                                        handleBooking();
+                                        handleConfirm();
+                                        handleBookingDone();
                                     }}>Confirm
                                     </button>
-                                    <button type="submit" style={styles.bookButton} onClick={() => {
+                                    <button type="button" style={styles.bookButton} onClick={() => {
                                         handleConfirm();
                                         handleModal();
                                     }}>Cancel
@@ -383,6 +406,10 @@ const AddCustomerBookingOption = () => {
                                 </div>
                             </div>
                         }
+                        {isBookingDone &&
+                        <div>
+                            <h3>Your booking was successfully created. <br/>You will have a confirmation email sent to you. Thank you!</h3>
+                        </div>}
                     </>
                 )}
             </div>
