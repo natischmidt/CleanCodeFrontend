@@ -9,6 +9,7 @@ const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId}
 
     const [theData, setTheData] = useState([])
     const [change, setChange] = useState(0)
+   // const [theDate, setTheDate] = useState<string>("")
 
     useEffect(() => {
         const fetchData = async () => {
@@ -24,22 +25,26 @@ const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId}
 
                 if (response.status === 200) {
                     setTheData(response.data)
+                    console.log(response.data[0].date +  " datumettt")
                 }
             } catch (error) {
-                console.log("nått hände:( ", error)
+                console.log("nått hände :( ", error)
             }
         };
 
         fetchData()
     }, [change]);
 
-    const handleCancel = async (jobId:number) => {
+    const handleCancel = async (jobId:number, date:Date) => {
         try {
             const updateJobDTO = {
                 jobId: jobId,
                 jobStatus: "CANCELLED",
+                customerId: cusId,
+                date: "2023-11-24"
             }
-            console.log("Sending JobID:", jobId);
+            console.log("Sending JobID:" + jobId);
+            console.log("!!!!!!!!!" + date )
 
             await axios.put("http://localhost:8080/api/jobs/updateJob", updateJobDTO)
             setChange(x => x + 1)
@@ -63,7 +68,7 @@ const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId}
                 ]}
                 data={theData}
                 buttons={[
-                    { label: 'Cancel', action: (jobId) => {handleCancel(jobId)} }
+                    { label: 'Cancel', action: (jobId, date) => {handleCancel(jobId, date)} }
                 ]}
             />
         </div>

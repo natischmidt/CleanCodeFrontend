@@ -2,7 +2,7 @@ import React from "react";
 
 interface ButtonConfig {
     label: string
-    action: (id: number) => void
+    action: (id: number, date: Date) => void
 }
 interface Column {
     key: string
@@ -34,7 +34,7 @@ const AnotherTable: React.FC<Props> = ({columns, data, buttons}) => {
                             <button
                                 key={buttonIndex}
                                 style={styles[button.label.toLowerCase() as keyof typeof styles]}
-                                onClick={() => button.action(item.jobId)}
+                                onClick={() => button.action(item.jobId, item.date)}
                             >
                                 {button.label}
                             </button>
