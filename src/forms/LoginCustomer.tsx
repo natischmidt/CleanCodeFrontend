@@ -7,7 +7,7 @@ const LoginCustomer = () => {
     const [email, setEmail] = useState('lars.olofsson@malari.se');
     const [password, setPassword] = useState('password');
     const goToHomePage = useNavigate();
-    const { setUserType } = useUserType();
+    const { setUserType , setId} = useUserType();
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
@@ -25,7 +25,9 @@ const LoginCustomer = () => {
             const response = resp.data
 
             if (response) {
+
                 setUserType("Customer") // sätter det i context + att detta kan dra sig, nån får fixa :))
+                setId(response)
                 goToHomePage(`/CustomerHome`)
             } else {
                 console.log("hur tusan hamna vi här?")

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import AnotherTable from "../../reusableComponents/AnotherTable";
 interface CustomerComingJobsHistoryTableProps {
-    cusId: string;
+    cusId: string | null;
 }
 const CustomerComingJobsHistoryTable: React.FC<CustomerComingJobsHistoryTableProps> = ({cusId }) => {
 
