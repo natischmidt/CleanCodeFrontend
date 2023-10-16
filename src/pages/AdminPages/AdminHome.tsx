@@ -6,7 +6,7 @@ import {useUserType} from "../../components/UserTypeContext";
 import { adminStyles } from "../../styles/styles";
 
 export const AdminHome : React.FC = () => {
-    const { userType } = useUserType();
+    const { userType,id } = useUserType();
 
     const selectedStyles =
         userType === "Admin" ? adminStyles : {};
@@ -20,7 +20,7 @@ export const AdminHome : React.FC = () => {
         SSnumber: '123456789',
         phoneNumber: '555-555-5555',
     };
-
+    console.log("bara för att : " + id)
     return (
         <>
             <Header/>

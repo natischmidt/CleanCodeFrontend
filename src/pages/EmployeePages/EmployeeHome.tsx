@@ -6,11 +6,11 @@ import {useUserType} from "../../components/UserTypeContext";
 
 export default function EmployeeHomePage() {
 
-    const { userType } = useUserType();
+    const { userType,id  } = useUserType();
 
     const selectedStyles =
         userType === "Employee" ? employeeStyles : {};
-
+    console.log("jajaja, test4future : _ : " +  id)
     return (
         <>
 

@@ -7,7 +7,7 @@ const LoginAdminOrEmployeeForm = () => {
     const [email, setEmail] = useState('lisa.gronberg@stadafint.se');
     const [password, setPassword] = useState('password');
     const goToHomePage = useNavigate();
-    const { setUserType } = useUserType();
+    const { setUserType , setId} = useUserType();
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
@@ -29,6 +29,7 @@ const LoginAdminOrEmployeeForm = () => {
 
             if (response.id && (response.role === "ADMIN" || response.role ==="EMPLOYEE")){
                 setUserType(response.role) // sätter det i context
+                setId(response.id)
                 goToHomePage(`/${response.role}Home`)
             } else {
                 console.log("hur tusan hamna vi här?")

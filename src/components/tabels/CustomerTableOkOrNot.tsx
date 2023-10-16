@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import AnotherTable from "../../reusableComponents/AnotherTable";
 interface CustomerOkOrNotTableProps {
-    cusId: string;
+    cusId: string | null;
 }
 const CustomerTableOkOrNot: React.FC<CustomerOkOrNotTableProps> = ({cusId}) => {
 
