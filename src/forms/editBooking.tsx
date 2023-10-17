@@ -15,6 +15,7 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
     const [squareMeters, setSquareMeters] = useState("")
     const [timeSlot, setTimeSlot] = useState("")
     const [message, setMessage] = useState<string>("");
+    const [customerId, setCustomerId] = useState<String | null>(null);
 
 
 
@@ -30,17 +31,18 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                     };
                     const response = await axios.get(url, { headers });
                     const data = response.data;
-
+                    console.log(response.data.customerId)
                     if (!data || !data.jobId) {
                         console.log('Job with this id not found');
                     } else {
-                        setDate(data.date || '');
-                        setLoadedJobId(data.jobId?.toString() || '');
-                        setJobStatus(data.jobStatus || '');
-                        setJobType(data.jobType || '');
-                        setPaymentOption(data.paymentOption || '');
-                        setSquareMeters(data.squareMeters?.toString() || '');
-                        setTimeSlot(data.timeSlot || '');
+                        setDate(data.date || '')
+                        setLoadedJobId(data.jobId?.toString() || '')
+                        setJobStatus(data.jobStatus || '')
+                        setJobType(data.jobType || '')
+                        setPaymentOption(data.paymentOption || '')
+                        setSquareMeters(data.squareMeters?.toString() || '')
+                        setTimeSlot(data.timeSlot || '')
+                        setCustomerId(data.customerId)
                     }
                 } catch (error) {
                     console.error(error);
@@ -54,7 +56,7 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
         e.preventDefault();
         try {
             if (jobId !== null) {
-                const url = `http://localhost:8080/api/jobs/update/`;
+                const url = `http://localhost:8080/api/jobs/updateJob`;
 
                 const editJobData = {
                     date,
@@ -64,9 +66,12 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                     paymentOption,
                     squareMeters,
                     timeSlot,
+                    customerId
+
                 };
 
-
+                console.log(jobId)
+                console.log(customerId)
                 await axios.put(url, editJobData, {params: {message}});
                 console.log('Job was updated');
                 doneWithEdit();
@@ -124,7 +129,6 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                     <option value="">Choose job status:</option>
                     <option value="PENDING">Pending</option>
                     <option value="DONE">Done</option>
-                    <option value="COMPLETED">Completed</option>
                     <option value="APPROVED">Approved</option>
                     <option value="UNAPPROVED">Unapproved</option>
                     <option value="PAID">Paid</option>
