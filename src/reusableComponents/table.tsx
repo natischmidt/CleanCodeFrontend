@@ -1,4 +1,5 @@
 import React from 'react';
+import {useUserType} from "../components/UserTypeContext";
 
 interface Column {
     key: string;
@@ -14,6 +15,9 @@ interface Props {
 
 const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate}) => {
 
+    const { userType , setUserType} = useUserType();
+
+
     return (
         <table className="data-table" style={styles.dataTable}>
             <thead>
@@ -24,6 +28,7 @@ const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate}) => {
             </tr>
             </thead>
             <tbody>
+
             {data.map((item, index) => (
                 <tr key={index}>
                     {columns.map((column) => (
@@ -31,7 +36,8 @@ const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate}) => {
                     ))}
                     <td>
                         <button style={styles.update} onClick={() => onUpdate(item.id)}>Update</button>
-                        <button style={styles.delete} onClick={() => onDelete(item.id)}>Delete</button>
+                        {userType == "ADMIN" ? <button style={styles.delete} onClick={() => onDelete(item.id)}>Delete</button> : <></>}
+                        {/*Här får vi rött, fast koden funkar???*/}
                     </td>
                 </tr>
             ))}

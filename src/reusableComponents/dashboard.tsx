@@ -3,6 +3,7 @@ import BookingHistoryTable from "../components/tabels/BookingHistoryTable";
 import BookingTable from "../components/tabels/BookingTable";
 import updateBooking from "../adminForms/updateBooking";
 import CustomerJobCheck from "../components/CustomerJobCheck";
+import MyShifts from "../pages/EmployeePages/MyShifts";
 
 
 interface DashboardProps {
@@ -18,6 +19,8 @@ interface DashboardProps {
     }
 }
 
+
+
 const Dashboard: React.FC<DashboardProps> = ({ userType, userData }) => {
 
     const handleBookingUpdate = (jobId: number) => {
@@ -31,7 +34,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userType, userData }) => {
                         ? 'All Upcoming Bookings'
                         : userType === 'customer'
                             ? 'My Upcoming Bookings'
-                            : 'My Upcoming Shifts'}
+                            : /*'My Upcoming Shifts'*/ <MyShifts/>}
                 </div>
                 <div className="section-content">
                     {userType === "admin" && <BookingTable onUpdate={handleBookingUpdate}/>}
