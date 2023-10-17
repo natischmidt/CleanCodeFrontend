@@ -5,7 +5,6 @@ const CancelWithNumber: React.FC = () => {
     const [bookingId, setBookingId] = useState('');
     const [employeeId, setEmployeeId] = useState('');
     const [customerId, setCustomerId] = useState('');
-
     const goBackToBooking = useNavigate();
 
     // const goToCancelBooking = useNavigate();

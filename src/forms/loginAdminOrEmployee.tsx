@@ -4,7 +4,7 @@ import {  useUserType} from "../components/UserTypeContext";
 import axios from "axios";
 
 const LoginAdminOrEmployeeForm = () => {
-    const [email, setEmail] = useState('lisa.gronberg@stadafint.se');
+    const [email, setEmail] = useState('kent.andersson@stadafint.se');
     const [password, setPassword] = useState('password');
     const goToHomePage = useNavigate();
     const { setUserType , setId} = useUserType();

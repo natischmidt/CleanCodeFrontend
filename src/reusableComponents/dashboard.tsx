@@ -48,8 +48,8 @@ const Dashboard: React.FC<DashboardProps> = ({ userType, userData }) => {
                     <div>First Name: {userData.firstname}</div>
                     <div>Last Name: {userData.lastname}</div>
                     <div>Email: {userData.email}</div>
-                    <div>Address: {userData.address}</div>
-                    <div>Social Security Number: {userData.SSnumber}</div>
+                    {userData.address !== '' ?<div>Address: {userData.address}</div>: <></>}
+                    {userData.SSnumber !== '' ? <div>Social Security Number: {userData.SSnumber}</div> : <></>}
                     <div>Phone Number: {userData.phoneNumber}</div>
                 </div>
             </div>
