@@ -27,7 +27,7 @@ export const LoginModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             const response = await axios.post(url, customerData);
             const resp = response.data
 
-            console.log(resp + "HÄRRRRRRR")
+            console.log(resp)
 
             if (response) {
                 setUserType("Customer")
@@ -101,7 +101,7 @@ const styles = {
         borderRadius: '5px',
         backgroundColor: '#b3d9e3',
         width: "300px",
-        height: '400px',
+        // height: '400px',
         marginTop: '4%'
     },
     input: {
@@ -119,6 +119,6 @@ const styles = {
         borderRadius: '10px',
         cursor: 'pointer',
         marginTop: '25px',
+        width: "150px"
     },
 }
-

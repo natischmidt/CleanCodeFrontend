@@ -35,7 +35,7 @@ const AddPrivateCustomerForm = () => {
             setFirstname('')
             setLastname('')
             setEmail('')
-            setAddress("")
+            setAddress('')
             setPhoneNumber('')
             setLastname('')
             setPassword('')

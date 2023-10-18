@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {LoginModal} from "./LoginModal";
 import axios from "axios";
+import {RegisterModal} from "./RegisterModal";
 
 const styles = {
     header: {
@@ -54,12 +55,19 @@ interface HeaderProps {
 const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn}) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+    const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
     const goToCustomerHome = useNavigate()
 
     const handleLoginClick = () => {
         setIsLoggedIn(!isLoggedIn)
-        setIsLoginModalOpen(true);
+        setIsLoginModalOpen(true)
+    }
+
+    const handleRegisterClick = () => {
+        setIsLoggedIn(!isLoggedIn)
+        setIsLoginModalOpen(false)
+        setIsRegisterModalOpen(true)
     }
 
     const handleLogoutClick = async (e : React.FormEvent) => {
@@ -79,8 +87,13 @@ const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn}) => {
         }
     };
 
-    const closeModal = () => {
+    const closeLoginModal = () => {
         setIsLoginModalOpen(false);
+        setIsLoggedIn(!isLoggedIn);
+    };
+
+    const closeRegisterModal = () => {
+        setIsRegisterModalOpen(false);
         setIsLoggedIn(!isLoggedIn);
     };
 
@@ -110,16 +123,20 @@ const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn}) => {
                             <button style={styles.button} onClick={handleLoginClick}>
                                 Log In
                             </button>
-                            <button style={styles.button}>
-                                <a href="/Register" style={styles.link}>Register</a>
+                            <button style={styles.button} onClick={handleRegisterClick}>
+                                Register
                             </button>
                         </>
                     )}
                 </li>
             </ul>
             {isLoginModalOpen && (
-                <LoginModal onClose={closeModal} />
+                <LoginModal onClose={closeLoginModal} />
             )}
+            {isRegisterModalOpen && (
+                <RegisterModal onClose={closeRegisterModal} />
+            )}
+
         </header>
     );
 
