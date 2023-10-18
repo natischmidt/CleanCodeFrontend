@@ -1,23 +1,57 @@
 import Header from "../../reusableComponents/header";
 import EmployeeFooter from "./EmployeeFooter";
 import {employeeStyles} from "../../styles/styles";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {useUserType} from "../../components/UserTypeContext";
+import Dashboard from "../../reusableComponents/dashboard";
+import axios from "axios";
+import cancelWithNumber from "../../adminForms/cancelWithNumber";
+import employee from "../../API/employee";
 
 export default function EmployeeHomePage() {
 
-    const { userType,id  } = useUserType();
+    const {userType, id} = useUserType();
+    const selectedStyles = userType === "Employee" ? employeeStyles : {};
+    const [firstname, setFirstname] = useState("")
+    const [lastname, setLastname] = useState("")
+    const [email, setEmail] = useState("")
+    const [phonenumber, setPhonenumber] = useState("")
 
-    const selectedStyles =
-        userType === "Employee" ? employeeStyles : {};
-    console.log("jajaja, test4future : _ : " +  id)
+    const employeeData = {
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        password: '',
+        address: '',
+        SSnumber: '',
+        phoneNumber: phonenumber,
+    };
+
+    console.log("jajaja, test4future : _ : " + id)
+
+    useEffect(() => {
+     employee.getEmployee(id).then(r => {
+            console.log(r.firstName)
+            setFirstname(r.firstName)
+            setLastname(r.lastName)
+            setEmail(r.email)
+            setPhonenumber(r.phoneNumber)
+        })
+    }, [])
+
     return (
         <>
 
             <Header/>
-            <div style={{ ...selectedStyles }}>
-            {/*<Dashboard userType="employee" userData={ } />*/}
+            <div style={{...selectedStyles}}>
+
+                <Dashboard userType="employee" userData={employeeData} />
             </div>
         </>
     )
 }
+
+
+
+
+

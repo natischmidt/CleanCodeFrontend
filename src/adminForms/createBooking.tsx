@@ -27,9 +27,9 @@ const CreateNewBooking: React.FC = () => {
     const [fifteen, setFifteen] = useState(false)
     const [sixteen, setSixteen] = useState(false)
     // const [timeList, setTimeList] = useState<[]>([])
-    const [timeList,setTimeList] = useState([])
+    const [timeList, setTimeList] = useState([])
     const [message, setMessage] = useState("")
-
+    const [showConfirmButton, setShowConfirmButton] = useState(false);
     const dayCorr = useRef(0)
     const dayToUse = useRef('')
     const dayString = useRef('')
@@ -205,6 +205,7 @@ const CreateNewBooking: React.FC = () => {
                         style={styles.input}
                         value={dateToUse.current}
                         onChange={(e) => setDateAndTime(e.target.value)}
+                        onClick={() => handleJobType(jobType)}
                         readOnly
                         required
                     />
@@ -212,7 +213,7 @@ const CreateNewBooking: React.FC = () => {
                         type="text"
                         placeholder="Hours: "
                         style={styles.input}
-                        value={"Estimated time for cleaning: " +hours +" hour"}
+                        value={"Estimated time for cleaning: " + hours + " hour"}
                         onChange={(e) => setDateAndTime(e.target.value)}
                         readOnly
                         required
@@ -267,7 +268,8 @@ const CreateNewBooking: React.FC = () => {
                 {showCalender && isModalOpen ?
                     <Calendar
                         onClickDay={(day) => {
-                            checkDay(day).then(r => {})
+                            checkDay(day).then(r => {
+                            })
                         }}
                         value={date}
                     /> : <></>}
@@ -275,18 +277,49 @@ const CreateNewBooking: React.FC = () => {
                 {isModalOpen && (
                     <>
                         <div style={styles.slotsContainer}>
-                            {eight ? <button style={styles.slots} onClick={(e) => handleSelectTime(e, 8)}>08.00</button> : <></>}
-                            {nine ? <button style={styles.slots} onClick={(e) => handleSelectTime(e, 9)}>09.00</button> : <></>}
-                            {ten ? <button style={styles.slots} onClick={(e) => handleSelectTime(e, 10)}>10.00</button> : <></>}
-                            {eleven ? <button style={styles.slots} onClick={(e) => handleSelectTime(e, 11)}>11.00</button> : <></>}
-                            {twelve ? <button style={styles.slots} onClick={(e) => handleSelectTime(e, 12)}>12.00</button> : <></>}
-                            {thirteen ? <button style={styles.slots} onClick={(e) => handleSelectTime(e, 13)}>13.00</button> : <></>}
-                            {fourteen ? <button style={styles.slots} onClick={(e) => handleSelectTime(e, 14)}>14.00</button> : <></>}
-                            {fifteen ? <button style={styles.slots} onClick={(e) => handleSelectTime(e, 15)}>15.00</button> : <></>}
-                            {sixteen ? <button style={styles.slots} onClick={(e) => handleSelectTime(e, 16)}>16.00</button> : <></>}
+                            {eight ? <button style={styles.slots} onClick={(e) => {
+                                handleSelectTime(e, 8)
+                                setShowConfirmButton(true)
+                            }}>08.00</button> : <></>}
+                            {nine ? <button style={styles.slots} onClick={(e) => {
+                                handleSelectTime(e, 8)
+                                setShowConfirmButton(true)
+                            }}>09.00</button> : <></>}
+                            {ten ? <button style={styles.slots} onClick={(e) => {
+                                handleSelectTime(e, 8)
+                                setShowConfirmButton(true)
+                            }}>10.00</button> : <></>}
+                            {eleven ? <button style={styles.slots} onClick={(e) => {
+                                handleSelectTime(e, 8)
+                                setShowConfirmButton(true)
+                            }}>11.00</button> : <></>}
+                            {twelve ? <button style={styles.slots} onClick={(e) => {
+                                handleSelectTime(e, 8)
+                                setShowConfirmButton(true)
+                            }}>12.00</button> : <></>}
+                            {thirteen ? <button style={styles.slots} onClick={(e) => {
+                                handleSelectTime(e, 8)
+                                setShowConfirmButton(true)
+                            }}>13.00</button> : <></>}
+                            {fourteen ? <button style={styles.slots} onClick={(e) => {
+                                handleSelectTime(e, 8)
+                                setShowConfirmButton(true)
+                            }}>14.00</button> : <></>}
+                            {fifteen ? <button style={styles.slots} onClick={(e) => {
+                                handleSelectTime(e, 8)
+                                setShowConfirmButton(true)
+                            }}>15.00</button> : <></>}
+                            {sixteen ? <button style={styles.slots} onClick={(e) => {
+                                handleSelectTime(e, 8)
+                                setShowConfirmButton(true)
+                            }}>16.00</button> : <></>}
+
                         </div>
 
-                        <button type="submit" style={styles.button} onClick={handleModal}>Confirm</button>
+                        {showConfirmButton && <button type="submit" style={styles.button} onClick={() => {
+                            handleModal()
+                            setShowConfirmButton(false)
+                        }}>Confirm</button>}
                         <button type="submit" style={styles.button} onClick={handleModal}>Close</button>
                     </>
                 )}
