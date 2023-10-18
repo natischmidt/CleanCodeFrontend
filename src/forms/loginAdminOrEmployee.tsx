@@ -15,7 +15,7 @@ const LoginAdminOrEmployeeForm = () => {
 
     // userType: 'Admin' | 'Employee'
     // setUserType(userType);
-    //goToHomePage(`/${userType}Home`);
+    // goToHomePage(`/${userType}Home`);
     const handleLogin = async () => {
 
         try {
@@ -66,9 +66,27 @@ const LoginAdminOrEmployeeForm = () => {
     //     }
     // };
 
+    const quickLoginAsEmployee = () => {
+        setEmail("kent.andersson@stadafint.se")
+        setPassword("password")
+        handleLogin()
+    }
+    const quickLoginAsAdmin = () => {
+        setEmail("lisa.gronberg@stadafint.se")
+        setPassword("password")
+        handleLogin()
+    }
+
+
     return (
         <div style={styles.container}>
-            <form style={styles.form} onSubmit={handleSubmit}>
+
+            <div>
+                <button style={styles.introText} onClick={quickLoginAsAdmin}>-- logga in som admin --</button>
+                <button style={styles.introText} onClick={quickLoginAsEmployee}>--logga in som employee --</button>
+            </div>
+
+                <form style={styles.form} onSubmit={handleSubmit}>
                 <h1>Login Employee/Admin</h1>
                 <input
                     type="text"

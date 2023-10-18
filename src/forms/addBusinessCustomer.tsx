@@ -7,7 +7,9 @@ const AddBusinessCustomerForm = () => {
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
     const [phonenumber, setPhoneNumber] = useState('');
-    const [address, setAdress] = useState('');
+    const [address, setAddress] = useState('');
+    const [city, setCity] = useState('')
+    const [postalCode, setPostalCode] =  useState('')
     const [password, setPassword] = useState('');
     const [company, setCompany] = useState('');
     const [orgNr, setOrgNr] = useState('');
@@ -29,9 +31,11 @@ const AddBusinessCustomerForm = () => {
                 email: email,
                 phoneNumber: phonenumber,
                 address: address,
+                city: city,
+                postalCode: postalCode,
                 customerType: "BUSINESS"
             };
-
+            console.log(BusinessCustomerData)
             const response = await axios.post(Url, BusinessCustomerData);
 
             console.log('Business Customer was created', response.data);
@@ -40,7 +44,9 @@ const AddBusinessCustomerForm = () => {
             setLastname('')
             setEmail('')
             setPhoneNumber('')
-            setAdress('')
+            setAddress('')
+            setCity('')
+            setPostalCode('')
             setPassword('')
             setCompany('')
             setOrgNr('')
@@ -91,8 +97,22 @@ const AddBusinessCustomerForm = () => {
                     placeholder="Address"
                     style={styles.input}
                     value={address}
-                    onChange={(e) => setAdress(e.target.value)}
+                    onChange={(e) => setAddress(e.target.value)}
                     required
+                />
+                <input
+                    type="text"
+                    placeholder="City"
+                    style={styles.input}
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Postal code"
+                    style={styles.input}
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
                 />
                 <input
                     type="password"
