@@ -1,29 +1,49 @@
 import {useNavigate} from "react-router-dom";
 import '../App.css'
 
-const AddBookingOption = () => {
+export default function AddBookingOption() {
 
     const goToCreateNewBooking = useNavigate()
     const goToUpdateBooking = useNavigate()
-    const goToCancelBooking = useNavigate()
 
     return (
-        <div className="addBookOptCon">
-            <div className="h1">
+        <div className="addBookOptCon" style={styles.container}>
+            <div className="h1" style={styles.h1}>
                 <h1>Booking</h1>
-                <div className="Btns">
-                    <button type="submit" className="addBookOptBtn" onClick={() => {{goToCreateNewBooking(("/CreateNewBooking"))}}}>
+                <div className="Btns" style={styles.menuBtns}>
+                    <button type="submit" style={styles.button} className="addBookOptBtn" onClick={() => {{goToCreateNewBooking(("/CreateNewBooking"))}}}>
                         Create new booking
                     </button>
-                    <button type="submit" className="addBookOptBtn" onClick={() => {{goToUpdateBooking(("/GettingIdNumber"))}}}>
+                    <button type="submit" style={styles.button} className="addBookOptBtn" onClick={() => {{goToUpdateBooking(("/GettingIdNumber"))}}}>
                         Update booking
                     </button>
-                    {/*<button type="submit" className="addBookOptBtn" onClick={() => {{goToCancelBooking(("/CancelWithNumber"))}}}>*/}
-                    {/*    Cancel Booking*/}
-                    {/*</button>*/}
                 </div>
             </div>
         </div>
     );
 };
-export default AddBookingOption;
+
+const styles = {
+    container: {
+        display: 'flex',
+        alignItems: 'center' as "center",
+        justifyContent: 'center' as "center",
+        marginTop: '2%',
+        color: '#000001',
+    },
+    menuBtns: {
+        display: "flex",
+        marginTop: '10%',
+    },
+    button: {
+        backgroundColor: '#b3d9e3',
+        marginLeft: '5%',
+        width: '180px',
+        height: '60px',
+        fontWeight: 'normal',
+    },
+    h1: {
+        justifyContent: "center" as 'center',
+        textAlign: "center" as 'center'
+    }
+}

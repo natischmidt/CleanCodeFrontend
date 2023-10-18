@@ -12,7 +12,6 @@ const AddUserOption = () => {
             <div className="h1" style={styles.h1}>
                 <h1>Create new:</h1>
                 <div className="menuBtn" style={styles.menuBtns}>
-                    {/*<h2 style={styles.h2}>Create new:</h2>*/}
                     <button type="submit" style={styles.button} onClick={() => {{goToAdminForm(("/AddAdmin"))}}}>
                         Admin
                     </button>
@@ -36,9 +35,9 @@ export default AddUserOption;
 const styles = {
     container: {
         display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: '3%',
+        alignItems: 'center' as "center",
+        justifyContent: 'center' as "center",
+        marginTop: '2%',
         color: '#000001',
     },
     menuBtns: {
@@ -50,11 +49,10 @@ const styles = {
         marginLeft: '5%',
         width: '180px',
         height: '60px',
-        // fontSize: '1.2rem',
         fontWeight: 'normal',
     },
     h1: {
-        justifyContent: "center",
-        textAlign: "center"
+        justifyContent: "center" as 'center',
+        textAlign: "center" as 'center'
     }
 }

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {LoginModal} from "./LoginModal";
+import axios from "axios";
 
 const styles = {
     header: {
@@ -45,11 +47,40 @@ const styles = {
     },
 };
 
-const CustomerHeader: React.FC = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+interface HeaderProps {
+    showLoggedIn: boolean
+}
 
+const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn}) => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
+    const goToCustomerHome = useNavigate()
 
     const handleLoginClick = () => {
+        setIsLoggedIn(!isLoggedIn)
+        setIsLoginModalOpen(true);
+    }
+
+    const handleLogoutClick = async (e : React.FormEvent) => {
+        e.preventDefault();
+
+        try {
+            const Url = 'http://localhost:8080/api/auth/logoutEmployee';
+
+            const response = await axios.post(Url);
+
+            console.log('Employee/Admin has successfully logged out', response.data);
+
+            goToCustomerHome("/CustomerHome")
+
+        } catch (error) {
+            console.error('Error signing out employee/admin', error);
+        }
+    };
+
+    const closeModal = () => {
+        setIsLoginModalOpen(false);
         setIsLoggedIn(!isLoggedIn);
     };
 
@@ -67,11 +98,11 @@ const CustomerHeader: React.FC = () => {
                     <Link to="/CustomerBooking" style={styles.link}>Book</Link>
                 </li>
                 <li style={styles.navItem}>
-                    <a href="/MyBookings" style={styles.link}>My Bookings</a>
+                    <Link to="/MyBookings" style={styles.link}>My Bookings</Link>
                 </li>
                 <li style={styles.navItem}>
-                    {isLoggedIn ? (
-                        <button style={styles.button} onClick={handleLoginClick}>
+                    {showLoggedIn ? (
+                        <button style={styles.button} onClick={handleLogoutClick}>
                             Log Out
                         </button>
                     ) : (
@@ -86,6 +117,9 @@ const CustomerHeader: React.FC = () => {
                     )}
                 </li>
             </ul>
+            {isLoginModalOpen && (
+                <LoginModal onClose={closeModal} />
+            )}
         </header>
     );
 

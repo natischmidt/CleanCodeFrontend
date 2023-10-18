@@ -1,6 +1,7 @@
 import logo from "../assets/stadaFint.png";
 import {useNavigate} from "react-router-dom";
 import React from "react";
+import axios from "axios";
 export default function Header() {
 
     const goToBooking = useNavigate()
@@ -9,6 +10,23 @@ export default function Header() {
     const goToGDPR = useNavigate()
     const goToAddUser = useNavigate()
     const goToLogin = useNavigate()
+
+    const handleLogout = async (e : React.FormEvent) => {
+        e.preventDefault();
+
+        try {
+            const Url = 'http://localhost:8080/api/auth/logoutEmployee';
+
+            const response = await axios.post(Url);
+
+            console.log('Employee/Admin has successfully logged out', response.data);
+
+            goToLogin("/")
+
+        } catch (error) {
+            console.error('Error signing out employee/admin', error);
+        }
+    }
 
     return (
         <div className="headerContainer" style={styles.header}>
@@ -21,7 +39,7 @@ export default function Header() {
                 <button id="Customers" style={styles.btn} onClick={() => {{goToCustomers(("/Customers"))}}}>Customers</button>
                 <button id="GDPR" style={styles.btn} onClick={() => {{goToGDPR(("/GDPR"))}}}>GDPR</button>
                 <button id="AddUser" style={styles.btn} onClick={() => {{goToAddUser(("/AddUser"))}}}>Create New User</button>
-                <button id="SignOut" style={styles.btn} onClick={() => {{goToLogin(("/"))}}}>Sign Out</button>
+                <button id="SignOut" style={styles.btn} onClick={handleLogout}>Sign Out</button>
             </div>
         </div>
     )
@@ -30,7 +48,7 @@ export default function Header() {
 const styles = {
     header: {
         backgroundColor: '#E2FFF8' as '#E2FFF8',
-        borderBottom: '5px solid #52af66',
+        borderBottom: '5px solid #729ca8',
         display: 'flex',
         position: 'relative' as 'relative',
         padding: '20px',

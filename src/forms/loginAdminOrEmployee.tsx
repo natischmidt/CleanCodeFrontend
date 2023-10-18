@@ -4,8 +4,8 @@ import {  useUserType} from "../components/UserTypeContext";
 import axios from "axios";
 
 const LoginAdminOrEmployeeForm = () => {
-    const [email, setEmail] = useState('lisa.gronberg@stadafint.se');
-    const [password, setPassword] = useState('password');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const goToHomePage = useNavigate();
     const { setUserType , setId} = useUserType();
 
@@ -13,39 +13,61 @@ const LoginAdminOrEmployeeForm = () => {
         e.preventDefault();
     };
 
-    //userType: 'Admin' | 'Employee'
-    //setUserType(userType);
+    // userType: 'Admin' | 'Employee'
+    // setUserType(userType);
     //goToHomePage(`/${userType}Home`);
     const handleLogin = async () => {
-        const url = "http://localhost:8080/api/auth/loginEmployee"
-        const content = {
-            email,
-            password
-        }
 
         try {
-            const resp = await axios.post(url, content)
-            const response = resp.data
+            const Url = 'http://localhost:8080/api/auth/loginEmployee';
 
-            if (response.id && (response.role === "ADMIN" || response.role ==="EMPLOYEE")){
-                setUserType(response.role) // sätter det i context
-                setId(response.id)
-                goToHomePage(`/${response.role}Home`)
-            } else {
-                console.log("hur tusan hamna vi här?")
-            }
-        } catch (error){
-            console.log("neeeej?")
-            console.log(error)
+            const loginData = {
+                email: email,
+                password: password,
+            };
+
+            const response = await axios.post(Url, loginData);
+
+            console.log('Employee has successfully logged in', response.data);
+
+            setEmail('')
+            setPassword('')
+            setId(response.data.id)
+            goToHomePage(`/${response.data.role}Home`)
+
+        } catch (error) {
+            console.error('Error signing in employee', error);
         }
     };
 
+
+    //     const url = "http://localhost:8080/api/auth/loginEmployee"
+    //
+    //     const content = {
+    //         email,
+    //         password
+    //     }
+    //
+    //     try {
+    //         const resp = await axios.post(url, content)
+    //         const response = resp.data
+    //
+    //         if (response.id && (response.role === "ADMIN" || response.role ==="EMPLOYEE")){
+    //             setUserType(response.role) // sätter det i context
+    //             setId(response.id)
+    //             goToHomePage(`/${response.role}Home`)
+    //
+    //             console.log(response.data.id + ' Has successfully logged in');
+    //         } else {
+    //             console.log("hur tusan hamna vi här?")
+    //         }
+    //     } catch (error){
+    //         console.log(error)
+    //     }
+    // };
+
     return (
         <div style={styles.container}>
-            <div>
-                <p style={styles.introText}>admin dummy : lisa.gronberg@stadafint.se pw : password </p>
-                <p style={styles.introText}>employee dummy : kent.andersson@stadafint.se pw : password </p>
-            </div>
             <form style={styles.form} onSubmit={handleSubmit}>
                 <h1>Login Employee/Admin</h1>
                 <input
@@ -54,7 +76,6 @@ const LoginAdminOrEmployeeForm = () => {
                     style={styles.input}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-
                     required
                 />
                 <input
@@ -73,29 +94,24 @@ const LoginAdminOrEmployeeForm = () => {
                     >
                         Login
                     </button>
-
                 </div>
             </form>
         </div>
     );
 };
 
-
 export default LoginAdminOrEmployeeForm;
 
 const styles = {
-    buttonContainer: {
-
-    },
     introText: {
         color: 'black'
     },
-
     container: {
         display: 'flex',
         flexDirection: 'column' as 'column',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        height: "100vh"
     },
     form: {
         display: 'flex',

@@ -23,7 +23,7 @@ export const CustomerMyPages: React.FC = () => {
 
     return (
         <>
-            <CustomerHeader />
+            <CustomerHeader showLoggedIn={true} />
             <div style={{ ...selectedStyles }}>
                 <Dashboard userType="customer" userData={testUserData} />
             </div>

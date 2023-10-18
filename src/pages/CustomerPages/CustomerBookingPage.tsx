@@ -5,7 +5,7 @@ export default function CustomerBookingPage() {
 
     return (
         <>
-            <CustomerHeader/>
+            <CustomerHeader showLoggedIn={true}/>
             <div className="bookingCont">
                 <AddCustomerBookingOption/>
             </div>

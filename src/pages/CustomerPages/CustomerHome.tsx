@@ -60,7 +60,6 @@ const styles: {
     },
 };
 
-
 export const CustomerHomePage: React.FC = () => {
     const { userType ,id} = useUserType();
     const selectedStyles =
@@ -70,7 +69,7 @@ export const CustomerHomePage: React.FC = () => {
 
     return (
         <>
-            <CustomerHeader />
+            <CustomerHeader showLoggedIn={false}/>
             <div style={{ ...selectedStyles }}>
                 <div style={styles.container}>
                     <div style={styles.halfContainer}>

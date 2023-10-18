@@ -21,6 +21,7 @@ import {CustomerMyPages} from "./pages/CustomerPages/CustomerMyPages"
 import {CustomerHomePage} from "./pages/CustomerPages/CustomerHome";
 import EmployeeHomePage from "./pages/EmployeePages/EmployeeHome";
 import CustomerBookingPage from "./pages/CustomerPages/CustomerBookingPage";
+import LoginAdminOrEmployeeForm from "./forms/loginAdminOrEmployee";
 //import OverviewPage from "./pages/overviewpage";
 //import TransactionPage from "./pages/transactionoverview";
 
@@ -29,7 +30,7 @@ function Routing() {
         <>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<LoginPage/>} />
+                    <Route path="/" element={<LoginAdminOrEmployeeForm/>} />
                     <Route path="/AdminHome" element={<AdminHome/>}/>
                     <Route path="/CustomerHome" element={<CustomerHomePage/>}/>
                     <Route path="/CustomerMyPages" element={<CustomerMyPages/>}/>
