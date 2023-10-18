@@ -16,13 +16,18 @@ export default function EmployeeHomePage() {
     const [lastname, setLastname] = useState("")
     const [email, setEmail] = useState("")
     const [phonenumber, setPhonenumber] = useState("")
+    const [address, setAddress] = useState("")
+    const [city, setCity] = useState("")
+    const [postalCode, setPostalCode] = useState("")
 
     const employeeData = {
         firstname: firstname,
         lastname: lastname,
         email: email,
         password: '',
-        address: '',
+        address: address,
+        city: city,
+        postalCode: postalCode,
         SSnumber: '',
         phoneNumber: phonenumber,
     };
@@ -36,6 +41,9 @@ export default function EmployeeHomePage() {
             setLastname(r.lastName)
             setEmail(r.email)
             setPhonenumber(r.phoneNumber)
+            setAddress(r.address)
+            setCity(r.city)
+            setPostalCode(r.postalCode)
         })
     }, [])
 

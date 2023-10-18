@@ -10,6 +10,8 @@ const AddEmployeeForm = () => {
     const [ss, setSs] = useState('');
     const [salary, setSalary] = useState <number> (0);
     const [address, setAddress] = useState('');
+    const [city, setCity] = useState('')
+    const [postalCode, setPostalCode] =  useState('')
     const [password, setPassword] = useState('');
 
     const goBackToAddUser = useNavigate();
@@ -28,6 +30,8 @@ const AddEmployeeForm = () => {
                 email: email,
                 phoneNumber: phonenumber,
                 address: address,
+                city: city,
+                postalCode: postalCode,
                 role: "EMPLOYEE",
                 salary: salary,
             };
@@ -43,6 +47,8 @@ const AddEmployeeForm = () => {
             setSs('')
             setSalary (0)
             setAddress('')
+            setCity('')
+            setPostalCode('')
             setPassword('')
 
         } catch (error) {
@@ -101,6 +107,20 @@ const AddEmployeeForm = () => {
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     required
+                />
+                <input
+                    type="text"
+                    placeholder="City"
+                    style={styles.input}
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Postal code"
+                    style={styles.input}
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
                 />
                 <input
                     type="text"
