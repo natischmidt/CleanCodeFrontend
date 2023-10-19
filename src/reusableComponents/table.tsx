@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useUserType} from "../components/UserTypeContext";
+import employee from "../API/employee";
 
 interface Column {
     key: string;
@@ -15,10 +16,16 @@ interface Props {
 
 const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate}) => {
 
-    const { userType , setUserType} = useUserType();
+    const userType = useUserType().userType;
 
+    useEffect(() => {
+        console.log(userType)
+
+
+    }, [])
 
     return (
+
         <table className="data-table" style={styles.dataTable}>
             <thead>
             <tr>
@@ -29,6 +36,7 @@ const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate}) => {
             </thead>
             <tbody>
 
+
             {data.map((item, index) => (
                 <tr key={index}>
                     {columns.map((column) => (
@@ -36,13 +44,14 @@ const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate}) => {
                     ))}
                     <td>
                         <button style={styles.update} onClick={() => onUpdate(item.id)}>Update</button>
-                        {userType == "ADMIN" ? <button style={styles.delete} onClick={() => onDelete(item.id)}>Delete</button> : <></>}
+                        {userType == "ADMIN" ? <button style={styles.delete} onClick={() => onDelete(item.id)}>Delete</button> : <></> }
                         {/*Här får vi rött, fast koden funkar???*/}
                     </td>
                 </tr>
             ))}
             </tbody>
         </table>
+
     );
 };
 

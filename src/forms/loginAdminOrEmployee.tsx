@@ -27,7 +27,7 @@ const LoginAdminOrEmployeeForm = () => {
             };
 
             const response = await axios.post(Url, loginData);
-
+            setUserType(response.data.role)
             console.log('Employee has successfully logged in', response.data);
 
             setEmail('')
