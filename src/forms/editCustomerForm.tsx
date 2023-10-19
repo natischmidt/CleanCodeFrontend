@@ -25,6 +25,8 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
 
             const data = response.data
 
+            console.log(data)
+
             setFirstname(data.firstName)
             setLastname(data.lastName)
             setEmail(data.email)
@@ -46,8 +48,6 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
 
         try {
             const url = `http://localhost:8080/api/customer/update/${cusId}`;
-
-
 
             const editCustomerData = {
                 firstName: firstname,
@@ -128,6 +128,20 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
                 />
                 <input
                     type="text"
+                    placeholder="City"
+                    style={styles.input}
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Postal code"
+                    style={styles.input}
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
+                />
+                <input
+                    type="text"
                     placeholder="Company name"
                     style={styles.input}
                     value={compName}
@@ -141,20 +155,6 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
                     value={orgNr}
                     onChange={(e) => setOrgNr(e.target.value)}
                     required
-                />
-                <input
-                    type="text"
-                    placeholder="City"
-                    style={styles.input}
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder="Postal code"
-                    style={styles.input}
-                    value={postalCode}
-                    onChange={(e) => setPostalCode(e.target.value)}
                 />
                 <input
                     type="password"
