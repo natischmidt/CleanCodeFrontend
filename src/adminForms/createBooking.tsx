@@ -346,7 +346,7 @@ const styles = {
         backgroundColor: '#b3d9e3',
         width: "500px",
         // height: '700px',
-        marginTop: '6%'
+        marginTop: '4%'
     },
     input: {
         marginTop: '10px',
@@ -363,6 +363,7 @@ const styles = {
         borderRadius: '10px',
         cursor: 'pointer',
         marginTop: '25px',
+        width: "200px"
     },
     select: {
         marginTop: '10px',
@@ -389,7 +390,7 @@ const styles = {
         padding: '10px 12px',
         marginTop: '10px',
         width: "23rem",
-        height: "30rem"
+        height: "10rem"
     }
 }
 

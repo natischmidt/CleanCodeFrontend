@@ -14,9 +14,9 @@ export default function AddBookingOption() {
                     <button type="submit" style={styles.button} className="addBookOptBtn" onClick={() => {{goToCreateNewBooking(("/CreateNewBooking"))}}}>
                         Create new booking
                     </button>
-                    <button type="submit" style={styles.button} className="addBookOptBtn" onClick={() => {{goToUpdateBooking(("/GettingIdNumber"))}}}>
-                        Update booking
-                    </button>
+                    {/*<button type="submit" style={styles.button} className="addBookOptBtn" onClick={() => {{goToUpdateBooking(("/GettingIdNumber"))}}}>*/}
+                    {/*    Update booking*/}
+                    {/*</button>*/}
                 </div>
             </div>
         </div>
@@ -38,9 +38,9 @@ const styles = {
     button: {
         backgroundColor: '#b3d9e3',
         marginLeft: '5%',
-        width: '180px',
         height: '60px',
         fontWeight: 'normal',
+        width: "250px"
     },
     h1: {
         justifyContent: "center" as 'center',

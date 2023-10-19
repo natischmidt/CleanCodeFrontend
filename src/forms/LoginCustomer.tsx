@@ -99,7 +99,7 @@ const styles = {
         borderRadius: '5px',
         backgroundColor: '#b3d9e3',
         width: "600px",
-        height: '400px',
+        // height: '400px',
     },
     input: {
         marginTop: '25px',

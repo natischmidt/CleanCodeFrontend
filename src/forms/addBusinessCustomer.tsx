@@ -165,7 +165,7 @@ const styles = {
         backgroundColor: '#b3d9e3',
         width: "500px",
         // height: '760px',
-        marginTop: '4%'
+        marginTop: '2%'
     },
     input: {
         marginTop: '10px',
@@ -182,5 +182,6 @@ const styles = {
         borderRadius: '10px',
         cursor: 'pointer',
         marginTop: '25px',
+        width: "270px"
     },
 }

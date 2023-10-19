@@ -124,9 +124,9 @@ const styles = {
         border: '2px solid silver',
         borderRadius: '5px',
         backgroundColor: '#b3d9e3',
-        width: "500px",
-        height: '630px',
-        marginTop: '6%'
+        width: "400px",
+        // height: '630px',
+        marginTop: '7%'
     },
     input: {
         marginTop: '10px',
@@ -143,6 +143,7 @@ const styles = {
         borderRadius: '10px',
         cursor: 'pointer',
         marginTop: '25px',
+        width: "250px"
     },
 }
 

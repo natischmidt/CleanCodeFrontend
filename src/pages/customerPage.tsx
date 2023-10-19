@@ -21,10 +21,21 @@ export default function CustomerPage() {
     return (
         <>
             <Header/>
-            <h2>Customer Table</h2>
-            {!showUpdateCustomer ? <CustomerTable onUpdate={(cusId: number) => handleUpdate(cusId)} /> :
-            <EditCustomerForm cusId={selectedCustomerId} doneWithEdit={handleUpdateComplete} /> }
-            {/*<CustomerFooter/>*/}
+            <div className="h1" style={styles.h1}>
+                <h1>Customers</h1>
+
+                {!showUpdateCustomer ? <CustomerTable onUpdate={(cusId: number) => handleUpdate(cusId)} /> :
+                <EditCustomerForm cusId={selectedCustomerId} doneWithEdit={handleUpdateComplete} /> }
+                {/*<CustomerFooter/>*/}
+            </div>
         </>
     )
+}
+
+const styles = {
+    h1: {
+        marginTop: "4%",
+        justifyContent: "center" as 'center',
+        textAlign: "center" as 'center'
+    }
 }
