@@ -27,7 +27,18 @@ const Dashboard: React.FC<DashboardProps> = ({ userType, userData }) => {
         console.log(`Booking ${jobId} was updated.`);
     };
     return (
+        <div>
+        <div className="section" style={styles.timeSection}>
+            {/*<div className="section-title" style={styles.sectionTitle}>*/}
+            {/*    Today's Date and Time*/}
+            {/*</div>*/}
+            <div className="section-content">
+                <div>Today's Date: {new Date().toLocaleDateString()}</div>
+                <div>Time: {new Date().toLocaleTimeString()}</div>
+            </div>
+        </div>
         <div className="dashboard" style={styles.dashboard}>
+
             <div className="section" style={styles.section}>
                 <div className="section-title" style={styles.sectionTitle}>
                     {userType === 'admin'
@@ -57,15 +68,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userType, userData }) => {
                 </div>
             </div>
 
-            <div className="section" style={styles.section}>
-                <div className="section-title" style={styles.sectionTitle}>
-                    Today's Date and Time
-                </div>
-                <div className="section-content">
-                    <div>Today's Date: {new Date().toLocaleDateString()}</div>
-                    <div>Today's Time: {new Date().toLocaleTimeString()}</div>
-                </div>
-            </div>
+
 
             <div className="section" style={styles.section}>
                 <div className="section-title" style={styles.sectionTitle}>
@@ -83,6 +86,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userType, userData }) => {
                 </div>
             </div>
             </div>
+        </div>
     );
 };
 
@@ -108,6 +112,14 @@ const styles: { [key: string]: React.CSSProperties } = {
         marginBottom: '10px',
 
     },
+    timeSection: {
+        flex: 1,
+        // border: '1px solid #ccc',
+        margin: '10px',
+        padding: '1px',
+        textAlign: 'right',
+        // boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
+    }
 };
 export default Dashboard;
 

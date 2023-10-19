@@ -42,12 +42,10 @@ const employee = {
     getJob: async (id: number) => {
 
         const headers = {
-            jobId: id
+            jobId: id.toString()
         }
-
         try {
-
-            const response = await axios.post('http://localhost:8080/api/jobs/getJob', null, {headers});
+            const response = await axios.get('http://localhost:8080/api/jobs/getJob',  {headers});
             const data = response.data
             console.log(data)
             return data;
