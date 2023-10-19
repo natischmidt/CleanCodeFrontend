@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import BookingHistoryTable from "../components/tabels/BookingHistoryTable";
 import BookingTable from "../components/tabels/BookingTable";
 import updateBooking from "../adminForms/updateBooking";
 import CustomerJobCheck from "../components/CustomerJobCheck";
 import MyShifts from "../pages/EmployeePages/MyShifts";
+import {UserTypeContext} from "../components/UserTypeContext";
+import {DashboardUserData} from "./DashboardUserData";
+import axios from 'axios';
 
 
 interface DashboardProps {
@@ -21,11 +24,39 @@ interface DashboardProps {
 
 
 
-const Dashboard: React.FC<DashboardProps> = ({ userType, userData }) => {
+const Dashboard: React.FC<DashboardProps> = ({ userType }) => {
+    const userTypeContext = useContext(UserTypeContext);
+    const id = userTypeContext?.id;
+    const contextUserType = userTypeContext?.userType;
+
+    const [userData, setUserData] = useState({
+        firstname: "",
+        lastname: "",
+        email: "",
+        password: "",
+        address: "",
+        SSnumber: "",
+        phoneNumber: "",
+    });
+
+    // useEffect(() => {
+    //     if (contextUserType && id) {
+    //         if (contextUserType === "Customer") {
+    //             fetchCustomerData(id).then((data) => {
+    //                 setUserData(data);
+    //             });
+    //         } else if (contextUserType === "Employee") {
+    //             fetchEmployeeData(id).then((data) => {
+    //                 setUserData(data);
+    //             });
+    //         }
+    //     }
+    // }, [id, contextUserType]);
 
     const handleBookingUpdate = (jobId: number) => {
         console.log(`Booking ${jobId} was updated.`);
     };
+
     return (
         <div>
         <div className="section" style={styles.timeSection}>
@@ -89,6 +120,23 @@ const Dashboard: React.FC<DashboardProps> = ({ userType, userData }) => {
         </div>
     );
 };
+
+
+
+
+
+const fetchEmployeeData = async (employeeId: string): Promise<DashboardUserData> => {
+    try {
+        const response = await axios.post(`http://localhost:8080/api/getEmployee`, null, {
+            headers: { empId: employeeId }
+        });
+        return response.data;
+    } catch (error) {
+        throw new Error(`Error fetching employee ${error}`);
+    }
+};
+
+
 
 
 const styles: { [key: string]: React.CSSProperties } = {
