@@ -12,6 +12,7 @@ const CreateNewBooking: React.FC = () => {
     const [timeSlotList, setTimeSlotList] = useState<string[]>([]);
     const [squareMeters, setSquareMeters] = useState('');
     const [payment, setPayment] = useState('');
+    const [message, setMessage] = useState('')
     const [customer, setCustomer] = useState('')
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [showCalender, setShowCalender] = useState(false)
@@ -161,7 +162,7 @@ const CreateNewBooking: React.FC = () => {
 
     const handleBooking = () => {
         try {
-            admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, payment, customer).then(r => {
+            admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, payment, customer, message).then(r => {
             })
 
         } catch (error) {
@@ -229,6 +230,12 @@ const CreateNewBooking: React.FC = () => {
                         onChange={(e) => setCustomer(e.target.value)}
                         required
                     />
+                    <textarea
+                        placeholder="Write a message..."
+                        style={styles.textarea}
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                    />
 
                     <button type="submit" style={styles.button}
                             onClick={() => handleBooking()}
@@ -293,7 +300,7 @@ const styles = {
         borderRadius: '5px',
         backgroundColor: '#b3d9e3',
         width: "500px",
-        height: '630px',
+        // height: '630px',
         marginTop: '6%'
     },
     input: {
@@ -332,6 +339,12 @@ const styles = {
     },
     slots: {
         margin: 10,
+    },
+    textarea: {
+        padding: '10px 12px',
+        marginTop: '10px',
+        width: "23rem",
+        height: "30rem"
     }
 }
 

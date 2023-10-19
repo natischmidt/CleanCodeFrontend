@@ -164,7 +164,7 @@ const styles = {
         borderRadius: '5px',
         backgroundColor: '#b3d9e3',
         width: "500px",
-        height: '760px',
+        // height: '760px',
         marginTop: '4%'
     },
     input: {

@@ -11,6 +11,8 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
     const [email, setEmail] = useState('');
     const [phonenumber, setPhoneNumber] = useState('');
     const [address, setAddress] = useState('');
+    const [city, setCity] = useState('')
+    const [postalCode, setPostalCode] =  useState('')
     const [orgNr, setOrgNr] = useState('');
     const [compName, setCompName] = useState  ("");
     const [cusType, setCusType] = useState("")
@@ -28,6 +30,8 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
             setEmail(data.email)
             setPhoneNumber(data.phoneNumber)
             setAddress(data.address)
+            setCity(data.city)
+            setPostalCode(data.postalCode)
             setCompName(data.companyName || "")
             setOrgNr(data.orgNumber || "")
             setCusType(data.customerType)
@@ -52,22 +56,23 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
                 email: email,
                 phoneNumber: phonenumber,
                 address: address,
+                city: city,
+                postalCode: postalCode,
                 companyName: compName,
                 orgNumber: orgNr,
                 customerType: cusType
             };
-
-
-
 
             setFirstname('')
             setLastname('')
             setEmail('')
             setPhoneNumber('')
             setAddress('')
+            setCity('')
+            setPostalCode('')
             setCompName('')
-            setOrgNr("")
-            setCusType("")
+            setOrgNr('')
+            setCusType('')
             setPassword('')
 
             const response = await axios.patch(url, editCustomerData);
@@ -137,9 +142,20 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
                     onChange={(e) => setOrgNr(e.target.value)}
                     required
                 />
-
-
-
+                <input
+                    type="text"
+                    placeholder="City"
+                    style={styles.input}
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Postal code"
+                    style={styles.input}
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
+                />
                 <input
                     type="password"
                     placeholder="Password, låt va tills vidare"

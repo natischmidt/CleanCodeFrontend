@@ -9,10 +9,11 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({ onClose }) =>
     const [phonenumber, setPhoneNumber] = useState('');
     const [address, setAdress] = useState('');
     const [password, setPassword] = useState('');
+    const [city, setCity] = useState('')
+    const [postalCode, setPostalCode] =  useState('')
     const [company, setCompany] = useState('');
     const [orgNr, setOrgNr] = useState('');
     const [customerType, setCustomerType] = useState(false);
-
 
     const handleSubmit = async (e : React.FormEvent) => {
         e.preventDefault();
@@ -20,7 +21,6 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({ onClose }) =>
 
     const handleClickedCheckbox = () => {
         setCustomerType(!customerType)
-
 
         setCompany('')
         setOrgNr('')
@@ -38,6 +38,8 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({ onClose }) =>
                 companyName: company,
                 orgNumber: orgNr,
                 email: email,
+                city: city,
+                postalCode: postalCode,
                 phoneNumber: phonenumber,
                 address: address,
             };
@@ -106,6 +108,20 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({ onClose }) =>
                         required
                     />
                     <input
+                        type="text"
+                        placeholder="City"
+                        style={styles.input}
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Postal code"
+                        style={styles.input}
+                        value={postalCode}
+                        onChange={(e) => setPostalCode(e.target.value)}
+                    />
+                    <input
                         type="password"
                         placeholder="Password"
                         style={styles.input}
@@ -168,7 +184,7 @@ const styles = {
         border: '2px solid silver',
         borderRadius: '5px',
         backgroundColor: '#b3d9e3',
-        width: "300px",
+        width: "400px",
         marginTop: '4%'
     },
     input: {
@@ -185,7 +201,7 @@ const styles = {
         border: 'none',
         borderRadius: '10px',
         cursor: 'pointer',
-        marginTop: '25px',
+        marginTop: '3%',
         width: "150px"
     },
     label: {
