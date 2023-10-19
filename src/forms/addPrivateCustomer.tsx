@@ -8,6 +8,8 @@ const AddPrivateCustomerForm = () => {
     const [email, setEmail] = useState('');
     const [phonenumber, setPhoneNumber] = useState('');
     const [address, setAddress] = useState('');
+    const [city, setCity] = useState('')
+    const [postalCode, setPostalCode] =  useState('')
     const [password, setPassword] = useState('');
 
     const goBackToAddUser = useNavigate();
@@ -21,10 +23,12 @@ const AddPrivateCustomerForm = () => {
             const BusinessCustomerData = {
                 firstName: firstname,
                 lastName: lastname,
-                password: password,
                 email: email,
                 phoneNumber: phonenumber,
                 address: address,
+                city: city,
+                postalCode: postalCode,
+                password: password,
                 customerType: "PRIVATE"
             };
 
@@ -35,9 +39,10 @@ const AddPrivateCustomerForm = () => {
             setFirstname('')
             setLastname('')
             setEmail('')
-            setAddress('')
             setPhoneNumber('')
-            setLastname('')
+            setAddress('')
+            setCity('')
+            setPostalCode('')
             setPassword('')
 
         } catch (error) {
@@ -90,6 +95,20 @@ const AddPrivateCustomerForm = () => {
                     required
                 />
                 <input
+                    type="text"
+                    placeholder="City"
+                    style={styles.input}
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Postal code"
+                    style={styles.input}
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
+                />
+                <input
                     type="password"
                     placeholder="Password"
                     style={styles.input}
@@ -124,7 +143,7 @@ const styles = {
         border: '2px solid silver',
         borderRadius: '5px',
         backgroundColor: '#b3d9e3',
-        width: "400px",
+        width: "500px",
         // height: '630px',
         marginTop: '7%'
     },
