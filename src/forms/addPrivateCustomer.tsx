@@ -8,7 +8,11 @@ const AddPrivateCustomerForm = () => {
     const [email, setEmail] = useState('');
     const [phonenumber, setPhoneNumber] = useState('');
     const [address, setAddress] = useState('');
+    const [city, setCity] = useState('')
+    const [postalCode, setPostalCode] =  useState('')
     const [password, setPassword] = useState('');
+    const [company, setCompany] = useState('');
+    const [orgNr, setOrgNr] = useState('');
 
     const goBackToAddUser = useNavigate();
 
@@ -23,9 +27,12 @@ const AddPrivateCustomerForm = () => {
                 lastName: lastname,
                 password: password,
                 email: email,
+                companyName: company,
+                orgNumber: orgNr,
                 phoneNumber: phonenumber,
                 address: address,
-                customerType: "PRIVATE"
+                city: city,
+                postalCode: postalCode,
             };
 
             const response = await axios.post(Url, BusinessCustomerData);

@@ -12,6 +12,8 @@ interface UserTypeContextProps {
     // loggedIn: loggedIn;
 }
 
+
+
 const UserTypeContext = createContext<UserTypeContextProps | undefined>(
     undefined
 );

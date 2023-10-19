@@ -40,8 +40,9 @@ const CustomerTableOkOrNot: React.FC<CustomerOkOrNotTableProps> = ({cusId, chang
         try {
             const updateJobDTO = {
                 jobId: id,
-                jobStatus: 'APPROVED',
+                jobStatus: 'APPROVED'
             }
+            console.log(updateJobDTO.jobId + " ÄR DEN HÄR?")
             await axios.put("http://localhost:8080/api/jobs/updateJob", updateJobDTO)
             setChange(x => x + 1)
         } catch (error) {

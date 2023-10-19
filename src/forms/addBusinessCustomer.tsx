@@ -33,7 +33,7 @@ const AddBusinessCustomerForm = () => {
                 address: address,
                 city: city,
                 postalCode: postalCode,
-                customerType: "BUSINESS"
+
             };
             console.log(BusinessCustomerData)
             const response = await axios.post(Url, BusinessCustomerData);

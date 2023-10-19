@@ -6,7 +6,6 @@ interface CustomerComingJobsTableProps {
     change: number
     setChange: React.Dispatch<React.SetStateAction<number>>
 }
-
 const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId, change, setChange}) => {
 
     const [theData, setTheData] = useState([])
