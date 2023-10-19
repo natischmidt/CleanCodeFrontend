@@ -42,9 +42,10 @@ const AddPrivateCustomerForm = () => {
             setFirstname('')
             setLastname('')
             setEmail('')
-            setAddress('')
             setPhoneNumber('')
-            setLastname('')
+            setAddress('')
+            setCity('')
+            setPostalCode('')
             setPassword('')
 
         } catch (error) {
@@ -97,6 +98,20 @@ const AddPrivateCustomerForm = () => {
                     required
                 />
                 <input
+                    type="text"
+                    placeholder="City"
+                    style={styles.input}
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Postal code"
+                    style={styles.input}
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
+                />
+                <input
                     type="password"
                     placeholder="Password"
                     style={styles.input}
@@ -131,7 +146,7 @@ const styles = {
         border: '2px solid silver',
         borderRadius: '5px',
         backgroundColor: '#b3d9e3',
-        width: "400px",
+        width: "500px",
         // height: '630px',
         marginTop: '7%'
     },
