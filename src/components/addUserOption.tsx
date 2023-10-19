@@ -47,9 +47,9 @@ const styles = {
     button: {
         backgroundColor: '#b3d9e3',
         marginLeft: '5%',
-        width: '180px',
         height: '60px',
         fontWeight: 'normal',
+        width: "250px"
     },
     h1: {
         justifyContent: "center" as 'center',

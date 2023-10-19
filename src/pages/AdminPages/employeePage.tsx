@@ -21,10 +21,21 @@ export default function EmployeePage() {
     return (
         <>
             <Header/>
-            <h2>Employee Table</h2>
-            { !showUpdateEmployee ? <EmployeeTable onUpdate={(empId: number) => handleUpdate(empId)} /> :
-                <EditEmployeeForm  empId={selectedEmployeeId} doneWithEdit={handleUpdateComplete}/>}
-            {/*<CustomerFooter/>*/}
+            <div className="h1" style={styles.h1}>
+                <h1>Employees</h1>
+
+                { !showUpdateEmployee ? <EmployeeTable onUpdate={(empId: number) => handleUpdate(empId)} /> :
+                    <EditEmployeeForm  empId={selectedEmployeeId} doneWithEdit={handleUpdateComplete}/>}
+                {/*<CustomerFooter/>*/}
+            </div>
         </>
     )
+}
+
+const styles = {
+    h1: {
+        marginTop: "4%",
+        justifyContent: "center" as 'center',
+        textAlign: "center" as 'center'
+    }
 }

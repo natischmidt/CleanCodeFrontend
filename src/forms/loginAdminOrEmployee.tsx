@@ -27,7 +27,7 @@ const LoginAdminOrEmployeeForm = () => {
             };
 
             const response = await axios.post(Url, loginData);
-
+            setUserType(response.data.role)
             console.log('Employee has successfully logged in', response.data);
 
             setEmail('')
@@ -139,7 +139,7 @@ const styles = {
         border: '2px solid silver',
         borderRadius: '5px',
         backgroundColor: '#b3d9e3',
-        width: "600px",
+        // width: "600px",
         height: '400px',
     },
     input: {
