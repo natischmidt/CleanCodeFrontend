@@ -2,12 +2,11 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 
 type UserType = "Admin" | "Customer" | "Employee";
 type id = string | null
-// type loggedIn = boolean
 
 interface UserTypeContextProps {
     userType: UserType | null;
     setUserType: React.Dispatch<React.SetStateAction<UserType | null>>;
-    id: id | null;
+    id: id;
     setId: React.Dispatch<React.SetStateAction<id | null>>;
     loggedIn: boolean;
     setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,7 +14,7 @@ interface UserTypeContextProps {
 
 
 
-const UserTypeContext = createContext<UserTypeContextProps | undefined>(
+export const UserTypeContext = createContext<UserTypeContextProps | undefined>(
     undefined
 );
 
