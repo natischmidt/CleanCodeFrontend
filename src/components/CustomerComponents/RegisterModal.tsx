@@ -137,6 +137,7 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({ onClose }) =>
                                 style={styles.input}
                                 value={company}
                                 onChange={(e) => setCompany(e.target.value)}
+                                required
                             />
                             <input
                                 type="text"
@@ -144,6 +145,7 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({ onClose }) =>
                                 style={styles.input}
                                 value={orgNr}
                                 onChange={(e) => setOrgNr(e.target.value)}
+                                required
                             />
                         </div> : <></>}
 
