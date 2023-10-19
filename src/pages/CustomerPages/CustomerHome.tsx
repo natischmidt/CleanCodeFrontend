@@ -1,6 +1,6 @@
 import CustomerFooter from "../../components/CustomerComponents/CustomerFooter";
 import {customerStyles} from "../../styles/styles";
-import React from "react";
+import React, {useState} from "react";
 import {useUserType} from "../../components/UserTypeContext";
 import CustomerHeader from "../../components/CustomerComponents/CustomerHeader";
 import image from '/src/assets/customer-homepage-picture.png';
@@ -61,6 +61,7 @@ const styles: {
 };
 
 export const CustomerHomePage: React.FC = () => {
+    const [loggedIn, setLoggedIn] = useState(false);
     const { userType ,id} = useUserType();
     const selectedStyles =
         userType === "Customer" ? customerStyles : {};
@@ -69,7 +70,7 @@ export const CustomerHomePage: React.FC = () => {
 
     return (
         <>
-            <CustomerHeader showLoggedIn={false}/>
+            <CustomerHeader showLoggedIn={loggedIn} setLoggedIn={setLoggedIn} />
             <div style={{ ...selectedStyles }}>
                 <div style={styles.container}>
                     <div style={styles.halfContainer}>

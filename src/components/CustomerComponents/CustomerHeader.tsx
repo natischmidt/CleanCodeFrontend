@@ -49,23 +49,25 @@ const styles = {
 };
 
 interface HeaderProps {
-    showLoggedIn: boolean
+    showLoggedIn: boolean;
+    setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn}) => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn,setLoggedIn}) => {
+
+
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
     const goToCustomerHome = useNavigate()
 
     const handleLoginClick = () => {
-        setIsLoggedIn(!isLoggedIn)
+        setLoggedIn(true);
         setIsLoginModalOpen(true)
     }
 
     const handleRegisterClick = () => {
-        setIsLoggedIn(!isLoggedIn)
+        setLoggedIn(true);
         setIsLoginModalOpen(false)
         setIsRegisterModalOpen(true)
     }
@@ -81,6 +83,7 @@ const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn}) => {
             console.log('Employee/Admin has successfully logged out', response.data);
 
             goToCustomerHome("/CustomerHome")
+            setLoggedIn(false);
 
         } catch (error) {
             console.error('Error signing out employee/admin', error);
@@ -89,12 +92,10 @@ const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn}) => {
 
     const closeLoginModal = () => {
         setIsLoginModalOpen(false);
-        setIsLoggedIn(!isLoggedIn);
     };
 
     const closeRegisterModal = () => {
         setIsRegisterModalOpen(false);
-        setIsLoggedIn(!isLoggedIn);
     };
 
     return (
