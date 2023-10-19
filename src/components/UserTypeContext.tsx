@@ -9,7 +9,8 @@ interface UserTypeContextProps {
     setUserType: React.Dispatch<React.SetStateAction<UserType | null>>;
     id: id | null;
     setId: React.Dispatch<React.SetStateAction<id | null>>;
-    // loggedIn: loggedIn;
+    loggedIn: boolean;
+    setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 
@@ -21,8 +22,10 @@ const UserTypeContext = createContext<UserTypeContextProps | undefined>(
 export const UserTypeProvider: React.FC<{ children: ReactNode }> = ({  children}) => {
     const [userType, setUserType] = useState<UserType | null>(null);
     const [id, setId] = useState<id | null>(null);
+    const [loggedIn, setLoggedIn] = useState<boolean>(false);
+
     return (
-        <UserTypeContext.Provider value={{ userType, setUserType, id, setId }}>
+        <UserTypeContext.Provider value={{ userType, setUserType, id, setId, loggedIn, setLoggedIn}}>
             {children}
         </UserTypeContext.Provider>
     );
