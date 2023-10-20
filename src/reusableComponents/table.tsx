@@ -40,7 +40,7 @@ const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate}) => {
             {data.map((item, index) => (
                 <tr key={index}>
                     {columns.map((column) => (
-                        <td key={column.key}>{item[column.key]}</td>
+                        <td key={column.key} style={styles.tableCell}>{item[column.key]}</td>
                     ))}
                     <td>
                         <button style={styles.update} onClick={() => onUpdate(item.id)}>Update</button>
@@ -71,5 +71,9 @@ const styles = {
     update: {
         backgroundColor: "#6e6efc",
         justifyContent: 'space-between'
+    },
+    tableCell: {
+        border: '1px solid #729ca890',
+        // borderRadius: "0.5rem",
     }
 }

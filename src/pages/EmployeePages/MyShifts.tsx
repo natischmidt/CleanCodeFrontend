@@ -40,8 +40,8 @@ const MyShifts = () => {
         {key: 'date', title: 'Date'},
         {key: 'timeSlot', title: 'Time'},
         {key: 'jobStatus', title: 'Job Status'},
-        {key: 'squareMeters', title: 'Sqm'},
-        {key: 'paymentOption', title: 'Payment Option'},
+        // {key: 'squareMeters', title: 'Sqm'},
+        // {key: 'paymentOption', title: 'Payment Option'},
         // {key: 'customerId', title: 'Customer Id'},
     ];
 
