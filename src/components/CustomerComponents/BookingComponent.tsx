@@ -19,6 +19,10 @@ const styles: {
     },
     citySelectContainer: {
         marginBottom: '20px',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column"
     },
     citySelect: {
         width: '100%',
@@ -51,7 +55,7 @@ export const BookingComponent: React.FC = () => {
     return (
         <div className="book-container" style={styles.bookingContainer}>
             <div style={styles.citySelectContainer}>
-                <label htmlFor="citySelect">City:</label>
+                <label htmlFor="citySelect">Book a cleaning here!</label>
                 <select id="citySelect" style={styles.citySelect}>
                     <option value="">Select a city</option>
                     <option value="Stockholm">Stockholm</option>
