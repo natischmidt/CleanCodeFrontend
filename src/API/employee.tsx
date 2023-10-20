@@ -1,4 +1,5 @@
 import axios from 'axios';
+import ConvertTimeSlotToNiceTime from "../reusableComponents/ConvertTimeSlotToNiceTime";
 
 const employee = {
     getEmployee: async (id: string | null) => {
@@ -34,7 +35,8 @@ const employee = {
                     ...job,
                     date: formattedDate,
                     id: job.jobId,
-                    customerId: job.customer ? job.customer.id : 'N/A'
+                    customerId: job.customer ? job.customer.id : 'N/A',
+                    timeSlot: ConvertTimeSlotToNiceTime(job.timeSlot)
                 }
 
             })

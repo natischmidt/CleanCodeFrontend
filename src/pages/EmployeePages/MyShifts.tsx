@@ -3,6 +3,7 @@ import employee from "../../API/employee";
 import {useUserType} from "../../components/UserTypeContext";
 import Table from "../../reusableComponents/table";
 import JobDetails from "./JobDetails";
+import ConvertTimeSlotToNiceTime from "../../reusableComponents/ConvertTimeSlotToNiceTime";
 
 
 const MyShifts = () => {
@@ -37,7 +38,7 @@ const MyShifts = () => {
         {key: 'jobId', title: 'Booking ID'},
         {key: 'jobtype', title: 'Job type'},
         {key: 'date', title: 'Date'},
-        {key: 'timeSlot', title: 'Time Slot'},
+        {key: 'timeSlot', title: 'Time'},
         {key: 'jobStatus', title: 'Job Status'},
         {key: 'squareMeters', title: 'Sqm'},
         {key: 'paymentOption', title: 'Payment Option'},

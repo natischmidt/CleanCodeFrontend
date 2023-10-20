@@ -29,11 +29,11 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate}) => {
         {key: 'jobId', title: 'Booking ID'},
         {key: 'jobtype', title: 'Job type'},
         {key: 'date', title: 'Date'},
-        {key: 'timeSlot', title: 'Time Slot'},
-        {key: 'jobStatus', title: 'Job Status'},
+        {key: 'timeSlot', title: 'Time'},
+        {key: 'jobStatus', title: 'Status'},
         {key: 'squareMeters', title: 'Sqm'},
         {key: 'paymentOption', title: 'Payment Option'},
-        {key: 'customerId', title: 'Customer Id'},
+        // {key: 'customerId', title: 'Customer Id'},
     ];
 
     const handleDelete = async (jobId: number) => {

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios, {AxiosResponse, AxiosError} from 'axios';
+import ConvertTimeSlotToNiceTime from "../reusableComponents/ConvertTimeSlotToNiceTime";
 
 const admin = {
 
@@ -13,7 +14,8 @@ const admin = {
                         ...job,
                         date: formattedDate,
                         id: job.jobId,
-                        customerId: job.customer ? job.customer.id : 'N/A'
+                        customerId: job.customer ? job.customer.id : 'N/A',
+                        timeSlot: ConvertTimeSlotToNiceTime(job.timeSlot)
                     }; // kollar om customer finns, isåfall får man id, annars NA
                 });
                 return formattedData;
