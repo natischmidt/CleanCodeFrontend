@@ -6,22 +6,23 @@ const styles = {
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
         padding: '10px',
         display: 'flex',
-        justifyContent: 'space-between',
         alignItems: 'center',
         position: 'fixed' as 'fixed',
         bottom: 0,
         width: '100%',
     },
     category: {
-        flex: 1,
-        padding: '10px',
+        padding: '5px',
+        margin: '0x',
         fontWeight: 'bold',
         color: 'black',
+        marginLeft: '10px',
 
     },
     subCategory: {
         listStyle: 'none',
-        padding: 0,
+        padding: 10,
+        margin: 10,
 
     },
     link: {
@@ -30,47 +31,55 @@ const styles = {
         color: 'black',
     },
     logo: {
-        maxWidth: '200px',
-        marginRight: '50px',
+        height: "10vh",
+        marginRight: '5rem',
+        marginTop: '2rem',
     },
+    bottomContainer: {
+        display: "flex" as "flex",
+        flexDirection: 'row' as 'row',
+        marginLeft: '40rem',
+    }
 };
 
 const CustomerFooter: React.FC = () => {
     return (
         <footer style={styles.footer}>
-            <img src="src/assets/stadaFint.png" alt="Logo" style={styles.logo} />
-            <div className="footer-category" style={styles.category}>
-                <h3>Om oss</h3>
-                <ul style={styles.subCategory}>
-                    <li>
-                        <a href="/AboutUs" style={styles.link}>Vilka vi är</a>
-                    </li>
-                    <li>
-                        <a href="/Policy" style={styles.link}>Vår policy</a>
-                    </li>
-                </ul>
-            </div>
-            <div className="footer-category" style={styles.category}>
-                <h3>Kontakt</h3>
-                <ul style={styles.subCategory}>
-                    <li>
-                        <a href="/ContactUs" style={styles.link}>Maila oss</a>
-                    </li>
-                    <li>
-                        <a href="/Instagram" style={styles.link}>Instagram</a>
-                    </li>
-                </ul>
-            </div>
-            <div className="footer-category" style={styles.category}>
-                <h3>Profil</h3>
-                <ul style={styles.subCategory}>
-                    <li>
-                        <a href="/CustomerMyPages" style={styles.link}>Mina sidor</a>
-                    </li>
-                    <li>
-                        <a href="/Settings" style={styles.link}>Inställningar</a>
-                    </li>
-                </ul>
+            <div style={styles.bottomContainer}>
+                <img src="src/assets/stadaFint.png" alt="Logo" style={styles.logo}/>
+                <div className="footer-category" style={styles.category}>
+                    <h3 style={{ textDecoration: 'underline' }}>About us</h3>
+                    <ul style={styles.subCategory}>
+                        <li>
+                            <a href="/AboutUs" style={styles.link}>The team</a>
+                        </li>
+                        <li>
+                            <a href="/Policy" style={styles.link}>Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div className="footer-category" style={styles.category}>
+                    <h3 style={{ textDecoration: 'underline' }}>Contact</h3>
+                    <ul style={styles.subCategory}>
+                        <li>
+                            <a href="mailto:StadaFintAB@gmail.com" style={styles.link}>Mail us</a>
+                        </li>
+                        <li>
+                            <a href="mailto:StadaFintAB@gmail.com" style={styles.link}>Instagram</a>
+                        </li>
+                    </ul>
+                </div>
+                <div className="footer-category" style={styles.category}>
+                    <h3 style={{ textDecoration: 'underline' }}>Settings</h3>
+                    <ul style={styles.subCategory}>
+                        <li>
+                            <a href="/CustomerMyPages" style={styles.link}>GDPR</a>
+                        </li>
+                        <li>
+                            <a href="/Settings" style={styles.link}>Settings</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </footer>
     );
