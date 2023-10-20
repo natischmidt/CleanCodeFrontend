@@ -2,14 +2,17 @@ import logo from "../assets/stadaFint.png";
 import {useNavigate} from "react-router-dom";
 import React from "react";
 import axios from "axios";
+import {UserTypeProvider, useUserType} from "../components/UserTypeContext";
 export default function Header() {
 
+    const gotoDashBoard = useNavigate()
     const goToBooking = useNavigate()
     const goToEmployees = useNavigate()
     const goToCustomers = useNavigate()
     const goToGDPR = useNavigate()
     const goToAddUser = useNavigate()
     const goToLogin = useNavigate()
+    const {userType} = useUserType();
 
     const handleLogout = async (e : React.FormEvent) => {
         e.preventDefault();
@@ -28,14 +31,23 @@ export default function Header() {
         }
     }
 
+    const goBackToDashboard = () => {
+        if (userType == "ADMIN") {
+            gotoDashBoard(("/AdminHome"))
+        } else if (userType == "EMPLOYEE") {
+            gotoDashBoard(("/EmployeeHome"))
+        }
+    }
+
     return (
         <div className="headerContainer" style={styles.header}>
             <div className="logo">
                 <img id="logo3" src={logo} alt="logo3" style={styles.logo} />
             </div>
             <div className="menuButtons" style={styles.menuButtons}>
+                <button id="goBackToDashboard" style={styles.btn} onClick={() => goBackToDashboard()}>Home</button>
                 <button id="Booking" style={styles.btn} onClick={() => {{goToBooking(("/Booking"))}}}>Booking</button>
-                <button id="Employees" style={styles.btn} onClick={() => {{goToEmployees(("/Employees"))}}}>Employees</button>
+                {userType == "ADMIN" && <button id="Employees" style={styles.btn} onClick={() => {{goToEmployees(("/Employees"))}}}>Employees</button>}
                 <button id="Customers" style={styles.btn} onClick={() => {{goToCustomers(("/Customers"))}}}>Customers</button>
                 <button id="GDPR" style={styles.btn} onClick={() => {{goToGDPR(("/GDPR"))}}}>GDPR</button>
                 <button id="AddUser" style={styles.btn} onClick={() => {{goToAddUser(("/AddUser"))}}}>Create New User</button>

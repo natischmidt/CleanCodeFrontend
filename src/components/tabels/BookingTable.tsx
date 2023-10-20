@@ -25,7 +25,6 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate}) => {
         })
     }, [deleted])
 
-
     const columns = [
         {key: 'jobId', title: 'Booking ID'},
         {key: 'jobtype', title: 'Job type'},

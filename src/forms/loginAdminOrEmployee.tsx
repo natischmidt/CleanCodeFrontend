@@ -69,12 +69,12 @@ const LoginAdminOrEmployeeForm = () => {
     const quickLoginAsEmployee = () => {
         setEmail("kent.andersson@stadafint.se")
         setPassword("password")
-        handleLogin()
+        // handleLogin()
     }
     const quickLoginAsAdmin = () => {
         setEmail("lisa.gronberg@stadafint.se")
         setPassword("password")
-        handleLogin()
+        // handleLogin()
     }
 
 

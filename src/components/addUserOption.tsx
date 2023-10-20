@@ -1,4 +1,5 @@
 import {useNavigate} from "react-router-dom";
+import {useUserType} from "./UserTypeContext";
 
 const AddUserOption = () => {
 
@@ -6,18 +7,20 @@ const AddUserOption = () => {
     const goToEmployeeForm = useNavigate()
     const goToPrivateCustomerForm = useNavigate()
     const goToBusinessCustomerForm = useNavigate()
+    const {userType} = useUserType();
+
 
     return (
         <div style={styles.container}>
             <div className="h1" style={styles.h1}>
                 <h1>Create new:</h1>
                 <div className="menuBtn" style={styles.menuBtns}>
-                    <button type="submit" style={styles.button} onClick={() => {{goToAdminForm(("/AddAdmin"))}}}>
+                    {userType == "Admin" && <button type="submit" style={styles.button} onClick={() => {{goToAdminForm(("/AddAdmin"))}}}>
                         Admin
-                    </button>
-                    <button type="submit" style={styles.button} onClick={() => {{goToEmployeeForm(("/AddEmployee"))}}}>
+                    </button>}
+                    {userType == "Admin" && <button type="submit" style={styles.button} onClick={() => {{goToEmployeeForm(("/AddEmployee"))}}}>
                         Employee
-                    </button>
+                    </button>}
                     <button type="submit" style={styles.button} onClick={() => {{goToPrivateCustomerForm(("/AddPrivateCustomer"))}}}>
                         Private Customer
                     </button>

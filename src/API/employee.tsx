@@ -4,12 +4,17 @@ const employee = {
     getEmployee: async (id: string | null) => {
 
         const headers = {
-            empId: id
+            empId: id?.toString()
         }
+        // const config = {
+        //     headers: {
+        //         'empId': id?.toString() || ''
+        //     },
+        // };
 
         try {
 
-            const response = await axios.post('http://localhost:8080/api/employee/getEmployee', null, {headers});
+            const response = await axios.get('http://localhost:8080/api/employee/getEmployee',{headers});
             const data = response.data
             console.log(data)
             return data;
@@ -52,6 +57,30 @@ const employee = {
 
         } catch (error) {
             console.error('Error fetching jobs:', error);
+        }
+    },
+
+    updateJobStatus: async (updateJobDTO: object) => {
+        console.log("-----------------------------" , updateJobDTO)
+
+        try {
+            const response = await axios.put('http://localhost:8080/api/jobs/updateJob', updateJobDTO )
+            console.log("update request was made: " , response.status)
+
+        } catch (error) {
+            console.log(error)
+        }
+
+    },
+    getCustomer: async (customerId: string) => {
+
+        try{
+            const response = await axios.get(`http://localhost:8080/api/customer/${customerId}`)
+
+            return response.data
+
+        } catch (error) {
+            console.log(error)
         }
     },
 };
