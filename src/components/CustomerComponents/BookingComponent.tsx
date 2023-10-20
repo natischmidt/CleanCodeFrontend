@@ -10,12 +10,12 @@ const styles: {
     bookButton: CSSProperties;
 } = {
     bookingContainer: {
-        width: '1500px',
+        width: '90rem',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
-        marginBottom: '50px',
+        marginBottom: '30px',
     },
     citySelectContainer: {
         marginBottom: '20px',

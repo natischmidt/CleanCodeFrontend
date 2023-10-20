@@ -223,6 +223,7 @@ const AddCustomerBookingOption = () => {
     // @ts-ignore
     // @ts-ignore
     // @ts-ignore
+    // @ts-ignore
     return (
         <>{!isModalOpen
             && (
@@ -276,7 +277,7 @@ const AddCustomerBookingOption = () => {
                                 <>
                                     {eight &&
                                         <button style={styles.slots} onClick={(e) => {
-                                            handleSelectTime(e, 8);
+                                            handleSelectTime(e, 8).then(r => {});
                                             setShowCalNext(true);
                                         }}>
                                             08.00
@@ -285,42 +286,42 @@ const AddCustomerBookingOption = () => {
                                     {nine &&
                                         <button style={styles.slots}
                                                 onClick={(e) => {
-                                                    handleSelectTime(e, 9);
+                                                    handleSelectTime(e, 9).then(r => {});
                                                     setShowCalNext(true)
                                                 }}>09.00</button>}
                                     {ten && <button style={styles.slots}
                                                     onClick={(e) => {
-                                                        handleSelectTime(e, 10);
+                                                        handleSelectTime(e, 10).then(r => {});
                                                         setShowCalNext(true)
                                                     }}>10.00</button>}
                                     {eleven && <button style={styles.slots}
                                                        onClick={(e) => {
-                                                           handleSelectTime(e, 11);
+                                                           handleSelectTime(e, 11).then(r => {});
                                                            setShowCalNext(true)
                                                        }}>11.00</button>}
                                     {twelve && <button style={styles.slots}
                                                        onClick={(e) => {
-                                                           handleSelectTime(e, 12);
+                                                           handleSelectTime(e, 12).then(r => {});
                                                            setShowCalNext(true)
                                                        }}>12.00</button>}
                                     {thirteen && <button style={styles.slots}
                                                          onClick={(e) => {
-                                                             handleSelectTime(e, 13);
+                                                             handleSelectTime(e, 13).then(r => {});
                                                              setShowCalNext(true)
                                                          }}>13.00</button>}
                                     {fourteen && <button style={styles.slots}
                                                          onClick={(e) => {
-                                                             handleSelectTime(e, 14);
+                                                             handleSelectTime(e, 14).then(r => {});
                                                              setShowCalNext(true)
                                                          }}>14.00</button>}
                                     {fifteen && <button style={styles.slots}
                                                         onClick={(e) => {
-                                                            handleSelectTime(e, 15);
+                                                            handleSelectTime(e, 15).then(r => {});
                                                             setShowCalNext(true)
                                                         }}>15.00</button>}
                                     {sixteen && <button style={styles.slots}
                                                         onClick={(e) => {
-                                                            handleSelectTime(e, 16);
+                                                            handleSelectTime(e, 16).then(r => {});
                                                             setShowCalNext(true)
                                                         }}>16.00</button>}
                                 </>)}

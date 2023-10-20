@@ -34,9 +34,10 @@ const styles: {
     imageSection: {
         flex: 1,
         backgroundImage: `url(${image})`,
-        backgroundSize: '676px 738px',
+        backgroundSize: '976px 938px',
         backgroundPosition: 'center',
         margin: '0 2px',
+        backgroundRepeat: 'no-repeat',
     },
     whiteSection: {
         flex: 1,
@@ -78,17 +79,18 @@ export const CustomerHomePage: React.FC = () => {
                     <div style={styles.halfContainer}>
                         <div style={styles.whiteSection}>
                             <div style={styles.textContainer}>
-                                <h2 style={styles.headerText}>Välkommen till Städafint AB <br /> - Där renhet möter kvalitet och hållbarhet.</h2>
-                                <p style={styles.subText}><br />Sedan vår grundning för nästan ett och ett halvt sekel sedan har vi varit en pålitlig partner inom städtjänster. Vi står för tradition, erfarenhet och kvalitet, värden som har tjänat oss och våra kunder väl genom tiderna.</p>
-                                <p style={styles.subText}><br />Vi är inte bara en städfirma; vi är en del av de samhällen vi betjänar. Med en engagerad arbetsstyrka, vars kompetens spänner över flera decennier, levererar vi inte bara städtjänster, vi levererar trygghet och livskvalitet. Vårt team består av passionerade, erfarna och engagerade medarbetare som är mästare på sitt område.</p>
-                                <p style={styles.subText}><br />Hållbarhet är inte bara ett modeord för oss; det är en del av vår affärsfilosofi. Vi använder miljövänliga rengöringsprodukter och arbetar ständigt med att minimera vårt ekologiska fotavtryck. Detta innebär också att vi har effektiva arbetsprocesser som inte bara sparar tid men också resurser.</p>
-                                <p style={styles.subText}><br />Vår styrka ligger i vår förmåga att förstå våra kunders unika behov och erbjuda skräddarsydda lösningar. Vi tror att varje utrymme, litet som stort, förtjänar den bästa möjliga omsorgen. Vare sig det är ett kontor, ett hem eller ett kommersiellt utrymme, kan du lita på att StädaAB kommer att göra jobbet med största omsorg och professionalism..</p>
-                                <p style={styles.subText}><br />Tack för att du överväger StädaAB som din partner i renhet och hållbarhet. Vi ser fram emot att vara en del av din vardag och att fortsätta sätta standarden för utmärkt och hållbar städning i generationer framöver.                                </p>
+                                <h2 style={styles.headerText}>Welcome to Städafint AB <br /> - Where cleanliness meets quality and sustainability.</h2>
+                                <p style={styles.subText}><br />Since our founding nearly a century and a half ago, we have been a reliable partner in cleaning services. We stand for tradition, experience, and quality, values that have served us and our customers well over time.</p>
+                                <p style={styles.subText}><br />We are not just a cleaning company; we are a part of the communities we serve. With a dedicated workforce whose expertise spans several decades, we provide not only cleaning services but also security and quality of life. Our team consists of passionate, experienced, and dedicated employees who are masters in their field.</p>
+                                <p style={styles.subText}><br />Sustainability is not just a buzzword for us; it is part of our business philosophy. We use eco-friendly cleaning products and continuously work to minimize our ecological footprint. This also means we have efficient work processes that not only save time but also resources.</p>
+                                {/*<p style={styles.subText}><br />Our strength lies in our ability to understand our customers' unique needs and offer tailored solutions. We believe that every space, big or small, deserves the best possible care. Whether it's an office, a home, or a commercial space, you can trust Städafint AB to do the job with the utmost care and professionalism.</p>*/}
+                                {/*<p style={styles.subText}><br />Thank you for considering Städafint AB as your partner in cleanliness and sustainability. We look forward to being a part of your everyday life and continuing to set the standard for excellent and sustainable cleaning for generations to come.</p>*/}
 
                             </div>
                         </div>
                         <div style={styles.imageSection}></div>
                     </div>
+                    <div><p></p></div>
                     <div style={styles.bookingSection}>
                         <BookingComponent />
                     </div>
