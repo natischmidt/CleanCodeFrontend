@@ -22,6 +22,8 @@ import {CustomerHomePage} from "./pages/CustomerPages/CustomerHome";
 import EmployeeHomePage from "./pages/EmployeePages/EmployeeHome";
 import CustomerBookingPage from "./pages/CustomerPages/CustomerBookingPage";
 import LoginAdminOrEmployeeForm from "./forms/loginAdminOrEmployee";
+import KlarnaConfirmation from "./klarna/KlarnaConfirmation";
+import TestParentKlarnaComp from "./klarna/TestParentKlarnaComp";
 //import OverviewPage from "./pages/overviewpage";
 //import TransactionPage from "./pages/transactionoverview";
 
@@ -37,6 +39,8 @@ function Routing() {
                     <Route path="/CustomerBooking" element={<CustomerBookingPage/>}/>
                     <Route path="/EmployeeHome" element={<EmployeeHomePage/>}/>
                     <Route path="/Booking" element={<BookingPage/>}/>
+                    <Route path="/confirmation" element={<KlarnaConfirmation/>}/>
+                    <Route path="/klarnatest" element={<TestParentKlarnaComp/>}/>
                     <Route path="/Employees" element={<EmployeePage/>}/>
                     <Route path="/Customers" element={<CustomerPage/>}/>
                     <Route path="/GDPR" element={<GDPRPage/>}/>
