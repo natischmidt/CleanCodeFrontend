@@ -251,14 +251,6 @@ const CreateNewBooking: React.FC = () => {
                         <option value="KLARNA">Klarna</option>
                         <option value="CASH">Cash</option>
                     </select>
-                    <input
-                        type="text"
-                        placeholder="Customer ID"
-                        style={styles.input}
-                        value={customer}
-                        onChange={(e) => setCustomer(e.target.value)}
-                        required
-                    />
                     <select
                         style={styles.select}
                         value={selectedCustomer}
@@ -304,35 +296,35 @@ const CreateNewBooking: React.FC = () => {
                     <>
                         <div style={styles.slotsContainer}>
                             {eight ? <button style={styles.slots} onClick={(e) => {
-                                handleSelectTime(e, 8)
+                                handleSelectTime(e, 8).then(r => {})
                                 setShowConfirmButton(true)
                             }}>08.00</button> : <></>}
                             {nine ? <button style={styles.slots} onClick={(e) => {
-                                handleSelectTime(e, 9)
+                                handleSelectTime(e, 9).then(r => {})
                                 setShowConfirmButton(true)
                             }}>09.00</button> : <></>}
                             {ten ? <button style={styles.slots} onClick={(e) => {
-                                handleSelectTime(e, 10)
+                                handleSelectTime(e, 10).then(r => {})
                                 setShowConfirmButton(true)
                             }}>10.00</button> : <></>}
                             {eleven ? <button style={styles.slots} onClick={(e) => {
-                                handleSelectTime(e, 11)
+                                handleSelectTime(e, 11).then(r => {})
                                 setShowConfirmButton(true)
                             }}>11.00</button> : <></>}
                             {twelve ? <button style={styles.slots} onClick={(e) => {
-                                handleSelectTime(e, 12)
+                                handleSelectTime(e, 12).then(r => {})
                                 setShowConfirmButton(true)
                             }}>12.00</button> : <></>}
                             {thirteen ? <button style={styles.slots} onClick={(e) => {
-                                handleSelectTime(e, 13)
+                                handleSelectTime(e, 13).then(r => {})
                                 setShowConfirmButton(true)
                             }}>13.00</button> : <></>}
                             {fourteen ? <button style={styles.slots} onClick={(e) => {
-                                handleSelectTime(e, 14)
+                                handleSelectTime(e, 14).then(r => {})
                                 setShowConfirmButton(true)
                             }}>14.00</button> : <></>}
                             {fifteen ? <button style={styles.slots} onClick={(e) => {
-                                handleSelectTime(e, 15)
+                                handleSelectTime(e, 15).then(r => {})
                                 setShowConfirmButton(true)
                             }}>15.00</button> : <></>}
                             {sixteen ? <button style={styles.slots} onClick={(e) => {
