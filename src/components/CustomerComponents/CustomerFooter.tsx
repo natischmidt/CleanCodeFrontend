@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {GDPRModal} from "./GDPRModal";
 
 const styles = {
     footer: {
@@ -43,6 +44,17 @@ const styles = {
 };
 
 const CustomerFooter: React.FC = () => {
+
+    const [isGDPRModalOpen, setIsGDPRModalOpen] = useState(false);
+
+    const handleGDPRClick = () => {
+        setIsGDPRModalOpen(true)
+    }
+
+    const closeGDRPModal = () => {
+        setIsGDPRModalOpen(false);
+    };
+
     return (
         <footer style={styles.footer}>
             <div style={styles.bottomContainer}>
@@ -73,7 +85,7 @@ const CustomerFooter: React.FC = () => {
                     <h3 style={{ textDecoration: 'underline' }}>Settings</h3>
                     <ul style={styles.subCategory}>
                         <li>
-                            <a href="/CustomerMyPages" style={styles.link}>GDPR</a>
+                            <a style={styles.link} onClick={handleGDPRClick}>GDPR</a>
                         </li>
                         <li>
                             <a href="/Settings" style={styles.link}>Settings</a>
@@ -81,8 +93,14 @@ const CustomerFooter: React.FC = () => {
                     </ul>
                 </div>
             </div>
+
+            {isGDPRModalOpen && (
+                <GDPRModal onClose={closeGDRPModal}/>
+            )}
         </footer>
     );
 };
 
+
 export default CustomerFooter;
+
