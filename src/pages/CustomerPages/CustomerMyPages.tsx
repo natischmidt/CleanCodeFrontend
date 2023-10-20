@@ -9,7 +9,7 @@ import axios from "axios";
 
 export const CustomerMyPages: React.FC = () => {
     const { userType, id } = useUserType();
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(true);
     const [userData, setUserData] = useState<DashboardUserData>({
         firstname: "", lastname: "", email: "", password: "", address: "", SSnumber: "", phoneNumber: "",});
 

@@ -74,7 +74,7 @@ const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn,setLoggedIn}) => {
 
     const handleLogoutClick = async (e : React.FormEvent) => {
         e.preventDefault();
-
+        setLoggedIn(false);
         try {
             const Url = 'http://localhost:8080/api/auth/logoutEmployee';
 
