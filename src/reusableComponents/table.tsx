@@ -69,8 +69,16 @@ const styles = {
         backgroundColor: "#f83f3f"
     },
     update: {
-        backgroundColor: "#6e6efc",
-        justifyContent: 'space-between'
+        display: "flex",
+        backgroundColor: "#729ca8",
+        // justifyContent: 'space-between',
+        width: "5rem",
+        height: "2.5rem",
+        alignItems: "center",
+        textAlign: "center",
+        justifyContent: "center",
+        boxShadow: '0 0 5px rgba(0, 0, 0, 1)',
+
     },
     tableCell: {
         border: '1px solid #729ca890',

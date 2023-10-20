@@ -82,12 +82,13 @@ const LoginAdminOrEmployeeForm = () => {
         <div style={styles.container}>
 
             <div>
-                <button style={styles.introText} onClick={quickLoginAsAdmin}>-- logga in som admin --</button>
-                <button style={styles.introText} onClick={quickLoginAsEmployee}>--logga in som employee --</button>
+                <button onClick={quickLoginAsAdmin}>logga in som admin</button>
+                <button onClick={quickLoginAsEmployee}>logga in som employee</button>
+                <button onClick={() => goToHomePage("/customerHome")}>gå till customer home</button>
             </div>
 
                 <form style={styles.form} onSubmit={handleSubmit}>
-                <h1>Login Employee/Admin</h1>
+                <h1>Employee portal</h1>
                 <input
                     type="text"
                     placeholder="Email"
