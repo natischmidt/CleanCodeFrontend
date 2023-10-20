@@ -71,6 +71,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userType }) => {
         <div className="dashboard" style={styles.dashboard}>
 
             <div className="section" style={styles.section}>
+                {/*<p style={styles.sectionTitle}>My upcoming jobs</p>*/}
                 <div className="section-title" style={styles.sectionTitle}>
                     {userType === 'admin'
                         ? 'All Upcoming Bookings'

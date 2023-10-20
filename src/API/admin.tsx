@@ -123,6 +123,17 @@ const admin = {
             } catch (error) {
                 console.error('Error creating booking', error);
             }
+        },
+
+        updateJobStatus: async (updateJobDTO: object) => {
+            try {
+                const response = await axios.put('http://localhost:8080/api/jobs/updateJob', updateJobDTO)
+                console.log("update request was made: " , response.status)
+
+            } catch (error) {
+                console.log(error)
+            }
+
         }
     };
 
