@@ -5,6 +5,7 @@ import Calendar from "react-calendar";
 import admin from "../API/admin";
 
 import 'react-calendar/dist/Calendar.css';
+import axios from "axios";
 
 const CreateNewBooking: React.FC = () => {
     const [jobType, setJobType] = useState('');
@@ -42,6 +43,20 @@ const CreateNewBooking: React.FC = () => {
 
     type Value = Date | null;
     const [date, setDate] = useState<Value>(new Date());
+
+    const [customerData, setCustomerData] = useState<any[]>([]);
+    const [selectedCustomer, setSelectedCustomer] = useState('');
+
+    useEffect(() => {
+
+        axios.get('http://localhost:8080/api/customer/all')
+            .then((response) => {
+                setCustomerData(response.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching customer data:', error);
+            });
+    }, []);
 
     const handleModal = () => {
         setIsModalOpen(!isModalOpen);
@@ -174,7 +189,8 @@ const CreateNewBooking: React.FC = () => {
 
     const handleBooking = () => {
         try {
-            admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, payment, customer, message).then(r => {
+            console.log("****" +selectedCustomer)
+            admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, payment, selectedCustomer, message).then(r => {
             })
 
         } catch (error) {
@@ -243,6 +259,16 @@ const CreateNewBooking: React.FC = () => {
                         onChange={(e) => setCustomer(e.target.value)}
                         required
                     />
+                    <select
+                        style={styles.select}
+                        value={selectedCustomer}
+                        onChange={(e) => setSelectedCustomer(e.target.value)}
+                        required>
+                        <option value="" disabled>Select a customer</option>
+                        {customerData.map( (customer) => (
+                            <option key={customer.id} value={customer.id}>{customer.firstName +" "+customer.lastName + " (" + customer.email +")"}</option>
+                        ))}
+                    </select>
                     <textarea
                         placeholder="Write a message..."
                         style={styles.textarea}
@@ -282,35 +308,35 @@ const CreateNewBooking: React.FC = () => {
                                 setShowConfirmButton(true)
                             }}>08.00</button> : <></>}
                             {nine ? <button style={styles.slots} onClick={(e) => {
-                                handleSelectTime(e, 8)
+                                handleSelectTime(e, 9)
                                 setShowConfirmButton(true)
                             }}>09.00</button> : <></>}
                             {ten ? <button style={styles.slots} onClick={(e) => {
-                                handleSelectTime(e, 8)
+                                handleSelectTime(e, 10)
                                 setShowConfirmButton(true)
                             }}>10.00</button> : <></>}
                             {eleven ? <button style={styles.slots} onClick={(e) => {
-                                handleSelectTime(e, 8)
+                                handleSelectTime(e, 11)
                                 setShowConfirmButton(true)
                             }}>11.00</button> : <></>}
                             {twelve ? <button style={styles.slots} onClick={(e) => {
-                                handleSelectTime(e, 8)
+                                handleSelectTime(e, 12)
                                 setShowConfirmButton(true)
                             }}>12.00</button> : <></>}
                             {thirteen ? <button style={styles.slots} onClick={(e) => {
-                                handleSelectTime(e, 8)
+                                handleSelectTime(e, 13)
                                 setShowConfirmButton(true)
                             }}>13.00</button> : <></>}
                             {fourteen ? <button style={styles.slots} onClick={(e) => {
-                                handleSelectTime(e, 8)
+                                handleSelectTime(e, 14)
                                 setShowConfirmButton(true)
                             }}>14.00</button> : <></>}
                             {fifteen ? <button style={styles.slots} onClick={(e) => {
-                                handleSelectTime(e, 8)
+                                handleSelectTime(e, 15)
                                 setShowConfirmButton(true)
                             }}>15.00</button> : <></>}
                             {sixteen ? <button style={styles.slots} onClick={(e) => {
-                                handleSelectTime(e, 8)
+                                handleSelectTime(e, 16)
                                 setShowConfirmButton(true)
                             }}>16.00</button> : <></>}
 
