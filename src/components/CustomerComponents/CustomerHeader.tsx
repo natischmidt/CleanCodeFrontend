@@ -67,7 +67,7 @@ const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn,setLoggedIn}) => {
     }
 
     const handleRegisterClick = () => {
-        setLoggedIn(true);
+        setLoggedIn(false);
         setIsLoginModalOpen(false)
         setIsRegisterModalOpen(true)
     }
@@ -105,14 +105,13 @@ const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn,setLoggedIn}) => {
                 <li style={styles.navItem}>
                     <Link to="/CustomerHome" style={styles.link}>Home</Link>
                 </li>
-                <li style={styles.navItem}>
-                    <Link to="/CustomerMyPages" style={styles.link}>My Pages</Link>
-                </li>
+                {showLoggedIn && (
+                    <li style={styles.navItem}>
+                        <Link to="/CustomerMyPages" style={styles.link}>My Pages</Link>
+                    </li>
+                )}
                 <li style={styles.navItem}>
                     <Link to="/CustomerBooking" style={styles.link}>Book</Link>
-                </li>
-                <li style={styles.navItem}>
-                    <Link to="/MyBookings" style={styles.link}>My Bookings</Link>
                 </li>
                 <li style={styles.navItem}>
                     {showLoggedIn ? (
@@ -137,9 +136,7 @@ const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn,setLoggedIn}) => {
             {isRegisterModalOpen && (
                 <RegisterModal onClose={closeRegisterModal} />
             )}
-
         </header>
     );
-
 }
 export default CustomerHeader;
