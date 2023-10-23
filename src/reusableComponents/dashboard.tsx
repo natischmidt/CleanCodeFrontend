@@ -8,7 +8,6 @@ import {UserTypeContext} from "../components/UserTypeContext";
 import {DashboardUserData} from "./DashboardUserData";
 import axios from 'axios';
 
-
 interface DashboardProps {
     userType: 'customer' | 'employee' | 'admin';
     userData: {
@@ -21,8 +20,6 @@ interface DashboardProps {
         phoneNumber: string,
     }
 }
-
-
 
 const Dashboard: React.FC<DashboardProps> = ({ userType }) => {
     const userTypeContext = useContext(UserTypeContext);
@@ -57,6 +54,20 @@ const Dashboard: React.FC<DashboardProps> = ({ userType }) => {
         console.log(`Booking ${jobId} was updated.`);
     };
 
+    const [time, setTime] = useState<Date>(new Date());
+
+    useEffect(() => {
+        setTime(new Date())
+
+        const intervalId = setInterval(() => {
+            setTime(new Date());
+        }, 60000);
+
+        return () => {
+            clearInterval(intervalId)
+        }
+    })
+
     return (
         <div>
         <div className="section" style={styles.timeSection}>
@@ -65,7 +76,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userType }) => {
             {/*</div>*/}
             <div className="section-content">
                 <div>Today's Date: {new Date().toLocaleDateString()}</div>
-                <div>Time: {new Date().toLocaleTimeString()}</div>
+                <div>Time: {time.toLocaleTimeString()}</div>
             </div>
         </div>
         <div className="dashboard" style={styles.dashboard}>

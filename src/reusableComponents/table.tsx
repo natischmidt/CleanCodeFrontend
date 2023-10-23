@@ -20,8 +20,6 @@ const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate}) => {
 
     useEffect(() => {
         console.log(userType)
-
-
     }, [])
 
     return (
@@ -36,22 +34,27 @@ const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate}) => {
             </thead>
             <tbody>
 
-
             {data.map((item, index) => (
                 <tr key={index}>
                     {columns.map((column) => (
                         <td key={column.key} style={styles.tableCell}>{item[column.key]}</td>
                     ))}
                     <td>
-                        <button style={styles.update} onClick={() => onUpdate(item.id)}>Update</button>
-                        {userType == "ADMIN" ? <button style={styles.delete} onClick={() => onDelete(item.id)}>Delete</button> : <></> }
-                        {/*Här får vi rött, fast koden funkar???*/}
+                        <div style={styles.buttonCont}>
+                            <button style={styles.update} onClick={() => onUpdate(item.id)}>
+                                Update
+                            </button>
+                            {userType === "ADMIN" ?
+                                <button style={styles.delete} onClick={() => onDelete(item.id)}>
+                                    Delete
+                                </button> : <></> }
+                            {/*Här får vi rött, fast koden funkar???*/}
+                        </div>
                     </td>
                 </tr>
             ))}
             </tbody>
         </table>
-
     );
 };
 
@@ -62,11 +65,26 @@ const styles = {
         borderRadius: "5px",
         padding: "15px",
         marginTop: "3%",
+        marginBottom: "3%",
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
         backgroundColor : "#b3d9e3",
     },
+    buttonCont: {
+        display: 'flex',
+        paddingRight: "8px",
+        alignItems: 'center',
+        marginLeft: "4%",
+    },
     delete: {
-        backgroundColor: "#f83f3f"
+        display: "flex",
+        backgroundColor: "#f83f3f",
+        width: "5rem",
+        height: "2.5rem",
+        alignItems: "center",
+        textAlign: "center",
+        justifyContent: "center",
+        boxShadow: '0 0 5px rgba(0, 0, 0, 1)',
+        marginLeft: "5%",
     },
     update: {
         display: "flex",
