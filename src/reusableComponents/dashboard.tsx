@@ -23,11 +23,11 @@ interface DashboardProps {
     }
 }
 
-const Dashboard: React.FC<DashboardProps> = ({ userType }) => {
+const Dashboard: React.FC<DashboardProps> = ({userType}) => {
     const userTypeContext = useContext(UserTypeContext);
     const id = userTypeContext?.id;
     const contextUserType = userTypeContext?.userType;
-    const [showPersonalInformationModal, setShowPersonalInformationModal] = useState(false)
+    const [showPersonalInformationComponent, setShowPersonalInformationComponent] = useState(false)
 
     const [userData, setUserData] = useState({
         firstName: "",
@@ -46,8 +46,8 @@ const Dashboard: React.FC<DashboardProps> = ({ userType }) => {
                     setUserData(data);
                     console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%", data)
                 });
-                }
             }
+        }
 
     }, [id, contextUserType]);
 
@@ -80,72 +80,64 @@ const Dashboard: React.FC<DashboardProps> = ({ userType }) => {
 
     return (
         <div>
-        <div className="section" style={styles.timeSection}>
-            {/*<div className="section-title" style={styles.sectionTitle}>*/}
-            {/*    Today's Date and Time*/}
-            {/*</div>*/}
-            <div className="section-content">
-                <div>Today's Date: {new Date().toLocaleDateString()}</div>
-                <div>Time: {time.toLocaleTimeString()}</div>
+            <div>
+
+                {showPersonalInformationComponent ? <EditPersonalInformationComponent
+                        userData={userData}
+                        showThisComp={setShowPersonalInformationComponent}
+
+                    /> :
+                    <div>
+                        <div className="section" style={styles.timeSection}>
+                            {/*<div className="section-title" style={styles.sectionTitle}>*/}
+                            {/*    Today's Date and Time*/}
+                            {/*</div>*/}
+                            <div className="section-content">
+                                <div>Today's Date: {new Date().toLocaleDateString()}</div>
+                                <div>Time: {time.toLocaleTimeString()}</div>
+                            </div>
+                        </div>
+                        <div className="dashboard" style={styles.dashboard}>
+
+                            <div className="section" style={styles.section}>
+                                {/*<p style={styles.sectionTitle}>My upcoming jobs</p>*/}
+                                <div className="section-title" style={styles.sectionTitle}>
+                                    {userType === 'admin'
+                                        ? 'All Upcoming Bookings'
+                                        : userType === 'customer'
+                                            ? 'My Upcoming Bookings'
+                                            : /*'My Upcoming Shifts'*/ <MyShifts/>}
+                                </div>
+                                <div className="section-content">
+                                    {userType === "admin" && <BookingTable onUpdate={handleBookingUpdate}/>}
+                                    {userType === "customer" && <CustomerJobCheck/>}
+
+                                </div>
+                            </div>
+
+
+                            <div className="section" style={styles.sectionUserData}>
+                                <div className="section-title" style={styles.sectionTitle}>
+                                    My personal information
+                                </div>
+                                <div className="section-content" style={styles.personalInformationDiv}>
+                                    <div>{userData.firstName} {userData.lastName}</div>
+
+                                    <div>{userData.email}</div>
+                                    {userData.address !== '' ? <div>{userData.address}</div> : <></>}
+                                    {/*{userData.SSnumber !== '' ? <div>Social Security Number: {userData.SSnumber}</div> : <></>}*/}
+                                    <div>{userData.phoneNumber}</div>
+                                    <button
+                                        style={styles.updatePersonalInformationButton}
+                                        onClick={() => setShowPersonalInformationComponent(true)}
+                                    >Change my information
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
-        </div>
-        <div className="dashboard" style={styles.dashboard}>
-
-                <div className="section" style={styles.section}>
-                    {/*<p style={styles.sectionTitle}>My upcoming jobs</p>*/}
-                    <div className="section-title" style={styles.sectionTitle}>
-                        {userType === 'admin'
-                            ? 'All Upcoming Bookings'
-                            : userType === 'customer'
-                                ? 'My Upcoming Bookings'
-                                : /*'My Upcoming Shifts'*/ <MyShifts/>}
-                    </div>
-                    <div className="section-content">
-                        {userType === "admin" && <BookingTable onUpdate={handleBookingUpdate}/>}
-                        {userType === "customer" && <CustomerJobCheck/>}
-
-                    </div>
-                </div>
-
-
-                <div className="section" style={styles.sectionUserData}>
-                    <div className="section-title" style={styles.sectionTitle}>
-                        My personal information
-                    </div>
-                    <div className="section-content" style ={styles.personalInformationDiv}>
-                        <div>{userData.firstName} {userData.lastName}</div>
-
-                        <div>{userData.email}</div>
-                        {userData.address !== '' ? <div>{userData.address}</div> : <></>}
-                        {/*{userData.SSnumber !== '' ? <div>Social Security Number: {userData.SSnumber}</div> : <></>}*/}
-                        <div>{userData.phoneNumber}</div>
-                        <button
-                            style={styles.updatePersonalInformationButton}
-                            onClick={() => setShowPersonalInformationModal(true)}
-                        >Change my information</button>
-                    </div>
-                </div>
-                </div>
-
-
-
-                {/*<div className="section" style={styles.section}>*/}
-                {/*    <div className="section-title" style={styles.sectionTitle}>*/}
-                {/*        (Specific Content)*/}
-                {/*    </div>*/}
-                {/*    <div className="section-content">*/}
-                {/*        {userType === 'admin' ? (*/}
-                {/*            <div>Transaction Overview</div>*/}
-                {/*        ) : userType === 'customer' ? (*/}
-                {/*            <div>(Customer-specific content)</div>*/}
-                {/*        ) : (*/}
-                {/*            <div>(Employee-specific content)</div>*/}
-                {/*        )}*/}
-                {/*        <BookingHistoryTable />*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-            </div>
-            }
         </div>
     );
 };
