@@ -148,7 +148,7 @@ const styles = {
         backgroundColor: '#b3d9e3',
         width: "500px",
         // height: '630px',
-        marginTop: '7%'
+        marginTop: '4%'
     },
     input: {
         marginTop: '10px',
