@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {LoginModal} from "./LoginModal";
 import axios from "axios";
 import {RegisterModal} from "./RegisterModal";
+import '../../styles/HeaderStyles.css'
 
 const styles = {
     header: {
@@ -17,12 +18,6 @@ const styles = {
         color: 'black',
         fontWeight: 'bold',
         fontSize: '24px',
-    },
-    navbar: {
-        display: 'flex',
-        listStyle: 'none',
-        margin: 0,
-        padding: 0,
     },
     navItem: {
         margin: '0 10px',
@@ -45,7 +40,7 @@ const styles = {
         border: '1px solid rgba(0, 0, 0, 0.1)',
         boxShadow: '0px 4px 5px rgba(0, 0, 0, 0.2)',
         margin: '0 5px',
-    },
+    }
 };
 
 interface HeaderProps {
@@ -98,10 +93,16 @@ const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn,setLoggedIn}) => {
         setIsRegisterModalOpen(false);
     };
 
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+
     return (
         <header style={styles.header}>
             <div style={styles.logo}>Städafint AB</div>
-            <ul style={styles.navbar}>
+            <ul className="navbar">
                 <li style={styles.navItem}>
                     <Link to="/CustomerHome" style={styles.link}>Home</Link>
                 </li>
@@ -136,6 +137,19 @@ const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn,setLoggedIn}) => {
             {isRegisterModalOpen && (
                 <RegisterModal onClose={closeRegisterModal} />
             )}
+            <div className="hamburger-text">
+                <div className={`menu-toggle ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+                    <div className="bar"></div>
+                    <div className="bar"></div>
+                    <div className="bar"></div>
+                </div>
+                <ul className={`menu ${menuOpen ? 'open' : ''}`}>
+                    <li><a href="">Home</a></li>
+                    <li><a href="/about">My Pages</a></li>
+                    <li><a href="/services">Log In</a></li>
+                    <li><a href="/contact">Register</a></li>
+                </ul>
+            </div>
         </header>
     );
 }

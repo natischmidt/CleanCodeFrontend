@@ -1,0 +1,59 @@
+/* styles.css */
+.hamburger-text {
+    display: none;
+}
+
+.navbar {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* hamburger-menu.css */
+.hamburger-menu {
+    position: relative;
+    display: none;
+}
+
+.menu-toggle {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 4px 0;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.menu.open {
+    display: block;
+}
+
+
+@media (max-width: 568px) {
+    .hamburger-text {
+        display: block;
+    }
+    .navbar {
+        display: none;
+    }
+}
