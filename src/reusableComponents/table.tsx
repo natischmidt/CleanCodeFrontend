@@ -64,6 +64,7 @@ const styles = {
         marginTop: "3%",
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
         backgroundColor : "#b3d9e3",
+        width: "100%",
     },
     delete: {
         backgroundColor: "#f83f3f"
@@ -77,6 +78,7 @@ const styles = {
         textAlign: "center",
         justifyContent: "center",
         boxShadow: '0 0 5px rgba(0, 0, 0, 1)',
+        marginLeft: "1rem",
 
     },
     tableCell: {

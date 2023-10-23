@@ -7,6 +7,8 @@ import MyShifts from "../pages/EmployeePages/MyShifts";
 import {UserTypeContext} from "../components/UserTypeContext";
 import {DashboardUserData} from "./DashboardUserData";
 import axios from 'axios';
+import employee from "../API/employee";
+import EditPersonalInformationComponent from "./EditPersonalInformationComponent";
 
 
 interface DashboardProps {
@@ -23,15 +25,15 @@ interface DashboardProps {
 }
 
 
-
-const Dashboard: React.FC<DashboardProps> = ({ userType }) => {
+const Dashboard: React.FC<DashboardProps> = ({userType}) => {
     const userTypeContext = useContext(UserTypeContext);
     const id = userTypeContext?.id;
     const contextUserType = userTypeContext?.userType;
+    const [showPersonalInformationModal, setShowPersonalInformationModal] = useState(false)
 
     const [userData, setUserData] = useState({
-        firstname: "",
-        lastname: "",
+        firstName: "",
+        lastName: "",
         email: "",
         password: "",
         address: "",
@@ -39,19 +41,26 @@ const Dashboard: React.FC<DashboardProps> = ({ userType }) => {
         phoneNumber: "",
     });
 
-    // useEffect(() => {
-    //     if (contextUserType && id) {
-    //         if (contextUserType === "Customer") {
-    //             fetchCustomerData(id).then((data) => {
-    //                 setUserData(data);
-    //             });
-    //         } else if (contextUserType === "Employee") {
-    //             fetchEmployeeData(id).then((data) => {
-    //                 setUserData(data);
-    //             });
-    //         }
-    //     }
-    // }, [id, contextUserType]);
+    useEffect(() => {
+        if (contextUserType && id) {
+            if (contextUserType === "EMPLOYEE" || contextUserType === "ADMIN") {
+                fetchEmployeeData(id).then((data) => {
+                    setUserData(data);
+                    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%", data)
+                });
+                }
+            }
+
+    }, [id, contextUserType]);
+
+    const fetchEmployeeData = async (employeeId: string): Promise<DashboardUserData> => {
+        try {
+            const response = await employee.getEmployee(id.toString())
+            return response;
+        } catch (error) {
+            throw new Error(`Error fetching employee ${error}`);
+        }
+    };
 
     const handleBookingUpdate = (jobId: number) => {
         console.log(`Booking ${jobId} was updated.`);
@@ -59,85 +68,81 @@ const Dashboard: React.FC<DashboardProps> = ({ userType }) => {
 
     return (
         <div>
-        <div className="section" style={styles.timeSection}>
-            {/*<div className="section-title" style={styles.sectionTitle}>*/}
-            {/*    Today's Date and Time*/}
-            {/*</div>*/}
-            <div className="section-content">
-                <div>Today's Date: {new Date().toLocaleDateString()}</div>
-                <div>Time: {new Date().toLocaleTimeString()}</div>
-            </div>
-        </div>
-        <div className="dashboard" style={styles.dashboard}>
+            {showPersonalInformationModal ? <EditPersonalInformationComponent
+                userData = {userData}
+                showThisComp = {setShowPersonalInformationModal}
 
-            <div className="section" style={styles.section}>
-                {/*<p style={styles.sectionTitle}>My upcoming jobs</p>*/}
-                <div className="section-title" style={styles.sectionTitle}>
-                    {userType === 'admin'
-                        ? 'All Upcoming Bookings'
-                        : userType === 'customer'
-                            ? 'My Upcoming Bookings'
-                            : /*'My Upcoming Shifts'*/ <MyShifts/>}
-                </div>
+            /> : <div>
+            <div className="section" style={styles.timeSection}>
+                {/*<div className="section-title" style={styles.sectionTitle}>*/}
+                {/*    Today's Date and Time*/}
+                {/*</div>*/}
                 <div className="section-content">
-                    {userType === "admin" && <BookingTable onUpdate={handleBookingUpdate}/>}
-                    {userType === "customer" && <CustomerJobCheck />}
-
+                    <div>Today's Date: {new Date().toLocaleDateString()}</div>
+                    <div>Time: {new Date().toLocaleTimeString()}</div>
                 </div>
             </div>
 
-            <div className="section" style={styles.section}>
-                <div className="section-title" style={styles.sectionTitle}>
-                    User Data
+            <div className="dashboard" style={styles.dashboard}>
+
+                <div className="section" style={styles.section}>
+                    {/*<p style={styles.sectionTitle}>My upcoming jobs</p>*/}
+                    <div className="section-title" style={styles.sectionTitle}>
+                        {userType === 'admin'
+                            ? 'All Upcoming Bookings'
+                            : userType === 'customer'
+                                ? 'My Upcoming Bookings'
+                                : /*'My Upcoming Shifts'*/ <MyShifts/>}
+                    </div>
+                    <div className="section-content">
+                        {userType === "admin" && <BookingTable onUpdate={handleBookingUpdate}/>}
+                        {userType === "customer" && <CustomerJobCheck/>}
+
+                    </div>
                 </div>
-                <div className="section-content">
-                    <div>First Name: {userData.firstname}</div>
-                    <div>Last Name: {userData.lastname}</div>
-                    <div>Email: {userData.email}</div>
-                    {userData.address !== '' ?<div>Address: {userData.address}</div>: <></>}
-                    {userData.SSnumber !== '' ? <div>Social Security Number: {userData.SSnumber}</div> : <></>}
-                    <div>Phone Number: {userData.phoneNumber}</div>
+
+
+                <div className="section" style={styles.sectionUserData}>
+                    <div className="section-title" style={styles.sectionTitle}>
+                        My personal information
+                    </div>
+                    <div className="section-content" style ={styles.personalInformationDiv}>
+                        <div>{userData.firstName} {userData.lastName}</div>
+
+                        <div>{userData.email}</div>
+                        {userData.address !== '' ? <div>{userData.address}</div> : <></>}
+                        {/*{userData.SSnumber !== '' ? <div>Social Security Number: {userData.SSnumber}</div> : <></>}*/}
+                        <div>{userData.phoneNumber}</div>
+                        <button
+                            style={styles.updatePersonalInformationButton}
+                            onClick={() => setShowPersonalInformationModal(true)}
+                        >Change my information</button>
+                    </div>
                 </div>
-            </div>
+                </div>
 
 
 
-            <div className="section" style={styles.section}>
-                <div className="section-title" style={styles.sectionTitle}>
-                    (Specific Content)
-                </div>
-                <div className="section-content">
-                    {userType === 'admin' ? (
-                        <div>Transaction Overview</div>
-                    ) : userType === 'customer' ? (
-                        <div>(Customer-specific content)</div>
-                    ) : (
-                        <div>(Employee-specific content)</div>
-                    )}
-                    <BookingHistoryTable />
-                </div>
+                {/*<div className="section" style={styles.section}>*/}
+                {/*    <div className="section-title" style={styles.sectionTitle}>*/}
+                {/*        (Specific Content)*/}
+                {/*    </div>*/}
+                {/*    <div className="section-content">*/}
+                {/*        {userType === 'admin' ? (*/}
+                {/*            <div>Transaction Overview</div>*/}
+                {/*        ) : userType === 'customer' ? (*/}
+                {/*            <div>(Customer-specific content)</div>*/}
+                {/*        ) : (*/}
+                {/*            <div>(Employee-specific content)</div>*/}
+                {/*        )}*/}
+                {/*        <BookingHistoryTable />*/}
+                {/*    </div>*/}
+                {/*</div>*/}
             </div>
-            </div>
+            }
         </div>
     );
 };
-
-
-
-
-
-const fetchEmployeeData = async (employeeId: string): Promise<DashboardUserData> => {
-    try {
-        const response = await axios.post(`http://localhost:8080/api/getEmployee`, null, {
-            headers: { empId: employeeId }
-        });
-        return response.data;
-    } catch (error) {
-        throw new Error(`Error fetching employee ${error}`);
-    }
-};
-
-
 
 
 const styles: { [key: string]: React.CSSProperties } = {
@@ -155,6 +160,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         textAlign: 'center',
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
 
+
     },
     sectionTitle: {
         fontWeight: 'bold',
@@ -168,7 +174,25 @@ const styles: { [key: string]: React.CSSProperties } = {
         padding: '1px',
         textAlign: 'right',
         // boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
-    }
+    },
+    sectionUserData: {
+        // flex: 1,
+        border: '1px solid #ccc',
+        margin: '10px',
+        padding: '10px',
+        textAlign: 'left',
+        boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
+        width: "30%",
+        height: "12rem",
+
+    },
+    updatePersonalInformationButton: {
+        backgroundColor: "#729ca8",
+        boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
+        marginTop: "1rem",
+
+    },
+
 };
 export default Dashboard;
 
