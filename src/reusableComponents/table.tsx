@@ -68,6 +68,7 @@ const styles = {
         marginBottom: "3%",
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
         backgroundColor : "#b3d9e3",
+        textAlign: "center" as "center"
     },
     buttonCont: {
         display: 'flex',
