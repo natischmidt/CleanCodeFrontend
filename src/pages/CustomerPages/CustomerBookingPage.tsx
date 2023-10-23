@@ -5,7 +5,7 @@ import React, {useState} from "react";
 
 
 export default function CustomerBookingPage() {
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(true);
 
     return (
         <>

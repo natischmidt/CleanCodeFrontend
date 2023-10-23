@@ -64,7 +64,7 @@ const styles: {
 };
 
 export const CustomerHomePage: React.FC = () => {
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(true);
     const { userType ,id} = useUserType();
     const selectedStyles =
         userType === "Customer" ? customerStyles : {};
