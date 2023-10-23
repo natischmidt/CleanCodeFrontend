@@ -1,9 +1,10 @@
 import React from "react";
-const KlarnaConfirmation = () => {
+
+function KlarnaConfirmation() {
     return (
         <div>
-            <h1>Du lyckades!!!</h1>
-            <p>Grattis! du har lyckats med din beställning, klapp på axeln</p>
+            <h1>Tack flr din betalning!</h1>
+            <p>Nu har din betalning gått igenom.</p>
         </div>
     );
 };

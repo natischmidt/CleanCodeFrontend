@@ -40,7 +40,7 @@ function Routing() {
                     <Route path="/CustomerBooking" element={<CustomerBookingPage/>}/>
                     <Route path="/EmployeeHome" element={<EmployeeHomePage/>}/>
                     <Route path="/Booking" element={<BookingPage/>}/>
-                    <Route path="/confirmation" element={<KlarnaConfirmation/>}/>
+                    <Route path="/KlarnaConfirmation" element={<KlarnaConfirmation/>}/>
                     <Route path="/klarnatest" element={<TestParentKlarnaComp/>}/>
                     <Route path="/Employees" element={<EmployeePage/>}/>
                     <Route path="/Customers" element={<CustomerPage/>}/>

@@ -10,7 +10,6 @@ import axios from 'axios';
 import employee from "../API/employee";
 import EditPersonalInformationComponent from "./EditPersonalInformationComponent";
 
-
 interface DashboardProps {
     userType: 'customer' | 'employee' | 'admin';
     userData: {
@@ -24,8 +23,7 @@ interface DashboardProps {
     }
 }
 
-
-const Dashboard: React.FC<DashboardProps> = ({userType}) => {
+const Dashboard: React.FC<DashboardProps> = ({ userType }) => {
     const userTypeContext = useContext(UserTypeContext);
     const id = userTypeContext?.id;
     const contextUserType = userTypeContext?.userType;
@@ -66,24 +64,32 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
         console.log(`Booking ${jobId} was updated.`);
     };
 
+    const [time, setTime] = useState<Date>(new Date());
+
+    useEffect(() => {
+        setTime(new Date())
+
+        const intervalId = setInterval(() => {
+            setTime(new Date());
+        }, 60000);
+
+        return () => {
+            clearInterval(intervalId)
+        }
+    })
+
     return (
         <div>
-            {showPersonalInformationModal ? <EditPersonalInformationComponent
-                userData = {userData}
-                showThisComp = {setShowPersonalInformationModal}
-
-            /> : <div>
-            <div className="section" style={styles.timeSection}>
-                {/*<div className="section-title" style={styles.sectionTitle}>*/}
-                {/*    Today's Date and Time*/}
-                {/*</div>*/}
-                <div className="section-content">
-                    <div>Today's Date: {new Date().toLocaleDateString()}</div>
-                    <div>Time: {new Date().toLocaleTimeString()}</div>
-                </div>
+        <div className="section" style={styles.timeSection}>
+            {/*<div className="section-title" style={styles.sectionTitle}>*/}
+            {/*    Today's Date and Time*/}
+            {/*</div>*/}
+            <div className="section-content">
+                <div>Today's Date: {new Date().toLocaleDateString()}</div>
+                <div>Time: {time.toLocaleTimeString()}</div>
             </div>
-
-            <div className="dashboard" style={styles.dashboard}>
+        </div>
+        <div className="dashboard" style={styles.dashboard}>
 
                 <div className="section" style={styles.section}>
                     {/*<p style={styles.sectionTitle}>My upcoming jobs</p>*/}
@@ -159,7 +165,6 @@ const styles: { [key: string]: React.CSSProperties } = {
         padding: '10px',
         textAlign: 'center',
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
-
 
     },
     sectionTitle: {

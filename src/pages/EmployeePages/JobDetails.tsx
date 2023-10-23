@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import employee from "../../API/employee";
-import Select from 'react-select'
+// import Select from 'react-select'
 import {useUserType} from "../../components/UserTypeContext";
 import admin from "../../API/admin";
 

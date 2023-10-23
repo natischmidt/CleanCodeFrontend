@@ -30,6 +30,7 @@ const styles = {
         fontWeight: 'bold',
         textDecoration: 'none',
         color: 'black',
+        cursor: 'pointer'
     },
     logo: {
         height: "10vh",

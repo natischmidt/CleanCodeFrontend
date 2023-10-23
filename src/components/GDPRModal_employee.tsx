@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {useUserType} from "../UserTypeContext";
-import employee from "../../API/employee";
+import {useUserType} from "./UserTypeContext";
 
 
-export const GDPRModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
+export const GDPRModal_employee: React.FC<{ onClose: () => void }> = ({onClose}) => {
 
     const {id} = useUserType();
     // @ts-ignore
@@ -69,10 +68,7 @@ export const GDPRModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                             <strong>Phone-number:</strong> {phone}
                         </p>
                         <p style={{fontWeight: 'bold'}}>If you wish to remove this data, please contact us at <a href={"mailto:StadaFintAB@gmail.com"}>StadaFintAB@gmail.com</a></p>
-
                     </p>
-
-
                     <button type="submit" style={styles.button} onClick={onClose}>
                         Close
                     </button>
@@ -88,9 +84,9 @@ const styles = {
     modalContainer: {
         width: "100vw",
         height: "100vh",
-        zIndex: 5558,
+        zIndex: 0,
         position: "absolute" as 'absolute',
-        top: "-45em",
+        top: "-0em",
         left: 0,
         backgroundColor: "rgba(0, 0, 0, 0.5)",
         display: 'flex',
