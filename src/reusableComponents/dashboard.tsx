@@ -71,12 +71,12 @@ const Dashboard: React.FC<DashboardProps> = ({ userType }) => {
 
         const intervalId = setInterval(() => {
             setTime(new Date());
-        }, 60000);
+        }, 1000);
 
         return () => {
             clearInterval(intervalId)
         }
-    })
+    }, [])
 
     return (
         <div>
