@@ -24,6 +24,7 @@ import CustomerBookingPage from "./pages/CustomerPages/CustomerBookingPage";
 import LoginAdminOrEmployeeForm from "./forms/loginAdminOrEmployee";
 import KlarnaConfirmation from "./klarna/KlarnaConfirmation";
 import TestParentKlarnaComp from "./klarna/TestParentKlarnaComp";
+import SecurityFrontTestPage from "./security/SecurityFrontTestPage";
 //import OverviewPage from "./pages/overviewpage";
 //import TransactionPage from "./pages/transactionoverview";
 
@@ -54,6 +55,7 @@ function Routing() {
                     {/*<Route path="/CancelBooking" element={<CancelBooking/>}/>*/}
                     <Route path="/GettingIdNumber" element={<GettingIdNumber/>}/>
                     <Route path="/CancelWithNumber" element={<CancelWithNumber/>}/>
+                    <Route path="/sec" element={<SecurityFrontTestPage/>}/>
                     {/* <Route path="/Overview" element={<OverviewPage/>}/>
                     <Route path="/Transaction" element={<TransactionPage/>}/>*/}
                 </Routes>

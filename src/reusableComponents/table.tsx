@@ -71,7 +71,6 @@ const styles = {
     update: {
         display: "flex",
         backgroundColor: "#729ca8",
-        // justifyContent: 'space-between',
         width: "5rem",
         height: "2.5rem",
         alignItems: "center",
