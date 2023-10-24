@@ -8,7 +8,7 @@ import {UserTypeContext} from "../components/UserTypeContext";
 import {DashboardUserData} from "./DashboardUserData";
 import axios from 'axios';
 import employee from "../API/employee";
-import EditPersonalInformationComponent from "./EditPersonalInformationComponent";
+import EditEmployee from "../forms/editEmployee";
 
 interface DashboardProps {
     userType: 'customer' | 'employee' | 'admin';
@@ -28,7 +28,9 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
     const id = userTypeContext?.id;
     const contextUserType = userTypeContext?.userType;
     const [showPersonalInformationComponent, setShowPersonalInformationComponent] = useState(false)
-
+    const [showSalary, setShowSalary] = useState(false)
+    const [workedHours, setWorkedHours] = useState(0)
+    const [hourlySalary, setHourlySalary] = useState(0)
     const [userData, setUserData] = useState({
         firstName: "",
         lastName: "",
@@ -63,6 +65,19 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
     const handleBookingUpdate = (jobId: number) => {
         console.log(`Booking ${jobId} was updated.`);
     };
+    const handleUpdate = () => {
+        setShowPersonalInformationComponent(!showPersonalInformationComponent)
+    }
+
+    const goToSalary = () => {
+        if(!showSalary) {
+            employee.getSalary(id).then(response => {
+                setHourlySalary(response.hourlySalary)
+                setWorkedHours(response.workedHours)
+            })
+        }
+        setShowSalary(!showSalary)
+    }
 
     const [time, setTime] = useState<Date>(new Date());
 
@@ -82,9 +97,9 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
         <div>
             <div>
 
-                {showPersonalInformationComponent ? <EditPersonalInformationComponent
-                        userData={userData}
-                        showThisComp={setShowPersonalInformationComponent}
+                {showPersonalInformationComponent ? <EditEmployee
+                    empId={id}
+                    doneWithEdit={handleUpdate}
 
                     /> :
                     <div>
@@ -127,13 +142,29 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
                                     {userData.address !== '' ? <div>{userData.address}</div> : <></>}
                                     {/*{userData.SSnumber !== '' ? <div>Social Security Number: {userData.SSnumber}</div> : <></>}*/}
                                     <div>{userData.phoneNumber}</div>
+                                    {!showSalary ?
+                                    <div
+                                        onClick={() => goToSalary()}>
+                                        This months salary: *hidden*
+                                    </div>
+                                        :
+                                        <div
+                                            onClick={() => goToSalary()}>
+                                            You have worked {workedHours} hours this month, which will give you a salary of {workedHours * hourlySalary} kr.
+                                        </div>
+                                    }
+                                    <div style = {styles.buttonDiv}>
+
                                     <button
                                         style={styles.updatePersonalInformationButton}
                                         onClick={() => setShowPersonalInformationComponent(true)}
-                                    >Change my information
+                                    >Change my data
                                     </button>
+
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 }
@@ -186,10 +217,12 @@ const styles: { [key: string]: React.CSSProperties } = {
     updatePersonalInformationButton: {
         backgroundColor: "#729ca8",
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
-        marginTop: "1rem",
-
+        margin: "1rem",
     },
-
+    buttonDiv: {
+        display: "flex",
+        justifyContent: "space-evenly"
+    }
 };
 export default Dashboard;
 

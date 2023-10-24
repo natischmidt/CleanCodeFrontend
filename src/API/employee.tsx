@@ -85,6 +85,15 @@ const employee = {
             console.log(error)
         }
     },
+
+    getSalary: async (empId: any) => {
+        try {
+            const response = await axios.get(`http://localhost:8080/api/employee/getSalary/${empId}`)
+            return response.data
+        } catch (error) {
+            console.log(error)
+        }
+    },
 };
 
 

@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+    import React, {useEffect, useState} from 'react';
 import axios from "axios";
 interface editEmployeeProps {
-    empId: number | null;
+    empId: number;
     doneWithEdit: () => void;
 }
 const EditEmployeeForm: React.FC<editEmployeeProps> = ({ empId, doneWithEdit }) => {
@@ -18,6 +18,7 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({ empId, doneWithEdit }) 
     const [password, setPassword] = useState('');
 
     useEffect(() => {
+        console.log(empId)
         const preFillForm = async () => {
             const url = `http://localhost:8080/api/employee/getEmployee`
             const headers = {
@@ -88,7 +89,7 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({ empId, doneWithEdit }) 
     return (
         <div style={styles.container}>
             <form style={styles.form} onSubmit={handleSubmit}>
-                <h2>Edit Employee</h2>
+                <h2>Edit information</h2>
                 <input
                     type="text"
                     placeholder="Firstname"
