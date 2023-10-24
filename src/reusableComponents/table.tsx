@@ -85,7 +85,7 @@ const styles = {
         textAlign: "center",
         justifyContent: "center",
         boxShadow: '0 0 5px rgba(0, 0, 0, 1)',
-        marginLeft: "5%",
+        marginLeft: "6%",
     },
     update: {
         display: "flex",
@@ -96,7 +96,7 @@ const styles = {
         textAlign: "center",
         justifyContent: "center",
         boxShadow: '0 0 5px rgba(0, 0, 0, 1)',
-        marginLeft: "1rem",
+        marginLeft: "1%",
 
     },
     tableCell: {

@@ -18,6 +18,8 @@ interface DashboardProps {
         email: string,
         password: string,
         address: string,
+        postalCode: string,
+        city: string,
         SSnumber: string,
         phoneNumber: string,
     }
@@ -35,6 +37,8 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
         email: "",
         password: "",
         address: "",
+        postalCode: "",
+        city: "",
         SSnumber: "",
         phoneNumber: "",
     });
@@ -115,7 +119,6 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
                                 </div>
                             </div>
 
-
                             <div className="section" style={styles.sectionUserData}>
                                 <div className="section-title" style={styles.sectionTitle}>
                                     My personal information
@@ -126,6 +129,8 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
                                     <div>{userData.email}</div>
                                     {userData.address !== '' ? <div>{userData.address}</div> : <></>}
                                     {/*{userData.SSnumber !== '' ? <div>Social Security Number: {userData.SSnumber}</div> : <></>}*/}
+                                    <div>{userData.postalCode}</div>
+                                    <div>{userData.city}</div>
                                     <div>{userData.phoneNumber}</div>
                                     <button
                                         style={styles.updatePersonalInformationButton}
@@ -152,17 +157,17 @@ const styles: { [key: string]: React.CSSProperties } = {
     },
     section: {
         flex: 1,
-        border: '1px solid #ccc',
+        // border: '1px solid #ccc',
         margin: '10px',
         padding: '10px',
         textAlign: 'center',
-        boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
-
+        // boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
     },
     sectionTitle: {
         fontWeight: 'bold',
-        marginBottom: '10px',
-
+        marginBottom: '1%',
+        // fontSize: "1.5rem",
+        // borderBottom: "2px solid black"
     },
     timeSection: {
         flex: 1,
@@ -177,20 +182,16 @@ const styles: { [key: string]: React.CSSProperties } = {
         border: '1px solid #ccc',
         margin: '10px',
         padding: '10px',
-        textAlign: 'left',
+        textAlign: 'center',
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
-        width: "30%",
-        height: "12rem",
-
+        width: "15%",
+        height: "80%",
     },
     updatePersonalInformationButton: {
         backgroundColor: "#729ca8",
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
         marginTop: "1rem",
-
     },
+}
 
-};
 export default Dashboard;
-
-
