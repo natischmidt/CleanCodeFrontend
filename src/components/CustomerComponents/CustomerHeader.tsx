@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {LoginModal} from "./LoginModal";
 import axios from "axios";
 import {RegisterModal} from "./RegisterModal";
 import '../../styles/HeaderStyles.css'
+import {useUserType} from "../UserTypeContext";
 
 const styles = {
     header: {
@@ -23,7 +24,7 @@ const styles = {
         margin: '0 10px',
         color: 'black',
         fontWeight: 'bold',
-        marginRight : '35px',
+        marginRight: '35px',
     },
     link: {
         fontWeight: 'bold',
@@ -43,13 +44,9 @@ const styles = {
     }
 };
 
-interface HeaderProps {
-    showLoggedIn: boolean;
-    setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
-}
+const CustomerHeader: React.FC = () => {
 
-const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn,setLoggedIn}) => {
-
+    const {loggedIn, setLoggedIn} = useUserType();
 
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
@@ -67,7 +64,7 @@ const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn,setLoggedIn}) => {
         setIsRegisterModalOpen(true)
     }
 
-    const handleLogoutClick = async (e : React.FormEvent) => {
+    const handleLogoutClick = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoggedIn(false);
         try {
@@ -104,22 +101,33 @@ const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn,setLoggedIn}) => {
             <div style={styles.logo}>Städafint AB</div>
             <ul className="navbar">
                 <li style={styles.navItem}>
-                    <Link to="/CustomerHome" style={styles.link}>Home</Link>
+                    <Link to="/CustomerHome" style={styles.link}>
+                        Home
+                    </Link>
                 </li>
-                {showLoggedIn && (
+                {(
                     <li style={styles.navItem}>
-                        <Link to="/CustomerMyPages" style={styles.link}>My Pages</Link>
+                        <Link to="/CustomerBooking" style={styles.link}>
+                            Book
+                        </Link>
                     </li>
                 )}
+                {loggedIn && (
+                    <>
+                        <li style={styles.navItem}>
+                            <Link to="/CustomerMyPages" style={styles.link}>
+                                My Pages
+                            </Link>
+                        </li>
+                        <li style={styles.navItem}>
+                            <button style={styles.button} onClick={handleLogoutClick}>
+                                Log Out
+                            </button>
+                        </li>
+                    </>
+                )}
                 <li style={styles.navItem}>
-                    <Link to="/CustomerBooking" style={styles.link}>Book</Link>
-                </li>
-                <li style={styles.navItem}>
-                    {showLoggedIn ? (
-                        <button style={styles.button} onClick={handleLogoutClick}>
-                            Log Out
-                        </button>
-                    ) : (
+                    {!loggedIn && (
                         <>
                             <button style={styles.button} onClick={handleLoginClick}>
                                 Log In
@@ -131,12 +139,8 @@ const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn,setLoggedIn}) => {
                     )}
                 </li>
             </ul>
-            {isLoginModalOpen && (
-                <LoginModal onClose={closeLoginModal} />
-            )}
-            {isRegisterModalOpen && (
-                <RegisterModal onClose={closeRegisterModal} />
-            )}
+            {isLoginModalOpen && <LoginModal onClose={closeLoginModal}/>}
+            {isRegisterModalOpen && <RegisterModal onClose={closeRegisterModal}/>}
             <div className="hamburger-text">
                 <div className={`menu-toggle ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
                     <div className="bar"></div>
@@ -144,10 +148,29 @@ const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn,setLoggedIn}) => {
                     <div className="bar"></div>
                 </div>
                 <ul className={`menu ${menuOpen ? 'open' : ''}`}>
-                    <li><a href="">Home</a></li>
-                    <li><a href="/about">My Pages</a></li>
-                    <li><a href="/services">Log In</a></li>
-                    <li><a href="/contact">Register</a></li>
+                    <li>
+                        <a href="">Home</a>
+                    </li>
+                    {loggedIn && (
+                        <>
+                            <li>
+                                <a href="/about">My Pages</a>
+                            </li>
+                            <li>
+                                <a href="/services">Log Out</a>
+                            </li>
+                        </>
+                    )}
+                    {loggedIn && (
+                        <>
+                            <li>
+                                <a href="/services">Log In</a>
+                            </li>
+                            <li>
+                                <a href="/contact">Register</a>
+                            </li>
+                        </>
+                    )}
                 </ul>
             </div>
         </header>

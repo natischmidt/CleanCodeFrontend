@@ -437,7 +437,7 @@ const AddCustomerBookingOption = () => {
                             </div>
                         }
                         {isBookingDone &&
-                            <div>
+                            <div style={styles.centered}>
                                 <h3>Your booking was successfully created. <br/>You will have a confirmation email sent
                                     to you. Thank you!</h3>
                             </div>}
@@ -524,7 +524,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         width: "16rem",
         height: "8rem"
     },
-    confirm: {
+    centered: {
         marginTop: "10%",
     }
 };
