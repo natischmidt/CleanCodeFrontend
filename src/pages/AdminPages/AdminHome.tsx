@@ -17,6 +17,8 @@ export const AdminHome : React.FC = () => {
         email: 'test@example.com',
         password: 'test',
         address: '123 Test',
+        postalCode: '12456',
+        city: 'Linkoping',
         SSnumber: '123456789',
         phoneNumber: '555-555-5555',
     };

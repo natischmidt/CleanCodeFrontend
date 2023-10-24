@@ -45,8 +45,12 @@ const styles = {
     }
 };
 
-const CustomerHeader: React.FC = () => {
+interface HeaderProps {
+    showLoggedIn: boolean;
+    setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
+    const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn}) => {
     const {loggedIn, setLoggedIn} = useUserType();
 
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -153,7 +157,8 @@ const CustomerHeader: React.FC = () => {
                         <a href="/CustomerHome" style={styles.link}>
                             Home
                         </a>
-                    </li><li>
+                    </li>
+                    <li>
                         <a href="/CustomerBooking" style={styles.link}>
                             Book
                         </a>
@@ -161,7 +166,8 @@ const CustomerHeader: React.FC = () => {
                     {!loggedIn && (
                         <>
                             <li style={styles.link} onClick={handleLoginClick}>Log in
-                            </li><li>
+                            </li>
+                            <li>
                                 <li style={styles.link} onClick={handleRegisterClick}>Register</li>
                             </li>
                         </>

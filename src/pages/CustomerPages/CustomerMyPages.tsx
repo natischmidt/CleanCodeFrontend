@@ -8,10 +8,11 @@ import {DashboardUserData} from "../../reusableComponents/DashboardUserData";
 import axios from "axios";
 
 export const CustomerMyPages: React.FC = () => {
-    const { userType, id } = useUserType();
+    const {userType, id } = useUserType();
     const [loggedIn, setLoggedIn] = useState(true);
     const [userData, setUserData] = useState<DashboardUserData>({
-        firstname: "", lastname: "", email: "", password: "", address: "", SSnumber: "", phoneNumber: "",});
+        firstname: "", lastname: "", email: "", password: "", address: "", postalCode:"", city:"",
+        SSnumber: "", phoneNumber: "",});
 
 
     const selectedStyles =
@@ -38,11 +39,12 @@ export const CustomerMyPages: React.FC = () => {
         }
     };
 
+    // @ts-ignore
     return (
         <>
-            <CustomerHeader showLoggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+            <CustomerHeader showLoggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
             <div style={{ ...selectedStyles }}>
-                <Dashboard userType="customer" userData={userData} />
+                <Dashboard userType="customer" userData={userData}/>
             </div>
             <CustomerFooter />
         </>
