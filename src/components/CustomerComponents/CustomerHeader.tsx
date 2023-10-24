@@ -30,6 +30,7 @@ const styles = {
         fontWeight: 'bold',
         textDecoration: 'none',
         color: 'black',
+        cursor: 'pointer',
     },
     button: {
         color: 'black',
@@ -149,25 +150,35 @@ const CustomerHeader: React.FC = () => {
                 </div>
                 <ul className={`menu ${menuOpen ? 'open' : ''}`}>
                     <li>
-                        <a href="">Home</a>
+                        <a href="/CustomerHome" style={styles.link}>
+                            Home
+                        </a>
+                    </li><li>
+                        <a href="/CustomerBooking" style={styles.link}>
+                            Book
+                        </a>
                     </li>
-                    {loggedIn && (
+                    {!loggedIn && (
                         <>
-                            <li>
-                                <a href="/about">My Pages</a>
-                            </li>
-                            <li>
-                                <a href="/services">Log Out</a>
+                            <li style={styles.link} onClick={handleLoginClick}>Log in
+                            </li><li>
+                                <li style={styles.link} onClick={handleRegisterClick}>Register</li>
                             </li>
                         </>
                     )}
                     {loggedIn && (
                         <>
                             <li>
-                                <a href="/services">Log In</a>
+                                <Link to="/CustomerMyPages" style={styles.link}>
+                                    My Pages
+                                </Link>
                             </li>
                             <li>
-                                <a href="/contact">Register</a>
+                                <Link to="/CustomerBooking" style={styles.link}>
+                                    Book
+                                </Link>
+                            </li>
+                            <li style={styles.link} onClick={handleLogoutClick}>Log out
                             </li>
                         </>
                     )}
