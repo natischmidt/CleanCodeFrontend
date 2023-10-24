@@ -255,18 +255,20 @@ const AddCustomerBookingOption = () => {
 
             <div style={styles.container}>
                 {showCalender && isModalOpen ? (
-                    <div style={styles.calenderStyles}>
-                        <div style={styles.sectionTitle}>
-                            <p>Choose date and time</p>
+                    <div style={styles.cal}>
+                        <div style={styles.calenderStyles}>
+                            <div style={styles.sectionTitle}>
+                                <p>Choose date and time</p>
+                            </div>
+                            <Calendar
+                                onClickDay={(day) => {
+                                    setShowCalNext(false);
+                                    checkDay(day).then(r => {
+                                    })
+                                }}
+                                value={date}
+                            />
                         </div>
-                        <Calendar
-                            onClickDay={(day) => {
-                                setShowCalNext(false);
-                                checkDay(day).then(r => {
-                                })
-                            }}
-                            value={date}
-                        />
                     </div>
                 ) : <></>}
 
@@ -277,7 +279,8 @@ const AddCustomerBookingOption = () => {
                                 <>
                                     {eight &&
                                         <button style={styles.slots} onClick={(e) => {
-                                            handleSelectTime(e, 8).then(r => {});
+                                            handleSelectTime(e, 8).then(r => {
+                                            });
                                             setShowCalNext(true);
                                         }}>
                                             08.00
@@ -286,42 +289,50 @@ const AddCustomerBookingOption = () => {
                                     {nine &&
                                         <button style={styles.slots}
                                                 onClick={(e) => {
-                                                    handleSelectTime(e, 9).then(r => {});
+                                                    handleSelectTime(e, 9).then(r => {
+                                                    });
                                                     setShowCalNext(true)
                                                 }}>09.00</button>}
                                     {ten && <button style={styles.slots}
                                                     onClick={(e) => {
-                                                        handleSelectTime(e, 10).then(r => {});
+                                                        handleSelectTime(e, 10).then(r => {
+                                                        });
                                                         setShowCalNext(true)
                                                     }}>10.00</button>}
                                     {eleven && <button style={styles.slots}
                                                        onClick={(e) => {
-                                                           handleSelectTime(e, 11).then(r => {});
+                                                           handleSelectTime(e, 11).then(r => {
+                                                           });
                                                            setShowCalNext(true)
                                                        }}>11.00</button>}
                                     {twelve && <button style={styles.slots}
                                                        onClick={(e) => {
-                                                           handleSelectTime(e, 12).then(r => {});
+                                                           handleSelectTime(e, 12).then(r => {
+                                                           });
                                                            setShowCalNext(true)
                                                        }}>12.00</button>}
                                     {thirteen && <button style={styles.slots}
                                                          onClick={(e) => {
-                                                             handleSelectTime(e, 13).then(r => {});
+                                                             handleSelectTime(e, 13).then(r => {
+                                                             });
                                                              setShowCalNext(true)
                                                          }}>13.00</button>}
                                     {fourteen && <button style={styles.slots}
                                                          onClick={(e) => {
-                                                             handleSelectTime(e, 14).then(r => {});
+                                                             handleSelectTime(e, 14).then(r => {
+                                                             });
                                                              setShowCalNext(true)
                                                          }}>14.00</button>}
                                     {fifteen && <button style={styles.slots}
                                                         onClick={(e) => {
-                                                            handleSelectTime(e, 15).then(r => {});
+                                                            handleSelectTime(e, 15).then(r => {
+                                                            });
                                                             setShowCalNext(true)
                                                         }}>15.00</button>}
                                     {sixteen && <button style={styles.slots}
                                                         onClick={(e) => {
-                                                            handleSelectTime(e, 16).then(r => {});
+                                                            handleSelectTime(e, 16).then(r => {
+                                                            });
                                                             setShowCalNext(true)
                                                         }}>16.00</button>}
                                 </>)}
@@ -395,7 +406,7 @@ const AddCustomerBookingOption = () => {
                             }
                         </div>
                         {isConfirmModalOpen &&
-                            <div>
+                            <div style={styles.confirm}>
                                 <div style={styles.sectionTitle}>
                                     <p>Confirm your booking </p>
                                 </div>
@@ -458,11 +469,15 @@ const styles: { [key: string]: React.CSSProperties } = {
         display: 'flex',
         alignItems: 'center',
         textAlign: 'center',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        marginTop: '5%',
     },
     sectionTitle: {
         fontWeight: 'bold',
         margin: '10px',
+    },
+    cal: {
+        marginTop: '4%',
     },
     boxContainer: {
         display: 'flex',
@@ -508,5 +523,8 @@ const styles: { [key: string]: React.CSSProperties } = {
     textarea: {
         width: "16rem",
         height: "8rem"
+    },
+    confirm: {
+        marginTop: "10%",
     }
 };
