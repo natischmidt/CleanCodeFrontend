@@ -126,15 +126,17 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
                                         ? 'All Upcoming Bookings'
                                         : userType === 'customer'
                                             ? 'My Upcoming Bookings'
-                                            : /*'My Upcoming Shifts'*/ <MyShifts/>}
+                                            : 'My Upcoming Shifts'}
                                 </div>
                                 <div className="section-content">
                                     {userType === "admin" && <BookingTable onUpdate={handleBookingUpdate}/>}
                                     {userType === "customer" && <CustomerJobCheck/>}
+                                    {userType === "employee" && <MyShifts/>}
 
                                 </div>
-                            </div>
 
+                            </div>
+                            { userType == "employee" &&
                             <div className="section" style={styles.sectionUserData}>
                                 <div className="section-title" style={styles.sectionTitle}>
                                     My personal information
@@ -170,6 +172,7 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
                                     </div>
                                 </div>
                             </div>
+                             }
 
                         </div>
                     </div>

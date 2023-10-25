@@ -68,7 +68,7 @@ export default function JobDetails({jobId, close}: IjobDetails) {
     const updateJobStatus = () => {
 
 
-        if(userType == "Admin") {
+        if(userType == "ADMIN") {
            const dataToSend = {
                jobId: jobId,
                jobtype: jobType,
@@ -84,13 +84,12 @@ export default function JobDetails({jobId, close}: IjobDetails) {
                 console.log(r)
             })
 
-        } else if(userType == "Employee") {
+        } else if(userType == "EMPLOYEE") {
             if(jobStatus == "PENDING" || jobStatus == "DONE") {
                 const dataToSend = {
                     jobId: jobId,
                     jobtype: jobType,
                     date: date,
-
                     jobStatus: jobStatus,
                     squareMeters: squareMeters,
                     paymentOption: paymentOption,

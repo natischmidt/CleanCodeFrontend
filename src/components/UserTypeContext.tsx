@@ -13,7 +13,6 @@ interface UserTypeContextProps {
 }
 
 
-
 export const UserTypeContext = createContext<UserTypeContextProps | undefined>(
     undefined
 );

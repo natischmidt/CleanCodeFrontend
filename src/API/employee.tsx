@@ -72,7 +72,6 @@ const employee = {
         } catch (error) {
             console.log(error)
         }
-
     },
     getCustomer: async (customerId: string) => {
 
