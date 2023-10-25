@@ -50,6 +50,7 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
                     // @ts-ignore
                     setUserData(data);
                     console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%", data)
+                    console.log(userData.firstName)
                 });
             }
         }
@@ -118,6 +119,7 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
                             {/*    Today's Date and Time*/}
                             {/*</div>*/}
                             <div className="section-content">
+                                <div>Welcome!</div>
                                 <div>Today's Date: {new Date().toLocaleDateString()}</div>
                                 <div>Time: {time.toLocaleTimeString()}</div>
                             </div>

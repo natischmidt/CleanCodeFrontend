@@ -45,32 +45,90 @@ export default function SecurityFrontTestPage () {
     //     }
     // })
 
-    const getAdminToken = async () => {
-        console.log("test")
+    // const details = {
+    //     'username': 'admin',
+    //     'password': 'l?3t5!C1eAn"tHäc0De.-',
+    //     'grant_type': 'password',
+    //     'client_id': 'admin-cli'
+    // };
+    // const formBody = [];
+    // for (var property in details) {
+    //     var encodedKey = encodeURIComponent(property);
+    //     var encodedValue = encodeURIComponent(details[property]);
+    //     formBody.push(encodedKey + "=" + encodedValue);
+    // }
+    //
+    // formBody = formBody.join("&");
+    // fetch('https://example.com/login', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+    //     },
+    //     body: formBody
+    // })
 
+
+
+    // const getAdminToken = async () => {
+    //     console.log("test")
+    //     console.log(adminCallData);
+    //
+    //     try {
+    //         const response = await fetch("http://stadafint.se/realms/master/protocol/openid-connect/token", {
+    //             method: 'POST',
+    //             mode: 'no-cors',
+    //             headers: {
+    //                 'Content-Type': 'application/x-www-form-urlencoded',
+    //             },
+    //             body: adminCallData.toString(),
+    //         })
+    //
+    //         const data = await response.json();
+    //         console.log("The response status: " , response.status)
+    //         console.log(data)
+    //
+    //
+    //     }  catch (error) {
+    //         console.log(error)
+    //     }
+    // }
+    const getAdminToken = async () => {
         try {
-            const response = await fetch("http://192.168.0.189:8080/realms/master/protocol/openid-connect/token", {
+            const details: Record<string, string> = {
+                'grant_type': 'password',
+                'username': 'admin',
+                'password': 'l?3t5!C1eAn"tHäc0De.-',
+                'client_id': 'admin-cli'
+            };
+
+            const formBody: string[] = [];
+            for (const property in details) {
+                const encodedKey = encodeURIComponent(property);
+                const encodedValue = encodeURIComponent(details[property]);
+                formBody.push(encodedKey + "=" + encodedValue);
+            }
+            const formEncoded = formBody.join("&");
+
+            const response = await fetch("http://stadafint.se/realms/master/protocol/openid-connect/token", {
                 method: 'POST',
-                // mode: 'cors',
+                mode: 'cors',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
+                    'Access-Control-Allow-Origin': '*',
                 },
-                body: adminCallData.toString(),
-            })
+                body: formEncoded,
+            });
 
             const data = await response.json();
-            console.log("The response status: " , response.status)
-            console.log(data)
-
-
-        }  catch (error) {
-            console.log(error)
+            console.log("The response status:", response.status);
+            console.log(data);
+        } catch (error) {
+            console.log(error);
         }
     }
 
-
     const handleRegister = () => {
-        axios.post("http://192.168.0.189:8080/auth/admin/realms/cleanCode/users", )
+        axios.post("http://stadafint.se/auth/admin/realms/cleanCode/users", )
     }
 
     return (
