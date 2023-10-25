@@ -25,6 +25,7 @@ import LoginAdminOrEmployeeForm from "./forms/loginAdminOrEmployee";
 import KlarnaConfirmation from "./klarna/KlarnaConfirmation";
 import TestParentKlarnaComp from "./klarna/TestParentKlarnaComp";
 import SecurityFrontTestPage from "./security/SecurityFrontTestPage";
+import BasicCleanPayment from "./klarna/BasicCleanPayment";
 //import OverviewPage from "./pages/overviewpage";
 //import TransactionPage from "./pages/transactionoverview";
 
@@ -52,6 +53,7 @@ function Routing() {
                     <Route path="/AddBusinessCustomer" element={<AddBusinessCustomer/>}/>
                     <Route path="/CreateNewBooking" element={<CreateNewBooking/>}/>
                     <Route path="/UpdateBooking" element={<UpdateBooking/>}/>
+                    <Route path="/PayForBasic" element={<BasicCleanPayment />}/>
                     {/*<Route path="/CancelBooking" element={<CancelBooking/>}/>*/}
                     <Route path="/GettingIdNumber" element={<GettingIdNumber/>}/>
                     <Route path="/CancelWithNumber" element={<CancelWithNumber/>}/>
