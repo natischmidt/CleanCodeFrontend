@@ -1,20 +1,22 @@
-    import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from "axios";
+
 interface editEmployeeProps {
-    empId: number;
+    empId?: number;
     doneWithEdit: () => void;
 }
-const EditEmployeeForm: React.FC<editEmployeeProps> = ({ empId, doneWithEdit }) => {
+
+const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) => {
 
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
     const [phonenumber, setPhoneNumber] = useState('');
     const [ss, setSs] = useState('');
-    const [salary, setSalary] = useState <number> (0);
+    const [salary, setSalary] = useState<number>(0);
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('')
-    const [postalCode, setPostalCode] =  useState('')
+    const [postalCode, setPostalCode] = useState('')
     const [password, setPassword] = useState('');
 
     useEffect(() => {
@@ -22,7 +24,7 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({ empId, doneWithEdit }) 
         const preFillForm = async () => {
             const url = `http://localhost:8080/api/employee/getEmployee`
             const headers = {
-                'empId' : empId?.toString()  // ? tar bort rödmarkering, avbryter det om det är null/undefined
+                'empId': empId?.toString()  // ? tar bort rödmarkering, avbryter det om det är null/undefined
             }
             const response = await axios.get(url, {headers})
             const data = response.data
@@ -48,7 +50,6 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({ empId, doneWithEdit }) 
             const Url = `http://localhost:8080/api/employee/editEmployee`;
 
 
-
             const editEmployeeData = {
                 firstName: firstname,
                 lastName: lastname,
@@ -64,7 +65,7 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({ empId, doneWithEdit }) 
             };
 
             const headers = {
-                'empId' : empId?.toString()  // ? tar bort rödmarkering, avbryter det om det är null/undefined
+                'empId': empId?.toString()  // ? tar bort rödmarkering, avbryter det om det är null/undefined
             }
 
             setFirstname('')
@@ -72,7 +73,7 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({ empId, doneWithEdit }) 
             setEmail('')
             setPhoneNumber('')
             setSs('')
-            setSalary (0)
+            setSalary(0)
             setAddress('')
             setCity('')
             setPostalCode('')
@@ -171,7 +172,7 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({ empId, doneWithEdit }) 
                 <button type="submit" style={styles.button}>
                     Update Employee
                 </button>
-                <button type="button" style={styles.button} onClick={doneWithEdit} >
+                <button type="button" style={styles.button} onClick={doneWithEdit}>
                     Go Back
                 </button>
             </form>

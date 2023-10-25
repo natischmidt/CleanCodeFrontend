@@ -73,7 +73,7 @@ export const CustomerHomePage: React.FC = () => {
 
     return (
         <>
-            <CustomerHeader showLoggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+            <CustomerHeader setLoggedIn={setLoggedIn} showLoggedIn/>
             <div style={{ ...selectedStyles }}>
                 <div style={styles.container}>
                     <div style={styles.halfContainer}>

@@ -9,7 +9,7 @@ export default function CustomerBookingPage() {
 
     return (
         <>
-            <CustomerHeader/>
+            <CustomerHeader showLoggedIn={loggedIn} setLoggedIn={setLoggedIn} />
             <div className="bookingCont">
                 <AddCustomerBookingOption/>
             </div>

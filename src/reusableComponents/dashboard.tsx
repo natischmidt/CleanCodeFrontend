@@ -1,12 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react';
-import BookingHistoryTable from "../components/tabels/BookingHistoryTable";
 import BookingTable from "../components/tabels/BookingTable";
-import updateBooking from "../adminForms/updateBooking";
 import CustomerJobCheck from "../components/CustomerJobCheck";
 import MyShifts from "../pages/EmployeePages/MyShifts";
 import {UserTypeContext} from "../components/UserTypeContext";
 import {DashboardUserData} from "./DashboardUserData";
-import axios from 'axios';
 import employee from "../API/employee";
 import EditEmployee from "../forms/editEmployee";
 
@@ -47,8 +44,10 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
 
     useEffect(() => {
         if (contextUserType && id) {
+            // @ts-ignore
             if (contextUserType === "EMPLOYEE" || contextUserType === "ADMIN") {
                 fetchEmployeeData(id).then((data) => {
+                    // @ts-ignore
                     setUserData(data);
                     console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%", data)
                 });
@@ -59,6 +58,7 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
 
     const fetchEmployeeData = async (employeeId: string): Promise<DashboardUserData> => {
         try {
+            // @ts-ignore
             const response = await employee.getEmployee(id.toString())
             return response;
         } catch (error) {
@@ -97,12 +97,13 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
         }
     }, [])
 
+    // @ts-ignore
+    // @ts-ignore
     return (
         <div>
             <div>
-
                 {showPersonalInformationComponent ? <EditEmployee
-                    empId={id}
+                    empId={id ? parseInt(id, 10) : undefined}
                     doneWithEdit={handleUpdate}
 
                     /> :

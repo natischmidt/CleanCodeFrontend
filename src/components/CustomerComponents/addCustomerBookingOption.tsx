@@ -224,6 +224,7 @@ const AddCustomerBookingOption = () => {
     // @ts-ignore
     // @ts-ignore
     // @ts-ignore
+    // @ts-ignore
     return (
         <>{!isModalOpen
             && (
@@ -411,14 +412,14 @@ const AddCustomerBookingOption = () => {
                                     <p>Confirm your booking </p>
                                 </div>
                                 {
-                                    <div>
+                                    <>
                                         You want to have your accommodation cleaned
-                                        on {date}, {timeList[0].toLowerCase()} a'clock.
+                                        on {date}, {timeList[0]} a'clock.
                                         You have chosen our {jobType.toLowerCase()} service which takes {hours} hour(s)
                                         for completion.<br/>
                                         The size of your accommodation is {squareMeters} square meters and you wish to
                                         pay with {paymentOption}.
-                                    </div>
+                                    </>
                                 }
 
                                 <div style={styles.button}>
