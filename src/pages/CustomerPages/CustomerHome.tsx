@@ -60,7 +60,7 @@ const styles: {
         margin: "0"
     },
     bookingSection: {
-    },
+    }
 };
 
 export const CustomerHomePage: React.FC = () => {
