@@ -7,10 +7,11 @@ import basic from "../../assets/basic2.png";
 import advanced from "../../assets/advanced2.jpg";
 import windowclean from "../../assets/www.png";
 import {useUserType} from "../UserTypeContext";
+import axios from "axios";
 
 const AddCustomerBookingOption = () => {
 
-    const {userType, id} = useUserType();
+    const {userType, id, loggedIn} = useUserType();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isSquareModalOpen, setIsSquareModalOpen] = useState(false);
     const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
@@ -20,9 +21,11 @@ const AddCustomerBookingOption = () => {
     const [showCalender, setShowCalender] = useState(false)
     const [showTimeSlots, setShowTimeSlots] = useState(false)
     const [squareMeters, setSquareMeters] = useState('');
+    const [emailaddress, setEmailAddress] = useState('');
     const [paymentOption, setPaymentOption] = useState("")
     const [message, setMessage] = useState("")
     const [showCalNext, setShowCalNext] = useState(false)
+    // const [tempId, setTempId] = useState<any>(null);
 
     type Value = Date | null;
     const [date, setDate] = useState<Value>(new Date());
@@ -73,10 +76,56 @@ const AddCustomerBookingOption = () => {
     }
 
 
-    const handleBooking = () => {
+    const handleRegister = async (email: String) => {
+
         try {
-            if (id != null) {
-                admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, paymentOption, id, message).then(r => {
+            const url = 'http://localhost:8080/api/customer/create';
+
+            const customerData = {
+                firstName: "",
+                lastName: "",
+                password: "password",
+                companyName: "",
+                orgNumber: "",
+                email: email,
+                city: "",
+                postalCode: "",
+                phoneNumber: "",
+                address: "",
+            };
+
+            const response = await axios.post(url, customerData);
+            console.log('Customer was registered', response.data);
+
+            const idResponse = await axios.get(`http://localhost:8080/api/customer/getIdByEmail/${email}`);
+            console.log("id for non reg. user: " + idResponse.data);
+
+            const tempId = idResponse.data;
+            console.log("Steg 1: " + tempId);
+
+            return tempId;
+
+        } catch (error) {
+            console.error('Error while trying to register a new customer', error);
+        }
+    }
+    // @ts-ignore
+
+    const handleBooking = (email) => {
+        try {
+            if (id == null) {
+                // ICKE KUND
+                console.log("Bokning av en icke kund! ")
+                handleRegister(email).then(returnId => {
+                    admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, paymentOption, returnId, message, email).then(r => {
+                    });
+                })
+
+            } else if (id != null) {
+                // KUND
+                const email = "";
+                console.log("Bokning av inloggad kund: ")
+                admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, paymentOption, id, message, email).then(r => {
                 })
             }
 
@@ -392,7 +441,20 @@ const AddCustomerBookingOption = () => {
                                             value={message}
                                             onChange={(e) => setMessage(e.target.value)}
                                         />
+                                        {!loggedIn && (
+                                            <div style={styles.sectionTitle}>
+                                                <p>Whats your email address?</p>
+                                            </div>)}
 
+                                        {!loggedIn && (<input
+                                                type="email"
+                                                placeholder="Email address"
+                                                style={styles.input}
+                                                value={emailaddress}
+                                                onChange={(e) => setEmailAddress(e.target.value)}
+                                                required
+                                            />
+                                        )}
                                         <div style={styles.button}>
                                             <button type="submit" style={styles.bookButton}>Next</button>
 
@@ -412,29 +474,42 @@ const AddCustomerBookingOption = () => {
                                     <p>Confirm your booking </p>
                                 </div>
                                 {
-                                    <>
-                                        You want to have your accommodation cleaned
-                                        on {date}, {timeList[0]} a'clock.
-                                        You have chosen our {jobType.toLowerCase()} service which takes {hours} hour(s)
-                                        for completion.<br/>
-                                        The size of your accommodation is {squareMeters} square meters and you wish to
-                                        pay with {paymentOption}.
-                                    </>
+                                    loggedIn ? (
+                                        <>
+                                            You want to have your accommodation cleaned
+                                            on {date}, {timeList[0].toLowerCase()} a'clock.
+                                            You have chosen our {jobType.toLowerCase()} service which takes {hours} hour(s)
+                                            for completion.<br/>
+                                            The size of your accommodation is {squareMeters} square meters and you wish to
+                                            pay with {paymentOption}.
+                                        </>
+                                    ) : (
+                                        // JSX content when loggedIn is false
+                                        <>
+                                            You want to have your accommodation cleaned
+                                            on {date}, {timeList[0].toLowerCase()} a'clock.
+                                            You have chosen our {jobType.toLowerCase()} service which takes {hours} hour(s)
+                                            for completion.<br/>
+                                            The size of your accommodation is {squareMeters} square meters and you wish to
+                                            pay with {paymentOption}.
+                                        </>
+                                    )
                                 }
 
-                                <div style={styles.button}>
-                                    <button type="button" style={styles.bookButton} onClick={() => {
-                                        handleBooking();
-                                        handleConfirm();
-                                        handleBookingDone();
-                                    }}>Confirm
-                                    </button>
-                                    <button type="button" style={styles.bookButton} onClick={() => {
-                                        handleConfirm();
-                                        handleModal();
-                                    }}>Cancel
-                                    </button>
-                                </div>
+
+                                    <div style={styles.button}>
+                                <button type="button" style={styles.bookButton} onClick={() => {
+                                    handleBooking(emailaddress);
+                                    handleConfirm();
+                                    handleBookingDone();
+                                }}>Confirm
+                                </button>
+                                <button type="button" style={styles.bookButton} onClick={() => {
+                                    handleConfirm();
+                                    handleModal();
+                                }}>Cancel
+                                </button>
+                            </div>
                             </div>
                         }
                         {isBookingDone &&
@@ -464,7 +539,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         alignItems: 'center',
         textAlign: 'center',
         fontSize: "1.2rem",
-        marginTop: '2%',
+        marginTop: '0%',
     },
     form: {
         display: 'flex',
@@ -523,7 +598,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     },
     textarea: {
         width: "16rem",
-        height: "8rem"
+        height: "4rem"
     },
     centered: {
         marginTop: "10%",

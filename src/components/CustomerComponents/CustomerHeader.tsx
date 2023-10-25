@@ -156,14 +156,14 @@ interface HeaderProps {
                 </div>
                 <ul className={`menu ${menuOpen ? 'open' : ''}`}>
                     <li>
-                        <a href="/CustomerHome" style={styles.link}>
+                        <Link to="/CustomerHome" style={styles.link}>
                             Home
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="/CustomerBooking" style={styles.link}>
+                        <Link to="/CustomerBooking" style={styles.link}>
                             Book
-                        </a>
+                        </Link>
                     </li>
                     {!loggedIn && (
                         <>

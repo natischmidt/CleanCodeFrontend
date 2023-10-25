@@ -69,7 +69,7 @@ export const CustomerHomePage: React.FC = () => {
     const selectedStyles =
         userType === "Customer" ? customerStyles : {};
 
-    console.log(id + "check check 1-2-1-2-1, yeeeeabuddy")
+    console.log(id + "check check 1-2-1-2-1, yeeeeabuddy Light weights!!")
 
     return (
         <>

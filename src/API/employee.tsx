@@ -15,7 +15,7 @@ const employee = {
 
         try {
 
-            const response = await axios.get('http://localhost:8080/api/employee/getEmployee',{headers});
+            const response = await axios.get('http://localhost:8080/api/employee/getEmployee', {headers});
             const data = response.data
             console.log(data)
             return data;
@@ -52,7 +52,7 @@ const employee = {
             jobId: id.toString()
         }
         try {
-            const response = await axios.get('http://localhost:8080/api/jobs/getJob',  {headers});
+            const response = await axios.get('http://localhost:8080/api/jobs/getJob', {headers});
             const data = response.data
             console.log(data)
             return data;
@@ -63,11 +63,11 @@ const employee = {
     },
 
     updateJobStatus: async (updateJobDTO: object) => {
-        console.log("-----------------------------" , updateJobDTO)
+        console.log("-----------------------------", updateJobDTO)
 
         try {
-            const response = await axios.put('http://localhost:8080/api/jobs/updateJob', updateJobDTO )
-            console.log("update request was made: " , response.status)
+            const response = await axios.put('http://localhost:8080/api/jobs/updateJob', updateJobDTO)
+            console.log("update request was made: ", response.status)
 
         } catch (error) {
             console.log(error)
@@ -75,7 +75,7 @@ const employee = {
     },
     getCustomer: async (customerId: string) => {
 
-        try{
+        try {
             const response = await axios.get(`http://localhost:8080/api/customer/${customerId}`)
 
             return response.data
