@@ -51,7 +51,7 @@ interface HeaderProps {
 }
 
     const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn}) => {
-    const {loggedIn, setLoggedIn} = useUserType();
+    const {loggedIn, setLoggedIn, setUserType, setId} = useUserType();
 
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
@@ -81,6 +81,8 @@ interface HeaderProps {
 
             goToCustomerHome("/CustomerHome")
             setLoggedIn(false);
+            setId(null);
+            setUserType(null);
 
         } catch (error) {
             console.error('Error signing out employee/admin', error);
