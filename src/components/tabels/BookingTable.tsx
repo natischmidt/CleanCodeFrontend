@@ -5,9 +5,10 @@ import admin from "../../API/admin";
 
 interface bookingTableProps {
     onUpdate: (jobId: number) => void;
+    onKlarna: (jobId: number) => void;
 }
 
-const BookingTable: React.FC<bookingTableProps> = ({onUpdate}) => {
+const BookingTable: React.FC<bookingTableProps> = ({onUpdate, onKlarna}) => {
 
     const [deleted, setDeleted] = useState(0);
     const [customerData, setCustomerData] = useState<any[]>([]);
@@ -55,12 +56,17 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate}) => {
         onUpdate(jobId);
     };
 
+    const handleKlarna = (jobId: number) => {
+        onKlarna(jobId);
+    };
+
     return (
         <div className="booking-table" style={styles.bookingTable}>
             <Table
                 columns={columns}
                 data={customerData}
                 onDelete={handleDelete}
+                onKlarna={handleKlarna}
                 onUpdate={handleUpdate}
             />
         </div>
@@ -73,6 +79,7 @@ const styles = {
     bookingTable: {
         textAlign: "left" as 'left',
         display: "flex" as 'flex',
-        justifyContent: "center" as 'center'
+        justifyContent: "center" as 'center',
+
     },
 }

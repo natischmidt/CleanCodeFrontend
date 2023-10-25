@@ -46,7 +46,7 @@ const MyShifts = () => {
     ];
 
     return (
-        <>
+        <div style={styles.myShifts}>
             {!showDetails ? <Table
                 columns={columns}
                 data={employeeShifts}
@@ -55,10 +55,16 @@ const MyShifts = () => {
                 onUpdate={handleUpdate}/> :
                 <JobDetails close={handleClose} jobId={jobId}/>
             }
-
-        </>
-
+        </div>
     )
 }
 
-export default MyShifts
+export default MyShifts;
+
+const styles = {
+    myShifts: {
+        display: "flex",
+        justifyContent: "center" as 'center',
+        alignItems: "center" as 'center',
+    }
+}

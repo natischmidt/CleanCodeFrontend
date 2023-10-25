@@ -86,7 +86,7 @@ const styles = {
         height: "100vh",
         zIndex: 0,
         position: "absolute" as 'absolute',
-        top: "-0em",
+        top: 0,
         left: 0,
         backgroundColor: "rgba(0, 0, 0, 0.5)",
         display: 'flex',
@@ -106,7 +106,7 @@ const styles = {
         borderRadius: '5px',
         backgroundColor: '#b3d9e3',
         width: "400px",
-        marginTop: '4%'
+        marginTop: '4%',
     },
     input: {
         marginTop: '10px',

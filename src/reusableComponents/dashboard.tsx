@@ -68,8 +68,13 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
 
     const handleBookingUpdate = (jobId: number) => {
         console.log(`Booking ${jobId} was updated.`);
-    };
+    }
+
     const handleUpdate = () => {
+        setShowPersonalInformationComponent(!showPersonalInformationComponent)
+    }
+
+    const handleKlarna = () => {
         setShowPersonalInformationComponent(!showPersonalInformationComponent)
     }
 
@@ -125,11 +130,11 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
                                     {userType === 'admin'
                                         ? 'All Upcoming Bookings'
                                         : userType === 'customer'
-                                            ? 'My Upcoming Bookings'
+                                            ? 'Upcoming Jobs'
                                             : 'My Upcoming Shifts'}
                                 </div>
                                 <div className="section-content">
-                                    {userType === "admin" && <BookingTable onUpdate={handleBookingUpdate}/>}
+                                    {userType === "admin" && <BookingTable onUpdate={handleBookingUpdate} onKlarna={handleKlarna}/>}
                                     {userType === "customer" && <CustomerJobCheck/>}
                                     {userType === "employee" && <MyShifts/>}
 
@@ -201,6 +206,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     sectionTitle: {
         fontWeight: 'bold',
         marginBottom: '1%',
+        fontSize: "2rem"
         // fontSize: "1.5rem",
         // borderBottom: "2px solid black"
     },

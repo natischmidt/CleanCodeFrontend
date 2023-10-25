@@ -19,10 +19,6 @@ export default function Header() {
 
     const [isGDPRModalOpen, setIsGDPRModalOpen] = useState(false);
 
-    const handleGDPRClick = () => {
-        setIsGDPRModalOpen(true)
-    }
-
     const closeGDRPModal = () => {
         setIsGDPRModalOpen(false);
     };
@@ -77,7 +73,6 @@ export default function Header() {
                         }
                     }}>Customers
                     </button>
-                    <button id="GDPR" style={styles.btn} onClick={handleGDPRClick}>GDPR</button>
                     <button id="AddUser" style={styles.btn} onClick={() => {
                         {
                             goToAddUser(("/AddUser"));

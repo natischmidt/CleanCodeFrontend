@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {useUserType} from "../components/UserTypeContext";
 import employee from "../API/employee";
+import {useNavigate} from "react-router-dom";
 
 interface Column {
     key: string;
@@ -12,9 +13,10 @@ interface Props {
     data: any[];
     onDelete: (id: number) => void;
     onUpdate: (id: number) => void;
+    onKlarna: (id: number) => void;
 }
 
-const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate}) => {
+const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate, onKlarna}) => {
 
     const userType = useUserType().userType;
 
@@ -45,9 +47,14 @@ const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate}) => {
                                 Update
                             </button>
                             {userType === "ADMIN" ?
-                                <button style={styles.delete} onClick={() => onDelete(item.id)}>
-                                    Delete
-                                </button> : <></> }
+                                <>
+                                    <button style={styles.klarna} onClick={() => onKlarna(item.id)}>
+                                        Klarna
+                                    </button>
+                                    <button style={styles.delete} onClick={() => onDelete(item.id)}>
+                                        Delete
+                                    </button>
+                                </> : <></> }
                             {/*Här får vi rött, fast koden funkar???*/}
                         </div>
                     </td>
@@ -75,10 +82,23 @@ const styles = {
         paddingRight: "8px",
         alignItems: 'center',
         marginLeft: "4%",
+        // width: "17.5rem"
     },
     delete: {
         display: "flex",
         backgroundColor: "#f83f3f",
+        width: "5rem",
+        height: "2.5rem",
+        alignItems: "center",
+        textAlign: "center",
+        justifyContent: "center",
+        boxShadow: '0 0 5px rgba(0, 0, 0, 1)',
+        marginLeft: "6%",
+        marginRight: "3%"
+    },
+    klarna: {
+        display: "flex",
+        backgroundColor: "#fdbed0",
         width: "5rem",
         height: "2.5rem",
         alignItems: "center",
