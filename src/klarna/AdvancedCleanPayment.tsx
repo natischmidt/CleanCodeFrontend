@@ -1,26 +1,26 @@
 import {useEffect, useState} from 'react';
 import KlarnaCheckout from './KlarnaCheckout';
 
-export default function BasicCleanPayment() {
+export default function AdvancedCleanPayment() {
     const [htmlSnippet, setHtmlSnippet] = useState("");
 
     useEffect(() => {
         const fetchData = async () => {
-            const BasicPayload = {
+            const AdvancedPayload = {
                 "purchase_country": "SE",
                 "purchase_currency": "SEK",
                 "locale": "sv-SE",
-                "order_amount": 100000,
-                "order_tax_amount": 100000 * 0.0909,
+                "order_amount": 150000,
+                "order_tax_amount": 150000*0.0909,
                 "order_lines": [
                     {
-                        "name": "BASIC",
+                        "name": "ADVANCED",
                         "quantity": 1,
-                        "unit_price": 100000,
+                        "unit_price": 150000,
                         "tax_rate": 1000,
-                        "total_amount": 100000,
+                        "total_amount": 150000,
                         "total_discount_amount": 0,
-                        "total_tax_amount": 100000 * 0.0909
+                        "total_tax_amount": 150000*0.0909
                     }
                 ],
                 "merchant_urls": {
@@ -29,14 +29,16 @@ export default function BasicCleanPayment() {
                     "confirmation": "https://www.example.com/confirmation.html?order_id={checkout.order.id}",
                     "push": "https://www.example.com/api/push?order_id={checkout.order.id}"
                 }
+                // "confirmation": "http://7localhost:513/KConfirmation?order_id={checkout.order.id}"
+                // "confirmation": "https://www.example.com/confirmation.html?order_id={checkout.order.id}",
             };
 
-            const response = await fetch("http://localhost:8080/api/klarna/createBasicOrder", {
+            const response = await fetch("http://localhost:8080/api/klarna/createAdvancedOrder", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(BasicPayload),
+                body: JSON.stringify(AdvancedPayload),
             });
 
             const data = await response.json();

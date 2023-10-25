@@ -48,9 +48,9 @@ const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate, onKlarna})
                             </button>
                             {userType === "ADMIN" ?
                                 <>
-                                    <button style={styles.klarna} onClick={() => onKlarna(item.id)}>
-                                        Klarna
-                                    </button>
+                                    {/*<button style={styles.klarna} onClick={() => onKlarna(item.id)}>*/}
+                                    {/*    Klarna*/}
+                                    {/*</button>*/}
                                     <button style={styles.delete} onClick={() => onDelete(item.id)}>
                                         Delete
                                     </button>
@@ -82,7 +82,7 @@ const styles = {
         paddingRight: "8px",
         alignItems: 'center',
         marginLeft: "4%",
-        // width: "17.5rem"
+        // width: "110%"
     },
     delete: {
         display: "flex",
@@ -117,7 +117,6 @@ const styles = {
         justifyContent: "center",
         boxShadow: '0 0 5px rgba(0, 0, 0, 1)',
         marginLeft: "1%",
-
     },
     tableCell: {
         border: '1px solid #729ca890',

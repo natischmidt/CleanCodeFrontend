@@ -80,6 +80,5 @@ const styles = {
         textAlign: "left" as 'left',
         display: "flex" as 'flex',
         justifyContent: "center" as 'center',
-
     },
 }

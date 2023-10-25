@@ -1,4 +1,6 @@
 import React from "react";
+import BasicCleanPayment from "./BasicCleanPayment";
+import {useNavigate} from "react-router-dom";
 
 interface editKlarnaProps {
     jobId: number | null;
@@ -6,21 +8,26 @@ interface editKlarnaProps {
 }
 
 const CreateKlarnaPayment: React.FC<editKlarnaProps> = ({jobId, doneWithEdit}) => {
+
+    const goToPayBasic = useNavigate()
+    const goToPayAdvanced = useNavigate()
+    const goToPayWindow = useNavigate()
+
     return (
         <div className="container" style={styles.container}>
             <h1 style={styles.h1}>Klarna</h1>
             <div className="klarnaCont" style={styles.klarnaCont}>
 
-                <button type="submit" style={styles.button}>
+                <button type="submit" style={styles.button} onClick={() => {{goToPayBasic(("/PayForBasic"))}}}>
                     Basic
                 </button>
-                <button type="submit" style={styles.button}>
+                <button type="submit" style={styles.button} onClick={() => {{goToPayAdvanced(("/PayForAdvanced"))}}}>
                     Advanced
                 </button>
                 <button type="submit" style={styles.button}>
                     Diamond
                 </button>
-                <button type="submit" style={styles.button}>
+                <button type="submit" style={styles.button} onClick={() => {{goToPayWindow(("/PayForWindow"))}}}>
                     Window
                 </button>
 
