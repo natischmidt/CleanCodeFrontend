@@ -37,7 +37,7 @@ const styles = {
     },
     button: {
         backgroundColor: '#b3d9e3',
-        marginLeft: '5%',
+        // marginLeft: '5%',
         height: '60px',
         fontWeight: 'normal',
         width: "250px"

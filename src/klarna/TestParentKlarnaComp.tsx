@@ -3,8 +3,9 @@ import KlarnaCheckout from './KlarnaCheckout';
 
 export default function TestParentKlarnaComp() {
     const [htmlSnippet, setHtmlSnippet] = useState("");
-
+    const [checkoutUrl, setCheckoutUrl] = useState("")
     const handleBasicClean = async () => {
+
         const BasicPayload = {
             "purchase_country": "SE",
             "purchase_currency": "SEK",
@@ -25,10 +26,10 @@ export default function TestParentKlarnaComp() {
             "merchant_urls": {
                 "terms": "https://www.example.com/terms.html",
                 "checkout": "https://www.example.com/checkout.html?order_id={checkout.order.id}",
-                "confirmation": "https://www.example.com/confirmation.html?order_id={checkout.order.id}",
+                "confirmation": `https://www.example.com/confirmation.html?order_id={checkout.order.id}`,
                 "push": "https://www.example.com/api/push?order_id={checkout.order.id}"
             }
-            // "confirmation": "http://localhost:5173/KConfirmation?order_id={checkout.order.id}"
+            // "confirmation": "http://localhost:5173/KlarnaConfirmation?order_id={checkout.order.id}"
            // "confirmation": "https://www.example.com/confirmation.html?order_id={checkout.order.id}",
         };
         const response = await fetch("http://localhost:8080/api/klarna/createBasicOrder", {
@@ -71,7 +72,7 @@ export default function TestParentKlarnaComp() {
                 "confirmation": "https://www.example.com/confirmation.html?order_id={checkout.order.id}",
                 "push": "https://www.example.com/api/push?order_id={checkout.order.id}"
             }
-            // "confirmation": "http://localhost:5173/KConfirmation?order_id={checkout.order.id}"
+            // "confirmation": "http://7localhost:513/KConfirmation?order_id={checkout.order.id}"
             // "confirmation": "https://www.example.com/confirmation.html?order_id={checkout.order.id}",
         };
         const response = await fetch("http://localhost:8080/api/klarna/createAdvancedOrder", {
@@ -83,7 +84,10 @@ export default function TestParentKlarnaComp() {
         });
         const data = await response.json();
 
+
+
         if (data.htmlSnippet) {
+            console.log(data)
             setHtmlSnippet(data.htmlSnippet);
         } else {
             console.error("HTML snippet not found in response");
@@ -96,16 +100,16 @@ export default function TestParentKlarnaComp() {
             "purchase_currency": "SEK",
             "locale": "sv-SE",
             "order_amount": 200000,
-            "order_tax_amount": 200000*0.0909,
+            "order_tax_amount": 200000*0.09,
             "order_lines": [
                 {
                     "name": "DIAMOND",
                     "quantity": 1,
                     "unit_price": 200000,
-                    "tax_rate": 2000,
+                    "tax_rate": 1000,
                     "total_amount": 200000,
                     "total_discount_amount": 0,
-                    "total_tax_amount": 200000*0.0909
+                    "total_tax_amount": 200000*0.09
                 }
             ],
             "merchant_urls": {
