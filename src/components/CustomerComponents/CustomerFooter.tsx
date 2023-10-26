@@ -78,7 +78,9 @@ const CustomerFooter: React.FC = () => {
                             <a href="mailto:StadaFintAB@gmail.com" style={styles.link}>Mail us</a>
                         </li>
                         <li>
-                            <a href="mailto:StadaFintAB@gmail.com" style={styles.link}>Instagram</a>
+                            <a href="http://www.instagram.com/stadafint" target="_blank" rel="noopener noreferrer"
+
+                                style={styles.link}>Instagram</a>
                         </li>
                     </ul>
                 </div>
