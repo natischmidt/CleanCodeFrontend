@@ -30,7 +30,7 @@ export default function EmployeeFooter() {
 
 const styles = {
     footer: {
-        position: 'fixed' as 'fixed',
+        position: 'absolute' as 'absolute',
         left: 0,
         right: 0,
         bottom: 0,

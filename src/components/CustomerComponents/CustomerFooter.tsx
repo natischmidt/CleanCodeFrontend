@@ -8,9 +8,9 @@ const styles = {
         padding: '10px',
         display: 'flex',
         alignItems: 'center',
-        position: 'fixed' as 'fixed',
+        position: 'absolute' as 'absolute',
         bottom: 0,
-        width: '100%',
+        width: '99%',
     },
     category: {
         padding: '5px',

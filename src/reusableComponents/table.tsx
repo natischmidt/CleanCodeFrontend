@@ -48,9 +48,9 @@ const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate, onKlarna})
                             </button>
                             {userType === "ADMIN" ?
                                 <>
-                                    {/*<button style={styles.klarna} onClick={() => onKlarna(item.id)}>*/}
-                                    {/*    Klarna*/}
-                                    {/*</button>*/}
+                                    <button style={styles.klarna} onClick={() => onKlarna(item.id)}>
+                                        Klarna
+                                    </button>
                                     <button style={styles.delete} onClick={() => onDelete(item.id)}>
                                         Delete
                                     </button>
