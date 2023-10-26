@@ -10,7 +10,7 @@ const styles: {
     bookButton: CSSProperties;
 } = {
     bookingContainer: {
-        width: '90rem',
+        width: '40rem',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
