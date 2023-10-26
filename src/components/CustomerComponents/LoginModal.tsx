@@ -8,7 +8,7 @@ export const LoginModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const goToHomePage = useNavigate();
-    const { setUserType , setId} = useUserType();
+    const { setUserType , setId, setLoggedIn} = useUserType();
 
     const handleSubmit = async (e : React.FormEvent) => {
         e.preventDefault();
@@ -33,6 +33,7 @@ export const LoginModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 setUserType("Customer")
                 setId(resp)
                 goToHomePage(`/CustomerMyPages`)
+                setLoggedIn(true);
             } else {
                 console.log("hur tusan hamna vi här?")
             }
@@ -83,7 +84,7 @@ const styles = {
         position: "absolute" as 'absolute',
         top: 0,
         left: 0,
-        backgroundColor: "rgba(0, 0, 0, 0.9)",
+        backgroundColor: "rgba(169,160,160,0.8)",
         display: 'flex',
         justifyContent: "center",
         alignItems: "center",

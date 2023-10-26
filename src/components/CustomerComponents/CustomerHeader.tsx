@@ -59,7 +59,6 @@ interface HeaderProps {
     const goToCustomerHome = useNavigate()
 
     const handleLoginClick = () => {
-        setLoggedIn(true);
         setIsLoginModalOpen(true)
     }
 
