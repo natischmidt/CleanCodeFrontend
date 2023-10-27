@@ -5,7 +5,7 @@ import React, {useEffect, useState} from "react";
 import {useUserType} from "../../components/UserTypeContext";
 import CustomerHeader from "../../components/CustomerComponents/CustomerHeader";
 import {DashboardUserData} from "../../reusableComponents/DashboardUserData";
-import axios from "axios";
+import customer from "../../API/customer";
 
 export const CustomerMyPages: React.FC = () => {
     const {userType, id } = useUserType();
@@ -14,13 +14,11 @@ export const CustomerMyPages: React.FC = () => {
         firstname: "", lastname: "", email: "", password: "", address: "", postalCode:"", city:"",
         SSnumber: "", phoneNumber: "",});
 
-
-    const selectedStyles =
-        userType === "Customer" ? customerStyles : {};
+    const selectedStyles = userType === "Customer" ? customerStyles : {};
 
     useEffect(() => {
         if (userType === "Customer" && id) {
-            fetchCustomerData(id)
+            customer.fetchData(id)
                 .then((data) => {
                     setUserData(data);
                 })
@@ -30,16 +28,6 @@ export const CustomerMyPages: React.FC = () => {
         }
     }, [id, userType]);
 
-    const fetchCustomerData = async (customerId: string): Promise<DashboardUserData> => {
-        try {
-            const response = await axios.get(`http://localhost:8080/api/customer/${customerId}`);
-            return response.data;
-        } catch (error) {
-            throw new Error(`Error fetching customer ${error}`);
-        }
-    };
-
-    // @ts-ignore
     return (
         <>
             <CustomerHeader showLoggedIn={loggedIn} setLoggedIn={setLoggedIn}/>

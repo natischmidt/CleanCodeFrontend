@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from "axios";
+import customer from "../../API/customer";
 
 export const RegisterModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
@@ -27,28 +27,11 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({ onClose }) =>
     }
 
     const handleRegister = async () => {
-
         try {
-            const url = 'http://localhost:8080/api/customer/create';
+            const tempId = await customer.handleRegister(email);
+            console.log('Customer was registered , tempId:', tempId);
 
-            const customerData = {
-                firstName: firstname,
-                lastName: lastname,
-                password: password,
-                companyName: company,
-                orgNumber: orgNr,
-                email: email,
-                city: city,
-                postalCode: postalCode,
-                phoneNumber: phonenumber,
-                address: address,
-            };
-
-            const response = await axios.post(url, customerData);
-
-            console.log('Customer was registered', response.data);
-            onClose()
-
+            onClose();
         } catch (error) {
             console.error('Error while trying to register a new customer', error);
         }

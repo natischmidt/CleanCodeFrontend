@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from "axios";
+import customer from "../../API/customer";
 import {useNavigate} from "react-router-dom";
 import {useUserType} from "../UserTypeContext";
 
@@ -8,39 +8,15 @@ export const LoginModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     const [email, setEmail] = useState('hanna.root@ikea.se'); //för testsyfte
     const [password, setPassword] = useState('password');
     const goToHomePage = useNavigate();
-    const { setUserType , setId, setLoggedIn} = useUserType();
+    const {setUserType , setId, setLoggedIn} = useUserType();
+
 
     const handleSubmit = async (e : React.FormEvent) => {
         e.preventDefault();
     }
 
-    const handleLogin = async () => {
-
-        try {
-            const url = 'http://localhost:8080/api/auth/loginCustomer';
-
-            const customerData = {
-                email: email,
-                password: password,
-            };
-
-            const response = await axios.post(url, customerData);
-            const resp = response.data
-
-            console.log(resp)
-
-            if (response) {
-                setUserType("Customer")
-                setId(resp)
-                goToHomePage(`/CustomerMyPages`)
-                setLoggedIn(true);
-            } else {
-                console.log("hur tusan hamna vi här?")
-            }
-
-        } catch (error) {
-            console.error('Error signing in customer', error);
-        }
+    const handleLogin = async (email: string, password: string) => {
+        customer.handleLogin(email, password, setUserType, setId, goToHomePage, setLoggedIn);
     }
 
     return (
@@ -64,7 +40,7 @@ export const LoginModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
-                    <button type="submit" style={styles.button} onClick={handleLogin}>
+                    <button type="submit" style={styles.button} onClick={() => handleLogin(email, password)}>
                         Login
                     </button>
                     <button type="submit" style={styles.button} onClick={onClose}>

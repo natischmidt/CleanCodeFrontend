@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {LoginModal} from "./LoginModal";
-import axios from "axios";
+import customer from "../../API/customer";
 import {RegisterModal} from "./RegisterModal";
 import '../../styles/HeaderStyles.css'
 import {useUserType} from "../UserTypeContext";
@@ -51,12 +51,9 @@ interface HeaderProps {
 }
 
     const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn}) => {
-    const {loggedIn, setLoggedIn, setUserType, setId} = useUserType();
-
-    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+        const {loggedIn, setLoggedIn, setUserType, setId} = useUserType();
+        const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-
-    const goToCustomerHome = useNavigate()
 
     const handleLoginClick = () => {
         setIsLoginModalOpen(true)
@@ -71,21 +68,7 @@ interface HeaderProps {
     const handleLogoutClick = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoggedIn(false);
-        try {
-            const Url = 'http://localhost:8080/api/auth/logoutEmployee';
-
-            const response = await axios.post(Url);
-
-            console.log('Employee/Admin has successfully logged out', response.data);
-
-            goToCustomerHome("/CustomerHome")
-            setLoggedIn(false);
-            setId(null);
-            setUserType(null);
-
-        } catch (error) {
-            console.error('Error signing out employee/admin', error);
-        }
+        customer.handleLogoutClick();
     };
 
     const closeLoginModal = () => {

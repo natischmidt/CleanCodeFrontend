@@ -67,7 +67,6 @@ export default function JobDetails({jobId, close}: IjobDetails) {
 
     const updateJobStatus = () => {
 
-
         if(userType == "ADMIN") {
            const dataToSend = {
                jobId: jobId,

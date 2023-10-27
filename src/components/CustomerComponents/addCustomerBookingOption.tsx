@@ -7,7 +7,8 @@ import basic from "../../assets/basic2.png";
 import advanced from "../../assets/advanced2.jpg";
 import windowclean from "../../assets/www.png";
 import {useUserType} from "../UserTypeContext";
-import axios from "axios";
+import customer from "../../API/customer";
+
 
 const AddCustomerBookingOption = () => {
 
@@ -76,62 +77,12 @@ const AddCustomerBookingOption = () => {
     }
 
 
-    const handleRegister = async (email: String) => {
-
-        try {
-            const url = 'http://localhost:8080/api/customer/create';
-
-            const customerData = {
-                firstName: "",
-                lastName: "",
-                password: "password",
-                companyName: "",
-                orgNumber: "",
-                email: email,
-                city: "",
-                postalCode: "",
-                phoneNumber: "",
-                address: "",
-            };
-
-            const response = await axios.post(url, customerData);
-            console.log('Customer was registered', response.data);
-
-            const idResponse = await axios.get(`http://localhost:8080/api/customer/getIdByEmail/${email}`);
-            console.log("id for non reg. user: " + idResponse.data);
-
-            const tempId = idResponse.data;
-            console.log("Steg 1: " + tempId);
-
-            return tempId;
-
-        } catch (error) {
-            console.error('Error while trying to register a new customer', error);
-        }
+    const handleRegister = async (email: string) => {
+        customer.handleRegister(email);
     }
-    // @ts-ignore
 
-    const handleBooking = (email) => {
-        try {
-            if (id == null) {
-                // ICKE KUND
-                console.log("Bokning av en icke kund! ")
-                handleRegister(email).then(returnId => {
-                    admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, paymentOption, returnId, message, email).then(r => {
-                    });
-                })
-
-            } else if (id != null) {
-                // KUND
-                const email = "";
-                console.log("Bokning av inloggad kund: ")
-                admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, paymentOption, id, message, email).then(r => {
-                })
-            }
-
-        } catch (error) {
-            console.log(error + "this is not right dude")
-        }
+    const handleBooking = (email: string) => {
+        customer.handleBooking(email);
     }
 
 
@@ -268,12 +219,7 @@ const AddCustomerBookingOption = () => {
     };
 
 
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
+
     return (
         <>{!isModalOpen
             && (
@@ -477,7 +423,7 @@ const AddCustomerBookingOption = () => {
                                     loggedIn ? (
                                         <>
                                             You want to have your accommodation cleaned
-                                            on {date}, {timeList[0].toLowerCase()} a'clock.
+                                            {/*on {date}, {timeList[0].toLowerCase()} a'clock.*/}
                                             You have chosen our {jobType.toLowerCase()} service which takes {hours} hour(s)
                                             for completion.<br/>
                                             The size of your accommodation is {squareMeters} square meters and you wish to
@@ -487,7 +433,7 @@ const AddCustomerBookingOption = () => {
                                         // JSX content when loggedIn is false
                                         <>
                                             You want to have your accommodation cleaned
-                                            on {date}, {timeList[0].toLowerCase()} a'clock.
+                                            {/*on {date}, {timeList[0].toLowerCase()} a'clock.*/}
                                             You have chosen our {jobType.toLowerCase()} service which takes {hours} hour(s)
                                             for completion.<br/>
                                             The size of your accommodation is {squareMeters} square meters and you wish to
