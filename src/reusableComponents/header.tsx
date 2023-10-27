@@ -41,9 +41,9 @@ export default function Header() {
     }
 
     const goBackToDashboard = () => {
-        if (userType == "ADMIN") {
+        if (userType == "Admin") {
             gotoDashBoard(("/AdminHome"))
-        } else if (userType == "EMPLOYEE") {
+        } else if (userType == "Employee") {
             gotoDashBoard(("/EmployeeHome"))
         }
     }
@@ -62,7 +62,7 @@ export default function Header() {
                         }
                     }}>Booking
                     </button>
-                    {userType == "ADMIN" && <button id="Employees" style={styles.btn} onClick={() => {
+                    {userType == "Admin" && <button id="Employees" style={styles.btn} onClick={() => {
                         {
                             goToEmployees(("/Employees"));
                         }

@@ -40,6 +40,8 @@ const BookingHistoryTable = () => {
         console.log(id)
     };
 
+
+
     return (
         <div className="booking-table" style={styles.bookingTable}>
             <Table
