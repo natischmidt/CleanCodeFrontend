@@ -99,7 +99,7 @@ const admin = {
             jobType: string,
             dateAndTime: string,
             timeSlotList: string[],
-            squareMeters: string,
+            squareMeters: string | null,
             payment: string,
             customerId: string,
             message: string,

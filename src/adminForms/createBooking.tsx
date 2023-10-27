@@ -190,7 +190,7 @@ const CreateNewBooking: React.FC = () => {
     const handleBooking = () => {
         try {
             console.log("****" +selectedCustomer)
-            admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, payment, selectedCustomer, message).then(r => {
+            admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, payment, selectedCustomer, message, "").then(r => {
             })
 
         } catch (error) {

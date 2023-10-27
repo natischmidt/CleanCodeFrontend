@@ -1,11 +1,11 @@
 import React, {useRef, useState} from 'react';
 import axios from 'axios';
 import admin from './admin';
-import { useUserType } from '../components/UserTypeContext';
-import { useNavigate } from 'react-router-dom';
+import {useUserType} from '../components/UserTypeContext';
+import {useNavigate} from 'react-router-dom';
 
 const customer = {
-      register : async (email: string) => {
+    register: async (email: string) => {
         try {
             const url = 'http://localhost:8080/api/customer/create';
 
@@ -37,21 +37,22 @@ const customer = {
         }
     },
 
-    book: (email: string) => {
-        const dateToUseRef = useRef('');
-        const {  id } = useUserType();
-        const [jobType] = useState('');
-        const [timeList] = useState([]);
-        const [squareMeters] = useState('');
-        const [paymentOption] = useState('');
-        const [message] = useState('');
+    book: (jobType: string,
+           dateToUseRef: string,
+           timeList: string[],
+           squareMeters: string,
+           paymentOption: string,
+           id: string | null,
+           message: string,
+           email: string
+    ) => {
 
         try {
             if (id == null) {
                 // ICKE KUND
                 console.log("Bokning av en icke kund!");
                 customer.register(email).then(returnId => {
-                    admin.createBooking(jobType, dateToUseRef.current,
+                    admin.createBooking(jobType, dateToUseRef,
                         timeList, squareMeters, paymentOption, returnId,
                         message, email).then(r => {
                     });
@@ -60,9 +61,7 @@ const customer = {
                 // KUND
                 const email = "";
                 console.log("Bokning av inloggad kund:");
-                admin.createBooking(jobType, dateToUseRef.current,
-                    timeList, squareMeters, paymentOption,
-                    id, message, email).then(r => {
+                admin.createBooking(jobType, dateToUseRef, timeList, squareMeters, paymentOption, id, message, email).then(r => {
                 });
             }
         } catch (error) {
@@ -71,7 +70,7 @@ const customer = {
     },
 
     logout: async () => {
-        const { setLoggedIn, setUserType, setId, userType, id } = useUserType();
+        const {setLoggedIn, setUserType, setId, userType, id} = useUserType();
         try {
             const Url = 'http://localhost:8080/api/auth/logoutEmployee';
 
@@ -91,10 +90,10 @@ const customer = {
     },
 
     login: async (email: string, password: string, setUserType:
-        (value: "Admin" | "Customer" | "Employee" | null) => void,
-                        setId: (id: string) => void, goToHomePage:
-                            (path: string) => void, setLoggedIn:
-                            (loggedIn: boolean) => void) => {
+                      (value: "Admin" | "Customer" | "Employee" | null) => void,
+                  setId: (id: string) => void, goToHomePage:
+                      (path: string) => void, setLoggedIn:
+                      (loggedIn: boolean) => void) => {
 
         try {
             const url = 'http://localhost:8080/api/auth/loginCustomer';

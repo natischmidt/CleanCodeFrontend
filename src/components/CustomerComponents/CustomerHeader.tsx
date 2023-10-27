@@ -164,9 +164,9 @@ interface HeaderProps {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/CustomerBooking" style={styles.link}>
-                                    Book
-                                </Link>
+                                {/*<Link to="/CustomerBooking" style={styles.link}>*/}
+                                {/*    Book*/}
+                                {/*</Link>*/}
                             </li>
                             <li style={styles.link} onClick={handleLogoutClick}>Log out
                             </li>

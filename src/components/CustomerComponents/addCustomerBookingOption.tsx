@@ -30,7 +30,7 @@ const AddCustomerBookingOption = () => {
 
     type Value = Date | null;
     const [date, setDate] = useState<Value>(new Date());
-    const [timeList, setTimeList] = useState([])
+    const [timeList, setTimeList] = useState([''])
 
     const dayCorr = useRef(0)
     const dayToUse = useRef('')
@@ -76,13 +76,12 @@ const AddCustomerBookingOption = () => {
         setIsBookingDone(!isBookingDone);
     }
 
-
     const handleRegister = async (email: string) => {
-        customer.register(email);
+        await customer.register(email);
     }
 
     const handleBooking = (email: string) => {
-        customer.book(email);
+        customer.book(jobType, dateToUse.current, timeList, squareMeters, paymentOption, id, message, email);
     }
 
 
@@ -423,7 +422,7 @@ const AddCustomerBookingOption = () => {
                                     loggedIn ? (
                                         <>
                                             You want to have your accommodation cleaned
-                                            {/*on {date}, {timeList[0].toLowerCase()} a'clock.*/}
+                                            on {date}, {timeList[0].toLowerCase()} a'clock.
                                             You have chosen our {jobType.toLowerCase()} service which takes {hours} hour(s)
                                             for completion.<br/>
                                             The size of your accommodation is {squareMeters} square meters and you wish to
@@ -433,7 +432,7 @@ const AddCustomerBookingOption = () => {
                                         // JSX content when loggedIn is false
                                         <>
                                             You want to have your accommodation cleaned
-                                            {/*on {date}, {timeList[0].toLowerCase()} a'clock.*/}
+                                            on {date}, {timeList[0].toLowerCase()} a'clock.
                                             You have chosen our {jobType.toLowerCase()} service which takes {hours} hour(s)
                                             for completion.<br/>
                                             The size of your accommodation is {squareMeters} square meters and you wish to
