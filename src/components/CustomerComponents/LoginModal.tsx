@@ -5,8 +5,8 @@ import {useUserType} from "../UserTypeContext";
 
 export const LoginModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('hanna.root@ikea.se'); //för testsyfte
+    const [password, setPassword] = useState('password');
     const goToHomePage = useNavigate();
     const { setUserType , setId, setLoggedIn} = useUserType();
 

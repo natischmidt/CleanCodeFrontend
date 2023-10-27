@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import AnotherTable from "../../reusableComponents/AnotherTable";
+import ThumbsDown from  "../../assets/ThumbsDown.png"
+import ThumbsUp from "../../assets/ThumbsUp.png"
 interface CustomerOkOrNotTableProps {
     cusId: string | null;
     change: number
@@ -40,7 +42,8 @@ const CustomerTableOkOrNot: React.FC<CustomerOkOrNotTableProps> = ({cusId, chang
         try {
             const updateJobDTO = {
                 jobId: id,
-                jobStatus: 'APPROVED'
+                jobStatus: 'APPROVED',
+                customerId: cusId
             }
             console.log(updateJobDTO.jobId + " ÄR DEN HÄR?")
             await axios.put("http://localhost:8080/api/jobs/updateJob", updateJobDTO)
@@ -54,6 +57,7 @@ const CustomerTableOkOrNot: React.FC<CustomerOkOrNotTableProps> = ({cusId, chang
             const updateJobDTO = {
                 jobId: id,
                 jobStatus: 'UNAPPROVED',
+                customerId: cusId
             }
             console.log("Sending JobID:", id);
 
@@ -77,8 +81,9 @@ const CustomerTableOkOrNot: React.FC<CustomerOkOrNotTableProps> = ({cusId, chang
                 ]}
                 data={theData}
                 buttons={[
-                    { label: 'Tumme upp', action: (id) => {handleOk(id)} },
-                    { label: 'Tumme ner', action: (id) => {handleNotOk(id)} }
+                    { label: <img src={ThumbsUp} alt="Thumbs Up" style={styles.thumbsBtn} />, action: (id) => {handleOk(id)} },
+                    { label: <img src={ThumbsDown} alt="Thumbs Down" style={styles.thumbsBtn} />, action: (id) => {handleNotOk(id)} }
+
                 ]}
             />
 
@@ -87,3 +92,10 @@ const CustomerTableOkOrNot: React.FC<CustomerOkOrNotTableProps> = ({cusId, chang
     )
 }
 export default CustomerTableOkOrNot
+
+const styles = {
+    thumbsBtn: {
+        width: 20,
+        height: 20
+    }
+}
