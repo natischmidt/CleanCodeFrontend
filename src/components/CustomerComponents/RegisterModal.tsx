@@ -28,7 +28,7 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({ onClose }) =>
 
     const handleRegister = async () => {
         try {
-            const tempId = await customer.handleRegister(email);
+            const tempId = await customer.register(email);
             console.log('Customer was registered , tempId:', tempId);
 
             onClose();
