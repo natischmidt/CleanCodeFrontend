@@ -47,6 +47,7 @@ export const CustomerTable: React.FC<customerTableProps> = ({onUpdate}) => {
         }
     };
 
+
     const handleUpdate = (cusId: number) => {
         onUpdate(cusId)
     };

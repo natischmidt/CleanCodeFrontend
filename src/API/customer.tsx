@@ -5,7 +5,7 @@ import { useUserType } from '../components/UserTypeContext';
 import { useNavigate } from 'react-router-dom';
 
 const customer = {
-    handleRegister: async (email: string) => {
+      register : async (email: string) => {
         try {
             const url = 'http://localhost:8080/api/customer/create';
 
@@ -37,7 +37,7 @@ const customer = {
         }
     },
 
-    handleBooking: (email: string) => {
+    book: (email: string) => {
         const dateToUseRef = useRef('');
         const {  id } = useUserType();
         const [jobType] = useState('');
@@ -50,7 +50,7 @@ const customer = {
             if (id == null) {
                 // ICKE KUND
                 console.log("Bokning av en icke kund!");
-                customer.handleRegister(email).then(returnId => {
+                customer.register(email).then(returnId => {
                     admin.createBooking(jobType, dateToUseRef.current,
                         timeList, squareMeters, paymentOption, returnId,
                         message, email).then(r => {
@@ -70,7 +70,7 @@ const customer = {
         }
     },
 
-    handleLogoutClick: async () => {
+    logout: async () => {
         const { setLoggedIn, setUserType, setId, userType, id } = useUserType();
         try {
             const Url = 'http://localhost:8080/api/auth/logoutEmployee';
@@ -90,7 +90,7 @@ const customer = {
         }
     },
 
-    handleLogin: async (email: string, password: string, setUserType:
+    login: async (email: string, password: string, setUserType:
         (value: "Admin" | "Customer" | "Employee" | null) => void,
                         setId: (id: string) => void, goToHomePage:
                             (path: string) => void, setLoggedIn:

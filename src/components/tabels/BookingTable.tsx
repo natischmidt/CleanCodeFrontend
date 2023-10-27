@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
 import Table from "../../reusableComponents/table";
 import admin from "../../API/admin";
 
@@ -38,18 +37,7 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate, onKlarna}) => {
     ];
 
     const handleDelete = async (jobId: number) => {
-
-        try {
-            const Url = `http://localhost:8080/api/jobs/deleteJob`;
-            const headers = {
-                'jobId': jobId?.toString()
-            }
-            const response = await axios.delete(Url, {headers});
-            console.log('Deleting job was successful', response.data);
-            setDeleted(x => x + 1)
-        } catch (error) {
-            console.error('Error deleting job', error);
-        }
+        await admin.deleteJob(jobId);
     };
 
     const handleUpdate = (jobId: number) => {
@@ -71,7 +59,7 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate, onKlarna}) => {
             />
         </div>
     )
-};
+}
 
 export default BookingTable
 

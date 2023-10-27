@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
-import axios from "axios";
+import admin from "../API/admin";
 
 const AddAdminForm = () => {
     const [firstname, setFirstname] = useState('');
@@ -19,42 +19,38 @@ const AddAdminForm = () => {
 
     const handleSubmit = async (e : React.FormEvent) => {
         e.preventDefault();
+        const adminData = {
+            firstName: firstname,
+            lastName: lastname,
+            password: password,
+            ssNumber: ss,
+            email: email,
+            phoneNumber: phonenumber,
+            address: address,
+            city: city,
+            postalCode: postalCode,
+            role: "ADMIN",
+            salary: salary,
+        };
 
         try {
-            const Url = 'http://localhost:8080/api/employee/createEmployee';
+            await admin.createAdmin(adminData);
 
-            const adminData = {
-                firstName: firstname,
-                lastName: lastname,
-                password: password,
-                ssNumber: ss,
-                email: email,
-                phoneNumber: phonenumber,
-                address: address,
-                city: city,
-                postalCode: postalCode,
-                role: "ADMIN",
-                salary: salary,
-            };
-
-            const response = await axios.post(Url, adminData);
-
-            console.log('Admin was created', response.data);
-
-            setFirstname('')
-            setLastname('')
-            setEmail('')
-            setPhoneNumber('')
-            setSs('')
-            setSalary(0)
-            setAddress('')
-            setCity('')
-            setPostalCode('')
-            setPassword('')
+            setFirstname('');
+            setLastname('');
+            setEmail('');
+            setPhoneNumber('');
+            setSs('');
+            setSalary(0);
+            setAddress('');
+            setCity('');
+            setPostalCode('');
+            setPassword('');
 
         } catch (error) {
-            console.error('Error creating admin', error);
+            console.log(error);
         }
+
     };
 
     return (

@@ -68,7 +68,7 @@ interface HeaderProps {
     const handleLogoutClick = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoggedIn(false);
-        customer.handleLogoutClick();
+        customer.logout();
     };
 
     const closeLoginModal = () => {

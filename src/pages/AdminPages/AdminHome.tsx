@@ -1,5 +1,4 @@
 import Header from "../../reusableComponents/header";
-import AdminFooter from "./AdminFooter";
 import Dashboard from "../../reusableComponents/dashboard";
 import React from "react";
 import {useUserType} from "../../components/UserTypeContext";

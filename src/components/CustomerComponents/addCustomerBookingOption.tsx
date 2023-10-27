@@ -78,11 +78,11 @@ const AddCustomerBookingOption = () => {
 
 
     const handleRegister = async (email: string) => {
-        customer.handleRegister(email);
+        customer.register(email);
     }
 
     const handleBooking = (email: string) => {
-        customer.handleBooking(email);
+        customer.book(email);
     }
 
 

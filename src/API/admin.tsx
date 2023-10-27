@@ -3,7 +3,6 @@ import axios, {AxiosResponse, AxiosError} from 'axios';
 import ConvertTimeSlotToNiceTime from "../reusableComponents/ConvertTimeSlotToNiceTime";
 
 const admin = {
-
         getAllJobs: async () => {
             try {
                 const response = await axios.get('http://localhost:8080/api/jobs/getAllJobs');
@@ -47,7 +46,7 @@ const admin = {
             }
         },
 
-        adminLogIn: () => {
+        LogIn: () => {
 
             const [email, setEmail] = useState<string>('');
             const [password, setPassword] = useState<string>('');
@@ -137,7 +136,40 @@ const admin = {
                 console.log(error)
             }
 
+        },
+
+       deleteJob : async (jobId: number) => {
+           const [deleted, setDeleted] = useState(0);
+           try {
+               const Url = `http://localhost:8080/api/jobs/deleteJob`;
+               const headers = {
+                   'jobId': jobId?.toString()
+               }
+               const response = await axios.delete(Url, {headers});
+               console.log('Deleting job was successful', response.data);
+               setDeleted(x => x + 1)
+           } catch (error) {
+               console.error('Error deleting job', error);
+           }
+       },
+
+       createAdmin: async (adminData: any) => {
+        try {
+            const Url = 'http://localhost:8080/api/employee/createEmployee';
+
+            const response = await axios.post(Url, adminData);
+
+            console.log('Admin was created', response.data);
+
+            return response.data;
+
+        } catch (error) {
+            console.error('Error creating admin', error);
+            throw error;
         }
+    },
+
+
     };
 
 

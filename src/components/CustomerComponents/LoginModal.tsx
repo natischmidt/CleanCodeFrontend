@@ -16,7 +16,7 @@ export const LoginModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     }
 
     const handleLogin = async (email: string, password: string) => {
-        customer.handleLogin(email, password, setUserType, setId, goToHomePage, setLoggedIn);
+        customer.login(email, password, setUserType, setId, goToHomePage, setLoggedIn);
     }
 
     return (
