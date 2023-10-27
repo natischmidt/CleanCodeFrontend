@@ -1,5 +1,5 @@
 import axios from 'axios';
-import ConvertTimeSlotToNiceTime from "../reusableComponents/ConvertTimeSlotToNiceTime";
+import ConvertTimeSlotToNiceTime from "../components/layout/ConvertTimeSlotToNiceTime";
 
 const employee = {
     getEmployee: async (id: string | null) => {

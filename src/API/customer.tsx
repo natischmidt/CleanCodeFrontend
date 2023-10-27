@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
 import axios from 'axios';
 import admin from './admin';
-import {useUserType} from '../components/UserTypeContext';
+import {useUserType} from '../components/context/UserTypeContext';
 import {useNavigate} from 'react-router-dom';
 
 const customer = {

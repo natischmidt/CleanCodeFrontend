@@ -1,9 +1,9 @@
-import Header from "../reusableComponents/header";
-import AddBookingOption from "../components/addBookingOption";
-// import {BookingTable} from "../../components/tabels/BookingTable";
-import CustomerFooter from "../components/CustomerComponents/CustomerFooter";
-// import CancelWithNumber from "../adminForms/cancelWithNumber";
-// import CancelBooking from "../adminForms/cancelBooking";
+import Header from "../components/layout/header";
+import AddBookingOption from "../components/admin-components/AddBookingOption";
+// import {BookingTable} from "../../components/tables/BookingTable";
+import CustomerFooter from "../components/layout/CustomerFooter";
+// import CancelWithNumberForm from "../admin-forms/cancelWithNumber";
+// import CancelBooking from "../admin-forms/cancelBooking";
 
 /*
 export default function BookingPage() {
