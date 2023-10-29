@@ -1,11 +1,11 @@
-import CustomerFooter from "../../components/CustomerComponents/CustomerFooter";
 import {customerStyles} from "../../styles/styles";
 import React, {useState} from "react";
-import {useUserType} from "../../components/UserTypeContext";
-import CustomerHeader from "../../components/CustomerComponents/CustomerHeader";
 import image from '/src/assets/customer-homepage-picture.png';
 import {CSSProperties} from 'react';
-import {BookingComponent} from "../../components/CustomerComponents/BookingComponent";
+import CustomerFooter from "../../components/layout/CustomerFooter";
+import {useUserType} from "../../components/context/UserTypeContext";
+import CustomerHeader from "../../components/layout/CustomerHeader";
+import {BookingComponent} from "../../components/customer-components/BookingComponent";
 
 
 const styles: {
@@ -38,16 +38,21 @@ const styles: {
         backgroundPosition: 'center',
         margin: '0 2px',
         backgroundRepeat: 'no-repeat',
+        boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
     },
     whiteSection: {
         backgroundColor: "#ffffff",
-        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
         background: 'white',
+        justifyContent: 'space-between', // Align content at top and bottom
+        flex: 1, // Let the whiteSection take up all available space
     },
     textContainer: {
         marginTop: '40px',
         textAlign: 'center',
         color: 'black',
+        flex: 1, // Allow textContainer to expand, pushing bookingSection to the bottom
     },
     headerText: {
         fontSize: '1.5rem',
@@ -60,10 +65,11 @@ const styles: {
         margin: "0"
     },
     bookingSection: {
+        width: '100%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'column', // To stack elements vertically
+        flexDirection: 'column',
     }
 };
 
@@ -98,7 +104,7 @@ export const CustomerHomePage: React.FC = () => {
                                     of our business philosophy. We use eco-friendly cleaning products and continuously
                                     work to minimize our ecological footprint. This also means we have efficient work
                                     processes that not only save time but also resources.</p>
-                                {/*<p style={styles.subText}><br />Our strength lies in our ability to understand our customers' unique needs and offer tailored solutions. We believe that every space, big or small, deserves the best possible care. Whether it's an office, a home, or a commercial space, you can trust Städafint AB to do the job with the utmost care and professionalism.</p>*/}
+                                <p style={styles.subText}><br />Our strength lies in our ability to understand our customers' unique needs and offer tailored solutions. We believe that every space, big or small, deserves the best possible care. Whether it's an office, a home, or a commercial space, you can trust Städafint AB to do the job with the utmost care and professionalism.</p>
                                 {/*<p style={styles.subText}><br />Thank you for considering Städafint AB as your partner in cleanliness and sustainability. We look forward to being a part of your everyday life and continuing to set the standard for excellent and sustainable cleaning for generations to come.</p>*/}
                             </div>
                             <div style={styles.bookingSection}>
