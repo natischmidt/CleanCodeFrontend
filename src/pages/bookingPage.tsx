@@ -1,9 +1,9 @@
-import Header from "../reusableComponents/header";
-import AddBookingOption from "../components/addBookingOption";
-import CustomerFooter from "../components/CustomerComponents/CustomerFooter";
+import Header from "../components/layout/header";
+import AddBookingOption from "../components/admin-components/AddBookingOption";
+import CustomerFooter from "../components/layout/CustomerFooter";
 import {useState} from "react";
-import EditBookingForm from "../forms/editBooking";
-import BookingTable from "../components/tabels/BookingTable";
+import EditBookingForm from "../components/forms/EditBookingForm";
+import BookingTable from "../components/tables/BookingTable";
 import CreateKlarnaPayment from "../klarna/CreateKlarnaPayment";
 
 export default function BookingPage() {

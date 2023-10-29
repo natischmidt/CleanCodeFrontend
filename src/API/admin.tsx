@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios, {AxiosResponse, AxiosError} from 'axios';
-import ConvertTimeSlotToNiceTime from "../reusableComponents/ConvertTimeSlotToNiceTime";
+import ConvertTimeSlotToNiceTime from "../components/layout/ConvertTimeSlotToNiceTime";
 
 const admin = {
         getAllJobs: async () => {
