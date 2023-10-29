@@ -8,17 +8,20 @@ import {useUserType} from "../UserTypeContext";
 
 const styles = {
     header: {
-        backgroundColor: 'white',
+        backgroundColor: '#a0c1cc',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '10px 20px',
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+        marginTop: '0rem',
+        height: '6rem',
     },
     logo: {
         color: 'black',
         fontWeight: 'bold',
         fontSize: '24px',
+        height: '5rem',
     },
     navItem: {
         margin: '0 10px',
@@ -87,7 +90,8 @@ interface HeaderProps {
 
     return (
         <header style={styles.header}>
-            <div style={styles.logo}>Städafint AB</div>
+            <div style={styles.logo}> <img src="src/assets/stadaFint.png" alt="Logo" style={styles.logo}/></div>
+
             <ul className="navbar">
                 <li style={styles.navItem}>
                     <Link to="/CustomerHome" style={styles.link}>

@@ -15,7 +15,7 @@ const styles: {
         flexDirection: 'column',
         alignItems: 'center',
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
-        marginBottom: '30px',
+        backgroundColor: "#b3d9e3",
     },
     citySelectContainer: {
         marginBottom: '20px',
@@ -31,6 +31,7 @@ const styles: {
         borderRadius: '10px',
         fontSize: '1rem',
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
+        backgroundColor: "#8fb4c0",
     },
     bookButton: {
         padding: '8px 16px',

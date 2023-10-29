@@ -3,14 +3,14 @@ import {GDPRModal} from "./GDPRModal";
 
 const styles = {
     footer: {
-        backgroundColor: 'white',
+        backgroundColor: '#a0c1cc',
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-        padding: '10px',
         display: 'flex',
-        alignItems: 'center',
-        position: 'absolute' as 'absolute',
-        bottom: 0,
-        width: '99%',
+        alignItems: 'right',
+        position: 'fixed',
+        width: '100%',
+        height: '100%',
+        justifyContent: 'flex-end',
     },
     category: {
         padding: '5px',
@@ -18,13 +18,11 @@ const styles = {
         fontWeight: 'bold',
         color: 'black',
         marginLeft: '10px',
-
     },
     subCategory: {
         listStyle: 'none',
         padding: 10,
         margin: 10,
-
     },
     link: {
         fontWeight: 'bold',
@@ -40,7 +38,6 @@ const styles = {
     bottomContainer: {
         display: "flex" as "flex",
         flexDirection: 'row' as 'row',
-        marginLeft: '40rem',
     }
 };
 
@@ -56,12 +53,11 @@ const CustomerFooter: React.FC = () => {
         setIsGDPRModalOpen(false);
     };
 
+    // @ts-ignore
     return (
         <footer style={styles.footer}>
             <div style={styles.bottomContainer}>
-                <img src="src/assets/stadaFint.png" alt="Logo" style={styles.logo}/>
                 <div className="footer-category" style={styles.category}>
-                    <h3 style={{ textDecoration: 'underline' }}>About us</h3>
                     <ul style={styles.subCategory}>
                         <li>
                             <a href="/AboutUs" style={styles.link}>The team</a>
@@ -72,7 +68,6 @@ const CustomerFooter: React.FC = () => {
                     </ul>
                 </div>
                 <div className="footer-category" style={styles.category}>
-                    <h3 style={{ textDecoration: 'underline' }}>Contact</h3>
                     <ul style={styles.subCategory}>
                         <li>
                             <a href="mailto:StadaFintAB@gmail.com" style={styles.link}>Mail us</a>
@@ -85,7 +80,6 @@ const CustomerFooter: React.FC = () => {
                     </ul>
                 </div>
                 <div className="footer-category" style={styles.category}>
-                    <h3 style={{ textDecoration: 'underline' }}>Settings</h3>
                     <ul style={styles.subCategory}>
                         <li>
                             <a style={styles.link} onClick={handleGDPRClick}>GDPR</a>
@@ -103,7 +97,6 @@ const CustomerFooter: React.FC = () => {
         </footer>
     );
 };
-
 
 export default CustomerFooter;
 
