@@ -11,9 +11,21 @@ export default function CustomerBookingPage() {
         <>
             <CustomerHeader showLoggedIn={loggedIn} setLoggedIn={setLoggedIn} />
             <div className="bookingCont">
-                <AddCustomerBookingOption/>
+                <div className="bookingCont" style={styles.middleSection}>
+                    <AddCustomerBookingOption />
+                </div>
             </div>
             <CustomerFooter/>
         </>
     )
 }
+
+const styles = {
+    middleSection: {
+        height: '43.8rem',
+        overflowY: 'auto',
+    },
+};
+
+
+

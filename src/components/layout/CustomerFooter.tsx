@@ -9,7 +9,7 @@ const styles = {
         alignItems: 'right',
         position: 'fixed',
         width: '100%',
-        height: '100%',
+        height: '8rem',
         justifyContent: 'flex-end',
     },
     category: {

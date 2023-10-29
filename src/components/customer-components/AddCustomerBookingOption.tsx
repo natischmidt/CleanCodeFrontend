@@ -472,19 +472,12 @@ const AddCustomerBookingOption = () => {
 export default AddCustomerBookingOption;
 
 const styles: { [key: string]: React.CSSProperties } = {
-    grid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)', // Create 4 columns
-        gap: '0px', // Add spacing between grid items
-        justifyContent: 'center', // Center the grid horizontally
-    },
     container: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         textAlign: 'center',
         fontSize: "1.2rem",
-        marginTop: '0%',
     },
     form: {
         display: 'flex',
