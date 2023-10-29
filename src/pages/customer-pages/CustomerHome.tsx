@@ -38,7 +38,7 @@ const styles: {
         backgroundPosition: 'center',
         margin: '0 2px',
         backgroundRepeat: 'no-repeat',
-        boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
     },
     whiteSection: {
         backgroundColor: "#ffffff",
