@@ -37,7 +37,7 @@ const AddBusinessCustomerForm = () => {
 
             console.log(BusinessCustomerData)
             const response = await admin.createBusinessCustomer(BusinessCustomerData);
-            console.log('Business Customer was created', response.data);
+            console.log('Business Customer was created', response);
 
             setFirstname('');
             setLastname('');
