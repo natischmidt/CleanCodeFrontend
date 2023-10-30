@@ -179,7 +179,17 @@ const admin = {
             throw error;
         }
     },
-
+    createEmployee : async (employeeData: any) => {
+        try {
+            const Url = 'http://localhost:8080/api/employee/createEmployee';
+            const response = await axios.post(Url, employeeData);
+            console.log('Employee was created', response.data);
+            return response.data;
+        } catch (error) {
+            console.error('Error creating employee', error);
+            throw error;
+        }
+    }
     };
 
 

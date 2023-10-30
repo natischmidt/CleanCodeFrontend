@@ -3,18 +3,6 @@ import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import admin from "../../API/admin";
 
-interface BusinessCustomerData {
-    firstName: string;
-    lastName: string;
-    password: string;
-    companyName: string;
-    orgNumber: string;
-    email: string;
-    phoneNumber: string;
-    address: string;
-    city: string;
-    postalCode: string;
-}
 
 const AddBusinessCustomerForm = () => {
     const [firstname, setFirstname] = useState('');
