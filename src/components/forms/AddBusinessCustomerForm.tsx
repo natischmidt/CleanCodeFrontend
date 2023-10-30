@@ -1,6 +1,20 @@
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import admin from "../../API/admin";
+
+interface BusinessCustomerData {
+    firstName: string;
+    lastName: string;
+    password: string;
+    companyName: string;
+    orgNumber: string;
+    email: string;
+    phoneNumber: string;
+    address: string;
+    city: string;
+    postalCode: string;
+}
 
 const AddBusinessCustomerForm = () => {
     const [firstname, setFirstname] = useState('');
@@ -16,12 +30,10 @@ const AddBusinessCustomerForm = () => {
 
     const goBackToAddUser = useNavigate();
 
-    const handleSubmit = async (e : React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         try {
-            const Url = 'http://localhost:8080/api/customer/create';
-
             const BusinessCustomerData = {
                 firstName: firstname,
                 lastName: lastname,
@@ -33,23 +45,22 @@ const AddBusinessCustomerForm = () => {
                 address: address,
                 city: city,
                 postalCode: postalCode,
-
             };
-            console.log(BusinessCustomerData)
-            const response = await axios.post(Url, BusinessCustomerData);
 
+            console.log(BusinessCustomerData)
+            const response = await admin.createBusinessCustomer(BusinessCustomerData);
             console.log('Business Customer was created', response.data);
 
-            setFirstname('')
-            setLastname('')
-            setEmail('')
-            setPhoneNumber('')
-            setAddress('')
-            setCity('')
-            setPostalCode('')
-            setPassword('')
-            setCompany('')
-            setOrgNr('')
+            setFirstname('');
+            setLastname('');
+            setEmail('');
+            setPhoneNumber('');
+            setAddress('');
+            setCity('');
+            setPostalCode('');
+            setPassword('');
+            setCompany('');
+            setOrgNr('');
 
         } catch (error) {
             console.error('Error creating business customer', error);

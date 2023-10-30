@@ -168,7 +168,17 @@ const admin = {
             throw error;
         }
     },
-
+    createBusinessCustomer : async (BusinessCustomerData: any) => {
+        try {
+            const Url = 'http://localhost:8080/api/customer/create';
+            const response = await axios.post(Url, BusinessCustomerData);
+            console.log('Business Customer was created', response.data);
+            return response.data;
+        } catch (error) {
+            console.error('Error creating business customer', error);
+            throw error;
+        }
+    },
 
     };
 
