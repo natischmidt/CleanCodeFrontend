@@ -11,6 +11,7 @@ export const CustomerTable: React.FC<customerTableProps> = ({onUpdate}) => {
     const [customerData, setCustomerData] = useState<any[]>([]);
     const [deleted, setDeleted] = useState(0);
     const [myFilter, setMyFilter] = useState('');
+    const [searchUser, setSearchUser] = useState('');
 
     useEffect(() => {
 
@@ -48,35 +49,48 @@ export const CustomerTable: React.FC<customerTableProps> = ({onUpdate}) => {
         }
     };
 
-
     const handleUpdate = (cusId: number) => {
         onUpdate(cusId)
     };
 
     const filteredCustomerData = customerData.filter((customer) =>
-        myFilter === '' || customer.customerType === myFilter
+        (myFilter === '' || customer.customerType === myFilter) &&
+        (customer.firstName.toLowerCase().includes(searchUser.toLowerCase()) || searchUser === '')
     )
 
     return (
-        <div className="customer-table" style={styles.customerTable}>
-            <div>
-                Filter on customer type: 
-                <select
-                    value={myFilter}
-                    onChange={(e) => setMyFilter(e.target.value)}
-                >
-                    <option value="">All</option>
-                    <option value="PRIVATE">Private</option>
-                    <option value="BUSINESS">Business</option>
-                </select>
+        <>
+            <div style={styles.filterContainer}>
+                <div>
+                    Search by firstname:
+                    <input
+                        typeof="text"
+                        value={searchUser}
+                        style={{width: '6rem', marginLeft: '0.5rem'}}
+                        onChange={(e) => setSearchUser(e.target.value)}/>
+                </div>
+                <div>
+                    Filter by type
+                    <select
+                        value={myFilter}
+                        onChange={(e) => setMyFilter(e.target.value)}
+                        style={{marginLeft: '0.5rem'}}
+                    >
+                        <option value="">All</option>
+                        <option value="PRIVATE">Private</option>
+                        <option value="BUSINESS">Business</option>
+                    </select>
+                </div>
             </div>
+            <div className="customer-table" style={styles.customerTable}>
 
-            <Table columns={columns}
-                   data={filteredCustomerData}
-                   onDelete={handleDelete}
-                   onUpdate={handleUpdate}
-            />
-        </div>
+                <Table columns={columns}
+                       data={filteredCustomerData}
+                       onDelete={handleDelete}
+                       onUpdate={handleUpdate}
+                />
+            </div>
+        </>
     );
 };
 
@@ -86,5 +100,9 @@ const styles = {
         display: "flex" as 'flex',
         justifyContent: "center" as 'center'
     },
+    filterContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        gridGap: '2rem',
+    },
 }
-
