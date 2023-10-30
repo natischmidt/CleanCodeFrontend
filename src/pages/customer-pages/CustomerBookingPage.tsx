@@ -8,24 +8,39 @@ export default function CustomerBookingPage() {
     const [loggedIn, setLoggedIn] = useState(true);
 
     return (
-        <>
-            <CustomerHeader showLoggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-            <div className="bookingCont">
-                <div className="bookingCont" style={styles.middleSection}>
-                    <AddCustomerBookingOption />
-                </div>
+        <div style={styles.container}>
+            <div style={styles.header}>
+                <CustomerHeader showLoggedIn={loggedIn} setLoggedIn={setLoggedIn} />
             </div>
-            <CustomerFooter/>
-        </>
-    )
+            <div style={styles.middle}>
+                <AddCustomerBookingOption />
+            </div>
+            <div style={styles.footer}>
+                <CustomerFooter />
+            </div>
+        </div>
+    );
 }
 
 const styles = {
-    middleSection: {
-        height: '43.8rem',
-        overflowY: 'auto',
+    container: {
+        display: "flex",
+        flexDirection: "column",
+        height: "100vh", // 100% of the viewport height
+    },
+    header: {
+        flex: "12%", // Takes 20% of the container's height
+        backgroundColor: "#e0e0e0", // Add background color for clarity
+    },
+    middle: {
+        flex: "76%", // Takes 60% of the container's height
+        backgroundColor: "#f0f0f0", // Add background color for clarity
+        overflowY: "auto",
+    },
+    footer: {
+        flex: "12%", // Takes 20% of the container's height
+        backgroundColor: "#e0e0e0", // Add background color for clarity
     },
 };
-
 
 
