@@ -33,6 +33,7 @@ const LoginAdminOrEmployeeForm = () => {
             setEmail('')
             setPassword('')
             setId(response.data.id)
+            sessionStorage.setItem("jwt", response.data.jwt)
             goToHomePage(`/${response.data.role}Home`)
 
         } catch (error) {
