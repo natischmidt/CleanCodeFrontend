@@ -66,6 +66,5 @@ const styles = {
     },
     label: {
         backgroundColor: "#33f80a",
-
     }
 }

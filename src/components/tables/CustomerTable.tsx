@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import Table from "./table";
+import Table from "./Table";
 
 interface customerTableProps {
     onUpdate: (cusId: number) => void;

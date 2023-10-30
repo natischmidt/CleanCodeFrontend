@@ -11,16 +11,16 @@ export default function TestParentKlarnaComp() {
             "purchase_currency": "SEK",
             "locale": "sv-SE",
             "order_amount": 100000,
-            "order_tax_amount": 100000*0.0909,
+            "order_tax_amount": 20000,
             "order_lines": [
                 {
                     "name": "BASIC",
                     "quantity": 1,
                     "unit_price": 100000,
-                    "tax_rate": 1000,
+                    "tax_rate": 2500,
                     "total_amount": 100000,
                     "total_discount_amount": 0,
-                    "total_tax_amount": 100000*0.0909
+                    "total_tax_amount": 20000
                 }
             ],
             "merchant_urls": {
@@ -32,7 +32,7 @@ export default function TestParentKlarnaComp() {
             // "confirmation": "http://localhost:5173/KlarnaConfirmation?order_id={checkout.order.id}"
            // "confirmation": "https://www.example.com/confirmation.html?order_id={checkout.order.id}",
         };
-        const response = await fetch("http://localhost:8080/api/klarna/createBasicOrder", {
+        const response = await fetch("http://localhost:8080/api/klarna/createOrder", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -54,16 +54,16 @@ export default function TestParentKlarnaComp() {
             "purchase_currency": "SEK",
             "locale": "sv-SE",
             "order_amount": 150000,
-            "order_tax_amount": 150000*0.0909,
+            "order_tax_amount": 30000,
             "order_lines": [
                 {
                     "name": "ADVANCED",
                     "quantity": 1,
                     "unit_price": 150000,
-                    "tax_rate": 1000,
+                    "tax_rate": 2500,
                     "total_amount": 150000,
                     "total_discount_amount": 0,
-                    "total_tax_amount": 150000*0.0909
+                    "total_tax_amount": 30000
                 }
             ],
             "merchant_urls": {
@@ -75,7 +75,7 @@ export default function TestParentKlarnaComp() {
             // "confirmation": "http://7localhost:513/KConfirmation?order_id={checkout.order.id}"
             // "confirmation": "https://www.example.com/confirmation.html?order_id={checkout.order.id}",
         };
-        const response = await fetch("http://localhost:8080/api/klarna/createAdvancedOrder", {
+        const response = await fetch("http://localhost:8080/api/klarna/createOrder", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -100,16 +100,16 @@ export default function TestParentKlarnaComp() {
             "purchase_currency": "SEK",
             "locale": "sv-SE",
             "order_amount": 200000,
-            "order_tax_amount": 200000*0.09,
+            "order_tax_amount": 40000,
             "order_lines": [
                 {
                     "name": "DIAMOND",
                     "quantity": 1,
                     "unit_price": 200000,
-                    "tax_rate": 1000,
+                    "tax_rate": 2500,
                     "total_amount": 200000,
                     "total_discount_amount": 0,
-                    "total_tax_amount": 200000*0.09
+                    "total_tax_amount": 40000
                 }
             ],
             "merchant_urls": {
@@ -121,7 +121,7 @@ export default function TestParentKlarnaComp() {
             // "confirmation": "http://localhost:5173/KConfirmation?order_id={checkout.order.id}"
             // "confirmation": "https://www.example.com/confirmation.html?order_id={checkout.order.id}",
         };
-        const response = await fetch("http://localhost:8080/api/klarna/createDiamondOrder", {
+        const response = await fetch("http://localhost:8080/api/klarna/createOrder", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -143,16 +143,16 @@ export default function TestParentKlarnaComp() {
             "purchase_currency": "SEK",
             "locale": "sv-SE",
             "order_amount": 100000,
-            "order_tax_amount": 100000*0.0909,
+            "order_tax_amount": 20000,
             "order_lines": [
                 {
                     "name": "WINDOW",
                     "quantity": 1,
                     "unit_price": 100000,
-                    "tax_rate": 1000,
+                    "tax_rate": 2500,
                     "total_amount": 100000,
                     "total_discount_amount": 0,
-                    "total_tax_amount": 100000*0.0909
+                    "total_tax_amount": 20000
                 }
             ],
             "merchant_urls": {
@@ -164,7 +164,7 @@ export default function TestParentKlarnaComp() {
             // "confirmation": "http://localhost:5173/KConfirmation?order_id={checkout.order.id}"
             // "confirmation": "https://www.example.com/confirmation.html?order_id={checkout.order.id}",
         };
-        const response = await fetch("http://localhost:8080/api/klarna/createWindowOrder", {
+        const response = await fetch("http://localhost:8080/api/klarna/createOrder", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

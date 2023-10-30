@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import AnotherTable from "./AnotherTable";
-
-interface CustomerComingJobsTableProps {
+import {useNavigate} from "react-router-dom";
+interface CustomerKlarnaPayProps {
     cusId: string | null;
     change: number
     setChange: React.Dispatch<React.SetStateAction<number>>
+    showKlarna: (jobId: number) => void
 }
-const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId, change, setChange}) => {
 
+const CustomerKlarnaPayTable: React.FC<CustomerKlarnaPayProps> =  ({cusId, change, setChange,showKlarna}) => {
     const [theData, setTheData] = useState([])
-   // const [theDate, setTheDate] = useState<string>("")
+    const goToKlarna = useNavigate()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -19,7 +20,7 @@ const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId,
 
                 const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForCustomerWithStatus/${cusId}`, {
                     params: {
-                        statuses: ["PENDING"]
+                        statuses: ["PROCESSING"]
                     },
                     paramsSerializer: params => { // dessa 3 rader för att det ska gå, formaterar det rätt i URLN, tar bort []
                         return `statuses=${params.statuses.join('&statuses=')}`
@@ -28,40 +29,23 @@ const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId,
 
                 if (response.status === 200 || response.status === 201) {
                     setTheData(response.data)
-                    console.log(response.data[0].date +  " datumettt")
                 }
             } catch (error) {
-                console.log("nått hände :( ", error)
+                console.log("nått hände:( asdddd", error)
             }
         };
+
         fetchData()
     }, [change]);
 
-    const handleCancel = async (jobId:number, date:Date) => {
-        try {
-            const updateJobDTO = {
-                jobId: jobId,
-                jobStatus: "CANCELLED",
-                customerId: cusId,
-                date: "2023-11-24"
-            }
-            console.log("Sending JobID:" + jobId);
-            console.log("!!!!!!!!!" + date )
-
-            await axios.put("http://localhost:8080/api/jobs/updateJob", updateJobDTO)
-            setChange(x => x + 1)
-        } catch (error) {
-            console.log("It didn't go as planned.. : ", error)
-        }
+    const handleKlarna = async (id : number) =>  {
+        showKlarna(id)
     }
-
-
 
     return (
         <div>
             <AnotherTable
                 columns={[
-                    { key: 'jobId', title: 'Job ID' },
                     { key: 'jobtype', title: 'Job Type' },
                     { key: 'date', title: 'Date' },
                     { key: 'timeSlot', title: 'Time Slot' },
@@ -70,10 +54,12 @@ const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId,
                 ]}
                 data={theData}
                 buttons={[
-                    { label: 'Cancel', action: (jobId, date) => {handleCancel(jobId, date)} }
+                    { label: "Klarna" , action: (id) => {handleKlarna(id)} },
                 ]}
             />
+
         </div>
     )
 }
-export default CustomerComingJobsTable
+
+export default CustomerKlarnaPayTable;

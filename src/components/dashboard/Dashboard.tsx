@@ -132,8 +132,8 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
                                     {userType === 'admin'
                                         ? 'All upcoming bookings'
                                         : userType === 'customer'
-                                            ? 'Upcoming jobs'
-                                            : 'My upcoming shifts'}
+                                            ? 'Upcoming bookings'
+                                            : 'My Upcoming Shifts'}
                                 </div>
                                 <div className="section-content">
                                     {userType === "admin" && <BookingTable onUpdate={handleBookingUpdate} onKlarna={handleKlarna}/>}

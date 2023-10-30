@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import employee from "../../API/employee";
 import {useUserType} from "../../components/context/UserTypeContext";
-import Table from "../../components/tables/table";
+import Table from "../../components/tables/Table";
 import JobDetails from "./JobDetails";
 import ConvertTimeSlotToNiceTime from "../../components/layout/ConvertTimeSlotToNiceTime";
 

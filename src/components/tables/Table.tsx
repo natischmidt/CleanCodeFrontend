@@ -47,7 +47,7 @@ const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate, onKlarna})
                                 Update
                             </button>
 
-                            {userType === "Admin" ?
+                            {userType === "ADMIN" ?
                                 <>
                                     <button style={styles.klarna} onClick={() => onKlarna(item.id)}>
                                         Klarna
@@ -56,8 +56,6 @@ const Table: React.FC<Props> = ({ columns, data , onDelete, onUpdate, onKlarna})
                                         Delete
                                     </button>
                                 </> : <></> }
-                            {/*Här får vi rött, fast koden funkar???*/}
-
                         </div>
                     </td>
                 </tr>
@@ -82,7 +80,7 @@ const styles = {
     buttonCont: {
         display: 'flex',
         paddingRight: "8px",
-        alignItems: 'center',
+        alignItems: 'center' as 'center',
         marginLeft: "4%",
         // width: "110%"
     },
@@ -91,8 +89,8 @@ const styles = {
         backgroundColor: "#f83f3f",
         width: "5rem",
         height: "2.5rem",
-        alignItems: "center",
-        textAlign: "center",
+        alignItems: "center" as "center",
+        textAlign: "center" as "center",
         justifyContent: "center",
         boxShadow: '0 0 5px rgba(0, 0, 0, 1)',
         marginLeft: "6%",
@@ -103,9 +101,9 @@ const styles = {
         backgroundColor: "#fdbed0",
         width: "5rem",
         height: "2.5rem",
-        alignItems: "center",
-        textAlign: "center",
-        justifyContent: "center",
+        alignItems: "center" as "center",
+        textAlign: "center" as "center",
+        justifyContent: "center" as "center",
         boxShadow: '0 0 5px rgba(0, 0, 0, 1)',
         marginLeft: "6%",
     },
@@ -114,9 +112,9 @@ const styles = {
         backgroundColor: "#729ca8",
         width: "5rem",
         height: "2.5rem",
-        alignItems: "center",
-        textAlign: "center",
-        justifyContent: "center",
+        alignItems: "center" as "center",
+        textAlign: "center" as "center",
+        justifyContent: "center" as "center",
         boxShadow: '0 0 5px rgba(0, 0, 0, 1)',
         marginLeft: "1%",
     },
