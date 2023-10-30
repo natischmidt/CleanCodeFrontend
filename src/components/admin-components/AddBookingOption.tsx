@@ -14,9 +14,6 @@ export default function AddBookingOption() {
                     <button type="submit" style={styles.button} className="addBookOptBtn" onClick={() => {{goToCreateNewBooking(("/CreateNewBooking"))}}}>
                         Create new booking
                     </button>
-                    {/*<button type="submit" style={styles.button} className="addBookOptBtn" onClick={() => {{goToUpdateBooking(("/GettingIdNumberForm"))}}}>*/}
-                    {/*    Update booking*/}
-                    {/*</button>*/}
                 </div>
             </div>
         </div>

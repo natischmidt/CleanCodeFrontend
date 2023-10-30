@@ -11,6 +11,7 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate, onKlarna}) => {
 
     const [deleted, setDeleted] = useState(0);
     const [customerData, setCustomerData] = useState<any[]>([]);
+    const [myFilter, setMyFilter] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -48,16 +49,37 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate, onKlarna}) => {
         onKlarna(jobId);
     };
 
+    const filteredCustomerData = customerData.filter((customer) =>
+        (myFilter === '' || customer.jobtype === myFilter)
+    )
+
     return (
-        <div className="booking-table" style={styles.bookingTable}>
-            <Table
-                columns={columns}
-                data={customerData}
-                onDelete={handleDelete}
-                onKlarna={handleKlarna}
-                onUpdate={handleUpdate}
-            />
-        </div>
+        <>
+            <div style={styles.filterContainer}>
+                <div>
+                    Filter by type
+                    <select
+                        value={myFilter}
+                        onChange={(e) => setMyFilter(e.target.value)}
+                        style={{marginLeft: '0.5rem'}}>
+                        <option value="">All</option>
+                        <option value="BASIC">Basic</option>
+                        <option value="ADVANCED">Advanced</option>
+                        <option value="DIAMOND">Diamond</option>
+                        <option value="WINDOW">Window</option>
+                    </select>
+                </div>
+            </div>
+            <div className="booking-table" style={styles.bookingTable}>
+                <Table
+                    columns={columns}
+                    data={filteredCustomerData}
+                    onDelete={handleDelete}
+                    onKlarna={handleKlarna}
+                    onUpdate={handleUpdate}
+                />
+            </div>
+        </>
     )
 }
 
@@ -68,5 +90,17 @@ const styles = {
         textAlign: "left" as 'left',
         display: "flex" as 'flex',
         justifyContent: "center" as 'center',
+        marginTop: '-25px',
     },
+    filterContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        gridGap: '2rem',
+        marginTop: '1rem'
+    },
+    container: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+    }
 }
