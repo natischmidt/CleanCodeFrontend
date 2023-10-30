@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import admin from "../../API/admin";
 
 interface editBookingProps {
     jobId: number | null;
@@ -17,11 +18,7 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
     const [message, setMessage] = useState<string>("");
     const [customerId, setCustomerId] = useState<String | null>(null);
 
-
-
     useEffect(() => {
-
-
         if (jobId !== null) {
             const preFillForm = async () => {
                 try {

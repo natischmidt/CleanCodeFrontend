@@ -234,6 +234,72 @@ const admin = {
         }
 
     },
+    getJobDetails: async (jobId: number | null) => {
+        try {
+            if (jobId !== null) {
+                const url = `http://localhost:8080/api/jobs/getJob`;
+                const headers = {
+                    'jobId': jobId?.toString() || '',
+                };
+                const response = await axios.get(url, { headers });
+                const data = response.data;
+                console.log(response.data.customerId);
+                if (!data || !data.jobId) {
+                    console.log('Job with this id not found');
+                } else {
+                    return {
+                        date: data.date || '',
+                        loadedJobId: data.jobId?.toString() || '',
+                        jobStatus: data.jobStatus || '',
+                        jobType: data.jobType || '',
+                        paymentOption: data.paymentOption || '',
+                        squareMeters: data.squareMeters?.toString() || '',
+                        timeSlot: data.timeSlot || '',
+                        customerId: data.customerId,
+                    };
+                }
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    },
+
+    updateJob: async (
+        date: string,
+        jobId: number | null,
+        jobStatus: string,
+        jobType: string,
+        paymentOption: string,
+        squareMeters: string | null,
+        timeSlot: string,
+        customerId: string | null,
+        message: string,
+    ) => {
+        try {
+            if (jobId !== null) {
+                const url = `http://localhost:8080/api/jobs/updateJob`;
+
+                const editJobData = {
+                    date,
+                    jobId,
+                    jobStatus,
+                    jobType,
+                    paymentOption,
+                    squareMeters,
+                    timeSlot,
+                    customerId,
+                };
+
+                console.log(jobId);
+                console.log(customerId);
+                await axios.put(url, editJobData, { params: { message } });
+                console.log('Job was updated');
+            }
+        } catch (error) {
+            console.error('Error updating booking', error);
+        }
+    },
+
 };
 
 export default admin;
