@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
-import axios from "axios";
+import admin from "../../API/admin";
+
 
 const AddEmployeeForm = () => {
     const [firstname, setFirstname] = useState('');
@@ -20,7 +21,6 @@ const AddEmployeeForm = () => {
         e.preventDefault();
 
         try {
-            const Url = 'http://localhost:8080/api/employee/createEmployee';
 
             const employeeData = {
                 firstName: firstname,
@@ -36,9 +36,8 @@ const AddEmployeeForm = () => {
                 salary: salary,
             };
 
-            const response = await axios.post(Url, employeeData);
-
-            console.log('Employee was created', response.data);
+            const response = await admin.createEmployee(employeeData)
+            console.log('Employee was created', response.data, employeeData);
 
             setFirstname('')
             setLastname('')
