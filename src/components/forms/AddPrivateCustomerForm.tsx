@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
-import axios from "axios";
+import admin from "../../API/admin";
 
 const AddPrivateCustomerForm = () => {
     const [firstname, setFirstname] = useState('');
@@ -16,13 +16,11 @@ const AddPrivateCustomerForm = () => {
 
     const goBackToAddUser = useNavigate();
 
-    const handleSubmit = async (e : React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         try {
-            const Url = 'http://localhost:8080/api/customer/create';
-
-            const BusinessCustomerData = {
+            const privateCustomerData = {
                 firstName: firstname,
                 lastName: lastname,
                 password: password,
@@ -35,23 +33,24 @@ const AddPrivateCustomerForm = () => {
                 postalCode: postalCode,
             };
 
-            const response = await axios.post(Url, BusinessCustomerData);
+            const response = await admin.createPrivateCustomer(privateCustomerData);
 
-            console.log('Private Customer was created', response.data);
+            console.log('Private Customer was created', response);
 
-            setFirstname('')
-            setLastname('')
-            setEmail('')
-            setPhoneNumber('')
-            setAddress('')
-            setCity('')
-            setPostalCode('')
-            setPassword('')
+            setFirstname('');
+            setLastname('');
+            setEmail('');
+            setPhoneNumber('');
+            setAddress('');
+            setCity('');
+            setPostalCode('');
+            setPassword('');
 
         } catch (error) {
             console.error('Error creating private customer', error);
         }
     };
+
 
     return (
         <div style={styles.container}>
