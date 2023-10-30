@@ -29,7 +29,7 @@ const styles: {
     halfContainer: {
         width: '100%',
         display: 'flex',
-        height: '75vh',
+        height: '75.8vh',
     },
     imageSection: {
         flex: 1,

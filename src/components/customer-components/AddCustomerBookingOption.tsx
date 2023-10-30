@@ -9,9 +9,7 @@ import windowclean from "../../assets/www.png";
 import {useUserType} from "../context/UserTypeContext";
 import customer from "../../API/customer";
 
-
 const AddCustomerBookingOption = () => {
-
 
         const [showExtraInfo, setShowExtraInfo] = useState(false);
         const [showExtraInfoAdv, setShowExtraInfoAdv] = useState(false);

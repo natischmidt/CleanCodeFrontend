@@ -29,27 +29,52 @@ export const CustomerMyPages: React.FC = () => {
                 });
         }
     }, [id, userType]);
+    //
+    // return (
+    //     <>
+    //         <CustomerHeader showLoggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+    //         <div className="bookingCont" style={{...styles.middleSection, ...selectedStyles}}>
+    //             <Dashboard userType="customer" userData={userData}/>
+    //         </div>
+    //         <div style={styles.footer}>
+    //             <CustomerFooter/>
+    //         </div>
+    //     </>
+    // );
 
     return (
-        <>
-            <CustomerHeader showLoggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
-            <div className="bookingCont" style={{...styles.middleSection, ...selectedStyles}}>
+        <div style={styles.container}>
+            <div style={styles.header}>
+                <CustomerHeader showLoggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+            </div>
+            <div style={styles.middle}>
                 <Dashboard userType="customer" userData={userData}/>
             </div>
-            <CustomerFooter/>
-        </>
+            <div style={styles.footer}>
+                <CustomerFooter/>
+            </div>
+        </div>
     );
+
 };
 
 const styles = {
     container: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        display: "flex",
+        flexDirection: "column",
+        height: "100vh", // 100% of the viewport height
     },
-    middleSection: {
-        height: '43.8rem',
-        overflowY: 'auto',
+    header: {
+        flex: "12%", // Takes 20% of the container's height
+        backgroundColor: "#e0e0e0", // Add background color for clarity
+    },
+    middle: {
+        flex: "76%", // Takes 60% of the container's height
+        backgroundColor: "#f0f0f0", // Add background color for clarity
+        overflowY: "auto",
+    },
+    footer: {
+        flex: "12%", // Takes 20% of the container's height
+        backgroundColor: "#e0e0e0", // Add background color for clarity
     },
 };
-
