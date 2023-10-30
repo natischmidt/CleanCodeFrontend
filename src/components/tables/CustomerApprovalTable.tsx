@@ -42,7 +42,7 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
         try {
             const updateJobDTO = {
                 jobId: id,
-                jobStatus: 'APPROVED',
+                jobStatus: 'PROCESSING',
                 customerId: cusId
             }
             console.log(updateJobDTO.jobId + " ÄR DEN HÄR?")

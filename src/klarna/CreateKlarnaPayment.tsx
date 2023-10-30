@@ -1,5 +1,5 @@
 import React from "react";
-import BasicCleanPayment from "./BasicCleanPayment";
+import KlarnaModalPayment from "./KlarnaModalPayment";
 import {useNavigate} from "react-router-dom";
 
 interface editKlarnaProps {
