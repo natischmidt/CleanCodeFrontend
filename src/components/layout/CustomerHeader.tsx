@@ -122,12 +122,8 @@ interface HeaderProps {
                 <li style={styles.navItem}>
                     {!loggedIn && (
                         <>
-                            <button style={styles.button} onClick={handleLoginClick}>
-                                Log In
-                            </button>
-                            <button style={styles.button} onClick={handleRegisterClick}>
-                                Register
-                            </button>
+                            <li style={styles.link} onClick={handleLoginClick}>Log In</li>
+                            <li style={styles.link} onClick={handleRegisterClick}>Register</li>
                         </>
                     )}
                 </li>
