@@ -55,14 +55,14 @@ export const CustomerTable: React.FC<customerTableProps> = ({onUpdate}) => {
 
     const filteredCustomerData = customerData.filter((customer) =>
         (myFilter === '' || customer.customerType === myFilter) &&
-        (customer.firstName.toLowerCase().includes(searchUser.toLowerCase()) || searchUser === '')
+        (customer.lastName.toLowerCase().includes(searchUser.toLowerCase()) || searchUser === '')
     )
 
     return (
         <>
             <div style={styles.filterContainer}>
                 <div>
-                    Search by firstname:
+                    Search by lastname:
                     <input
                         typeof="text"
                         value={searchUser}
