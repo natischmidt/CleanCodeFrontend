@@ -55,40 +55,42 @@ export const CustomerTable: React.FC<customerTableProps> = ({onUpdate}) => {
 
     const filteredCustomerData = customerData.filter((customer) =>
         (myFilter === '' || customer.customerType === myFilter) &&
-        (customer.firstName.toLowerCase().includes(searchUser.toLowerCase()) || searchUser === '')
+        (customer.lastName.toLowerCase().includes(searchUser.toLowerCase()) || searchUser === '')
     )
 
     return (
         <>
-            <div style={styles.filterContainer}>
-                <div>
-                    Search by firstname:
-                    <input
-                        typeof="text"
-                        value={searchUser}
-                        style={{width: '6rem', marginLeft: '0.5rem'}}
-                        onChange={(e) => setSearchUser(e.target.value)}/>
+            <div style={styles.container}>
+                <div style={styles.filterContainer}>
+                    <div>
+                        Search by lastname:
+                        <input
+                            typeof="text"
+                            value={searchUser}
+                            style={{width: '6rem', marginLeft: '0.5rem'}}
+                            onChange={(e) => setSearchUser(e.target.value)}/>
+                    </div>
+                    <div>
+                        Filter by type
+                        <select
+                            value={myFilter}
+                            onChange={(e) => setMyFilter(e.target.value)}
+                            style={{marginLeft: '0.5rem'}}
+                        >
+                            <option value="">All</option>
+                            <option value="PRIVATE">Private</option>
+                            <option value="BUSINESS">Business</option>
+                        </select>
+                    </div>
                 </div>
-                <div>
-                    Filter by type
-                    <select
-                        value={myFilter}
-                        onChange={(e) => setMyFilter(e.target.value)}
-                        style={{marginLeft: '0.5rem'}}
-                    >
-                        <option value="">All</option>
-                        <option value="PRIVATE">Private</option>
-                        <option value="BUSINESS">Business</option>
-                    </select>
-                </div>
-            </div>
-            <div className="customer-table" style={styles.customerTable}>
+                <div className="customer-table" style={styles.customerTable}>
 
-                <Table columns={columns}
-                       data={filteredCustomerData}
-                       onDelete={handleDelete}
-                       onUpdate={handleUpdate}
-                />
+                    <Table columns={columns}
+                           data={filteredCustomerData}
+                           onDelete={handleDelete}
+                           onUpdate={handleUpdate}
+                    />
+                </div>
             </div>
         </>
     );

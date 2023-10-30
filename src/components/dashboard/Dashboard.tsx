@@ -130,10 +130,10 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
                                 {/*<p style={styles.sectionTitle}>My upcoming jobs</p>*/}
                                 <div className="section-title" style={styles.sectionTitle}>
                                     {userType === 'admin'
-                                        ? 'All Upcoming Bookings'
+                                        ? 'All upcoming bookings'
                                         : userType === 'customer'
-                                            ? 'Upcoming Jobs'
-                                            : 'My Upcoming Shifts'}
+                                            ? 'Upcoming jobs'
+                                            : 'My upcoming shifts'}
                                 </div>
                                 <div className="section-content">
                                     {userType === "admin" && <BookingTable onUpdate={handleBookingUpdate} onKlarna={handleKlarna}/>}

@@ -53,9 +53,9 @@ interface HeaderProps {
     setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-    const CustomerHeader: React.FC <HeaderProps> = ({showLoggedIn}) => {
-        const {loggedIn, setLoggedIn, setUserType, setId} = useUserType();
-        const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
+    const {loggedIn, setLoggedIn, setUserType, setId} = useUserType();
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
     const handleLoginClick = () => {
@@ -90,7 +90,7 @@ interface HeaderProps {
 
     return (
         <header style={styles.header}>
-            <div style={styles.logo}> <img src="src/assets/stadaFint.png" alt="Logo" style={styles.logo}/></div>
+            <div style={styles.logo}><img src="src/assets/stadaFint.png" alt="Logo" style={styles.logo}/></div>
 
             <ul className="navbar">
                 <li style={styles.navItem}>
@@ -122,8 +122,12 @@ interface HeaderProps {
                 <li style={styles.navItem}>
                     {!loggedIn && (
                         <>
-                            <li style={styles.link} onClick={handleLoginClick}>Log In</li>
-                            <li style={styles.link} onClick={handleRegisterClick}>Register</li>
+                            <li style={styles.link}>
+                                <button style={styles.button} onClick={handleLoginClick}>Log In</button>
+                                <button style={styles.button}
+                                    onClick={handleRegisterClick}>Register
+                                </button>
+                            </li>
                         </>
                     )}
                 </li>
