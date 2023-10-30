@@ -60,7 +60,7 @@ export default function Header() {
                         {
                             goToBooking(("/Booking"));
                         }
-                    }}>Booking
+                    }}>Bookings
                     </button>
                     {userType == "Admin" && <button id="Employees" style={styles.btn} onClick={() => {
                         {
