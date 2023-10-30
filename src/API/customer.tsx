@@ -25,6 +25,8 @@ const customer = {
             const response = await axios.post(url, customerData);
             console.log('Customer was registered', response.data);
 
+            sessionStorage.setItem("jwt", response.data.jwt)
+
             const idResponse = await axios.get(`http://localhost:8080/api/customer/getIdByEmail/${email}`);
             console.log("id for non reg. user: " + idResponse.data);
 
@@ -110,9 +112,10 @@ const customer = {
 
             if (response) {
                 setUserType("Customer");
-                setId(resp);
+                setId(resp.userId);
                 goToHomePage(`/CustomerMyPages`);
                 setLoggedIn(true);
+                sessionStorage.setItem("jwt", resp.jwt)
             } else {
                 console.log("hur tusan hamna vi här?");
             }
