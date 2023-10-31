@@ -60,10 +60,14 @@ export const EmployeeTable: React.FC<employeeTableProps> = ({ onUpdate }) => {
 
             <Table columns={columns}
                    data={employeeData}
-                   onDelete={handleDelete}
-                   onUpdate={handleUpdate}
+                   buttons={[
+                       {label: "Update", action:(id) => {handleUpdate(id)}},
+                       {label: "Delete", action: (id) => {handleDelete(id)}},
+                   ]}
             />
         </div>
+    /*onDelete={handleDelete}
+    onUpdate={handleUpdate}*/
     );
 };
 

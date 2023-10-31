@@ -7,6 +7,6 @@ function KlarnaConfirmation() {
             <p>Nu har din betalning gått igenom.</p>
         </div>
     );
-};
+}
 
 export default KlarnaConfirmation;

@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import Table from "./Table";
 import admin from "../../API/admin";
+import ThumbsUp from "../../assets/ThumbsUp.png";
+import ThumbsDown from "../../assets/ThumbsDown.png";
 
 interface bookingTableProps {
     onUpdate: (jobId: number) => void;
@@ -45,9 +47,6 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate, onKlarna}) => {
         onUpdate(jobId);
     };
 
-    const handleKlarna = (jobId: number) => {
-        onKlarna(jobId);
-    };
 
     const filteredCustomerData = customerData.filter((customer) =>
         (myFilter === '' || customer.jobtype === myFilter)
@@ -74,15 +73,18 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate, onKlarna}) => {
                 <Table
                     columns={columns}
                     data={filteredCustomerData}
-                    onDelete={handleDelete}
-                    onKlarna={handleKlarna}
-                    onUpdate={handleUpdate}
+                    buttons={[
+                        {label: "Update", action:(id) => {handleUpdate(id)}},
+                        {label: "Delete", action: (id) => {handleDelete(id)}},
+                    ]}
                 />
             </div>
         </>
     )
 }
-
+/*onDelete={handleDelete}
+onKlarna={handleKlarna}
+onUpdate={handleUpdate}*/
 export default BookingTable
 
 const styles = {

@@ -32,6 +32,7 @@ const BookingHistoryTable = () => {
         { key: 'customerId', title: 'Customer Id' },
     ];
 
+/*
     const handleDelete = (id: number | undefined) => {
         console.log(id)
     };
@@ -39,6 +40,7 @@ const BookingHistoryTable = () => {
     const handleUpdate = (id: number | undefined) => {
         console.log(id)
     };
+*/
 
 
 
@@ -47,9 +49,10 @@ const BookingHistoryTable = () => {
             <Table
                 columns={columns}
                 data={historyData}
-                onDelete={handleDelete}
-                onUpdate={handleUpdate}
-            />;
+                buttons={[
+
+                ]}
+            />
         </div>
     )
 }

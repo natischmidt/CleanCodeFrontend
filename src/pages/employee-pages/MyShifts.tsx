@@ -50,9 +50,11 @@ const MyShifts = () => {
             {!showDetails ? <Table
                 columns={columns}
                 data={employeeShifts}
-                onDelete={() => {
-                }}
-                onUpdate={handleUpdate}/> :
+                buttons={[
+                    {label: "Update", action:(id) => {handleUpdate(id)}}
+                ]}
+                />
+                :
                 <JobDetails close={handleClose} jobId={jobId}/>
             }
         </div>
