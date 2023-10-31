@@ -13,16 +13,17 @@ const styles = {
         justifyContent: 'flex-end',
     },
     category: {
-        padding: '5px',
+        padding: '0px',
         margin: '0x',
         fontWeight: 'bold',
         color: 'black',
         marginLeft: '10px',
     },
     subCategory: {
+        display: 'flex',
         listStyle: 'none',
-        padding: 10,
-        margin: 10,
+        padding: 0,
+        margin: -0,
     },
     link: {
         fontWeight: 'bold',
@@ -31,9 +32,11 @@ const styles = {
         cursor: 'pointer'
     },
     logo: {
-        height: "10vh",
-        marginRight: '5rem',
-        marginTop: '2rem',
+        height: "6.5vh",
+        marginRight: '3rem',
+        marginTop: '1.5rem',
+        filter: 'drop-shadow(6px 2px 4px rgba(0, 0, 0, 0.3))', // Add a shadow to the image
+        cursor: "pointer"
     },
     bottomContainer: {
         display: "flex" as "flex",
@@ -57,40 +60,28 @@ const CustomerFooter: React.FC = () => {
     return (
         <footer style={styles.footer}>
             <div style={styles.bottomContainer}>
+                {/*<div className="footer-category" style={styles.category}>*/}
+                {/*    <ul style={styles.subCategory}>*/}
+                {/*        <li>*/}
+                {/*            <a href="/AboutUs" style={styles.link}>The team</a>*/}
+                {/*        </li>*/}
+                {/*        <li>*/}
+                {/*            <a href="/Policy" style={styles.link}>Policy</a>*/}
+                {/*        </li>*/}
+                {/*    </ul>*/}
+                {/*</div>*/}
                 <div className="footer-category" style={styles.category}>
                     <ul style={styles.subCategory}>
-                        <li>
-                            <a href="/AboutUs" style={styles.link}>The team</a>
+                        <li><a href="http://www.instagram.com/stadafint" target="_blank">
+                            <img src="src/assets/insta.png" alt="Logo" style={styles.logo}/>
+                        </a>
                         </li>
                         <li>
-                            <a href="/Policy" style={styles.link}>Policy</a>
-                        </li>
-                    </ul>
-                </div>
-                <div className="footer-category" style={styles.category}>
-                    <ul style={styles.subCategory}>
-                        <li>
-                            <a href="mailto:StadaFintAB@gmail.com" style={styles.link}>Mail us</a>
-                        </li>
-                        <li>
-                            <a href="http://www.instagram.com/stadafint" target="_blank" rel="noopener noreferrer"
-
-                                style={styles.link}>Instagram</a>
-                        </li>
-                    </ul>
-                </div>
-                <div className="footer-category" style={styles.category}>
-                    <ul style={styles.subCategory}>
-                        <li>
-                            <a style={styles.link} onClick={handleGDPRClick}>GDPR</a>
-                        </li>
-                        <li>
-                            <a href="/Settings" style={styles.link}>Settings</a>
+                            <img onClick={handleGDPRClick} src="src/assets/gggg.png" alt="Logo" style={styles.logo}/>
                         </li>
                     </ul>
                 </div>
             </div>
-
             {isGDPRModalOpen && (
                 <GDPRModal onClose={closeGDRPModal}/>
             )}
