@@ -1,4 +1,4 @@
-import Header from "../components/layout/header";
+import HeaderComp from "../components/layout/HeaderComp";
 import AddBookingOption from "../components/admin-components/AddBookingOption";
 import CustomerFooter from "../components/layout/CustomerFooter";
 import {useState} from "react";
@@ -33,7 +33,7 @@ export default function BookingPage() {
 
     return (
         <>
-            <Header/>
+            <HeaderComp/>
             {!showUpdateBooking && !showKlarna?<div className="bookingCont">
                     <AddBookingOption/> <BookingTable onUpdate={(jobId : number) => handleUpdate(jobId)} onKlarna={(jobId : number) => handleKlarna(jobId)} />
             </div>  :

@@ -1,10 +1,10 @@
-import Header from "../../components/layout/header";
+import HeaderComp from "../../components/layout/HeaderComp";
 import AddUserOption from "../../components/admin-components/AddUserOption";
 
 export default function AddUserPage() {
     return (
         <>
-            <Header/>
+            <HeaderComp/>
             <AddUserOption/>
         </>
     )

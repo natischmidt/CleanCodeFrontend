@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Header from "../../components/layout/header";
+import HeaderComp from "../../components/layout/HeaderComp";
 // import CustomerFooter from "../layout/footer";
 import {CustomerTable} from "../../components/tables/CustomerTable";
 import CustomerFooter from "../../components/layout/CustomerFooter";
@@ -20,7 +20,7 @@ export default function CustomerPage() {
 
     return (
         <>
-            <Header/>
+            <HeaderComp/>
             <div className="h1" style={styles.h1}>
                 <h1>Customers</h1>
 

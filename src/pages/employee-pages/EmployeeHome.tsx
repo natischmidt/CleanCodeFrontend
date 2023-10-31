@@ -1,4 +1,4 @@
-import Header from "../../components/layout/header";
+import HeaderComp from "../../components/layout/HeaderComp";
 import EmployeeFooter from "./EmployeeFooter";
 import {employeeStyles} from "../../styles/styles";
 import React, {useEffect, useState} from "react";
@@ -50,7 +50,7 @@ export default function EmployeeHomePage() {
     return (
         <>
 
-            <Header/>
+            <HeaderComp/>
             <div style={{...selectedStyles}}>
 
                 <Dashboard userType="employee" userData={employeeData} />

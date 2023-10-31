@@ -1,4 +1,4 @@
-import Header from "../components/layout/header";
+import HeaderComp from "../components/layout/HeaderComp";
 import React, {useState} from "react";
 import {EmployeeTable} from "../components/tables/EmployeeTable";
 // import CustomerFooter from "../layout/footer";
@@ -20,7 +20,7 @@ export default function EmployeePage() {
 
     return (
         <>
-            <Header/>
+            <HeaderComp/>
             <div className="h1" style={styles.h1}>
                 <h1>Employees</h1>
 

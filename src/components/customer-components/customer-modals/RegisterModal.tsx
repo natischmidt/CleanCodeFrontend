@@ -152,7 +152,7 @@ const styles = {
         position: "absolute" as 'absolute',
         top: 0,
         left: 0,
-        backgroundColor: "rgba(169,160,160,0.8)",
+        backgroundColor: "rgba(0, 0, 0, 0.7)",
         display: 'flex',
         justifyContent: "center" as 'center',
         alignItems: "center" as 'center',

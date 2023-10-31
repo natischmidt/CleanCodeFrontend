@@ -1,4 +1,4 @@
-import Header from "../components/layout/header";
+import HeaderComp from "../components/layout/HeaderComp";
 import AddBookingOption from "../components/admin-components/AddBookingOption";
 // import {BookingTable} from "../../components/tables/BookingTable";
 import CustomerFooter from "../components/layout/CustomerFooter";
@@ -9,7 +9,7 @@ import CustomerFooter from "../components/layout/CustomerFooter";
 export default function BookingPage() {
     return (
         <>
-            <Header/>
+            <HeaderComp/>
             <AddBookingOption/>
             <BookingTable/>
             <CustomerFooter/>

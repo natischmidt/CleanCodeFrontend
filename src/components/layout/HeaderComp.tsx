@@ -6,7 +6,7 @@ import {UserTypeProvider, useUserType} from "../context/UserTypeContext";
 import {GDPRModal} from "../customer-components/customer-modals/GDPRModal";
 import {GDPRModal_employee} from "../modals/GDPRModal_employee";
 
-export default function Header() {
+export default function HeaderComp() {
 
     const gotoDashBoard = useNavigate()
     const goToBooking = useNavigate()
@@ -101,6 +101,8 @@ const styles = {
         justifyContent: 'space-between',
         alignItems: 'center',
         flexWrap: 'wrap' as 'wrap',
+        fontFamily: 'Dumpling',
+        fontSize: "1.2rem"
     },
     logo: {
         maxWidth: '200px',

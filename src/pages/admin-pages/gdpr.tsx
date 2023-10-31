@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../../components/layout/header";
+import HeaderComp from "../../components/layout/HeaderComp";
 
 export default function GDPRPage() {
     return (
         <>
-            <Header/>
+            <HeaderComp/>
         </>
     )
 }

@@ -1,4 +1,4 @@
-import Header from "../../components/layout/header";
+import HeaderComp from "../../components/layout/HeaderComp";
 import Dashboard from "../../components/dashboard/Dashboard";
 import React from "react";
 import {useUserType} from "../../components/context/UserTypeContext";
@@ -24,7 +24,7 @@ export const AdminHome : React.FC = () => {
     console.log("bara för att : " + id)
     return (
         <>
-            <Header/>
+            <HeaderComp/>
             <div style={{ ...selectedStyles }}>
             <Dashboard userType="admin" userData={testUserData} />
             </div>
