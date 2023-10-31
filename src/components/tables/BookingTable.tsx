@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Table from "./Table";
+import TableId from "./TableId";
 import admin from "../../API/admin";
 import ThumbsUp from "../../assets/ThumbsUp.png";
 import ThumbsDown from "../../assets/ThumbsDown.png";
@@ -41,6 +41,7 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate, onKlarna}) => {
 
     const handleDelete = async (jobId: number) => {
         await admin.deleteJob(jobId);
+        setDeleted( x  => x +1)
     };
 
     const handleUpdate = (jobId: number) => {
@@ -70,12 +71,12 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate, onKlarna}) => {
                 </div>
             </div>
             <div className="booking-table" style={styles.bookingTable}>
-                <Table
+                <TableId
                     columns={columns}
                     data={filteredCustomerData}
                     buttons={[
-                        {label: "Update", action:(id) => {handleUpdate(id)}},
-                        {label: "Delete", action: (id) => {handleDelete(id)}},
+                        {label: "Update", action:(id) => {handleUpdate(id)},  style:styles.update},
+                        {label: "Delete", action: (id) => {handleDelete(id)}, style:styles.delete},
                     ]}
                 />
             </div>
@@ -104,5 +105,11 @@ const styles = {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
-    }
+    },
+    delete: {
+        backgroundColor: "#f83f3f",
+    },
+    update: {
+        backgroundColor: "#729ca8",
+    },
 }

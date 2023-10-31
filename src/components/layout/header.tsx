@@ -62,7 +62,7 @@ export default function Header() {
                         }
                     }}>Bookings
                     </button>
-                    {userType == "Admin" && <button id="Employees" style={styles.btn} onClick={() => {
+                    {userType == "ADMIN" && <button id="Employees" style={styles.btn} onClick={() => {
                         {
                             goToEmployees(("/Employees"));
                         }

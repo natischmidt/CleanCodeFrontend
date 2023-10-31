@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import Table from "./Table";
+import TableId from "./TableId";
 import admin from "../../API/admin";
 
 const BookingHistoryTable = () => {
@@ -46,7 +46,7 @@ const BookingHistoryTable = () => {
 
     return (
         <div className="booking-table" style={styles.bookingTable}>
-            <Table
+            <TableId
                 columns={columns}
                 data={historyData}
                 buttons={[

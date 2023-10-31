@@ -15,12 +15,12 @@ const AddUserOption = () => {
             <div className="h1" style={styles.h1}>
                 <h1>Create new:</h1>
                 <div className="menuBtn" style={styles.menuBtns}>
-                    {userType === "Admin" && (
+                    {userType === "ADMIN" && (
                         <button
                             type="submit"
                             style={styles.button}
                             onClick={() => {
-                                if (userType === "Admin") {
+                                if (userType === "ADMIN") {
                                     goToAdminForm("/AddAdmin");
                                 }
                             }}
@@ -28,7 +28,7 @@ const AddUserOption = () => {
                             Admin
                         </button>
                     )}
-                    {userType === "Employee" && (
+                   {/* {userType === "Employee" && (
                         <button
                             type="submit"
                             style={styles.button}
@@ -40,23 +40,23 @@ const AddUserOption = () => {
                         >
                             Employee
                         </button>
-                    )}
+                    )}*/}
                     {/*error here, changed variable names */}
-
-                    {/*{userType == "ADMIN" && */}
-                    {/*    <button type="submit"*/}
-                    {/*            style={styles.button}*/}
-                    {/*            onClick={() =>*/}
-                    {/*            {{goToAdminForm(("/AddAdmin"))}}}>*/}
-                    {/*    Admin*/}
-                    {/*</button>}*/}
-                    {/*{userType === "ADMIN" && */}
-                    {/*    <button type="submit"*/}
-                    {/*            style={styles.button} */}
-                    {/*            onClick={() => */}
-                    {/*            {{goToEmployeeForm(("/AddEmployee"))}}}>*/}
-                    {/*    Employee*/}
-                    {/*</button>}*/}
+{/*
+                    {userType == "ADMIN" &&
+                        <button type="submit"
+                                style={styles.button}
+                                onClick={() =>
+                                {{goToAdminForm(("/AddAdmin"))}}}>
+                        Admin
+                    </button>}*/}
+                    {userType === "ADMIN" &&
+                        <button type="submit"
+                                style={styles.button}
+                                onClick={() =>
+                                {{goToEmployeeForm(("/AddEmployee"))}}}>
+                        Employee
+                    </button>}
                     <button type="submit" style={styles.button} onClick={() => {{goToPrivateCustomerForm(("/AddPrivateCustomer"))}}}>
                         Private Customer
                     </button>

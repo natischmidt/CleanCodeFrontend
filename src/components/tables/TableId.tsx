@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 interface ButtonConfig {
     label: string | React.ReactElement
     action: (id: number, date: Date) => void
+    style?: React.CSSProperties
 }
 interface Column {
     key: string;
@@ -21,7 +22,7 @@ interface Props {
     onKlarna: (id: number) => void;*/
 }
 
-const Table: React.FC<Props> = ({ columns, data , buttons}) => {
+const TableId: React.FC<Props> = ({ columns, data , buttons}) => {
 
     const userType = useUserType().userType;
 
@@ -45,11 +46,11 @@ const Table: React.FC<Props> = ({ columns, data , buttons}) => {
                     {columns.map((column) => (
                         <td key={column.key} style={styles.tableCell}>{item[column.key]}</td>
                     ))}
-                    <td>
+                    <td style={styles.td}>
                         {buttons.map((button, buttonIndex) => (
                             <button
                                 key={buttonIndex}
-                                style={styles[button.label as keyof typeof styles]}
+                                style={{ ...styles.btn, ...button.style }}
                                 onClick={() => button.action(item.id, item.date)}
                             >
                                 {button.label}
@@ -63,9 +64,14 @@ const Table: React.FC<Props> = ({ columns, data , buttons}) => {
     );
 };
 
-export default Table;
+export default TableId;
 
 const styles = {
+    td: {
+        display: "flex",
+        flexDirection: "row" as "row",
+        margin: 2
+    },
     dataTable: {
         borderRadius: "5px",
         padding: "15px",
@@ -73,7 +79,7 @@ const styles = {
         marginBottom: "3%",
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
         backgroundColor : "#b3d9e3",
-        textAlign: "center" as "center"
+        textAlign: "center" as "center",
     },
     buttonCont: {
         display: 'flex',
@@ -118,6 +124,17 @@ const styles = {
     },
     tableCell: {
         border: '1px solid #729ca890',
+        margin: 33 //fix
         // borderRadius: "0.5rem",
+    },
+    btn: {
+        display: "flex",
+        width: "5rem",
+        height: "2.5rem",
+        alignItems: "center" as "center",
+        textAlign: "center" as "center",
+        justifyContent: "center",
+        boxShadow: '0 0 5px rgba(0, 0, 0, 1)',
+        margin: 5
     }
 }
