@@ -11,15 +11,15 @@ const MyShifts = () => {
 
     const {id, setId} = useUserType();
     const [employeeShifts, setEmployeeShifts] = useState<any[]>([])
-    //const [update, setUpdate] = useState(0)
-    const update = useRef(0)
+    const [update, setUpdate] = useState(0)
+    //const update = useRef(0)
     //const [showDetails, setShowDetails] = useState(false)
 
     //const [jobId, setJobId] = useState(0)
 
     const handleDone = async (jobId: number) => {
-
-        await employee.getJob(jobId).then(r => {
+        try {
+            const r = await employee.getJob(jobId);
             const dataToSend = {
                 jobId: r.jobId,
                 jobtype: r.jobtype,
@@ -29,11 +29,12 @@ const MyShifts = () => {
                 paymentOption: r.paymentOption,
                 message: r.message,
                 customerId: r.customerId
-            }
-            employee.updateJobStatus(dataToSend)
-        })
-        update.current = update.current +1;
-        console.log(update.current + " @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+            };
+            await employee.updateJobStatus(dataToSend);
+            setUpdate(c => c + 1);
+        } catch (error) {
+            console.error("Det gick inte... ", error);
+        }
     }
 
 
@@ -44,7 +45,7 @@ const MyShifts = () => {
                 setEmployeeShifts(r)
             }
         )
-    }, [update.current])
+    }, [update])
    // console.log(custId + " @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
     const columns = [
