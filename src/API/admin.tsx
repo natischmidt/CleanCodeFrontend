@@ -175,7 +175,7 @@ const admin = {
     },
 
     deleteJob: async (jobId: number): Promise<void> => {
-        const [deleted, setDeleted] = useState(0);
+
         try {
             const Url = `http://localhost:8080/api/jobs/deleteJob`;
             const headers = {
@@ -183,7 +183,7 @@ const admin = {
             };
             const response = await axios.delete(Url, { headers });
             console.log('Deleting job was successful', response.data);
-            setDeleted(x => x + 1);
+
         } catch (error) {
             console.error('Error deleting job', error);
             throw error;

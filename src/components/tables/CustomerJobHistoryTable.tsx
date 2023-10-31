@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import AnotherTable from "./AnotherTable";
+import TableJobId from "./TableJobId";
 interface CustomerComingJobsHistoryTableProps {
     cusId: string | null;
     change: number
@@ -38,7 +38,7 @@ const CustomerComingJobsHistoryTable: React.FC<CustomerComingJobsHistoryTablePro
 
     return (
         <div>
-            <AnotherTable
+            <TableJobId
                 columns={[
                     { key: 'jobtype', title: 'Job Type' },
                     { key: 'date', title: 'Date' },

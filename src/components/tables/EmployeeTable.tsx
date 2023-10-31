@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Table from "./Table";
+import TableId from "./TableId";
 
 
 interface employeeTableProps {
@@ -58,12 +58,16 @@ export const EmployeeTable: React.FC<employeeTableProps> = ({ onUpdate }) => {
     return (
         <div className="employee-table" style={styles.employeeTable}>
 
-            <Table columns={columns}
-                   data={employeeData}
-                   onDelete={handleDelete}
-                   onUpdate={handleUpdate}
+            <TableId columns={columns}
+                     data={employeeData}
+                     buttons={[
+                         {label: "Update", action:(id) => {handleUpdate(id)},  style:styles.update},
+                         {label: "Delete", action: (id) => {handleDelete(id)}, style:styles.delete},
+                   ]}
             />
         </div>
+    /*onDelete={handleDelete}
+    onUpdate={handleUpdate}*/
     );
 };
 
@@ -72,6 +76,12 @@ const styles = {
         textAlign: "left" as 'left',
         display: "flex" as 'flex',
         justifyContent: "center" as 'center'
+    },
+    delete: {
+        backgroundColor: "#f83f3f",
+    },
+    update: {
+        backgroundColor: "#729ca8",
     },
 }
 

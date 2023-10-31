@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import AnotherTable from "./AnotherTable";
+import TableJobId from "./TableJobId";
 import {useNavigate} from "react-router-dom";
 interface CustomerKlarnaPayProps {
     cusId: string | null;
@@ -44,7 +44,7 @@ const CustomerKlarnaPayTable: React.FC<CustomerKlarnaPayProps> =  ({cusId, chang
 
     return (
         <div>
-            <AnotherTable
+            <TableJobId
                 columns={[
                     { key: 'jobtype', title: 'Job Type' },
                     { key: 'date', title: 'Date' },
@@ -54,7 +54,7 @@ const CustomerKlarnaPayTable: React.FC<CustomerKlarnaPayProps> =  ({cusId, chang
                 ]}
                 data={theData}
                 buttons={[
-                    { label: "Klarna" , action: (id) => {handleKlarna(id)} },
+                    { label: "Klarna" , action: (id) => {handleKlarna(id)}, style:styles.klarna},
                 ]}
             />
 
@@ -63,3 +63,10 @@ const CustomerKlarnaPayTable: React.FC<CustomerKlarnaPayProps> =  ({cusId, chang
 }
 
 export default CustomerKlarnaPayTable;
+
+const styles = {
+    klarna: {
+        backgroundColor: "#fdbed0",
+    },
+
+}

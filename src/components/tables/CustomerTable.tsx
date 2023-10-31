@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import Table from "./Table";
+import TableId from "./TableId";
 
 interface customerTableProps {
     onUpdate: (cusId: number) => void;
@@ -57,10 +57,11 @@ export const CustomerTable: React.FC<customerTableProps> = ({onUpdate}) => {
         (myFilter === '' || customer.customerType === myFilter) &&
         (customer.lastName.toLowerCase().includes(searchUser.toLowerCase()) || searchUser === '')
     )
-
+    //style={styles.container}
     return (
         <>
-            <div style={styles.container}>
+
+            <div >
                 <div style={styles.filterContainer}>
                     <div>
                         Search by lastname:
@@ -85,17 +86,20 @@ export const CustomerTable: React.FC<customerTableProps> = ({onUpdate}) => {
                 </div>
                 <div className="customer-table" style={styles.customerTable}>
 
-                    <Table columns={columns}
-                           data={filteredCustomerData}
-                           onDelete={handleDelete}
-                           onUpdate={handleUpdate}
+                    <TableId columns={columns}
+                             data={filteredCustomerData}
+                             buttons={[
+                                 {label: "Update", action:(id) => {handleUpdate(id)},  style:styles.update},
+                                 {label: "Delete", action: (id) => {handleDelete(id)}, style:styles.delete},
+                             ]}
                     />
                 </div>
             </div>
         </>
     );
 };
-
+/*onDelete={handleDelete}
+onUpdate={handleUpdate}*/
 const styles = {
     customerTable: {
         textAlign: "left" as 'left',
@@ -106,5 +110,11 @@ const styles = {
         display: 'flex',
         justifyContent: 'center',
         gridGap: '2rem',
+    },
+    delete: {
+        backgroundColor: "#f83f3f",
+    },
+    update: {
+        backgroundColor: "#729ca8",
     },
 }

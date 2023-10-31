@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import AnotherTable from "./AnotherTable";
+import TableJobId from "./TableJobId";
 
 interface CustomerComingJobsTableProps {
     cusId: string | null;
@@ -59,7 +59,7 @@ const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId,
 
     return (
         <div>
-            <AnotherTable
+            <TableJobId
                 columns={[
                     { key: 'jobId', title: 'Job ID' },
                     { key: 'jobtype', title: 'Job Type' },
@@ -70,10 +70,17 @@ const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId,
                 ]}
                 data={theData}
                 buttons={[
-                    { label: 'Cancel', action: (jobId, date) => {handleCancel(jobId, date)} }
+                    { label: 'Cancel', action: (jobId, date) => {handleCancel(jobId, date)},  style:styles.cancel },
                 ]}
             />
         </div>
     )
 }
 export default CustomerComingJobsTable
+
+const styles = {
+    cancel: {
+        backgroundColor: "#f83f3f",
+    },
+
+}

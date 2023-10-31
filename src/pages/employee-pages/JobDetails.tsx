@@ -73,7 +73,6 @@ export default function JobDetails({jobId, close}: IjobDetails) {
                jobId: jobId,
                jobtype: jobType,
                date: date,
-
                jobStatus: jobStatus,
                squareMeters: squareMeters,
                paymentOption: paymentOption,

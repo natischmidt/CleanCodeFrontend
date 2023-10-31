@@ -3,17 +3,19 @@ import React from "react";
 interface ButtonConfig {
     label: string | React.ReactElement
     action: (id: number, date: Date) => void
+    style?: React.CSSProperties
 }
 interface Column {
     key: string
     title: string
+
 }
 interface Props {
     columns: Column[]
     data: any[]
     buttons: ButtonConfig[]
 }
-const AnotherTable: React.FC<Props> = ({columns, data, buttons}) => {
+const TableJobId: React.FC<Props> = ({columns, data, buttons}) => {
     return (
         <table className="data-table" style={styles.dataTable}>
             <thead>
@@ -27,13 +29,13 @@ const AnotherTable: React.FC<Props> = ({columns, data, buttons}) => {
             {data.map((item, index) => (
                 <tr key={index}>
                     {columns.map((column) => (
-                        <td key={column.key}>{item[column.key]}</td>
+                        <td key={column.key} style={styles.tableCell}>{item[column.key]}</td>
                     ))}
-                    <td>
+                    <td style={styles.td}>
                         {buttons.map((button, buttonIndex) => (
                             <button
                                 key={buttonIndex}
-                                style={styles[button.label as keyof typeof styles]}
+                                style={{ ...styles.btn, ...button.style }}
                                 onClick={() => button.action(item.jobId, item.date)}
                             >
                                 {button.label}
@@ -47,9 +49,14 @@ const AnotherTable: React.FC<Props> = ({columns, data, buttons}) => {
     )
 }
 
-export default AnotherTable
+export default TableJobId
 
 const styles = {
+    td: {
+        display: "flex",
+        flexDirection: "row" as "row",
+        margin: 2
+    },
     dataTable: {
         // marginLeft: "23%",
         backgroundColor: "#a1decc",
@@ -66,5 +73,20 @@ const styles = {
     },
     label: {
         backgroundColor: "#33f80a",
-    }
+    },
+    btn: {
+        display: "flex",
+        width: "5rem",
+        height: "2.5rem",
+        alignItems: "center" as "center",
+        textAlign: "center" as "center",
+        justifyContent: "center",
+        boxShadow: '0 0 5px rgba(0, 0, 0, 1)',
+        margin: 5
+    },
+    tableCell: {
+        border: '1px solid #729ca890',
+        margin: 33 // pls fix
+        // borderRadius: "0.5rem",
+    },
 }

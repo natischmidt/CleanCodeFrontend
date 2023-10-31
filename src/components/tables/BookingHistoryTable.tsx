@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import Table from "./Table";
+import TableId from "./TableId";
 import admin from "../../API/admin";
 
 const BookingHistoryTable = () => {
@@ -32,6 +32,7 @@ const BookingHistoryTable = () => {
         { key: 'customerId', title: 'Customer Id' },
     ];
 
+/*
     const handleDelete = (id: number | undefined) => {
         console.log(id)
     };
@@ -39,17 +40,19 @@ const BookingHistoryTable = () => {
     const handleUpdate = (id: number | undefined) => {
         console.log(id)
     };
+*/
 
 
 
     return (
         <div className="booking-table" style={styles.bookingTable}>
-            <Table
+            <TableId
                 columns={columns}
                 data={historyData}
-                onDelete={handleDelete}
-                onUpdate={handleUpdate}
-            />;
+                buttons={[
+
+                ]}
+            />
         </div>
     )
 }

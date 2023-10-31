@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import AnotherTable from "./AnotherTable";
+import TableJobId from "./TableJobId";
 import ThumbsDown from  "../../assets/ThumbsDown.png"
 import ThumbsUp from "../../assets/ThumbsUp.png"
 interface CustomerOkOrNotTableProps {
@@ -71,7 +71,7 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
     return (
         <div>
 
-            <AnotherTable
+            <TableJobId
                 columns={[
                     { key: 'jobtype', title: 'Job Type' },
                     { key: 'date', title: 'Date' },
