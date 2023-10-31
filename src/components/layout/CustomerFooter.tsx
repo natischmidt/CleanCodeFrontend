@@ -5,9 +5,9 @@ const styles = {
     footer: {
         backgroundColor: '#a0c1cc',
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-        display: 'flex',
-        alignItems: 'right',
-        position: 'fixed',
+        display: 'flex' as 'flex',
+        alignItems: 'right' as 'right',
+        position: 'fixed' as 'fixed',
         width: '100%',
         height: '8rem',
         justifyContent: 'flex-end',
@@ -20,7 +20,7 @@ const styles = {
         marginLeft: '10px',
     },
     subCategory: {
-        display: 'flex',
+        display: 'flex' as 'flex',
         listStyle: 'none',
         padding: 0,
         margin: -0,

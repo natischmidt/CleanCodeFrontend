@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import TableJobId from "./TableJobId";
-import ThumbsDown from  "../../assets/ThumbsDown.png"
+import ThumbsDown from "../../assets/ThumbsDown.png"
 import ThumbsUp from "../../assets/ThumbsUp.png"
+
 interface CustomerOkOrNotTableProps {
     cusId: string | null;
     change: number
@@ -14,8 +15,10 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
     const [filter, setFilter] = useState('');
 
     // @ts-ignore
-    const filteredCustomerData = theData.filter((customer) =>
-        (filter === '' || customer.jobtype === filter))
+    const filteredCustomerData = theData.filter((customer) => {
+        const {jobtype} = customer;
+        return (filter === '' || jobtype === filter);
+    })
 
     useEffect(() => {
         const fetchData = async () => {

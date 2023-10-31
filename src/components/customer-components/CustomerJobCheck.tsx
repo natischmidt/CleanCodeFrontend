@@ -59,10 +59,10 @@ export default CustomerJobCheck
 
 const styles = {
     row: {
-        display: "flex",
+        display: "flex" as "flex",
         flexDirection: "row" as "row",
         justifyContent: "left" as "left",
-        textAlign: "center",
+        textAlign: "center" as "center",
     },
     cols: {
         display: 'flex',
@@ -71,8 +71,8 @@ const styles = {
     },
     p: {
         fontSize: "1.5rem",
-        fontWeight: "bold",
-        textAlign: 'left',
+        fontWeight: "bold" as "bold",
+        textAlign: 'left' as 'left'
     },
     test: {
         marginTop: '-7rem',

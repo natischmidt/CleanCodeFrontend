@@ -14,8 +14,10 @@ const CustomerComingJobsHistoryTable: React.FC<CustomerComingJobsHistoryTablePro
     const [filter, setFilter] = useState('');
 
     // @ts-ignore
-    const filteredCustomerData = theData.filter((customer) =>
-        (filter === '' || customer.jobStatus === filter))
+    const filteredCustomerData = theData.filter((customer) => {
+        const {jobStatus} = customer;
+        return (filter === '' || jobStatus === filter);
+    })
 
     useEffect(() => {
         const fetchData = async () => {

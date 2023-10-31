@@ -14,8 +14,10 @@ const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId,
     const [filter, setFilter] = useState('');
 
     // @ts-ignore
-    const filteredCustomerData = theData.filter((customer) =>
-        (filter === '' || customer.jobtype === filter))
+    const filteredCustomerData = theData.filter((customer) => {
+        const {jobtype} = customer;
+        return (filter === '' || jobtype === filter);
+    })
 
     useEffect(() => {
         const fetchData = async () => {

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import TableJobId from "./TableJobId";
 import {useNavigate} from "react-router-dom";
+
 interface CustomerKlarnaPayProps {
     cusId: string | null;
     change: number
@@ -15,8 +16,10 @@ const CustomerKlarnaPayTable: React.FC<CustomerKlarnaPayProps> =  ({cusId, chang
     const [filter, setFilter] = useState('');
 
     // @ts-ignore
-    const filteredCustomerData = theData.filter((customer) =>
-        (filter === '' || customer.jobtype === filter))
+    const filteredCustomerData = theData.filter((customer) => {
+        const {jobtype} = customer;
+        return (filter === '' || jobtype === filter);
+    })
 
     useEffect(() => {
         const fetchData = async () => {
@@ -49,6 +52,7 @@ const CustomerKlarnaPayTable: React.FC<CustomerKlarnaPayProps> =  ({cusId, chang
 
     return (
         <div>
+            pp
             <div style={styles.filter}>
                 Filter by jobtype
                 <select
