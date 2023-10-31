@@ -8,37 +8,49 @@ import KlarnaModalPayment from "../../klarna/KlarnaModalPayment";
 
 const CustomerJobCheck = () => {
 
-    const { id } = useUserType();
+    const {id} = useUserType();
     const [change, setChange] = useState(0)
     const [showBasicKlarna, setShowBasicKlarna] = useState(false)
     const [selectedJobId, setSelectedJobId] = useState<number | null>(null);
 
 
-    const showKlarna = (id : number) => {
+    const showKlarna = (id: number) => {
         setShowBasicKlarna(true)
     }
-
     return (
-        <div className="checkCont" style={styles.check}>
+        <div className="checkCont">
             {!showBasicKlarna ?
-                <div style={styles.check}>
-                <CustomerComingJobsTable cusId={id} change={change} setChange={setChange}/>
-                <p style={styles.p}>Finished</p>
-                <CustomerApprovalTable cusId={id} change={change} setChange={setChange}/>
-                <p style={styles.p}>Ready to pay</p>
-                <CustomerKlarnaPayTable cusId={id} change={change} setChange={setChange} showKlarna={ (jobId: number) => {
-                    setSelectedJobId(jobId)
-                    setShowBasicKlarna(true)
-                }}/>
-                 <p style={styles.p}>History</p>
-                <CustomerJobHistoryTable cusId={id} change={change} setChange={setChange}/>
+                <div style={styles.test}>
+                    <div style={styles.row}>
+                        <div style={styles.cols}>
+                            <p style={styles.p}>Upcoming jobs</p>
+                            <CustomerComingJobsTable cusId={id} change={change} setChange={setChange}/>
+                        </div>
+                        <div style={styles.cols}>
+                            <p style={styles.p}>Finished</p>
+                            <CustomerApprovalTable cusId={id} change={change} setChange={setChange}/>
+                        </div>
+                    </div>
+
+                    <div style={styles.row}>
+                        <div style={styles.cols}>
+                            <p style={styles.p}>Ready to pay</p>
+                            <CustomerKlarnaPayTable cusId={id} change={change} setChange={setChange}
+                                                    showKlarna={(jobId: number) => {
+                                                        setSelectedJobId(jobId)
+                                                        setShowBasicKlarna(true)
+                                                    }}/>
+                        </div>
+                        <div style={styles.cols}>
+                            <p style={styles.p}>History</p>
+                            <CustomerJobHistoryTable cusId={id} change={change} setChange={setChange}/>
+
+                        </div>
+                    </div>
                 </div>
-            :
-            <KlarnaModalPayment jobId={selectedJobId} />
+                :
+                <KlarnaModalPayment jobId={selectedJobId}/>
             }
-
-
-
         </div>
     )
 }
@@ -46,14 +58,23 @@ const CustomerJobCheck = () => {
 export default CustomerJobCheck
 
 const styles = {
-    check: {
+    row: {
         display: "flex",
-        flexDirection: "column" as "column",
-        justifyContent: "center" as "center",
-        alignItems: "center" as "center",
+        flexDirection: "row" as "row",
+        justifyContent: "left" as "left",
+        textAlign: "center",
+    },
+    cols: {
+        display: 'flex',
+        flexDirection: 'column' as 'column',
+        width: "50rem",
     },
     p: {
         fontSize: "2rem",
-        fontWeight: "bold"
+        fontWeight: "bold",
+        textAlign: 'left',
+    },
+    test: {
+        marginTop: '-60px',
     }
 }

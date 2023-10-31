@@ -59,7 +59,7 @@ const styles = {
     },
     dataTable: {
         // marginLeft: "23%",
-        backgroundColor: "#a1decc",
+        backgroundColor: "#b3d9e3",
         borderRadius: "5px",
         padding: "15px",
         marginTop: "3%"

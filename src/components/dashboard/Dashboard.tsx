@@ -132,7 +132,7 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
                                     {userType === 'admin'
                                         ? 'All upcoming bookings'
                                         : userType === 'customer'
-                                            ? 'Upcoming bookings'
+                                            ? ''
                                             : 'My Upcoming Shifts'}
                                 </div>
                                 <div className="section-content">
