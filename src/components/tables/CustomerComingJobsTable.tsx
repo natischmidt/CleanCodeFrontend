@@ -11,6 +11,11 @@ const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId,
 
     const [theData, setTheData] = useState([])
    // const [theDate, setTheDate] = useState<string>("")
+    const [filter, setFilter] = useState('');
+
+    // @ts-ignore
+    const filteredCustomerData = theData.filter((customer) =>
+        (filter === '' || customer.jobtype === filter))
 
     useEffect(() => {
         const fetchData = async () => {
@@ -59,6 +64,20 @@ const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId,
 
     return (
         <div>
+            <div style={styles.filter}>
+                Filter by jobtype
+                <select
+                    value={filter}
+                    onChange={(e) => setFilter(e.target.value)}
+                    style={{marginLeft: '0.5rem'}}
+                >
+                    <option value="">All</option>
+                    <option value="BASIC">BASIC</option>
+                    <option value="ADVANCED">ADVANCED</option>
+                    <option value="DIAMOND">DIAMOND</option>
+                    <option value="WINDOW">WINDOW</option>
+                </select>
+            </div>
             <TableJobId
                 columns={[
                     { key: 'jobId', title: 'Job ID' },
@@ -68,7 +87,7 @@ const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId,
                     { key: 'jobStatus', title: 'Job Status' },
                     { key: 'squareMeters', title: 'Square Meters' },
                 ]}
-                data={theData}
+                data={filteredCustomerData}
                 buttons={[
                     { label: 'Cancel', action: (jobId, date) => {handleCancel(jobId, date)},  style:styles.cancel },
                 ]}
@@ -82,5 +101,7 @@ const styles = {
     cancel: {
         backgroundColor: "#f83f3f",
     },
-
+    filter: {
+        textAlign: "left" as 'left',
+    }
 }

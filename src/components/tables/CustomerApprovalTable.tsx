@@ -11,7 +11,11 @@ interface CustomerOkOrNotTableProps {
 const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, change, setChange}) => {
 
     const [theData, setTheData] = useState([])
+    const [filter, setFilter] = useState('');
 
+    // @ts-ignore
+    const filteredCustomerData = theData.filter((customer) =>
+        (filter === '' || customer.jobtype === filter))
 
     useEffect(() => {
         const fetchData = async () => {
@@ -70,7 +74,20 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
 
     return (
         <div>
-
+            <div style={styles.filter}>
+                Filter by jobtype
+                <select
+                    value={filter}
+                    onChange={(e) => setFilter(e.target.value)}
+                    style={{marginLeft: '0.5rem'}}
+                >
+                    <option value="">All</option>
+                    <option value="BASIC">BASIC</option>
+                    <option value="ADVANCED">ADVANCED</option>
+                    <option value="DIAMOND">DIAMOND</option>
+                    <option value="WINDOW">WINDOW</option>
+                </select>
+            </div>
             <TableJobId
                 columns={[
                     { key: 'jobtype', title: 'Job Type' },
@@ -79,14 +96,13 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
                     { key: 'jobStatus', title: 'Job Status' },
                     { key: 'squareMeters', title: 'Square Meters' },
                 ]}
-                data={theData}
+                data={filteredCustomerData}
                 buttons={[
                     { label: <img src={ThumbsUp} alt="Thumbs Up" style={styles.thumbsBtn} />, action: (id) => {handleOk(id)} },
                     { label: <img src={ThumbsDown} alt="Thumbs Down" style={styles.thumbsBtn} />, action: (id) => {handleNotOk(id)} }
 
                 ]}
             />
-
         </div>
 
     )
@@ -97,5 +113,8 @@ const styles = {
     thumbsBtn: {
         width: 20,
         height: 20
+    },
+    filter: {
+        textAlign: "left" as 'left',
     }
 }

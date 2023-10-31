@@ -1,14 +1,21 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import TableJobId from "./TableJobId";
+
 interface CustomerComingJobsHistoryTableProps {
     cusId: string | null;
     change: number
     setChange: React.Dispatch<React.SetStateAction<number>>
 }
-const CustomerComingJobsHistoryTable: React.FC<CustomerComingJobsHistoryTableProps> = ({cusId, change, setChange }) => {
+
+const CustomerComingJobsHistoryTable: React.FC<CustomerComingJobsHistoryTableProps> = ({cusId, change, setChange}) => {
 
     const [theData, setTheData] = useState([])
+    const [filter, setFilter] = useState('');
+
+    // @ts-ignore
+    const filteredCustomerData = theData.filter((customer) =>
+        (filter === '' || customer.jobStatus === filter))
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,20 +45,37 @@ const CustomerComingJobsHistoryTable: React.FC<CustomerComingJobsHistoryTablePro
 
     return (
         <div>
+            <div style={styles.filter}>
+                Filter by jobstatus
+                <select
+                    value={filter}
+                    onChange={(e) => setFilter(e.target.value)}
+                    style={{marginLeft: '0.5rem'}}
+                >
+                    <option value="">All</option>
+                    <option value="CANCELLED">CANCELLED</option>
+                    <option value="PAID">PAID</option>
+                </select>
+            </div>
             <TableJobId
                 columns={[
-                    { key: 'jobtype', title: 'Job Type' },
-                    { key: 'date', title: 'Date' },
-                    { key: 'timeSlot', title: 'Time Slot' },
-                    { key: 'jobStatus', title: 'Job Status' },
-                    { key: 'squareMeters', title: 'Square Meters' },
+                    {key: 'jobtype', title: 'Job Type'},
+                    {key: 'date', title: 'Date'},
+                    {key: 'timeSlot', title: 'Time Slot'},
+                    {key: 'jobStatus', title: 'Job Status'},
+                    {key: 'squareMeters', title: 'Square Meters'},
                 ]}
-                data={theData}
-                buttons={[
-
-                ]}
+                data={filteredCustomerData}
+                buttons={[]}
             />
         </div>
     )
 }
+
 export default CustomerComingJobsHistoryTable
+
+const styles = {
+    filter: {
+        textAlign: "left" as 'left',
+    }
+}

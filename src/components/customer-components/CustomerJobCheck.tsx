@@ -70,11 +70,11 @@ const styles = {
         width: "50rem",
     },
     p: {
-        fontSize: "2rem",
+        fontSize: "1.5rem",
         fontWeight: "bold",
         textAlign: 'left',
     },
     test: {
-        marginTop: '-60px',
+        marginTop: '-7rem',
     }
 }
