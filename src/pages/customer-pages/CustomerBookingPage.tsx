@@ -24,8 +24,8 @@ export default function CustomerBookingPage() {
 
 const styles = {
     container: {
-        display: "flex",
-        flexDirection: "column",
+        display: "flex" as "flex",
+        flexDirection: "column" as "column",
         height: "100vh", // 100% of the viewport height
     },
     header: {
@@ -35,7 +35,7 @@ const styles = {
     middle: {
         flex: "76%", // Takes 60% of the container's height
         backgroundColor: "#f0f0f0", // Add background color for clarity
-        overflowY: "auto",
+        overflowY: "auto" as "auto",
     },
     footer: {
         flex: "12%", // Takes 20% of the container's height

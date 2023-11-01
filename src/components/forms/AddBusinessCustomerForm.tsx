@@ -165,7 +165,8 @@ const styles = {
         borderRadius: '5px',
         backgroundColor: '#b3d9e3',
         width: "500px",
-        marginTop: '1.5%'
+        marginTop: '2%',
+        marginBottom: "2%"
     },
     input: {
         marginTop: '10px',
@@ -173,6 +174,8 @@ const styles = {
         padding: '10px',
         width: '75%',
         borderRadius: '5px',
+        fontFamily: "PlomPraeng",
+        fontSize: "1rem"
     },
     button: {
         padding: '10px 20px',

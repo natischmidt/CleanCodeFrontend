@@ -107,8 +107,8 @@ const styles = {
         justifyContent: 'space-between',
         alignItems: 'center',
         flexWrap: 'wrap' as 'wrap',
-        fontFamily: 'Dumpling',
-        fontSize: "1.2rem"
+        // fontFamily: 'Childos',
+        // fontSize: "1.2rem"
     },
     logo: {
         maxWidth: '200px',

@@ -106,7 +106,8 @@ const styles = {
         marginBottom: '15px',
         padding: '10px',
         width: '85%',
-        fontSize: '1.2rem',
+        fontSize: '1rem',
+        fontFamily: "PlomPraeng"
     },
     button: {
         padding: '13px 25px',

@@ -103,6 +103,7 @@ const UpdateBookingForm: React.FC = () => {
                 />
                 <select
                     value={role}
+                    style={styles.input}
                     onChange={(e) => setRole(e.target.value)}
                 >
                     <option value="PrivateCustomer">Private</option>
@@ -143,8 +144,9 @@ const styles = {
         marginBottom: '15px',
         padding: '15px',
         width: '75%',
-        fontSize: '1.2rem',
         borderRadius: '5px',
+        fontFamily: "PlomPraeng",
+        fontSize: "1rem"
     },
     button: {
         padding: '13px 25px',

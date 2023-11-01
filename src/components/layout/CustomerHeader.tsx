@@ -57,6 +57,7 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
     const {loggedIn, setLoggedIn, setUserType, setId} = useUserType();
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+    const goToHome = useNavigate()
 
     const handleLoginClick = () => {
         setIsLoginModalOpen(true)
@@ -72,6 +73,7 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
         e.preventDefault();
         setLoggedIn(false);
         customer.logout();
+        goToHome("/CustomerHome")
     };
 
     const closeLoginModal = () => {

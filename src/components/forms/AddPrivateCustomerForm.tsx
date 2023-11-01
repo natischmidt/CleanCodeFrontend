@@ -147,7 +147,8 @@ const styles = {
         backgroundColor: '#b3d9e3',
         width: "500px",
         // height: '630px',
-        marginTop: '4%'
+        marginTop: '2%',
+        marginBottom: "2%"
     },
     input: {
         marginTop: '10px',
@@ -155,6 +156,8 @@ const styles = {
         padding: '10px',
         width: '75%',
         borderRadius: '5px',
+        fontFamily: "PlomPraeng",
+        fontSize: "1rem"
     },
     button: {
         padding: '10px 20px',
