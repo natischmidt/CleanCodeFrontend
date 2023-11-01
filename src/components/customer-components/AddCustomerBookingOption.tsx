@@ -601,6 +601,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         alignItems: 'center',
         textAlign: 'center',
         fontSize: "0.9rem",
+        marginTop: "5rem"
     },
     form: {
         display: 'flex',
