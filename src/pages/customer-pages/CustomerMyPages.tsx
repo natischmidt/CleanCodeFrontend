@@ -16,10 +16,10 @@ export const CustomerMyPages: React.FC = () => {
         SSnumber: "", phoneNumber: "",
     });
 
-    const selectedStyles = userType === "Customer" ? customerStyles : {};
+    const selectedStyles = userType === "CUSTOMER" ? customerStyles : {};
 
     useEffect(() => {
-        if (userType === "Customer" && id) {
+        if (userType === "CUSTOMER" && id) {
             customer.fetchData(id)
                 .then((data) => {
                     setUserData(data);

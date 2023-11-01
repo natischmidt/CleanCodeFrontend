@@ -11,7 +11,7 @@ import employee from "../../API/employee";
 export default function EmployeeHomePage() {
 
     const {userType, id} = useUserType();
-    const selectedStyles = userType === "Employee" ? employeeStyles : {};
+    const selectedStyles = userType === "EMPLOYEE" ? employeeStyles : {};
     const [firstname, setFirstname] = useState("")
     const [lastname, setLastname] = useState("")
     const [email, setEmail] = useState("")
