@@ -60,40 +60,44 @@ export const CustomerTable: React.FC<customerTableProps> = ({onUpdate}) => {
     //style={styles.container}
     return (
         <>
-
-            <div >
-                <div style={styles.filterContainer}>
-                    <div>
-                        Search by lastname:
-                        <input
-                            typeof="text"
-                            value={searchUser}
-                            style={{width: '6rem', marginLeft: '0.5rem'}}
-                            onChange={(e) => setSearchUser(e.target.value)}/>
-                    </div>
-                    <div>
-                        Filter by type
-                        <select
-                            value={myFilter}
-                            onChange={(e) => setMyFilter(e.target.value)}
-                            style={{marginLeft: '0.5rem'}}
-                        >
-                            <option value="">All</option>
-                            <option value="PRIVATE">Private</option>
-                            <option value="BUSINESS">Business</option>
-                        </select>
-                    </div>
+            <div style={styles.filterContainer}>
+                <div>
+                    Search by lastname:
+                    <input
+                        typeof="text"
+                        value={searchUser}
+                        style={{width: '6rem', marginLeft: '0.5rem'}}
+                        onChange={(e) => setSearchUser(e.target.value)}/>
                 </div>
-                <div className="customer-table" style={styles.customerTable}>
-
-                    <TableId columns={columns}
-                             data={filteredCustomerData}
-                             buttons={[
-                                 {label: "Update", action:(id) => {handleUpdate(id)},  style:styles.update},
-                                 {label: "Delete", action: (id) => {handleDelete(id)}, style:styles.delete},
-                             ]}
-                    />
+                <div>
+                    Filter by type
+                    <select
+                        value={myFilter}
+                        onChange={(e) => setMyFilter(e.target.value)}
+                        style={{marginLeft: '0.5rem'}}
+                    >
+                        <option value="">All</option>
+                        <option value="PRIVATE">Private</option>
+                        <option value="BUSINESS">Business</option>
+                    </select>
                 </div>
+            </div>
+            <div className="customer-table" style={styles.customerTable}>
+                <TableId columns={columns}
+                         data={filteredCustomerData}
+                         buttons={[
+                             {
+                                 label: "Update", action: (id) => {
+                                     handleUpdate(id)
+                                 }, style: styles.update
+                             },
+                             {
+                                 label: "Delete", action: (id) => {
+                                     handleDelete(id)
+                                 }, style: styles.delete
+                             },
+                         ]}
+                />
             </div>
         </>
     );

@@ -22,7 +22,8 @@ interface DashboardProps {
     }
 }
 
-const Dashboard: React.FC<DashboardProps> = ({userType}) => {
+const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
+    const lala = userData.address;
     const userTypeContext = useContext(UserTypeContext);
     const id = userTypeContext?.id;
     const contextUserType = userTypeContext?.userType;
@@ -30,7 +31,7 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
     const [showSalary, setShowSalary] = useState(false)
     const [workedHours, setWorkedHours] = useState(0)
     const [hourlySalary, setHourlySalary] = useState(0)
-    const [userData, setUserData] = useState({
+    const [data, setData] = useState({
         firstName: "",
         lastName: "",
         email: "",
@@ -41,6 +42,7 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
         SSnumber: "",
         phoneNumber: "",
     });
+    const [username, setUsername] = useState('');
 
     useEffect(() => {
         if (contextUserType && id) {
@@ -48,11 +50,15 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
             if (contextUserType === "EMPLOYEE" || contextUserType === "ADMIN") {
                 fetchEmployeeData(id).then((data) => {
                     // @ts-ignore
-                    setUserData(data);
+                    setData(data);
                     console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%", data)
-                    console.log(userData.firstName)
+                    setUsername(data.firstName + " " +data.lastName)
                 });
             }
+            // else if(contextUserType === "Customer"){
+            //     console.log("OHHH" +userData.lastName);
+            //     setUsername(userData.firstName + " " +userData.lastName)
+            // }
         }
 
     }, [id, contextUserType]);
@@ -119,7 +125,7 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
                             {/*    Today's Date and Time*/}
                             {/*</div>*/}
                             <div className="section-content">
-                                <div>Welcome!</div>
+                                <div>Welcome {username}! </div>
                                 <div>Today's Date: {new Date().toLocaleDateString()}</div>
                                 <div>Time: {time.toLocaleTimeString()}</div>
                             </div>
@@ -149,14 +155,14 @@ const Dashboard: React.FC<DashboardProps> = ({userType}) => {
                                     My personal information
                                 </div>
                                 <div className="section-content" style={styles.personalInformationDiv}>
-                                    <div>{userData.firstName} {userData.lastName}</div>
+                                    <div>{data.firstName} {data.lastName}</div>
 
-                                    <div>{userData.email}</div>
-                                    {userData.address !== '' ? <div>{userData.address}</div> : <></>}
-                                    {/*{userData.SSnumber !== '' ? <div>Social Security Number: {userData.SSnumber}</div> : <></>}*/}
-                                    <div>{userData.postalCode}</div>
-                                    <div>{userData.city}</div>
-                                    <div>{userData.phoneNumber}</div>
+                                    <div>{data.email}</div>
+                                    {data.address !== '' ? <div>{data.address}</div> : <></>}
+                                    {/*{data.SSnumber !== '' ? <div>Social Security Number: {data.SSnumber}</div> : <></>}*/}
+                                    <div>{data.postalCode}</div>
+                                    <div>{data.city}</div>
+                                    <div>{data.phoneNumber}</div>
                                     {!showSalary ?
                                     <div
                                         onClick={() => goToSalary()}>

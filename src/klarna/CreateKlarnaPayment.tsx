@@ -34,7 +34,7 @@ const CreateKlarnaPayment: React.FC<editKlarnaProps> = ({jobId, doneWithEdit}) =
             </div>
             <div className="klarnaCont" style={styles.klarnaCont2}>
                 <button type="button" style={styles.button} onClick={doneWithEdit} >
-                    Go Back
+                    Go back
                 </button>
             </div>
         </div>
