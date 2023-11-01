@@ -16,7 +16,7 @@ export const LoginModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     }
 
     const handleLogin = async (email: string, password: string) => {
-        customer.login(email, password, setUserType, setId, goToHomePage, setLoggedIn);
+        await customer.login(email, password, setUserType, setId, goToHomePage, setLoggedIn);
     }
 
     return (
@@ -44,7 +44,7 @@ export const LoginModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                         Login
                     </button>
                     <button type="submit" style={styles.button} onClick={onClose}>
-                        Go Back
+                        Go back
                     </button>
                 </form>
             </div>

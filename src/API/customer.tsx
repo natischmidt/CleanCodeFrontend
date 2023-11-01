@@ -111,6 +111,7 @@ const customer = {
                 setUserType("CUSTOMER");
                 setId(resp.userId);
                 goToHomePage(`/CustomerMyPages`);
+                console.log("***" + email);
                 setLoggedIn(true);
                 sessionStorage.setItem("jwt", resp.jwt)
             } else {
