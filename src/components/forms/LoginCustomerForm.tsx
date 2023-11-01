@@ -26,7 +26,7 @@ const LoginCustomerForm = () => {
 
             if (response) {
 
-                setUserType("Customer") // sätter det i context + att detta kan dra sig, nån får fixa :))
+                setUserType("CUSTOMER") // sätter det i context + att detta kan dra sig, nån får fixa :))
                 setId(response.userId)
                 goToHomePage(`/CustomerHome`)
             } else {

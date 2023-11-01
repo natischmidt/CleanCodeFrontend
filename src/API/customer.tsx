@@ -91,11 +91,8 @@ const customer = {
         }
     },
 
-    login: async (email: string, password: string, setUserType:
-                      (value: "Admin" | "Customer" | "Employee" | null) => void,
-                  setId: (id: string) => void, goToHomePage:
-                      (path: string) => void, setLoggedIn:
-                      (loggedIn: boolean) => void) => {
+    login: async (email: string, password: string, setUserType: (value: (((prevState: ("ADMIN" | "CUSTOMER" | "EMPLOYEE" | null)) => ("ADMIN" | "CUSTOMER" | "EMPLOYEE" | null)) | "ADMIN" | "CUSTOMER" | "EMPLOYEE" | null)) => void,
+                  setId: (id: string) => void, goToHomePage: (path: string) => void, setLoggedIn: (loggedIn: boolean) => void) => {
 
         try {
             const url = 'http://localhost:8080/api/auth/loginCustomer';
