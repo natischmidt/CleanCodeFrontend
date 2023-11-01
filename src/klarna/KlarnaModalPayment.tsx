@@ -1,16 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import KlarnaCheckout from './KlarnaCheckout';
 import axios from "axios";
-interface KlarnaModalPaymentProp {
+import {useParams} from "react-router-dom";
+/*interface KlarnaModalPaymentProp {
     jobId: number | null
-}
+}*/
 
 interface OrderDetails {
     name: string;
     ordAmout: number;
     taxAmout: number;
 }
-const KlarnaModalPayment: React.FC<KlarnaModalPaymentProp> = ({jobId}) => {
+
+//const KlarnaModalPayment: React.FC<KlarnaModalPaymentProp> = ({jobId}) => {
+const KlarnaModalPayment: React.FC = () => {
+    const { jobId } = useParams<{ jobId: string }>();
     const [htmlSnippet, setHtmlSnippet] = useState("");
     const [orderDetails, setOrderDetails] = useState<OrderDetails>({
         name: "" ,
@@ -25,7 +29,7 @@ const KlarnaModalPayment: React.FC<KlarnaModalPaymentProp> = ({jobId}) => {
                 try {
                     const url = `http://localhost:8080/api/jobs/getJob`;
                     const headers = {
-                        'jobId': jobId.toString(),
+                        'jobId': jobId?.toString(),
                     };
                     const response = await axios.get(url, { headers });
                     const data = response.data;
@@ -79,7 +83,7 @@ const KlarnaModalPayment: React.FC<KlarnaModalPaymentProp> = ({jobId}) => {
                     "merchant_urls": {
                         "terms": "https://www.example.com/terms.html",
                         "checkout": "https://www.example.com/checkout.html?order_id={checkout.order.id}",
-                        "confirmation": "https://localhost:5173/KlarnaConfirmation?order_id={checkout.order.id}",
+                        "confirmation": `https://localhost:5173/KlarnaConfirmation/${jobId}`,
                         "push": "https://www.example.com/api/push?order_id={checkout.order.id}"
                     }
                 };

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import TableJobId from "./TableJobId";
 import {useNavigate} from "react-router-dom";
+import customer from "../../API/customer";
 
 interface CustomerKlarnaPayProps {
     cusId: string | null;
@@ -23,24 +24,15 @@ const CustomerKlarnaPayTable: React.FC<CustomerKlarnaPayProps> =  ({cusId, chang
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                console.log(`Fetching data for cusId: ${cusId}`);
-
-                const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForCustomerWithStatus/${cusId}`, {
-                    params: {
-                        statuses: ["PROCESSING"]
-                    },
-                    paramsSerializer: params => { // dessa 3 rader för att det ska gå, formaterar det rätt i URLN, tar bort []
-                        return `statuses=${params.statuses.join('&statuses=')}`
-                    }
-                });
-
-                if (response.status === 200 || response.status === 201) {
-                    setTheData(response.data)
+            if (cusId){
+                try {
+                    const data = await customer.fetchJobsForCustomer(cusId, ["PROCESSING"]);
+                    setTheData(data);
+                } catch (error) {
+                    console.log("An error occurred:", error);
                 }
-            } catch (error) {
-                console.log("nått hände:( asdddd", error)
             }
+
         };
 
         fetchData()

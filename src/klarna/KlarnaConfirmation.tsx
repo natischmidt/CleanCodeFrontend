@@ -1,16 +1,43 @@
-import React, {useContext, useEffect} from "react";
-import KlarnaModalContext from "./KlarnaModalContext";
+import React, {useEffect} from "react";
+import {useLocation,useParams} from "react-router-dom";
+import customer from "../API/customer";
+import employee from "../API/employee";
+
+
 
 function KlarnaConfirmation() {
 
-
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const { jobId } = useParams<{jobId: string}>();
+    const parsedJobId = Number(jobId)
 
     useEffect(() => {
-
-    }, []);
+        const updateStatus = async () => {
+            if (jobId){
+                try {
+                    const r = await employee.getJob(parsedJobId);
+                    const dataToSend = {
+                        jobId: r.jobId,
+                        jobtype: r.jobtype,
+                        date: r.date,
+                        jobStatus: "PAID",
+                        squareMeters: r.squareMeters,
+                        paymentOption: r.paymentOption,
+                        message: r.message,
+                        customerId: r.customerId
+                    };
+                    await employee.updateJobStatus(dataToSend);
+                } catch (error) {
+                    console.error("Det gick inte... ", error);
+                }
+            }
+        }
+        updateStatus()
+    }, [jobId]);
 
     const handleClose = () => {
-
+        window.parent.postMessage("navigateToCustomerMyPages", "*");
     }
 
     return (

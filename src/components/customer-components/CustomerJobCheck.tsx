@@ -5,7 +5,7 @@ import {useUserType} from "../context/UserTypeContext";
 import {useState} from "react";
 import CustomerKlarnaPayTable from "../tables/CustomerKlarnaPayTable";
 import KlarnaModalPayment from "../../klarna/KlarnaModalPayment";
-import KlarnaModalContext from "../../klarna/KlarnaModalContext";
+import {useNavigate} from "react-router-dom";
 
 const CustomerJobCheck = () => {
 
@@ -14,14 +14,15 @@ const CustomerJobCheck = () => {
     const [showBasicKlarna, setShowBasicKlarna] = useState(false)
     const [selectedJobId, setSelectedJobId] = useState<number | null>(null);
 
+    const navigate = useNavigate()
+
 
     const showKlarna = (id: number) => {
-        setShowBasicKlarna(true)
+        navigate(`/KlarnaPay/${id}`)
     }
     return (
 
             <div className="checkCont">
-                {!showBasicKlarna ?
                     <div style={styles.test}>
                         <div style={styles.row}>
                             <div style={styles.cols}>
@@ -39,20 +40,15 @@ const CustomerJobCheck = () => {
                                 <p style={styles.p}>Ready to pay</p>
                                 <CustomerKlarnaPayTable cusId={id} change={change} setChange={setChange}
                                                         showKlarna={(jobId: number) => {
-                                                            setSelectedJobId(jobId)
-                                                            setShowBasicKlarna(true)
+                                                            showKlarna(jobId)
                                                         }}/>
                             </div>
                             <div style={styles.cols}>
                                 <p style={styles.p}>History</p>
                                 <CustomerJobHistoryTable cusId={id} change={change} setChange={setChange}/>
-
                             </div>
                         </div>
                     </div>
-                    :
-                    <KlarnaModalPayment jobId={selectedJobId}/>
-                }
             </div>
 
     )

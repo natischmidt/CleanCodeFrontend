@@ -3,6 +3,7 @@ import axios from "axios";
 import TableJobId from "./TableJobId";
 import ThumbsDown from "../../assets/ThumbsDown.png"
 import ThumbsUp from "../../assets/ThumbsUp.png"
+import customer from "../../API/customer";
 
 interface CustomerOkOrNotTableProps {
     cusId: string | null;
@@ -22,23 +23,13 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                console.log(`Fetching data for cusId: ${cusId}`);
-
-                const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForCustomerWithStatus/${cusId}`, {
-                    params: {
-                        statuses: ["DONE"]
-                    },
-                    paramsSerializer: params => { // dessa 3 rader för att det ska gå, formaterar det rätt i URLN, tar bort []
-                        return `statuses=${params.statuses.join('&statuses=')}`
-                    }
-                });
-
-                if (response.status === 200) {
-                    setTheData(response.data)
+            if (cusId) {
+                try {
+                    const data = await customer.fetchJobsForCustomerWithStatus(cusId, ["DONE"]);
+                    setTheData(data);
+                } catch (error) {
+                    console.log("An error occurred:", error);
                 }
-            } catch (error) {
-                console.log("nått hände:( ", error)
             }
         };
 

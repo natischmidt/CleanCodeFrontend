@@ -130,6 +130,59 @@ const customer = {
             throw Error(`Error fetching customer ${error}`);
         }
     },
+    fetchJobsForCustomer: async (customerId: string, status: string[]) => {
+        try {
+            console.log(`Fetching data for cusId: ${customerId}`);
+
+            const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForCustomerWithStatus/${customerId}`, {
+                params: {
+                    statuses: status
+                },
+                paramsSerializer: params => {
+                    return `statuses=${params.statuses.join('&statuses=')}`
+                }
+            });
+
+            if (response.status === 200 || response.status === 201) {
+                return response.data;
+            }
+        } catch (error) {
+            console.error("An error occurred:", error);
+            throw error;
+        }
+    },
+    fetchJobsForCustomerWithStatus: async (customerId: string, status: string[]) => {
+        try {
+            console.log(`Fetching data for cusId: ${customerId}`);
+
+            const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForCustomerWithStatus/${customerId}`, {
+                params: {
+                    statuses: status
+                },
+                paramsSerializer: params => {
+                    return `statuses=${params.statuses.join('&statuses=')}`
+                }
+            });
+
+            if (response.status === 200) {
+                return response.data;
+            }
+        } catch (error) {
+            throw error;
+        }
+    },
+    updateJobStatus: async (jobId: string, newStatus: string) => {
+        try {
+            const response = await axios.put(`http://localhost:8080/api/jobs/updateJob/${jobId}`, {
+                status: newStatus
+            });
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+
 };
 
 export default customer;

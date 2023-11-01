@@ -44,6 +44,7 @@ function Routing() {
                     <Route path="/EmployeeHome" element={<EmployeeHomePage/>}/>
                     <Route path="/Booking" element={<BookingPage/>}/>
                     <Route path="/KlarnaConfirmation/:jobId" element={<KlarnaConfirmation/>}/>
+                    <Route path="/KlarnaPay/:jobId" element={<KlarnaModalPayment />} />
                     {/*<Route path="/klarnatest" element={<TestParentKlarnaComp/>}/>*/}
                     <Route path="/Employees" element={<EmployeePage/>}/>
                     <Route path="/Customers" element={<CustomerPage/>}/>
