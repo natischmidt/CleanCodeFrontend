@@ -52,7 +52,6 @@ const CustomerKlarnaPayTable: React.FC<CustomerKlarnaPayProps> =  ({cusId, chang
 
     return (
         <div>
-            pp
             <div style={styles.filter}>
                 Filter by jobtype
                 <select
