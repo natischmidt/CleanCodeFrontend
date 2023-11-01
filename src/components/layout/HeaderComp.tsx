@@ -41,9 +41,11 @@ export default function HeaderComp() {
     }
 
     const goBackToDashboard = () => {
-        if (userType == "Admin") {
+        console.log("Körs jag?")
+        console.log("TYPE: " + userType);
+        if (userType == "ADMIN") {
             gotoDashBoard(("/AdminHome"))
-        } else if (userType == "Employee") {
+        } else if (userType == "EMPLOYEE") {
             gotoDashBoard(("/EmployeeHome"))
         }
     }
@@ -55,7 +57,11 @@ export default function HeaderComp() {
                     <img id="logo3" src={logo} alt="logo3" style={styles.logo}/>
                 </div>
                 <div className="menuButtons" style={styles.menuButtons}>
-                    <button id="goBackToDashboard" style={styles.btn} onClick={() => goBackToDashboard()}>Home</button>
+                    <button id="Employees" style={styles.btn} onClick={() => {
+                        goBackToDashboard()
+                    }}>Home
+                    </button>
+                    {/*<button id="goBackToDashboard" style={styles.btn} onClick={() => goBackToDashboard()}>Home</button>*/}
                     <button id="Booking" style={styles.btn} onClick={() => {
                         {
                             goToBooking(("/Booking"));
@@ -88,7 +94,7 @@ export default function HeaderComp() {
                 )}
             </div>
         </>
-)
+    )
 }
 
 const styles = {
