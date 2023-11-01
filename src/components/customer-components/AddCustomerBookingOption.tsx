@@ -600,7 +600,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         flexDirection: 'column',
         alignItems: 'center',
         textAlign: 'center',
-        fontSize: "1.2rem",
+        fontSize: "0.9rem",
     },
     form: {
         display: 'flex',
@@ -665,7 +665,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         marginTop: "10%",
     },
     buttonText: {
-        fontSize: '1rem',
+        fontSize: '0.9rem',
         color: "#000000",
     },
     buttonTextContainer: {
