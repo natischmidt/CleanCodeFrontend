@@ -399,6 +399,7 @@ const styles = {
         display: 'flex',
         flexDirection: 'column' as 'column',
         alignItems: 'center',
+        marginTop: "10rem",
     },
     slotsContainer: {
         display: 'flex' as 'flex',
