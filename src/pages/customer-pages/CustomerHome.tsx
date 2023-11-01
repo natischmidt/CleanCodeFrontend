@@ -94,17 +94,16 @@ export const CustomerHomePage: React.FC = () => {
                                 <p style={styles.subText}><br/>Since our founding nearly a century and a half ago, we
                                     have been a reliable partner in cleaning services. We stand for tradition,
                                     experience, and quality, values that have served us and our customers well over
-                                    time.</p>
-                                <p style={styles.subText}><br/>We are not just a cleaning company; we are a part of the
-                                    communities we serve. With a dedicated workforce whose expertise spans several
+                                    time. We are not just a cleaning company; we are a part of the
+                                    communities we serve.</p>
+                                <p style={styles.subText}><br/> With a dedicated workforce whose expertise spans several
                                     decades, we provide not only cleaning services but also security and quality of
                                     life. Our team consists of passionate, experienced, and dedicated employees who are
-                                    masters in their field.</p>
-                                <p style={styles.subText}><br/>Sustainability is not just a buzzword for us; it is part
-                                    of our business philosophy. We use eco-friendly cleaning products and continuously
-                                    work to minimize our ecological footprint. This also means we have efficient work
-                                    processes that not only save time but also resources.</p>
-                                <p style={styles.subText}><br />Our strength lies in our ability to understand our customers' unique needs and offer tailored solutions. We believe that every space, big or small, deserves the best possible care. Whether it's an office, a home, or a commercial space, you can trust Städafint AB to do the job with the utmost care and professionalism.</p>
+                                    masters in their field. Our strength lies in our ability to understand our
+                                    customers' unique needs and offer tailored solutions. We believe that every space,
+                                    big or small, deserves the best possible care. Whether it's an office, a home, or a
+                                    commercial space, you can trust Städafint AB to do the job with the utmost care and
+                                    professionalism.</p>
                                 {/*<p style={styles.subText}><br />Thank you for considering Städafint AB as your partner in cleanliness and sustainability. We look forward to being a part of your everyday life and continuing to set the standard for excellent and sustainable cleaning for generations to come.</p>*/}
                             </div>
                             <div style={styles.bookingSection}>

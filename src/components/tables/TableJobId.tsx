@@ -68,7 +68,7 @@ const styles = {
         backgroundColor: "#f83f3f"
     },
     update: {
-        backgroundColor: "#6e6efc",
+        backgroundColor: "#8e6efc",
         justifyContent: 'space-between'
     },
     label: {

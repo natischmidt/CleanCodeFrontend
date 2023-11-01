@@ -143,13 +143,15 @@ const styles = {
         backgroundColor: '#b3d9e3',
         // width: "600px",
         height: '400px',
+
     },
     input: {
-        marginTop: '25px',
-        marginBottom: '15px',
+        marginTop: '2%',
+        marginBottom: '5%',
         padding: '10px',
         width: '85%',
-        fontSize: '1.2rem',
+        fontFamily: "PlomPraeng",
+        fontSize: "1rem"
     },
     button: {
         padding: '13px 25px',
@@ -158,7 +160,7 @@ const styles = {
         border: 'none',
         borderRadius: '10px',
         cursor: 'pointer',
-        marginTop: '20px',
+        marginTop: '20%',
         fontSize: '1.2rem',
         margin: '5px',
     },

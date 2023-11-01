@@ -8,8 +8,6 @@
   background-color: white;
 }
 @font-face {
-  font-family: 'Dumpling';
-  /*src: url('assets/fonts/Dumpling.otf') format('opentype');*/
-  /*src: url('assets/fonts/Cassandra.otf') format('opentype');*/
-  src: url('assets/fonts/Daring.otf') format('opentype');
+  font-family: 'PlomPraeng';
+  src: url('assets/fonts/PlomPraeng.ttf') format('opentype');
 }

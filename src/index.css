@@ -1,7 +1,8 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "PlomPraeng";
   line-height: 1.5;
   font-weight: 400;
+  font-size: 1.3rem;
 
   color-scheme: light dark;
   color: rgba(239, 239, 239, 0.87);

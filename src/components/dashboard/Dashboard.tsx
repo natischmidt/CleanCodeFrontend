@@ -63,7 +63,7 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
 
     }, [id, contextUserType]);
 
-    const fetchEmployeeData = async (employeeId: string): Promise<DashboardUserData> => {
+    const fetchEmployeeData = async (id: string): Promise<DashboardUserData> => {
         try {
             // @ts-ignore
             const response = await employee.getEmployee(id.toString())
@@ -166,12 +166,13 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
                                     {!showSalary ?
                                     <div
                                         onClick={() => goToSalary()}>
-                                        This months salary: *hidden*
+                                        This months hours worked and earned salary: Click
                                     </div>
                                         :
                                         <div
                                             onClick={() => goToSalary()}>
-                                            You have worked {workedHours} hours this month, which will give you a salary of {workedHours * hourlySalary} kr.
+                                            You have worked: {workedHours} hours this month <br/>
+                                            Your salary this month: {workedHours * hourlySalary} kr.
                                         </div>
                                     }
                                     <div style = {styles.buttonDiv}>
@@ -233,7 +234,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         padding: '10px',
         textAlign: 'center',
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
-        width: "15%",
+        width: "17%",
         height: "80%",
     },
     updatePersonalInformationButton: {

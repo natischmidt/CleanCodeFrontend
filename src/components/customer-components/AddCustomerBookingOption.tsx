@@ -600,7 +600,8 @@ const styles: { [key: string]: React.CSSProperties } = {
         flexDirection: 'column',
         alignItems: 'center',
         textAlign: 'center',
-        fontSize: "1.2rem",
+        fontSize: "0.9rem",
+        marginTop: "5rem"
     },
     form: {
         display: 'flex',
@@ -624,8 +625,8 @@ const styles: { [key: string]: React.CSSProperties } = {
     box: {
         backgroundImage: `url(${diamond})`,
         display: 'flex',
-        width: '15rem',
-        height: '25rem',
+        width: '12rem',
+        height: '18rem',
         border: '3px solid #ccc',
         padding: '2rem',
         margin: '1rem',
@@ -665,7 +666,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         marginTop: "10%",
     },
     buttonText: {
-        fontSize: '1rem',
+        fontSize: '0.9rem',
         color: "#000000",
     },
     buttonTextContainer: {

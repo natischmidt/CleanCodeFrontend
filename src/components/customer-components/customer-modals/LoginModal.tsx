@@ -87,6 +87,8 @@ const styles = {
         padding: '10px',
         width: '75%',
         borderRadius: '5px',
+        fontFamily: "PlomPraeng",
+        fontSize: "1rem"
     },
     button: {
         padding: '10px 20px',

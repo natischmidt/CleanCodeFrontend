@@ -120,7 +120,7 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                 />
                 <select
                     value={jobStatus}
-                    style={styles.input}
+                    style={styles.select}
                     onChange={(e) => setJobStatus(e.target.value)}
                 >
                     <option value="">Choose job status:</option>
@@ -142,18 +142,18 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                 />
                 <select
                     value={paymentOption}
-                    style={styles.input}
+                    style={styles.select}
                     onChange={(e) => setPaymentOption(e.target.value)}
                 >
                     <option value="">Choose payment option:</option>
                     <option value="KLARNA">Klarna</option>
-                    <option value="CASH">Cash</option>
+                    {/*<option value="CASH">Cash</option>*/}
                 </select>
                 <input
                     type="text"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="send a message?"
+                    placeholder="Send a message"
                     style={styles.input}
                 />
 
@@ -194,6 +194,8 @@ const styles = {
         padding: '10px',
         width: '75%',
         borderRadius: '5px',
+        fontFamily: "PlomPraeng",
+        fontSize: "1rem"
     },
     button: {
         padding: '10px 20px',
@@ -204,5 +206,14 @@ const styles = {
         cursor: 'pointer',
         marginTop: '25px',
         width: "200px"
+    },
+    select: {
+        marginTop: '10px',
+        marginBottom: '15px',
+        padding: '10px',
+        width: '80%',
+        borderRadius: '5px',
+        fontFamily: "PlomPraeng",
+        fontSize: "1rem"
     },
 }
