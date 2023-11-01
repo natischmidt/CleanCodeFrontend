@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
-type UserType = "Admin" | "Customer" | "Employee";
+type UserType = "ADMIN" | "CUSTOMER" | "EMPLOYEE";
 type id = string | null
 
 interface UserTypeContextProps {

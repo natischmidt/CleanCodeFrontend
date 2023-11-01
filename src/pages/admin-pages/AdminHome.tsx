@@ -8,7 +8,7 @@ export const AdminHome : React.FC = () => {
     const { userType,id } = useUserType();
 
     const selectedStyles =
-        userType === "Admin" ? adminStyles : {};
+        userType === "ADMIN" ? adminStyles : {};
 
     const testUserData = {
         firstname: 'Test',
