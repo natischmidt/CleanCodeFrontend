@@ -108,7 +108,7 @@ const customer = {
             console.log(resp);
 
             if (response) {
-                setUserType("Customer");
+                setUserType("CUSTOMER");
                 setId(resp.userId);
                 goToHomePage(`/CustomerMyPages`);
                 setLoggedIn(true);

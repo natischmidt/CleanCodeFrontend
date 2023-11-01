@@ -125,7 +125,8 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
                             <li style={styles.link}>
                                 <button style={styles.button} onClick={handleLoginClick}>Log In</button>
                                 <button style={styles.button}
-                                    onClick={handleRegisterClick}>Register
+                                    onClick={handleRegisterClick}>
+                                    Register
                                 </button>
                             </li>
                         </>

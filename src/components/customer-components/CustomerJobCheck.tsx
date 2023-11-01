@@ -5,6 +5,7 @@ import {useUserType} from "../context/UserTypeContext";
 import {useState} from "react";
 import CustomerKlarnaPayTable from "../tables/CustomerKlarnaPayTable";
 import KlarnaModalPayment from "../../klarna/KlarnaModalPayment";
+import KlarnaModalContext from "../../klarna/KlarnaModalContext";
 
 const CustomerJobCheck = () => {
 
@@ -18,40 +19,42 @@ const CustomerJobCheck = () => {
         setShowBasicKlarna(true)
     }
     return (
-        <div className="checkCont">
-            {!showBasicKlarna ?
-                <div style={styles.test}>
-                    <div style={styles.row}>
-                        <div style={styles.cols}>
-                            <p style={styles.p}>Upcoming jobs</p>
-                            <CustomerComingJobsTable cusId={id} change={change} setChange={setChange}/>
+
+            <div className="checkCont">
+                {!showBasicKlarna ?
+                    <div style={styles.test}>
+                        <div style={styles.row}>
+                            <div style={styles.cols}>
+                                <p style={styles.p}>Upcoming jobs</p>
+                                <CustomerComingJobsTable cusId={id} change={change} setChange={setChange}/>
+                            </div>
+                            <div style={styles.cols}>
+                                <p style={styles.p}>Finished</p>
+                                <CustomerApprovalTable cusId={id} change={change} setChange={setChange}/>
+                            </div>
                         </div>
-                        <div style={styles.cols}>
-                            <p style={styles.p}>Finished</p>
-                            <CustomerApprovalTable cusId={id} change={change} setChange={setChange}/>
+
+                        <div style={styles.row}>
+                            <div style={styles.cols}>
+                                <p style={styles.p}>Ready to pay</p>
+                                <CustomerKlarnaPayTable cusId={id} change={change} setChange={setChange}
+                                                        showKlarna={(jobId: number) => {
+                                                            setSelectedJobId(jobId)
+                                                            setShowBasicKlarna(true)
+                                                        }}/>
+                            </div>
+                            <div style={styles.cols}>
+                                <p style={styles.p}>History</p>
+                                <CustomerJobHistoryTable cusId={id} change={change} setChange={setChange}/>
+
+                            </div>
                         </div>
                     </div>
+                    :
+                    <KlarnaModalPayment jobId={selectedJobId}/>
+                }
+            </div>
 
-                    <div style={styles.row}>
-                        <div style={styles.cols}>
-                            <p style={styles.p}>Ready to pay</p>
-                            <CustomerKlarnaPayTable cusId={id} change={change} setChange={setChange}
-                                                    showKlarna={(jobId: number) => {
-                                                        setSelectedJobId(jobId)
-                                                        setShowBasicKlarna(true)
-                                                    }}/>
-                        </div>
-                        <div style={styles.cols}>
-                            <p style={styles.p}>History</p>
-                            <CustomerJobHistoryTable cusId={id} change={change} setChange={setChange}/>
-
-                        </div>
-                    </div>
-                </div>
-                :
-                <KlarnaModalPayment jobId={selectedJobId}/>
-            }
-        </div>
     )
 }
 

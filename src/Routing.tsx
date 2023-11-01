@@ -43,8 +43,8 @@ function Routing() {
                     <Route path="/CustomerBooking" element={<CustomerBookingPage/>}/>
                     <Route path="/EmployeeHome" element={<EmployeeHomePage/>}/>
                     <Route path="/Booking" element={<BookingPage/>}/>
-                    <Route path="/KlarnaConfirmation" element={<KlarnaConfirmation/>}/>
-                    <Route path="/klarnatest" element={<TestParentKlarnaComp/>}/>
+                    <Route path="/KlarnaConfirmation/:jobId" element={<KlarnaConfirmation/>}/>
+                    {/*<Route path="/klarnatest" element={<TestParentKlarnaComp/>}/>*/}
                     <Route path="/Employees" element={<EmployeePage/>}/>
                     <Route path="/Customers" element={<CustomerPage/>}/>
                     <Route path="/GDPR" element={<GDPRPage/>}/>
@@ -56,10 +56,10 @@ function Routing() {
                     <Route path="/CreateNewBooking" element={<CreateNewBooking/>}/>
                     <Route path="/UpdateBookingForm" element={<UpdateBookingForm/>}/>
 
-                    <Route path="/PayForBasic" element={<KlarnaModalPayment />}/>
-                    <Route path="/PayForAdvanced" element={<AdvancedCleanPayment/>}/>
+                  {/*  <Route path="/PayForBasic" element={<KlarnaModalPayment  />}/>*/}
+                  {/*  <Route path="/PayForAdvanced" element={<AdvancedCleanPayment/>}/>
                     <Route path="/PayForWindow" element={<WindowCleanPayment />}/>
-                    {/*<Route path="/CancelBooking" element={<CancelBooking/>}/>*/}
+                    <Route path="/CancelBooking" element={<CancelBooking/>}/>*/}
                     <Route path="/GettingIdNumberForm" element={<GettingIdNumberForm/>}/>
                     <Route path="/CancelWithNumberForm" element={<CancelWithNumberForm/>}/>
                     <Route path="/sec" element={<SecurityFrontTestPage/>}/>
