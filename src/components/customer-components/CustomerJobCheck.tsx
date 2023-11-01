@@ -70,7 +70,7 @@ const styles = {
     cols: {
         display: 'flex',
         flexDirection: 'column' as 'column',
-        width: "50rem",
+        width: "35rem",
     },
     p: {
         fontSize: "1.5rem",

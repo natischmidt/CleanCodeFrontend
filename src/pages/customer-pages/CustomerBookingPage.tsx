@@ -38,7 +38,7 @@ const styles = {
         overflowY: "auto" as "auto",
     },
     footer: {
-        flex: "12%", // Takes 20% of the container's height
+        flex: "8.9%", // Takes 20% of the container's height
         backgroundColor: "#e0e0e0", // Add background color for clarity
     },
 };

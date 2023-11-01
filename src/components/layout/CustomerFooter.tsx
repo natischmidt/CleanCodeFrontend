@@ -23,7 +23,7 @@ const styles = {
         display: 'flex' as 'flex',
         listStyle: 'none',
         padding: 0,
-        margin: -0,
+        margin: -20,
     },
     link: {
         fontWeight: 'bold',
@@ -60,16 +60,6 @@ const CustomerFooter: React.FC = () => {
     return (
         <footer style={styles.footer}>
             <div style={styles.bottomContainer}>
-                {/*<div className="footer-category" style={styles.category}>*/}
-                {/*    <ul style={styles.subCategory}>*/}
-                {/*        <li>*/}
-                {/*            <a href="/AboutUs" style={styles.link}>The team</a>*/}
-                {/*        </li>*/}
-                {/*        <li>*/}
-                {/*            <a href="/Policy" style={styles.link}>Policy</a>*/}
-                {/*        </li>*/}
-                {/*    </ul>*/}
-                {/*</div>*/}
                 <div className="footer-category" style={styles.category}>
                     <ul style={styles.subCategory}>
                         <li><a href="http://www.instagram.com/stadafint" target="_blank">

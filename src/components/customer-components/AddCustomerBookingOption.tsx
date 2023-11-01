@@ -624,8 +624,8 @@ const styles: { [key: string]: React.CSSProperties } = {
     box: {
         backgroundImage: `url(${diamond})`,
         display: 'flex',
-        width: '15rem',
-        height: '25rem',
+        width: '12rem',
+        height: '18rem',
         border: '3px solid #ccc',
         padding: '2rem',
         margin: '1rem',
