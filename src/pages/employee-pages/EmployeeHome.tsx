@@ -49,10 +49,8 @@ export default function EmployeeHomePage() {
 
     return (
         <>
-
             <HeaderComp/>
             <div style={{...selectedStyles}}>
-
                 <Dashboard userType="employee" userData={employeeData} />
             </div>
         </>

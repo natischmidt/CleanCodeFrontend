@@ -264,6 +264,7 @@ const AddCustomerBookingOption = () => {
                                 <div>
                                     <div>
                                         <button
+                                            style={styles.showInfo}
                                             onClick={() => handleExtraInformation(
                                                 "Our 'Basic Cleaning' service provides essential cleaning tasks such as " +
                                                 "surface cleaning, floor care, and bathroom and kitchen maintenance to maintain a " +
@@ -276,7 +277,10 @@ const AddCustomerBookingOption = () => {
                                                 {infoText}
                                                 <div>
                                                     <br/>
-                                                    <button onClick={() => handleJobType("BASIC")}>Book now!</button>
+                                                    <button
+                                                        style={styles.bookNow}
+                                                        onClick={() => handleJobType("BASIC")}>Book now!
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>)}
@@ -289,6 +293,7 @@ const AddCustomerBookingOption = () => {
                                 <div>
                                     <div>
                                         <button
+                                            style={styles.showInfo}
                                             onClick={() => handleExtraInformationAdv(
                                                 "Our 'Advanced Cleaning' service goes beyond the basics, offering a" +
                                                 " comprehensive and deep cleaning experience that includes thorough " +
@@ -303,7 +308,10 @@ const AddCustomerBookingOption = () => {
                                                 {infoTextAdv}
                                                 <div>
                                                     <br/>
-                                                    <button onClick={() => handleJobType("ADVANCED")}>Book now!</button>
+                                                    <button
+                                                        style={styles.bookNow}
+                                                        onClick={() => handleJobType("ADVANCED")}>Book now!
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>)}
@@ -316,6 +324,7 @@ const AddCustomerBookingOption = () => {
                                 <div>
                                     <div>
                                         <button
+                                            style={styles.showInfo}
                                             onClick={() => handleExtraInformationDia(
                                                 "Our 'Diamond Cleaning' service represents the pinnacle of " +
                                                 "cleanliness, providing a top-tier, comprehensive cleaning experience" +
@@ -330,7 +339,10 @@ const AddCustomerBookingOption = () => {
                                                 {infoTextDia}
                                                 <div>
                                                     <br/>
-                                                    <button onClick={() => handleJobType("DIAMOND")}>Book now!</button>
+                                                    <button
+                                                        style={styles.bookNow}
+                                                        onClick={() => handleJobType("DIAMOND")}>Book now!
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>)}
@@ -343,6 +355,7 @@ const AddCustomerBookingOption = () => {
                                 <div>
                                     <div>
                                         <button
+                                            style={styles.showInfo}
                                             onClick={() => handleExtraInformationWin(
 
                                                 "Our 'Window Cleaning' service is dedicated to ensuring" +
@@ -356,7 +369,10 @@ const AddCustomerBookingOption = () => {
                                                 {infoTextWin}
                                                 <div>
                                                     <br/>
-                                                    <button onClick={() => handleJobType("WINDOW")}>Book now!</button>
+                                                    <button
+                                                        style={styles.bookNow}
+                                                        onClick={() => handleJobType("WINDOW")}>Book now!
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>)}
@@ -601,7 +617,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         alignItems: 'center',
         textAlign: 'center',
         fontSize: "0.9rem",
-        marginTop: "5rem"
+        marginTop: "2rem"
     },
     form: {
         display: 'flex',
@@ -674,5 +690,12 @@ const styles: { [key: string]: React.CSSProperties } = {
         padding: '10px',
         textAlign: 'center',
         marginTop: '2rem',
+        border: "1px solid black"
     },
+    bookNow: {
+        border: "1px solid black"
+    },
+    showInfo: {
+        border: "1px solid black"
+    }
 };

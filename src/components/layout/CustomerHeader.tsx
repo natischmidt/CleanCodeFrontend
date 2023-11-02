@@ -28,6 +28,7 @@ const styles = {
         color: 'black',
         fontWeight: 'bold',
         marginRight: '35px',
+        fontSize: "1.2rem"
     },
     link: {
         fontWeight: 'bold',

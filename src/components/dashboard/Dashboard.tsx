@@ -207,7 +207,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     section: {
         flex: 1,
         // border: '1px solid #ccc',
-        margin: '10px',
+        margin: '-2%',
         padding: '10px',
         textAlign: 'center',
         // boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',

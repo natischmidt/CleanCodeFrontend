@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
 import admin from "../../API/admin";
+import HeaderComp from "../layout/HeaderComp";
 
 
 const AddEmployeeForm = () => {

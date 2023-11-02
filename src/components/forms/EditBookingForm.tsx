@@ -81,7 +81,7 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
     return (
         <div style={styles.container}>
             <form style={styles.form} onSubmit={handleSubmit}>
-                <h2>Edit Bookng PÅ EGEN RISK!!!!!!!</h2>
+                <h2>Edit Booking</h2>
                 <input
                     type="text"
                     placeholder="JOb ID lär inte ändras"
@@ -153,7 +153,7 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                     type="text"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Send a message"
+                    placeholder="Add message..."
                     style={styles.input}
                 />
 

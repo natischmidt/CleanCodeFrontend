@@ -57,7 +57,7 @@ function Routing() {
                     <Route path="/CreateNewBooking" element={<CreateNewBooking/>}/>
                     <Route path="/UpdateBookingForm" element={<UpdateBookingForm/>}/>
 
-                  {/*  <Route path="/PayForBasic" element={<KlarnaModalPayment  />}/>*/}
+                    <Route path="/PayForBasic" element={<KlarnaModalPayment  />}/>
                   {/*  <Route path="/PayForAdvanced" element={<AdvancedCleanPayment/>}/>
                     <Route path="/PayForWindow" element={<WindowCleanPayment />}/>
                     <Route path="/CancelBooking" element={<CancelBooking/>}/>*/}

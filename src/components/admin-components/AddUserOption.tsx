@@ -81,7 +81,7 @@ const styles = {
     },
     menuBtns: {
         display: "flex",
-        marginTop: '10%',
+        marginTop: '8%',
     },
     button: {
         backgroundColor: '#b3d9e3',

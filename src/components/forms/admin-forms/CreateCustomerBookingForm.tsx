@@ -220,7 +220,7 @@ const CreateNewBooking: React.FC = () => {
                     >
                         <option>Choose payment option</option>
                         <option value="KLARNA">Klarna</option>
-                        <option value="CASH">Cash</option>
+                        {/*<option value="CASH">Cash</option>*/}
                     </select>
                     <input
                         type="text"

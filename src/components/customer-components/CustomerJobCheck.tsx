@@ -16,21 +16,20 @@ const CustomerJobCheck = () => {
 
     const navigate = useNavigate()
 
-
     const showKlarna = (id: number) => {
         navigate(`/KlarnaPay/${id}`)
     }
-    return (
 
+    return (
             <div className="checkCont">
                     <div style={styles.test}>
                         <div style={styles.row}>
                             <div style={styles.cols}>
-                                <p style={styles.p}>Upcoming jobs</p>
+                                <p style={styles.p}>Upcoming bookings</p>
                                 <CustomerComingJobsTable cusId={id} change={change} setChange={setChange}/>
                             </div>
                             <div style={styles.cols}>
-                                <p style={styles.p}>Finished</p>
+                                <p style={styles.p}>Finished bookings</p>
                                 <CustomerApprovalTable cusId={id} change={change} setChange={setChange}/>
                             </div>
                         </div>
@@ -50,7 +49,6 @@ const CustomerJobCheck = () => {
                         </div>
                     </div>
             </div>
-
     )
 }
 
@@ -67,13 +65,15 @@ const styles = {
         display: 'flex',
         flexDirection: 'column' as 'column',
         width: "35rem",
+        marginLeft: "2%"
     },
     p: {
         fontSize: "1.5rem",
         fontWeight: "bold" as "bold",
-        textAlign: 'left' as 'left'
+        textAlign: 'left' as 'left',
     },
     test: {
         marginTop: '-7rem',
+        padding: 30
     }
 }
