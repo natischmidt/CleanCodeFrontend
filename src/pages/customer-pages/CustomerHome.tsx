@@ -1,6 +1,6 @@
 import {customerStyles} from "../../styles/styles";
 import React, {useState} from "react";
-import image from '/src/assets/customer-homepage-picture.png';
+import image from '/src/assets/washHands.jpg';
 import {CSSProperties} from 'react';
 import CustomerFooter from "../../components/layout/CustomerFooter";
 import {useUserType} from "../../components/context/UserTypeContext";
@@ -34,7 +34,7 @@ const styles: {
     imageSection: {
         flex: 1,
         backgroundImage: `url(${image})`,
-        backgroundSize: '976px 938px',
+        backgroundSize: '960px 740px',
         backgroundPosition: 'center',
         margin: '0 2px',
         backgroundRepeat: 'no-repeat',
