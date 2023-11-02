@@ -182,12 +182,10 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
                                         onClick={() => setShowPersonalInformationComponent(true)}
                                     >Change my data
                                     </button>
-
                                     </div>
                                 </div>
                             </div>
                              }
-
                         </div>
                     </div>
                 }
@@ -195,7 +193,6 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
         </div>
     );
 };
-
 
 const styles: { [key: string]: React.CSSProperties } = {
     dashboard: {
@@ -207,7 +204,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     section: {
         flex: 1,
         // border: '1px solid #ccc',
-        margin: '-2%',
+        margin: '-0%',
         padding: '10px',
         textAlign: 'center',
         // boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
