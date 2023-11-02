@@ -76,8 +76,8 @@ const styles = {
     },
     btn: {
         display: "flex",
-        width: "5rem",
-        height: "2.5rem",
+        width: "4rem",
+        height: "2rem",
         alignItems: "center" as "center",
         textAlign: "center" as "center",
         justifyContent: "center",

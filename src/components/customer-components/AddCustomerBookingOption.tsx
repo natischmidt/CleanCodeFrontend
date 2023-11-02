@@ -507,7 +507,7 @@ const AddCustomerBookingOption = () => {
                                             >
                                                 <option value="">Choose payment option:</option>
                                                 <option value="KLARNA">Klarna</option>
-                                                <option value="CASH">Cash</option>
+                                                {/*<option value="CASH">Cash</option>*/}
                                             </select>
 
                                             <div style={styles.sectionTitle}>
@@ -697,5 +697,11 @@ const styles: { [key: string]: React.CSSProperties } = {
     },
     showInfo: {
         border: "1px solid black"
-    }
+    },
+    slots: {
+        margin: 10,
+        marginTop: "4%",
+        border: "1px solid silver",
+
+    },
 };

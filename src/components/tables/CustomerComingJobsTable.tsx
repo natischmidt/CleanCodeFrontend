@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import TableJobId from "./TableJobId";
+import ConvertTimeSlotToNiceTime from "../layout/ConvertTimeSlotToNiceTime";
+import customer from "../../API/customer";
 
 interface CustomerComingJobsTableProps {
     cusId: string | null;
@@ -20,28 +22,10 @@ const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId,
     })
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                console.log(`Fetching data for cusId: ${cusId}`);
-
-                const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForCustomerWithStatus/${cusId}`, {
-                    params: {
-                        statuses: ["PENDING"]
-                    },
-                    paramsSerializer: params => { // dessa 3 rader för att det ska gå, formaterar det rätt i URLN, tar bort []
-                        return `statuses=${params.statuses.join('&statuses=')}`
-                    }
-                });
-
-                if (response.status === 200 || response.status === 201) {
-                    setTheData(response.data)
-                    console.log(response.data[0].date +  " datumettt")
-                }
-            } catch (error) {
-                console.log("nått hände :( ", error)
-            }
-        };
-        fetchData()
+        customer.getPendingJobsForCustomer(cusId).then(r => {
+            console.log(r)
+            setTheData(r)
+        })
     }, [change]);
 
     const handleCancel = async (jobId:number, date:Date) => {

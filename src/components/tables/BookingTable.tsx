@@ -29,7 +29,7 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate, onKlarna}) => {
     }, [deleted])
 
     const columns = [
-        {key: 'jobId', title: 'ID'},
+        {key: 'jobId', title: 'Job ID'},
         {key: 'jobtype', title: 'Job type'},
         {key: 'date', title: 'Date'},
         {key: 'timeSlot', title: 'Time'},

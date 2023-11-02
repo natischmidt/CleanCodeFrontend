@@ -84,6 +84,7 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
             </div>
             <TableJobId
                 columns={[
+                    { key: 'jobId', title: 'Job ID' },
                     { key: 'jobtype', title: 'Job Type' },
                     { key: 'date', title: 'Date' },
                     { key: 'timeSlot', title: 'Time Slot' },
@@ -94,7 +95,7 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
                 buttons={[
                     { label: <img src={ThumbsUp} alt="Thumbs Up" style={styles.thumbsBtn} />, action: (id) => {handleOk(id)} },
                     { label: <img src={ThumbsDown} alt="Thumbs Down" style={styles.thumbsBtn} />, action: (id) => {handleNotOk(id)} }
-
+                    // { label: "BILD HÄR", action: (id) => {handleNotOk(id)}, style:styles.cancel },
                 ]}
             />
         </div>
@@ -105,8 +106,8 @@ export default CustomerApprovalTable
 
 const styles = {
     thumbsBtn: {
-        width: 20,
-        height: 20
+        width: 25,
+        height: 25
     },
     filter: {
         textAlign: "left" as 'left',

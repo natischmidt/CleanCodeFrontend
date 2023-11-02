@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import TableJobId from "./TableJobId";
+import customer from "../../API/customer";
 
 interface CustomerComingJobsHistoryTableProps {
     cusId: string | null;
@@ -20,28 +21,10 @@ const CustomerComingJobsHistoryTable: React.FC<CustomerComingJobsHistoryTablePro
     })
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                console.log(`Fetching data for cusId: ${cusId}`);
-
-                const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForCustomerWithStatus/${cusId}`, {
-                    params: {
-                        statuses: ["APPROVED", "UNAPPROVED", "PAID", "CANCELLED"]
-                    },
-                    paramsSerializer: params => { // dessa 3 rader för att det ska gå, formaterar det rätt i URLN, tar bort []
-                        return `statuses=${params.statuses.join('&statuses=')}`
-                    }
-                });
-
-                if (response.status === 200) {
-                    setTheData(response.data)
-                }
-            } catch (error) {
-                console.log("nått hände:( ", error)
-            }
-        };
-
-        fetchData()
+        customer.getHistoryForCustomer(cusId).then(r => {
+            console.log(r)
+            setTheData(r)
+        })
     }, [change]);
 
 
@@ -61,6 +44,7 @@ const CustomerComingJobsHistoryTable: React.FC<CustomerComingJobsHistoryTablePro
             </div>
             <TableJobId
                 columns={[
+                    { key: 'jobId', title: 'Job ID' },
                     {key: 'jobtype', title: 'Job Type'},
                     {key: 'date', title: 'Date'},
                     {key: 'timeSlot', title: 'Time Slot'},

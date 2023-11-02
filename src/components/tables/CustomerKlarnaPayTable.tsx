@@ -60,6 +60,7 @@ const CustomerKlarnaPayTable: React.FC<CustomerKlarnaPayProps> =  ({cusId, chang
             </div>
             <TableJobId
                 columns={[
+                    { key: 'jobId', title: 'Job ID' },
                     { key: 'jobtype', title: 'Job Type' },
                     { key: 'date', title: 'Date' },
                     { key: 'timeSlot', title: 'Time Slot' },
