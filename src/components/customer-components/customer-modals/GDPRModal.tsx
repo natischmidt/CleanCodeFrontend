@@ -48,7 +48,7 @@ export const GDPRModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
             <div style={styles.modalInnerContainer}>
                 <div style={styles.form} onSubmit={handleSubmit}>
                     <h2>GDPR</h2>
-                    <p>Your Privacy Matters to Us.
+                    <p style={styles.ptext}>Your Privacy Matters to Us.
 
                         We value your trust, and we want to be transparent about how we collect and use your data. When
                         you interact with our website or services, we may collect and store information about you. This
@@ -71,8 +71,6 @@ export const GDPRModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         <p style={{fontWeight: 'bold'}}>If you wish to remove this data, please contact us at <a href={"mailto:StadaFintAB@gmail.com"}>StadaFintAB@gmail.com</a></p>
 
                     </p>
-
-
                     <button type="submit" style={styles.button} onClick={onClose}>
                         Close
                     </button>
@@ -90,7 +88,7 @@ const styles = {
         height: "100vh",
         zIndex: 5558,
         position: "absolute" as 'absolute',
-        top: "-51em",
+        top: "-42em",
         left: 0,
         backgroundColor: "rgba(0, 0, 0, 0.7)",
         display: 'flex',
@@ -110,7 +108,7 @@ const styles = {
         borderRadius: '5px',
         backgroundColor: '#b3d9e3',
         width: "400px",
-        marginTop: '4%'
+        marginTop: '4%',
     },
     input: {
         marginTop: '10px',
@@ -142,5 +140,8 @@ const styles = {
     },
     boldText: {
         fontWeight: 'bold'
+    },
+    ptext: {
+        fontSize: "0.8rem",
     }
 }
