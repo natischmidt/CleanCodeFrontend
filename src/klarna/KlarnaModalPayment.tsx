@@ -29,6 +29,8 @@ const KlarnaModalPayment: React.FC = () => {
                 try {
                     const url = `http://localhost:8080/api/jobs/getJob`;
                     const headers = {
+                        'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                        'Content-Type': 'application/json',
                         'jobId': jobId?.toString(),
                     };
                     const response = await axios.get(url, { headers });
