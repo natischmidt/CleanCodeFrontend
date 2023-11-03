@@ -3,17 +3,33 @@ import axios from "axios";
 import TableJobId from "./TableJobId";
 import ThumbsDown from "../../assets/ThumbsDown.png"
 import ThumbsUp from "../../assets/ThumbsUp.png"
+import spray from "../../assets/spray.png"
 import customer from "../../API/customer";
+// @ts-ignore
+import {RateModal} from "../customer-components/customer-modals/RateModal";
 
 interface CustomerOkOrNotTableProps {
     cusId: string | null;
     change: number
     setChange: React.Dispatch<React.SetStateAction<number>>
 }
+
 const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, change, setChange}) => {
 
     const [theData, setTheData] = useState([])
     const [filter, setFilter] = useState('');
+    const [func, setMyFunc] = useState(null);
+    const [id, setId] = useState('');
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleClick = () => {
+        setIsModalOpen(true)
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
     // @ts-ignore
     const filteredCustomerData = theData.filter((customer) => {
@@ -66,40 +82,72 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
         }
     }
 
+    const rate = (id: number, thumb: string) => {
+        handleClick();
+
+        if (thumb === "ThumbsUp") {
+            // @ts-ignore
+            setMyFunc( () => handleOk)
+            // @ts-ignore
+            setId(id)
+        } else {
+            // @ts-ignore
+            setMyFunc( () => handleNotOk)
+            // @ts-ignore
+            setId(id)
+        }
+    }
+
     return (
         <div>
-            <div style={styles.filter}>
-                Filter by jobtype
-                <select
-                    value={filter}
-                    onChange={(e) => setFilter(e.target.value)}
-                    style={{marginLeft: '0.5rem'}}
-                >
-                    <option value="">All</option>
-                    <option value="BASIC">BASIC</option>
-                    <option value="ADVANCED">ADVANCED</option>
-                    <option value="DIAMOND">DIAMOND</option>
-                    <option value="WINDOW">WINDOW</option>
-                </select>
-            </div>
-            <TableJobId
-                columns={[
-                    { key: 'jobId', title: 'Job ID' },
-                    { key: 'jobtype', title: 'Job Type' },
-                    { key: 'date', title: 'Date' },
-                    { key: 'timeSlot', title: 'Time Slot' },
-                    { key: 'jobStatus', title: 'Job Status' },
-                    { key: 'squareMeters', title: 'Square Meters' },
-                ]}
-                data={filteredCustomerData}
-                buttons={[
-                    { label: <img src={ThumbsUp} alt="Thumbs Up" style={styles.thumbsBtn} />, action: (id) => {handleOk(id)} },
-                    { label: <img src={ThumbsDown} alt="Thumbs Down" style={styles.thumbsBtn} />, action: (id) => {handleNotOk(id)} }
-                    // { label: "BILD HÄR", action: (id) => {handleNotOk(id)}, style:styles.cancel },
-                ]}
-            />
-        </div>
+            {isModalOpen && <div>
+                <RateModal onClose={closeModal} func={func} id={id}/>
+            </div>}
 
+            {!isModalOpen && (
+                <div>
+                    <div style={styles.filter}>
+                        Filter by jobtype
+                        <select
+                            value={filter}
+                            onChange={(e) => setFilter(e.target.value)}
+                            style={{marginLeft: '0.5rem'}}
+                        >
+                            <option value="">All</option>
+                            <option value="BASIC">BASIC</option>
+                            <option value="ADVANCED">ADVANCED</option>
+                            <option value="DIAMOND">DIAMOND</option>
+                            <option value="WINDOW">WINDOW</option>
+                        </select>
+                    </div>
+                    <TableJobId
+                        columns={[
+                            {key: 'jobId', title: 'Job ID'},
+                            {key: 'jobtype', title: 'Job Type'},
+                            {key: 'date', title: 'Date'},
+                            {key: 'timeSlot', title: 'Time Slot'},
+                            {key: 'jobStatus', title: 'Job Status'},
+                            {key: 'squareMeters', title: 'Square Meters'},
+                        ]}
+                        data={filteredCustomerData}
+                        buttons={[
+                            {
+                                label: <img src={ThumbsUp} alt="Thumbs Up" style={styles.thumbsBtn}/>, action: (id) => {
+                                    rate(id, 'ThumbsUp')
+                                }
+                            },
+                            {
+                                label: <img src={ThumbsDown} alt="Thumbs Down" style={styles.thumbsBtn}/>,
+                                action: (id) => {
+                                    rate(id, 'ThumbsDown')
+                                }
+                            }
+                            // { label: "BILD HÄR", action: (id) => {handleNotOk(id)}, style:styles.cancel },
+                        ]}
+                    />
+                </div>
+            )}
+        </div>
     )
 }
 export default CustomerApprovalTable
@@ -108,6 +156,10 @@ const styles = {
     thumbsBtn: {
         width: 25,
         height: 25
+    },
+    spray: {
+        width: 40,
+        height: 40
     },
     filter: {
         textAlign: "left" as 'left',
