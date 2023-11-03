@@ -15,7 +15,11 @@ export const CustomerTable: React.FC<customerTableProps> = ({onUpdate}) => {
 
     useEffect(() => {
 
-        axios.get('http://localhost:8080/api/customer/all')
+        const headers = {
+            'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+            'Content-Type': 'application/json',
+        };
+        axios.get('http://localhost:8080/api/customer/all', {headers: headers})
             .then((response) => {
                 setCustomerData(response.data);
             })
@@ -39,8 +43,13 @@ export const CustomerTable: React.FC<customerTableProps> = ({onUpdate}) => {
     const handleDelete = async (id: number) => {
 
         try {
+            const headers = {
+                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                'Content-Type': 'application/json',
+            };
+
             const Url = `http://localhost:8080/api/customer/delete/${id}`;
-            const response = await axios.delete(Url);
+            const response = await axios.delete(Url, {headers: headers});
             console.log('Deleting employee was successful', response.data);
             setDeleted(x => x + 1)
 

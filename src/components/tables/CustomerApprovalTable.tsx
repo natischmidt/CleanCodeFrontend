@@ -54,13 +54,17 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
 
     const handleOk = async (id: number) => {
         try {
+            const headers = {
+                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                'Content-Type': 'application/json',
+            };
             const updateJobDTO = {
                 jobId: id,
                 jobStatus: 'PROCESSING',
                 customerId: cusId
             }
             console.log(updateJobDTO.jobId + " ÄR DEN HÄR?")
-            await axios.put("http://localhost:8080/api/jobs/updateJob", updateJobDTO)
+            await axios.put("http://localhost:8080/api/jobs/updateJob", updateJobDTO, {headers: headers})
             setChange(x => x + 1)
         } catch (error) {
             console.log("Tumme up did not work!?: ", error)
@@ -68,6 +72,11 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
     }
     const handleNotOk = async (id: number) => {
         try {
+            const headers = {
+                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                'Content-Type': 'application/json',
+            };
+
             const updateJobDTO = {
                 jobId: id,
                 jobStatus: 'UNAPPROVED',
@@ -75,7 +84,7 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
             }
             console.log("Sending JobID:", id);
 
-            await axios.put("http://localhost:8080/api/jobs/updateJob", updateJobDTO)
+            await axios.put("http://localhost:8080/api/jobs/updateJob", updateJobDTO, {headers: headers})
             setChange(x => x + 1)
         } catch (error) {
             console.log("Tumme ner did not work!?: ", error)
