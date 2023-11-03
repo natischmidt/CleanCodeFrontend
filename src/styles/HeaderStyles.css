@@ -21,8 +21,8 @@
     cursor: pointer;
     padding: 10px;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 2.5rem;
+    right: 0.5rem;
 }
 
 .bar {
@@ -37,11 +37,17 @@
     padding: 10px;
     margin: 0;
     position: absolute;
-    top: 50px;
+    top: 5rem;
     right: 10px;
     background-color: #b3d9e3;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: none;
+    height: 7rem;
+    width: 7rem;
+    text-align: center;
+}
+.menu li {
+    margin-top: 0.3rem;
 }
 
 .menu.open {
@@ -52,8 +58,13 @@
 @media (max-width: 700px) {
     .hamburger-text {
         display: block;
+        align-items: center; /* Add this line */
+        justify-content: center; /* Add this line to horizontally center text */
+
     }
     .navbar {
         display: none;
+        align-items: center; /* Add this line */
+        justify-content: center; /* Add this line to horizontally center text */
     }
 }
