@@ -21,8 +21,8 @@ export default function EmployeeHomePage() {
     const [postalCode, setPostalCode] = useState("")
 
     const employeeData = {
-        firstname: firstName,
-        lastname: lastName,
+        firstName: firstName,
+        lastName: lastName,
         email: email,
         password: '',
         address: address,
