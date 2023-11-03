@@ -17,6 +17,7 @@ interface Props {
 }
 const TableJobId: React.FC<Props> = ({columns, data, buttons}) => {
     return (
+        <div className="table-container" style={{ maxHeight: '9rem', overflowY: 'auto' }}>
         <table className="data-table" style={styles.dataTable}>
             <thead>
             <tr>
@@ -46,6 +47,7 @@ const TableJobId: React.FC<Props> = ({columns, data, buttons}) => {
             ))}
             </tbody>
         </table>
+        </div>
     )
 }
 

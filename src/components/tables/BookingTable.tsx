@@ -93,13 +93,12 @@ const styles = {
         textAlign: "left" as 'left',
         display: "flex" as 'flex',
         justifyContent: "center" as 'center',
-        marginTop: '-25px',
+        marginTop: '-1.5rem',
     },
     filterContainer: {
         display: 'flex',
         justifyContent: 'center',
-        gridGap: '2rem',
-        marginTop: '1rem'
+        marginBottom: '1.5rem'
     },
     container: {
         display: 'flex',

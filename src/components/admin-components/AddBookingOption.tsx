@@ -25,22 +25,23 @@ const styles = {
         display: 'flex',
         alignItems: 'center' as "center",
         justifyContent: 'center' as "center",
-        marginTop: '2%',
+        marginTop: '0rem',
         color: '#000001',
     },
     menuBtns: {
         display: "flex",
-        marginTop: '10%',
+        marginTop: "-1.7rem",
     },
     button: {
         backgroundColor: '#b3d9e3',
-        // marginLeft: '5%',
         height: '60px',
         fontWeight: 'normal',
-        width: "250px"
+        width: "250px",
+        marginBottom: "0.8rem",
     },
     h1: {
         justifyContent: "center" as 'center',
-        textAlign: "center" as 'center'
+        textAlign: "center" as 'center',
+        marginTop: "-1rem",
     }
 }

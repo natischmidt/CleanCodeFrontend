@@ -31,7 +31,7 @@ const TableId: React.FC<Props> = ({ columns, data , buttons}) => {
     }, [])
 
     return (
-
+        <div className="table-container" style={{ maxHeight: '25rem', overflowY: 'auto' }}>
         <table className="data-table" style={styles.dataTable}>
             <thead>
             <tr>
@@ -61,6 +61,7 @@ const TableId: React.FC<Props> = ({ columns, data , buttons}) => {
             ))}
             </tbody>
         </table>
+        </div>
     );
 };
 
@@ -70,7 +71,7 @@ const styles = {
     td: {
         display: "flex",
         flexDirection: "row" as "row",
-        margin: 2
+        margin: 2,
     },
     dataTable: {
         borderRadius: "5px",

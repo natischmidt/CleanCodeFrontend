@@ -212,7 +212,8 @@ const styles: { [key: string]: React.CSSProperties } = {
     sectionTitle: {
         fontWeight: 'bold',
         marginBottom: '1%',
-        fontSize: "2rem"
+        fontSize: "2rem",
+        marginTop: "-50px",
         // fontSize: "1.5rem",
         // borderBottom: "2px solid black"
     },
