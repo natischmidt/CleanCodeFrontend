@@ -113,6 +113,8 @@ const admin = {
     },
 
     getAvailableEmp: async (date: string, hours: number): Promise<EmployeeData[]> => {
+
+
         if (!date) {
             console.error('Ogiltigt datum.');
             return [];

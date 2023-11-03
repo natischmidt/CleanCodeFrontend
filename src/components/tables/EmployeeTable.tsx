@@ -21,7 +21,11 @@ export const EmployeeTable: React.FC<employeeTableProps> = ({onUpdate}) => {
 
     useEffect(() => {
 
-        axios.get('http://localhost:8080/api/employee/getAllEmployees')
+        const headers = {
+            'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+            'Content-Type': 'application/json',
+        };
+        axios.get('http://localhost:8080/api/employee/getAllEmployees', {headers: headers})
             .then((response) => {
                 setEmployeeData(response.data);
             })
@@ -46,8 +50,11 @@ export const EmployeeTable: React.FC<employeeTableProps> = ({onUpdate}) => {
 
     const handleDelete = async (empId: number) => {
         try {
+
             const Url = `http://localhost:8080/api/employee/deleteEmployee`;
             const headers = {
+                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                'Content-Type': 'application/json',
                 'empId': empId.toString()
             }
             const response = await axios.delete(Url, {headers});
