@@ -12,7 +12,7 @@ export const CustomerMyPages: React.FC = () => {
     const {userType, id} = useUserType();
     const [loggedIn, setLoggedIn] = useState(true);
     const [userData, setUserData] = useState<DashboardUserData>({
-        firstname: "", lastname: "", email: "", password: "", address: "", postalCode: "", city: "",
+        firstName: "", lastName: "", email: "", password: "", address: "", postalCode: "", city: "",
         SSnumber: "", phoneNumber: "",
     });
 

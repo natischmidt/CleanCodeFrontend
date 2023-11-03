@@ -6,12 +6,13 @@ import {UserTypeContext} from "../context/UserTypeContext";
 import {DashboardUserData} from "./DashboardUserData";
 import employee from "../../API/employee";
 import EditEmployee from "../forms/EditEmployeeForm";
+import EmployeeShiftCont from "../../pages/employee-pages/EmployeeShiftCont";
 
 interface DashboardProps {
     userType: 'customer' | 'employee' | 'admin';
     userData: {
-        firstname: string,
-        lastname: string,
+        firstName: string,
+        lastName: string,
         email: string,
         password: string,
         address: string,
@@ -144,7 +145,7 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
                                 <div className="section-content">
                                     {userType === "admin" && <BookingTable onUpdate={handleBookingUpdate} onKlarna={handleKlarna}/>}
                                     {userType === "customer" && <CustomerJobCheck/>}
-                                    {userType === "employee" && <MyShifts/>}
+                                    {userType === "employee" && <EmployeeShiftCont />}
 
                                 </div>
 

@@ -93,6 +93,35 @@ const employee = {
             console.log(error)
         }
     },
+    fetchJobsForEmployeeWithStatus: async (empId: string | null, status: string[]) => {
+        try {
+            console.log(`Fetching jobs for empId: ${empId}`);
+
+            const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForEmployeeWithStatus/${empId}`, {
+                params: {
+                    status: status
+                },
+                paramsSerializer: params => {
+                    return `status=${params.status.join('&status=')}`
+                }
+            });
+
+            return response.data.map((job: any) => {
+                const date = new Date(job.date);
+                const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+                return {
+                    ...job,
+                    date: formattedDate,
+                    id: job.jobId,
+                    employeeId: job.employee ? job.employee.id : 'N/A',
+                    timeSlot: ConvertTimeSlotToNiceTime(job.timeSlot)
+                }
+            });
+        } catch (error) {
+            throw error;
+        }
+    }
+
 };
 
 

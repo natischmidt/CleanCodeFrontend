@@ -2,9 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import employee from "../../API/employee";
 import {useUserType} from "../../components/context/UserTypeContext";
 import TableId from "../../components/tables/TableId";
-import JobDetails from "./JobDetails";
-import ConvertTimeSlotToNiceTime from "../../components/layout/ConvertTimeSlotToNiceTime";
-import admin from "../../API/admin";
+
 
 
 const MyShifts = () => {
@@ -40,13 +38,12 @@ const MyShifts = () => {
 
 
     useEffect(() => {
-        employee.getJobsByEmployee(id).then(r => {
-                console.log(r)
-                setEmployeeShifts(r)
-            }
-        )
+        employee.fetchJobsForEmployeeWithStatus(id, ["PENDING"]).then(r => {
+            console.log(r)
+            setEmployeeShifts(r)
+        })
     }, [update])
-   // console.log(custId + " @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+
 
     const columns = [
         {key: 'jobId', title: 'Booking ID'},
