@@ -6,6 +6,7 @@ import {useState} from "react";
 import CustomerKlarnaPayTable from "../tables/CustomerKlarnaPayTable";
 import KlarnaModalPayment from "../../klarna/KlarnaModalPayment";
 import {useNavigate} from "react-router-dom";
+import CustomerUnapprovalTable from "../tables/CustomerUnapprovalTable";
 
 const CustomerJobCheck = () => {
 
@@ -32,6 +33,11 @@ const CustomerJobCheck = () => {
                                 <p style={styles.p}>Finished bookings</p>
                                 <CustomerApprovalTable cusId={id} change={change} setChange={setChange}/>
                             </div>
+
+                            <div style={styles.cols}>
+                                <p style={styles.p}>Unapproved bookings</p>
+                                <CustomerUnapprovalTable cusId={id} change={change} setChange={setChange}/>
+                            </div>
                         </div>
 
                         <div style={styles.row}>
@@ -42,6 +48,7 @@ const CustomerJobCheck = () => {
                                                             showKlarna(jobId)
                                                         }}/>
                             </div>
+
                             <div style={styles.cols}>
                                 <p style={styles.p}>History</p>
                                 <CustomerJobHistoryTable cusId={id} change={change} setChange={setChange}/>
@@ -57,16 +64,17 @@ export default CustomerJobCheck
 const styles = {
     row: {
         display: "flex" as "flex",
-        flexDirection: "row" as "row",
-        justifyContent: "left" as "left",
+        flexDirection: "column" as "column",
+        justifyContent: "center" as "center",
         textAlign: "center" as "center",
     },
     cols: {
         display: 'flex',
         flexDirection: 'column' as 'column',
-        width: "35rem",
-        marginLeft: "2%",
-        marginTop: "2%"
+        width: "38rem",
+        // marginLeft: "2%",
+        marginTop: "1%",
+        borderBottom: "2px solid black"
     },
     p: {
         fontSize: "1.7rem",
@@ -75,7 +83,10 @@ const styles = {
         textDecoration: "underline"
     },
     test: {
+        // display: "flex" as 'flex',
+        // justifyContent: "center" as 'center',
         marginTop: '-8rem',
-        padding: 30
+        padding: 15,
+        marginLeft: "25rem"
     }
 }

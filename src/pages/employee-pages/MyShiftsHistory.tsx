@@ -10,7 +10,7 @@ const MyShiftHistory = () => {
     const [update, setUpdate] = useState(0);
 
     useEffect(() => {
-        employee.fetchJobsForEmployeeWithStatus(id, ["DONE", "APPROVED", "UNAPPROVED","PROCESSING","PAID","CANCELLED"]).then(r => {
+        employee.fetchJobsForEmployeeWithStatus(id, ["APPROVED", "UNAPPROVED","PROCESSING","PAID","CANCELLED"]).then(r => {
             console.log(r);
             setEmployeeShiftHistory(r);
         });

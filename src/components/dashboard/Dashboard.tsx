@@ -110,8 +110,6 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
         }
     }, [])
 
-    // @ts-ignore
-    // @ts-ignore
     return (
         <div>
             <div>
@@ -122,9 +120,6 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
                     /> :
                     <div>
                         <div className="section" style={styles.timeSection}>
-                            {/*<div className="section-title" style={styles.sectionTitle}>*/}
-                            {/*    Today's Date and Time*/}
-                            {/*</div>*/}
                             <div className="section-content">
                                 <div>Welcome {username}! </div>
                                 <div>Today's Date: {new Date().toLocaleDateString()}</div>
@@ -134,7 +129,6 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
                         <div className="dashboard" style={styles.dashboard}>
 
                             <div className="section" style={styles.section}>
-                                {/*<p style={styles.sectionTitle}>My upcoming jobs</p>*/}
                                 <div className="section-title" style={styles.sectionTitle}>
                                     {userType === 'admin'
                                         ? 'All upcoming bookings'
@@ -146,7 +140,6 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
                                     {userType === "admin" && <BookingTable onUpdate={handleBookingUpdate} onKlarna={handleKlarna}/>}
                                     {userType === "customer" && <CustomerJobCheck/>}
                                     {userType === "employee" && <EmployeeShiftCont />}
-
                                 </div>
 
                             </div>
@@ -160,7 +153,6 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
 
                                     <div>{data.email}</div>
                                     {data.address !== '' ? <div>{data.address}</div> : <></>}
-                                    {/*{data.SSnumber !== '' ? <div>Social Security Number: {data.SSnumber}</div> : <></>}*/}
                                     <div>{data.postalCode}</div>
                                     <div>{data.city}</div>
                                     <div>{data.phoneNumber}</div>
