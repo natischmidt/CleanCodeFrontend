@@ -1,6 +1,6 @@
-import axios, { AxiosResponse, AxiosError } from 'axios';
+import axios, {AxiosResponse, AxiosError} from 'axios';
 import ConvertTimeSlotToNiceTime from '../components/layout/ConvertTimeSlotToNiceTime';
-import { useState } from 'react';
+import {useState} from 'react';
 
 
 interface Job {
@@ -58,18 +58,18 @@ const admin = {
                     timeSlot: ConvertTimeSlotToNiceTime(job.timeSlot)
                 };
             });
+            // @ts-ignore
             return formattedData;
         } catch (error) {
             console.error('Error fetching customer data:', error);
             throw error;
         }
     },
-
     getJobByStatus: async (): Promise<Job[]> => {
         try {
             const statuses = ['DONE', 'APPROVED', 'UNAPPROVED', 'PAID', 'CANCELLED'];
             const response = await axios.get('http://localhost:8080/api/jobs/getByStatus', {
-                params: { statuses },
+                params: {statuses},
                 paramsSerializer: params => {
                     return `statuses=${statuses.join('&statuses=')}`;
                 }
@@ -78,7 +78,7 @@ const admin = {
             const formattedData = response.data.map((job: Job) => {
                 const date = new Date(job.date);
                 const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-                return { ...job, date: formattedDate };
+                return {...job, date: formattedDate};
             });
 
             return formattedData;
@@ -181,7 +181,7 @@ const admin = {
             const headers = {
                 'jobId': jobId?.toString()
             };
-            const response = await axios.delete(Url, { headers });
+            const response = await axios.delete(Url, {headers});
             console.log('Deleting job was successful', response.data);
 
         } catch (error) {
@@ -241,7 +241,7 @@ const admin = {
                 const headers = {
                     'jobId': jobId?.toString() || '',
                 };
-                const response = await axios.get(url, { headers });
+                const response = await axios.get(url, {headers});
                 const data = response.data;
                 console.log(response.data.customerId);
                 if (!data || !data.jobId) {
@@ -292,7 +292,7 @@ const admin = {
 
                 console.log(jobId);
                 console.log(customerId);
-                await axios.put(url, editJobData, { params: { message } });
+                await axios.put(url, editJobData, {params: {message}});
                 console.log('Job was updated');
             }
         } catch (error) {

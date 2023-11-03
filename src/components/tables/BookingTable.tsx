@@ -28,6 +28,7 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate, onKlarna}) => {
         })
     }, [deleted])
 
+
     const columns = [
         {key: 'jobId', title: 'Job ID'},
         {key: 'jobtype', title: 'Job type'},
@@ -41,7 +42,7 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate, onKlarna}) => {
 
     const handleDelete = async (jobId: number) => {
         await admin.deleteJob(jobId);
-        setDeleted( x  => x +1)
+        setDeleted(x => x + 1)
     };
 
     const handleUpdate = (jobId: number) => {
@@ -75,8 +76,16 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate, onKlarna}) => {
                     columns={columns}
                     data={filteredCustomerData}
                     buttons={[
-                        {label: "Update", action:(id) => {handleUpdate(id)},  style:styles.update},
-                        {label: "Delete", action: (id) => {handleDelete(id)}, style:styles.delete},
+                        {
+                            label: "Update", action: (id) => {
+                                handleUpdate(id)
+                            }, style: styles.update
+                        },
+                        {
+                            label: "Delete", action: (id) => {
+                                handleDelete(id)
+                            }, style: styles.delete
+                        },
                     ]}
                 />
             </div>
