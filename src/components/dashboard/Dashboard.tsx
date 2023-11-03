@@ -212,10 +212,10 @@ const styles: { [key: string]: React.CSSProperties } = {
     },
     sectionTitle: {
         fontWeight: 'bold',
-        marginBottom: '1%',
-        fontSize: "2rem",
-        marginTop: "-50px",
-        // fontSize: "1.5rem",
+        // marginBottom: '1%',
+        fontSize: "1.7rem",
+        marginTop: "-3%",
+        textDecoration: "underline",
         // borderBottom: "2px solid black"
     },
     timeSection: {

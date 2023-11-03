@@ -467,15 +467,15 @@ const AddCustomerBookingOption = () => {
 
                                 {showCalender && (<div>
 
+                                    <button type="submit" style={styles.bookButton} onClick={handleModal}>Go back
+                                    </button>
+
                                     {showCalNext && <button type="submit" style={styles.bookButton} onClick={() => {
                                         handleSquarePaymentModal();
                                         handleCalender();
                                         setShowTimeSlots(false);
-                                    }}>Next
+                                    }}>Continue
                                     </button>}
-
-                                    <button type="submit" style={styles.bookButton} onClick={handleModal}>Go back
-                                    </button>
                                 </div>)}
 
                                 {isSquareModalOpen &&
@@ -486,7 +486,7 @@ const AddCustomerBookingOption = () => {
                                             handleSquarePaymentModal();
                                         }}>
                                             <div style={styles.sectionTitle}>
-                                                <p>Whats the size of your accommodation?</p>
+                                                <h3>Whats the size of your accommodation?</h3>
                                             </div>
                                             <input
                                                 type="number"
@@ -497,7 +497,7 @@ const AddCustomerBookingOption = () => {
                                                 required
                                             />
                                             <div style={styles.sectionTitle}>
-                                                <p>Choose payment method</p>
+                                                <h3>Choose payment method</h3>
                                             </div>
                                             <select
                                                 value={paymentOption}
@@ -511,7 +511,7 @@ const AddCustomerBookingOption = () => {
                                             </select>
 
                                             <div style={styles.sectionTitle}>
-                                                <p>Is anything you want to add?</p>
+                                                <h3>Is anything you want to add?</h3>
                                             </div>
                                             <textarea
                                                 placeholder="Write a message..."
@@ -521,7 +521,7 @@ const AddCustomerBookingOption = () => {
                                             />
                                             {!loggedIn && (
                                                 <div style={styles.sectionTitle}>
-                                                    <p>Whats your email address?</p>
+                                                    <h3>Whats your email address?</h3>
                                                 </div>)}
 
                                             {!loggedIn && (<input
@@ -534,13 +534,16 @@ const AddCustomerBookingOption = () => {
                                                 />
                                             )}
                                             <div style={styles.button}>
-                                                <button type="submit" style={styles.bookButton}>Next</button>
 
                                                 <button style={styles.bookButton} onClick={() => {
                                                     handleSquarePaymentModal()
                                                     handleCalender()
                                                 }}>Go back
                                                 </button>
+                                                <button type="submit" style={styles.bookButton}>
+                                                    Continue
+                                                </button>
+
                                             </div>
                                         </form>
                                     </div>
@@ -549,7 +552,7 @@ const AddCustomerBookingOption = () => {
                             {isConfirmModalOpen &&
                                 <div style={styles.confirm}>
                                     <div style={styles.sectionTitle}>
-                                        <p>Confirm your booking </p>
+                                        <h2>Confirm your booking </h2>
                                     </div>
                                     {
                                         loggedIn ? (
@@ -581,23 +584,24 @@ const AddCustomerBookingOption = () => {
 
                                     <div style={styles.button}>
                                         <button type="button" style={styles.bookButton} onClick={() => {
+                                            handleConfirm();
+                                            handleModal();
+                                        }}>Cancel
+                                        </button>
+
+                                        <button type="button" style={styles.bookButton} onClick={() => {
                                             handleBooking(emailaddress);
                                             handleConfirm();
                                             handleBookingDone();
                                         }}>Confirm
-                                        </button>
-                                        <button type="button" style={styles.bookButton} onClick={() => {
-                                            handleConfirm();
-                                            handleModal();
-                                        }}>Cancel
                                         </button>
                                     </div>
                                 </div>
                             }
                             {isBookingDone &&
                                 <div style={styles.centered}>
-                                    <h3>Your booking was successfully created. <br/>You will have a confirmation email sent
-                                        to you. Thank you!</h3>
+                                    <h2>Your booking was successfully created. <br/>You will have a confirmation email sent
+                                        to you. <br/> Thank you!</h2>
                                 </div>}
                         </>
                     )}
@@ -617,14 +621,14 @@ const styles: { [key: string]: React.CSSProperties } = {
         alignItems: 'center',
         textAlign: 'center',
         fontSize: "0.9rem",
-        marginTop: "2rem"
+        // marginTop: "2rem"
     },
     form: {
         display: 'flex',
         alignItems: 'center',
         textAlign: 'center',
         flexDirection: 'column',
-        marginTop: '5%',
+        // marginTop: '2%',
     },
     sectionTitle: {
         fontWeight: 'bold',
@@ -679,7 +683,9 @@ const styles: { [key: string]: React.CSSProperties } = {
         height: "4rem"
     },
     centered: {
-        marginTop: "10%",
+        marginTop: "7%",
+        padding: 30,
+        fontSize: "1.2rem",
     },
     buttonText: {
         fontSize: '0.9rem',
@@ -702,6 +708,17 @@ const styles: { [key: string]: React.CSSProperties } = {
         margin: 10,
         marginTop: "4%",
         border: "1px solid silver",
-
+    },
+    confirm: {
+        fontSize: "1.2rem"
+    },
+    input: {
+        // marginTop: '10px',
+        // marginBottom: '15px',
+        padding: '10px',
+        width: '75%',
+        borderRadius: '5px',
+        fontFamily: "PlomPraeng",
+        fontSize: "0.9rem"
     },
 };

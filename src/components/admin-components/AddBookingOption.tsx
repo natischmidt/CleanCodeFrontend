@@ -25,7 +25,7 @@ const styles = {
         display: 'flex',
         alignItems: 'center' as "center",
         justifyContent: 'center' as "center",
-        marginTop: '0rem',
+        marginTop: '2.5rem',
         color: '#000001',
     },
     menuBtns: {

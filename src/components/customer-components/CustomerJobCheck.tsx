@@ -65,15 +65,17 @@ const styles = {
         display: 'flex',
         flexDirection: 'column' as 'column',
         width: "35rem",
-        marginLeft: "2%"
+        marginLeft: "2%",
+        marginTop: "2%"
     },
     p: {
-        fontSize: "1.5rem",
+        fontSize: "1.7rem",
         fontWeight: "bold" as "bold",
         textAlign: 'left' as 'left',
+        textDecoration: "underline"
     },
     test: {
-        marginTop: '-7rem',
+        marginTop: '-8rem',
         padding: 30
     }
 }
