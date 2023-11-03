@@ -107,10 +107,10 @@ const customer = {
                   setId: (id: string) => void, goToHomePage: (path: string) => void, setLoggedIn: (loggedIn: boolean) => void) => {
 
         try {
-            const headers = {
-                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
-                'Content-Type': 'application/json',
-            };
+            // const headers = {
+            //     'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+            //     'Content-Type': 'application/json',
+            // };
 
             const url = 'http://localhost:8080/api/auth/loginCustomer';
 
@@ -119,7 +119,7 @@ const customer = {
                 password: password,
             };
 
-            const response = await axios.post(url, customerData, {headers: headers});
+            const response = await axios.post(url, customerData );
             const resp = response.data;
 
             console.log(resp);
