@@ -24,6 +24,8 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                 try {
                     const url = `http://localhost:8080/api/jobs/getJob`;
                     const headers = {
+                        'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                        'Content-Type': 'application/json',
                         'jobId': jobId?.toString() || '',
                     };
                     const response = await axios.get(url, { headers });
@@ -55,6 +57,11 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
             if (jobId !== null) {
                 const url = `http://localhost:8080/api/jobs/updateJob`;
 
+                const headers = {
+                    'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                    'Content-Type': 'application/json',
+                };
+
                 const editJobData = {
                     date,
                     jobId,
@@ -69,7 +76,7 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
 
                 console.log(jobId)
                 console.log(customerId)
-                await axios.put(url, editJobData, {params: {message}});
+                await axios.put(url, editJobData, {headers,params: {message}});
                 console.log('Job was updated');
                 doneWithEdit();
             }

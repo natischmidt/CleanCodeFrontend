@@ -30,6 +30,18 @@ interface EmployeeData {
     salary: number;
 }
 
+/*interface TimeSlots {
+    EIGHT: boolean
+    NINE: boolean
+    TEN: boolean
+    ELEVEN: boolean
+    TWELVE: boolean
+    THIRTEEN: boolean
+    FOURTEEN: boolean
+    FIFTEEN: boolean
+    SIXTEEN: boolean
+}*/
+
 interface BusinessCustomerData {
     firstName: string;
     lastName: string;

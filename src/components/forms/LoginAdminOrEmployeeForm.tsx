@@ -25,8 +25,12 @@ const LoginAdminOrEmployeeForm = () => {
                 email: email,
                 password: password,
             };
+            const headers = {
+                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                'Content-Type': 'application/json',
+            };
 
-            const response = await axios.post(Url, loginData);
+            const response = await axios.post(Url, loginData,{headers});
             setUserType(response.data.role)
             console.log('Employee has successfully logged in', response.data);
 
@@ -41,31 +45,6 @@ const LoginAdminOrEmployeeForm = () => {
         }
     };
 
-
-    //     const url = "http://localhost:8080/api/auth/loginEmployee"
-    //
-    //     const content = {
-    //         email,
-    //         password
-    //     }
-    //
-    //     try {
-    //         const resp = await axios.post(url, content)
-    //         const response = resp.data
-    //
-    //         if (response.id && (response.role === "ADMIN" || response.role ==="EMPLOYEE")){
-    //             setUserType(response.role) // sätter det i context
-    //             setId(response.id)
-    //             goToHomePage(`/${response.role}Home`)
-    //
-    //             console.log(response.data.id + ' Has successfully logged in');
-    //         } else {
-    //             console.log("hur tusan hamna vi här?")
-    //         }
-    //     } catch (error){
-    //         console.log(error)
-    //     }
-    // };
 
     const quickLoginAsEmployee = () => {
         setEmail("kent.andersson@stadafint.se")

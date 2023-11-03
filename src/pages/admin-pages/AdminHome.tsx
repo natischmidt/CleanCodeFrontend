@@ -11,8 +11,8 @@ export const AdminHome : React.FC = () => {
         userType === "ADMIN" ? adminStyles : {};
 
     const testUserData = {
-        firstname: 'Test',
-        lastname: 'Test',
+        firstName: 'Test',
+        lastName: 'Test',
         email: 'test@example.com',
         password: 'test',
         address: '123 Test',

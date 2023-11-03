@@ -12,8 +12,8 @@ export default function EmployeeHomePage() {
 
     const {userType, id} = useUserType();
     const selectedStyles = userType === "EMPLOYEE" ? employeeStyles : {};
-    const [firstname, setFirstname] = useState("")
-    const [lastname, setLastname] = useState("")
+    const [firstName, setFirstname] = useState("")
+    const [lastName, setLastname] = useState("")
     const [email, setEmail] = useState("")
     const [phonenumber, setPhonenumber] = useState("")
     const [address, setAddress] = useState("")
@@ -21,8 +21,8 @@ export default function EmployeeHomePage() {
     const [postalCode, setPostalCode] = useState("")
 
     const employeeData = {
-        firstname: firstname,
-        lastname: lastname,
+        firstName: firstName,
+        lastName: lastName,
         email: email,
         password: '',
         address: address,

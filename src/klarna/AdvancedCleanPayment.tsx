@@ -37,9 +37,8 @@ export default function AdvancedCleanPayment() {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                    'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`
                 },
-
                 body: JSON.stringify(AdvancedPayload),
             });
 
