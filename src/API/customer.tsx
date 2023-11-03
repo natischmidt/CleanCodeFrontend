@@ -125,19 +125,35 @@ const customer = {
 
     fetchData: async (customerId: string) => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/customer/${customerId}`);
+            const jwt = sessionStorage.getItem("jwt");
+            if (!jwt) {
+                throw new Error("JWT not found in sessionStorage");
+            }
+            const response = await axios.get(`http://localhost:8080/api/customer/${customerId}`,{
+                headers: {
+                    'Authorization': `Bearer ${jwt}`
+                }
+            });
             return response.data;
         } catch (error) {
             throw Error(`Error fetching customer ${error}`);
         }
     },
-    fetchJobsForCustomer: async (customerId: string, status: string[]) => {
+    fetchJobsForCustomer : async (customerId: string | null, statuses: string[]) => {
         try {
             console.log(`Fetching data for cusId: ${customerId}`);
 
+            const jwt = sessionStorage.getItem("jwt");
+            if (!jwt) {
+                throw new Error("JWT not found in sessionStorage");
+            }
+
             const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForCustomerWithStatus/${customerId}`, {
+                headers: {
+                    'Authorization': `Bearer ${jwt}`
+                },
                 params: {
-                    statuses: status
+                    statuses: statuses
                 },
                 paramsSerializer: params => {
                     return `statuses=${params.statuses.join('&statuses=')}`
@@ -154,101 +170,13 @@ const customer = {
                     customerId: job.customer ? job.customer.id : 'N/A',
                     timeSlot: ConvertTimeSlotToNiceTime(job.timeSlot)
                 }
-            })
+            });
         } catch (error) {
             console.error("An error occurred:", error);
             throw error;
         }
-    },
-    fetchJobsForCustomerWithStatus: async (customerId: string, status: string[]) => {
-        try {
-            console.log(`Fetching data for cusId: ${customerId}`);
+    }
 
-            const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForCustomerWithStatus/${customerId}`, {
-                params: {
-                    statuses: status
-                },
-                paramsSerializer: params => {
-                    return `statuses=${params.statuses.join('&statuses=')}`
-                }
-            });
-            return response.data.map((job: any) => {
-                const date = new Date(job.date);
-                const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-                return {
-                    ...job,
-                    date: formattedDate,
-                    id: job.jobId,
-                    customerId: job.customer ? job.customer.id : 'N/A',
-                    timeSlot: ConvertTimeSlotToNiceTime(job.timeSlot)
-                }
-            })
-        } catch (error) {
-            throw error;
-        }
-    },
-    updateJobStatus: async (jobId: string, newStatus: string) => {
-        try {
-            const response = await axios.put(`http://localhost:8080/api/jobs/updateJob/${jobId}`, {
-                status: newStatus
-            });
-            return response.data;
-        } catch (error) {
-            throw error;
-        }
-    },
-
-    getPendingJobsForCustomer: async (cusId: string | null) => {
-        try {
-            const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForCustomerWithStatus/${cusId}`, {
-                params: {
-                    statuses: ["PENDING"]
-                },
-                paramsSerializer: params => { // dessa 3 rader för att det ska gå, formaterar det rätt i URLN, tar bort []
-                    return `statuses=${params.statuses.join('&statuses=')}`
-                }
-            });
-            return response.data.map((job: any) => {
-                const date = new Date(job.date);
-                const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-                return {
-                    ...job,
-                    date: formattedDate,
-                    id: job.jobId,
-                    customerId: job.customer ? job.customer.id : 'N/A',
-                    timeSlot: ConvertTimeSlotToNiceTime(job.timeSlot)
-                }
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    },
-
-    getHistoryForCustomer: async (cusId: string | null) => {
-        try {
-            const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForCustomerWithStatus/${cusId}`, {
-                params: {
-                    statuses: ["APPROVED", "UNAPPROVED", "PAID", "CANCELLED"]
-                },
-                paramsSerializer: params => { // dessa 3 rader för att det ska gå, formaterar det rätt i URLN, tar bort []
-                    return `statuses=${params.statuses.join('&statuses=')}`
-                }
-            });
-            return response.data.map((job: any) => {
-                const date = new Date(job.date);
-                const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-                return {
-                    ...job,
-                    date: formattedDate,
-                    id: job.jobId,
-                    customerId: job.customer ? job.customer.id : 'N/A',
-                    timeSlot: ConvertTimeSlotToNiceTime(job.timeSlot)
-                }
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    },
 
 
 };

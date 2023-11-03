@@ -22,7 +22,7 @@ const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId,
     })
 
     useEffect(() => {
-        customer.getPendingJobsForCustomer(cusId).then(r => {
+        customer.fetchJobsForCustomer(cusId, ["PENDING"]).then(r => {
             console.log(r)
             setTheData(r)
         })

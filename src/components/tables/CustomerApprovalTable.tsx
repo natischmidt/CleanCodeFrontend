@@ -25,7 +25,7 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
         const fetchData = async () => {
             if (cusId) {
                 try {
-                    const data = await customer.fetchJobsForCustomerWithStatus(cusId, ["DONE"]);
+                    const data = await customer.fetchJobsForCustomer(cusId, ["DONE"]);
                     setTheData(data);
                 } catch (error) {
                     console.log("An error occurred:", error);
