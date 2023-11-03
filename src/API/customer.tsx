@@ -107,6 +107,10 @@ const customer = {
                   setId: (id: string) => void, goToHomePage: (path: string) => void, setLoggedIn: (loggedIn: boolean) => void) => {
 
         try {
+            const headers = {
+                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                'Content-Type': 'application/json',
+            };
 
             const url = 'http://localhost:8080/api/auth/loginCustomer';
 
