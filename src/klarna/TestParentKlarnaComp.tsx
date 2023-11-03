@@ -35,6 +35,7 @@ export default function TestParentKlarnaComp() {
         const response = await fetch("http://localhost:8080/api/klarna/createOrder", {
             method: "POST",
             headers: {
+                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(BasicPayload),
@@ -78,6 +79,8 @@ export default function TestParentKlarnaComp() {
         const response = await fetch("http://localhost:8080/api/klarna/createOrder", {
             method: "POST",
             headers: {
+                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(AdvancedPayload),
@@ -124,6 +127,7 @@ export default function TestParentKlarnaComp() {
         const response = await fetch("http://localhost:8080/api/klarna/createOrder", {
             method: "POST",
             headers: {
+                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(DiamondPayload),
@@ -167,6 +171,7 @@ export default function TestParentKlarnaComp() {
         const response = await fetch("http://localhost:8080/api/klarna/createOrder", {
             method: "POST",
             headers: {
+                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(WindowPayload),

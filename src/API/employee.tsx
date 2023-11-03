@@ -1,10 +1,17 @@
 import axios from 'axios';
 import ConvertTimeSlotToNiceTime from "../components/layout/ConvertTimeSlotToNiceTime";
 
+const headers = {
+    'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+    'Content-Type': 'application/json',
+};
+
 const employee = {
     getEmployee: async (id: string | null) => {
 
         const headers = {
+            'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+            'Content-Type': 'application/json',
             empId: id?.toString()
         }
         // const config = {
@@ -27,7 +34,9 @@ const employee = {
 
     getJobsByEmployee: async (id: string | null) => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForEmployee/${id}`)
+            const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForEmployee/${id}`,{
+                headers: headers
+            })
             return response.data.map((job: any) => {
                 const date = new Date(job.date);
                 const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
@@ -49,10 +58,14 @@ const employee = {
     getJob: async (id: number) => {
 
         const headers = {
+            'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+            'Content-Type': 'application/json',
             jobId: id.toString()
         }
         try {
-            const response = await axios.get('http://localhost:8080/api/jobs/getJob', {headers});
+            const response = await axios.get('http://localhost:8080/api/jobs/getJob', {
+                headers : headers
+            });
             const data = response.data
             console.log(data)
             return data;
@@ -66,7 +79,9 @@ const employee = {
         console.log("-----------------------------", updateJobDTO)
 
         try {
-            const response = await axios.put('http://localhost:8080/api/jobs/updateJob', updateJobDTO)
+            const response = await axios.put('http://localhost:8080/api/jobs/updateJob', updateJobDTO, {
+                headers: headers
+            })
             console.log("update request was made: ", response.status)
 
         } catch (error) {
@@ -76,7 +91,9 @@ const employee = {
     getCustomer: async (customerId: string) => {
 
         try {
-            const response = await axios.get(`http://localhost:8080/api/customer/${customerId}`)
+            const response = await axios.get(`http://localhost:8080/api/customer/${customerId}`,{
+                headers:headers
+            })
 
             return response.data
 
@@ -87,7 +104,9 @@ const employee = {
 
     getSalary: async (empId: any) => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/employee/getSalary/${empId}`)
+            const response = await axios.get(`http://localhost:8080/api/employee/getSalary/${empId}`,{
+                headers:headers
+            })
             return response.data
         } catch (error) {
             console.log(error)
@@ -98,6 +117,7 @@ const employee = {
             console.log(`Fetching jobs for empId: ${empId}`);
 
             const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForEmployeeWithStatus/${empId}`, {
+                headers: headers,
                 params: {
                     status: status
                 },

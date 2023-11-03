@@ -21,7 +21,11 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
     useEffect(() => {
         const preFillForm = async () => {
             const url = `http://localhost:8080/api/customer/${cusId}`;
-            const response = await axios.get(url)
+            const headers = {
+                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                'Content-Type': 'application/json',
+            };
+            const response = await axios.get(url, {headers})
 
             const data = response.data
 
@@ -48,6 +52,10 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
 
         try {
             const url = `http://localhost:8080/api/customer/update/${cusId}`;
+            const headers = {
+                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                'Content-Type': 'application/json',
+            };
 
             const editCustomerData = {
                 firstName: firstname,
@@ -75,7 +83,7 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
             setCusType('')
             setPassword('')
 
-            const response = await axios.patch(url, editCustomerData);
+            const response = await axios.patch(url, editCustomerData, {headers});
             console.log('Employee was updated', response.data);
             doneWithEdit();
         } catch (error) {
