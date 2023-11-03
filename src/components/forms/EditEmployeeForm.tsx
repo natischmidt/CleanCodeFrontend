@@ -24,6 +24,8 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) =>
         const preFillForm = async () => {
             const url = `http://localhost:8080/api/employee/getEmployee`
             const headers = {
+                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                'Content-Type': 'application/json',
                 'empId': empId?.toString()  // ? tar bort rödmarkering, avbryter det om det är null/undefined
             }
             const response = await axios.get(url, {headers})
@@ -65,6 +67,8 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) =>
             };
 
             const headers = {
+                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                'Content-Type': 'application/json',
                 'empId': empId?.toString()  // ? tar bort rödmarkering, avbryter det om det är null/undefined
             }
 

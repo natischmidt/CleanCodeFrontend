@@ -5,8 +5,11 @@ import {useUserType} from '../components/context/UserTypeContext';
 import {useNavigate} from 'react-router-dom';
 import ConvertTimeSlotToNiceTime from "../components/layout/ConvertTimeSlotToNiceTime";
 
+
 const customer = {
     register: async (email: string) => {
+
+
         try {
             const url = 'http://localhost:8080/api/customer/create';
 
@@ -51,6 +54,8 @@ const customer = {
     ) => {
 
         try {
+
+
             if (id == null) {
                 // ICKE KUND
                 console.log("Bokning av en icke kund!");
@@ -75,9 +80,15 @@ const customer = {
     logout: async () => {
         const {setLoggedIn, setUserType, setId, userType, id} = useUserType();
         try {
+
+            const headers = {
+                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                'Content-Type': 'application/json',
+            };
+
             const Url = 'http://localhost:8080/api/auth/logoutEmployee';
 
-            const response = await axios.post(Url);
+            const response = await axios.post(Url, {headers: headers});
 
             console.log('Employee/Admin has successfully logged out', response.data);
 
@@ -96,6 +107,11 @@ const customer = {
                   setId: (id: string) => void, goToHomePage: (path: string) => void, setLoggedIn: (loggedIn: boolean) => void) => {
 
         try {
+            const headers = {
+                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                'Content-Type': 'application/json',
+            };
+
             const url = 'http://localhost:8080/api/auth/loginCustomer';
 
             const customerData = {
@@ -103,7 +119,7 @@ const customer = {
                 password: password,
             };
 
-            const response = await axios.post(url, customerData);
+            const response = await axios.post(url, customerData );
             const resp = response.data;
 
             console.log(resp);
@@ -125,6 +141,7 @@ const customer = {
 
     fetchData: async (customerId: string) => {
         try {
+
             const jwt = sessionStorage.getItem("jwt");
             if (!jwt) {
                 throw new Error("JWT not found in sessionStorage");
@@ -142,6 +159,7 @@ const customer = {
     fetchJobsForCustomer : async (customerId: string | null, statuses: string[]) => {
         try {
             console.log(`Fetching data for cusId: ${customerId}`);
+
 
             const jwt = sessionStorage.getItem("jwt");
             if (!jwt) {

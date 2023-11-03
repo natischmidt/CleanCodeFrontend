@@ -36,7 +36,8 @@ export default function AdvancedCleanPayment() {
             const response = await fetch("http://localhost:8080/api/klarna/createAdvancedOrder", {
                 method: "POST",
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`
                 },
                 body: JSON.stringify(AdvancedPayload),
             });

@@ -30,6 +30,10 @@ const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId,
 
     const handleCancel = async (jobId:number, date:Date) => {
         try {
+            const headers = {
+                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                'Content-Type': 'application/json',
+            };
             const updateJobDTO = {
                 jobId: jobId,
                 jobStatus: "CANCELLED",
@@ -39,7 +43,7 @@ const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId,
             console.log("Sending JobID:" + jobId);
             console.log("!!!!!!!!!" + date )
 
-            await axios.put("http://localhost:8080/api/jobs/updateJob", updateJobDTO)
+            await axios.put("http://localhost:8080/api/jobs/updateJob", updateJobDTO, {headers: headers})
             setChange(x => x + 1)
         } catch (error) {
             console.log("It didn't go as planned.. : ", error)

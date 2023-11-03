@@ -19,9 +19,13 @@ const LoginCustomerForm = () => {
             email,
             password
         }
+        const headers = {
+            'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+            'Content-Type': 'application/json',
+        };
 
         try {
-            const resp = await axios.post(url, content);
+            const resp = await axios.post(url, content, {headers});
             const response = resp.data
 
             if (response) {

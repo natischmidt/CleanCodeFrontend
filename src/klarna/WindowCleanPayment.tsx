@@ -36,6 +36,7 @@ export default function WindowCleanPayment() {
             const response = await fetch("http://localhost:8080/api/klarna/createWindowOrder", {
                 method: "POST",
                 headers: {
+                    'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(WindowPayload),

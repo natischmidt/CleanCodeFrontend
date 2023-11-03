@@ -29,6 +29,8 @@ const KlarnaModalPayment: React.FC = () => {
                 try {
                     const url = `http://localhost:8080/api/jobs/getJob`;
                     const headers = {
+                        'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                        'Content-Type': 'application/json',
                         'jobId': jobId?.toString(),
                     };
                     const response = await axios.get(url, { headers });
@@ -94,6 +96,7 @@ const KlarnaModalPayment: React.FC = () => {
                 const response = await fetch("http://localhost:8080/api/klarna/createOrder", {
                     method: "POST",
                     headers: {
+                        'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(Payload),
