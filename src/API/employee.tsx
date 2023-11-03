@@ -35,7 +35,7 @@ const employee = {
     getJobsByEmployee: async (id: string | null) => {
         try {
             const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForEmployee/${id}`,{
-                headers: headers
+                headers
             })
             return response.data.map((job: any) => {
                 const date = new Date(job.date);
@@ -64,7 +64,7 @@ const employee = {
         }
         try {
             const response = await axios.get('http://localhost:8080/api/jobs/getJob', {
-                headers : headers
+               headers
             });
             const data = response.data
             console.log(data)
@@ -80,7 +80,7 @@ const employee = {
 
         try {
             const response = await axios.put('http://localhost:8080/api/jobs/updateJob', updateJobDTO, {
-                headers: headers
+                headers
             })
             console.log("update request was made: ", response.status)
 
@@ -92,7 +92,7 @@ const employee = {
 
         try {
             const response = await axios.get(`http://localhost:8080/api/customer/${customerId}`,{
-                headers:headers
+               headers
             })
 
             return response.data
@@ -105,7 +105,7 @@ const employee = {
     getSalary: async (empId: any) => {
         try {
             const response = await axios.get(`http://localhost:8080/api/employee/getSalary/${empId}`,{
-                headers:headers
+                headers
             })
             return response.data
         } catch (error) {
@@ -117,7 +117,7 @@ const employee = {
             console.log(`Fetching jobs for empId: ${empId}`);
 
             const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForEmployeeWithStatus/${empId}`, {
-                headers: headers,
+               headers,
                 params: {
                     status: status
                 },
