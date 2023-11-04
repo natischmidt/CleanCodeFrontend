@@ -66,6 +66,7 @@ const CustomerKlarnaPayTable: React.FC<CustomerKlarnaPayProps> =  ({cusId, chang
                     { key: 'timeSlot', title: 'Time Slot' },
                     { key: 'jobStatus', title: 'Job Status' },
                     { key: 'squareMeters', title: 'Square Meters' },
+                    { key: 'rating', title: 'Rating' },
                 ]}
                 data={filteredCustomerData}
                 buttons={[

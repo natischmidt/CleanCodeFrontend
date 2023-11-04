@@ -19,7 +19,7 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
     const [theData, setTheData] = useState([])
     const [filter, setFilter] = useState('');
     // @ts-ignore
-    const [func, setFunc] = useState<(id: number, rating: number) => void | null>(null);
+    const [func1, setFunc1] = useState<(id: number, rating: number) => void | null>(null);
     const [id, setId] = useState(0);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,7 +53,7 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
         fetchData()
     }, [change]);
 
-    const handleOk = async (id: number,rating: number) => {
+    const handleOk = async (id: number, rating: number) => {
         try {
             const headers = {
                 'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
@@ -63,7 +63,7 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
                 jobId: id,
                 jobStatus: 'PROCESSING',
                 customerId: cusId,
-                rating: rating,
+                rating: rating
             }
             console.log(updateJobDTO.jobId + " ÄR DEN HÄR?")
             await axios.put("http://localhost:8080/api/jobs/updateJob", updateJobDTO, {headers: headers})
@@ -99,22 +99,22 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
 
         if (thumb === "ThumbsUp") {
             // @ts-ignore
-            setMyFunc( () => handleOk)
+            setFunc1(() => handleOk)
             // @ts-ignore
             setId(id)
         } else {
             // @ts-ignore
-            setMyFunc( () => handleNotOk)
+            setFunc1(() => handleNotOk)
             // @ts-ignore
             setId(id)
         }
     }
 
-    // @ts-ignore
+
     return (
         <div>
             {isModalOpen && <div>
-                <RateModal onClose={closeModal} func={func} id={id}/>
+                <RateModal func1={func1} id={id} onClose={closeModal}/>
             </div>}
 
             {!isModalOpen && (

@@ -60,6 +60,7 @@ const CustomerUnapprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, ch
                             {key: 'timeSlot', title: 'Time Slot'},
                             {key: 'jobStatus', title: 'Job Status'},
                             {key: 'squareMeters', title: 'Square Meters'},
+                            {key: 'rating', title: 'Rating'},
                         ]}
                         data={filteredCustomerData}
                         buttons={[

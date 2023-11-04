@@ -1,12 +1,14 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState} from 'react'
 import {Rating} from 'react-simple-star-rating'
 
-export const RateModal: React.FC<{ onClose: () => void; func: (id: number, rating: number) => void; id: number }> = ({onClose, id }) => {
+// export const RateModal: React.FC<{ onClose: () => void; func1: () => void; id: number }> = ({ onClose, func1, id }) => {
+export const RateModal: React.FC<{ onClose: () => void; func1: (id: number, rating: number) => void; id: number }> = ({ onClose, func1, id }) => {
 
-    const [rating, setRating] = useState(0)
+    const [rating, setRating] = useState(null)
 
     // Catch Rating value
     const handleRating = (rate: number) => {
+        // @ts-ignore
         setRating(rate)
         // other logic
     }
@@ -28,14 +30,20 @@ export const RateModal: React.FC<{ onClose: () => void; func: (id: number, ratin
                 />
                 <div style={styles.buttons}>
                     <button type="submit" onClick={() => {
-                        func(id, rating);
+                        // @ts-ignore
+                        func1(id, rating);
                         onClose();
                         console.log("YOU RATED: " + rating);
                     }}
                     >
                         Rate
                     </button>
-                    <button type="submit" onClick={onClose}>
+                    <button type="submit" onClick={() => {
+                        // @ts-ignore
+                        func1(id, 0);
+                        onClose();
+                    }}
+                    >
                         Dont rate
                     </button>
                     <button type="submit" onClick={onClose}>

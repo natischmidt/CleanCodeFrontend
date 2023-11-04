@@ -5,48 +5,53 @@ interface ButtonConfig {
     action: (id: number, date: Date) => void
     style?: React.CSSProperties
 }
+
 interface Column {
     key: string
     title: string
 
 }
+
 interface Props {
     columns: Column[]
     data: any[]
     buttons: ButtonConfig[]
 }
+
 const TableJobId: React.FC<Props> = ({columns, data, buttons}) => {
     return (
-        <div className="table-container" style={{ maxHeight: '9rem', overflowY: 'auto' }}>
-        <table className="data-table" style={styles.dataTable}>
-            <thead>
-            <tr>
-                {columns.map((column) => (
-                    <th key={column.key}>{column.title}</th>
-                ))}
-            </tr>
-            </thead>
-            <tbody>
-            {data.map((item, index) => (
-                <tr key={index}>
+        <div className="table-container" style={{maxHeight: '9rem', overflowY: 'auto'}}>
+            <table className="data-table" style={styles.dataTable}>
+                <thead>
+                <tr>
                     {columns.map((column) => (
-                        <td key={column.key} style={styles.tableCell}>{item[column.key]}</td>
+                        <th key={column.key}>{column.title}</th>
                     ))}
-                    <td style={styles.td}>
-                        {buttons.map((button, buttonIndex) => (
-                            <button
-                                key={buttonIndex}
-                                style={{ ...styles.btn, ...button.style }}
-                                onClick={() => button.action(item.jobId, item.date)}
-                            >
-                                {button.label}
-                            </button>
-                        ))}
-                    </td>
                 </tr>
-            ))}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {data.map((item, index) => (
+                    <tr key={index}>
+                        {columns.map((column) => (
+                            <td key={column.key} style={styles.tableCell}>
+                                {item[column.key] === 0 ? "-" : item[column.key]}
+                            </td>
+                        ))}
+                        <td style={styles.td}>
+                            {buttons.map((button, buttonIndex) => (
+                                <button
+                                    key={buttonIndex}
+                                    style={{...styles.btn, ...button.style}}
+                                    onClick={() => button.action(item.jobId, item.date)}
+                                >
+                                    {button.label}
+                                </button>
+                            ))}
+                        </td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
         </div>
     )
 }
