@@ -1,11 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {Rating} from 'react-simple-star-rating'
 
-export const RateModal: React.FC<{ onClose: () => void; func: (id: number) => void; id: number }> = ({
-                                                                                                         onClose,
-                                                                                                         func,
-                                                                                                         id
-                                                                                                     }) => {
+export const RateModal: React.FC<{ onClose: () => void; func: (id: number, rating: number) => void; id: number }> = ({onClose, id }) => {
 
     const [rating, setRating] = useState(0)
 
@@ -29,19 +25,21 @@ export const RateModal: React.FC<{ onClose: () => void; func: (id: number) => vo
                     onPointerEnter={onPointerEnter}
                     onPointerLeave={onPointerLeave}
                     onPointerMove={onPointerMove}
-                    /* Available Props */
                 />
                 <div style={styles.buttons}>
                     <button type="submit" onClick={() => {
-                        func(id);
+                        func(id, rating);
                         onClose();
-                        console.log("YOU RATED: "+rating);
+                        console.log("YOU RATED: " + rating);
                     }}
                     >
                         Rate
                     </button>
                     <button type="submit" onClick={onClose}>
                         Dont rate
+                    </button>
+                    <button type="submit" onClick={onClose}>
+                        Cancel
                     </button>
                 </div>
             </div>

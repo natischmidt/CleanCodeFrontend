@@ -18,8 +18,9 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
 
     const [theData, setTheData] = useState([])
     const [filter, setFilter] = useState('');
-    const [func, setMyFunc] = useState(null);
-    const [id, setId] = useState('');
+    // @ts-ignore
+    const [func, setFunc] = useState<(id: number, rating: number) => void | null>(null);
+    const [id, setId] = useState(0);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -52,7 +53,7 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
         fetchData()
     }, [change]);
 
-    const handleOk = async (id: number) => {
+    const handleOk = async (id: number,rating: number) => {
         try {
             const headers = {
                 'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
@@ -61,7 +62,8 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
             const updateJobDTO = {
                 jobId: id,
                 jobStatus: 'PROCESSING',
-                customerId: cusId
+                customerId: cusId,
+                rating: rating,
             }
             console.log(updateJobDTO.jobId + " ÄR DEN HÄR?")
             await axios.put("http://localhost:8080/api/jobs/updateJob", updateJobDTO, {headers: headers})
@@ -70,7 +72,7 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
             console.log("Tumme up did not work!?: ", error)
         }
     }
-    const handleNotOk = async (id: number) => {
+    const handleNotOk = async (id: number, rating: number) => {
         try {
             const headers = {
                 'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
@@ -80,7 +82,8 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
             const updateJobDTO = {
                 jobId: id,
                 jobStatus: 'UNAPPROVED',
-                customerId: cusId
+                customerId: cusId,
+                rating: rating
             }
             console.log("Sending JobID:", id);
 
@@ -107,6 +110,7 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
         }
     }
 
+    // @ts-ignore
     return (
         <div>
             {isModalOpen && <div>
