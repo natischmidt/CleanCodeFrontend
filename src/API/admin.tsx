@@ -55,6 +55,19 @@ interface BusinessCustomerData {
     postalCode: string;
 }
 
+interface PrivateCustomerData {
+    firstName: string;
+    lastName: string;
+    password: string;
+    companyName: string;
+    orgNumber: string;
+    email: string;
+    phoneNumber: string;
+    address: string;
+    city: string;
+    postalCode: string;
+}
+
 const admin = {
     getAllJobs: async (): Promise<Job[]> => {
         try {
@@ -247,6 +260,7 @@ const admin = {
             }
             const response = await axios.post(Url, adminData, {
                 headers: {
+                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${jwt}`
                 }
             });
@@ -265,11 +279,13 @@ const admin = {
             }
             const response = await axios.post(Url, businessCustomerData, {
                 headers: {
+                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${jwt}`
                 }
             });
             console.log('Business Customer was created', response.data);
         } catch (error) {
+
             console.error('Error creating business customer', error);
             throw error;
         }
@@ -278,11 +294,13 @@ const admin = {
         try {
             const Url = 'http://localhost:8080/api/employee/createEmployee';
             const jwt = sessionStorage.getItem("jwt");
+
             if (!jwt) {
                 throw new Error("JWT not found in sessionStorage");
             }
             const response = await axios.post(Url, employeeData, {
                 headers: {
+                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${jwt}`
                 }
             });
@@ -292,7 +310,7 @@ const admin = {
             throw error;
         }
     },
-    createPrivateCustomer: async (privateCustomerData: BusinessCustomerData) => {
+    createPrivateCustomer: async (privateCustomerData: PrivateCustomerData) => {
         try {
             const Url = 'http://localhost:8080/api/customer/create';
             const jwt = sessionStorage.getItem("jwt");
@@ -301,6 +319,7 @@ const admin = {
             }
             const response = await axios.post(Url, privateCustomerData, {
                 headers: {
+                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${jwt}`
                 }
             });

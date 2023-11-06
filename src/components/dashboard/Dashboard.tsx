@@ -7,6 +7,7 @@ import {DashboardUserData} from "./DashboardUserData";
 import employee from "../../API/employee";
 import EditEmployee from "../forms/EditEmployeeForm";
 import EmployeeShiftCont from "../../pages/employee-pages/EmployeeShiftCont";
+import EditBookingForm from "../forms/EditBookingForm";
 
 interface DashboardProps {
     userType: 'customer' | 'employee' | 'admin';
@@ -32,6 +33,8 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
     const [showSalary, setShowSalary] = useState(false)
     const [workedHours, setWorkedHours] = useState(0)
     const [hourlySalary, setHourlySalary] = useState(0)
+    const [showEdit, setShowEdit] = useState(false)
+    const[selectedJobId, setSelectedJobId] = useState<number | null>(null)
     const [data, setData] = useState({
         firstName: "",
         lastName: "",
@@ -76,6 +79,11 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
 
     const handleBookingUpdate = (jobId: number) => {
         console.log(`Booking ${jobId} was updated.`);
+        setSelectedJobId(jobId)
+        setShowEdit(true)
+    }
+    const handleDoneEdit = () => {
+        setShowEdit(false)
     }
 
     const handleUpdate = () => {
@@ -137,7 +145,11 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
                                             : 'My Upcoming Shifts'}
                                 </div>
                                 <div className="section-content">
-                                    {userType === "admin" && <BookingTable onUpdate={handleBookingUpdate} onKlarna={handleKlarna}/>}
+                                    {userType === "admin" && !showEdit ? <BookingTable onUpdate={handleBookingUpdate} /> : <></> }
+                                    {userType === "admin" && showEdit ? <EditBookingForm jobId={selectedJobId}  doneWithEdit={handleDoneEdit}/>: <></> }
+
+
+                                    {/*{userType === "admin" && <BookingTable onUpdate={handleBookingUpdate} onKlarna={handleKlarna}/>}*/}
                                     {userType === "customer" && <CustomerJobCheck/>}
                                     {userType === "employee" && <EmployeeShiftCont />}
                                 </div>

@@ -35,7 +35,7 @@ export default function BookingPage() {
         <>
             <HeaderComp/>
             {!showUpdateBooking && !showKlarna?<div className="bookingCont">
-                    <AddBookingOption/> <BookingTable onUpdate={(jobId : number) => handleUpdate(jobId)} onKlarna={(jobId : number) => handleKlarna(jobId)} />
+                    <AddBookingOption/> <BookingTable onUpdate={(jobId : number) => handleUpdate(jobId)}  />
             </div>  :
              <> </>
                 // <EditBookingForm jobId={selectedBookingId} doneWithEdit={handleUpdateComplete} />
