@@ -83,10 +83,10 @@ const AddCustomerBookingOption = () => {
         const handleBookingDone = () => {
             setIsBookingDone(!isBookingDone);
         }
-
-        const handleRegister = async (email: string) => {
-            await customer.register(email);
-        }
+        //
+        // const handleRegister = async (email: string) => {
+        //     await customer.register(email);
+        // }
 
         const handleBooking = (email: string) => {
             customer.book(jobType, dateToUse.current, timeList, squareMeters, paymentOption, id, message, email);

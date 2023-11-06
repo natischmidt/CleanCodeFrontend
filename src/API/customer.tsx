@@ -7,8 +7,8 @@ import ConvertTimeSlotToNiceTime from "../components/layout/ConvertTimeSlotToNic
 
 
 const customer = {
-    register: async (email: string) => {
 
+    registerTemp: async (email: string) => {
 
         try {
             const url = 'http://localhost:8080/api/customer/create';
@@ -33,11 +33,46 @@ const customer = {
 
             const idResponse = await axios.get(`http://localhost:8080/api/customer/getIdByEmail/${email}`);
             console.log("id for non reg. user: " + idResponse.data);
-
             const tempId = idResponse.data;
             console.log("Steg 1: " + tempId);
-
             return tempId;
+
+        } catch (error) {
+            console.error('Error while trying to register a new customer', error);
+        }
+
+
+    },
+
+    register: async (customerData: {
+        firstName: string;
+        lastName: string;
+        password: string;
+        phoneNumber: string;
+        address: string;
+        city: string;
+        companyName: string;
+        postalCode: string;
+        orgNumber: string;
+        email: string
+    }) => {
+
+        try {
+            const url = 'http://localhost:8080/api/customer/create';
+
+
+
+            const response = await axios.post(url, customerData);
+            console.log('Customer was registered', response.data);
+
+            sessionStorage.setItem("jwt", response.data.jwt)
+
+            // const idResponse = await axios.get(`http://localhost:8080/api/customer/getIdByEmail/${email}`);
+            // console.log("id for non reg. user: " + idResponse.data);
+            // const tempId = idResponse.data;
+            // console.log("Steg 1: " + tempId);
+            // return tempId;
+
         } catch (error) {
             console.error('Error while trying to register a new customer', error);
         }
@@ -55,21 +90,20 @@ const customer = {
 
         try {
 
-
             if (id == null) {
                 // ICKE KUND
                 console.log("Bokning av en icke kund!");
-                customer.register(email).then(returnId => {
+                customer.registerTemp(email).then(returnId => {
                     admin.createBooking(jobType, dateToUseRef,
                         timeList, squareMeters, paymentOption, returnId,
-                        message, email).then(r => {
+                        message).then(r => {
                     });
                 });
             } else if (id != null) {
                 // KUND
                 const email = "";
                 console.log("Bokning av inloggad kund:");
-                admin.createBooking(jobType, dateToUseRef, timeList, squareMeters, paymentOption, id, message, email).then(r => {
+                admin.createBooking(jobType, dateToUseRef, timeList, squareMeters, paymentOption, id, message).then(r => {
                 });
             }
         } catch (error) {
@@ -108,7 +142,7 @@ const customer = {
 
         try {
             const headers = {
-                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                // 'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
                 'Content-Type': 'application/json',
             };
 
@@ -119,7 +153,7 @@ const customer = {
                 password: password,
             };
 
-            const response = await axios.post(url, customerData );
+            const response = await axios.post(url, customerData, {headers} );
             const resp = response.data;
 
             console.log(resp);

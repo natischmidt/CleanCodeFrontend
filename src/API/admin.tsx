@@ -173,7 +173,7 @@ const admin = {
         payment: string,
         customerId: string,
         message: string,
-        email: string
+        // email: string
     ): Promise<void> => {
         console.log("................*********" + timeSlotList);
         try {
