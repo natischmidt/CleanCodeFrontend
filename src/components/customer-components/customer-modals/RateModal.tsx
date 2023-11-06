@@ -29,14 +29,9 @@ export const RateModal: React.FC<{ onClose: () => void; func1: (id: number, rati
                     onPointerMove={onPointerMove}
                 />
                 <div style={styles.buttons}>
-                    <button type="submit" onClick={() => {
-                        // @ts-ignore
-                        func1(id, rating);
-                        onClose();
-                        console.log("YOU RATED: " + rating);
-                    }}
-                    >
-                        Rate
+
+                    <button type="submit" onClick={onClose}>
+                        Cancel
                     </button>
                     <button type="submit" onClick={() => {
                         // @ts-ignore
@@ -46,8 +41,14 @@ export const RateModal: React.FC<{ onClose: () => void; func1: (id: number, rati
                     >
                         Dont rate
                     </button>
-                    <button type="submit" onClick={onClose}>
-                        Cancel
+                    <button type="submit" onClick={() => {
+                        // @ts-ignore
+                        func1(id, rating);
+                        onClose();
+                        console.log("YOU RATED: " + rating);
+                    }}
+                    >
+                        Rate
                     </button>
                 </div>
             </div>
