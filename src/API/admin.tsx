@@ -272,7 +272,7 @@ const admin = {
     },
     createBusinessCustomer: async (businessCustomerData: BusinessCustomerData): Promise<void> => {
         try {
-            const Url = 'http://localhost:8080/api/custonmer/create';
+            const Url = 'http://localhost:8080/api/customer/create';
             const jwt = sessionStorage.getItem("jwt");
             if (!jwt) {
                 throw new Error("JWT not found in sessionStorage");
@@ -294,6 +294,7 @@ const admin = {
         try {
             const Url = 'http://localhost:8080/api/employee/createEmployee';
             const jwt = sessionStorage.getItem("jwt");
+
             if (!jwt) {
                 throw new Error("JWT not found in sessionStorage");
             }
