@@ -6,10 +6,10 @@ import ThumbsDown from "../../assets/ThumbsDown.png";
 
 interface bookingTableProps {
     onUpdate: (jobId: number) => void;
-    onKlarna: (jobId: number) => void;
+   // onKlarna: (jobId: number) => void;
 }
 
-const BookingTable: React.FC<bookingTableProps> = ({onUpdate, onKlarna}) => {
+const BookingTable: React.FC<bookingTableProps> = ({onUpdate/*, onKlarna*/}) => {
 
     const [deleted, setDeleted] = useState(0);
     const [customerData, setCustomerData] = useState<any[]>([]);

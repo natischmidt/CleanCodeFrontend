@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import admin from "../../API/admin";
+import ConvertTimeSlotToNiceTime from "../layout/ConvertTimeSlotToNiceTime";
 
 interface editBookingProps {
     jobId: number | null;
@@ -13,7 +14,7 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
     const [jobStatus, setJobStatus] = useState("")
     const [jobType, setJobType] = useState("")
     const [paymentOption, setPaymentOption] = useState("")
-    const [squareMeters, setSquareMeters] = useState("")
+    const [squareMeters, setSquareMeters] = useState<number | null>(null)
     const [timeSlot, setTimeSlot] = useState("")
     const [message, setMessage] = useState<string>("");
     const [customerId, setCustomerId] = useState<String | null>(null);
@@ -30,16 +31,19 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                     };
                     const response = await axios.get(url, { headers });
                     const data = response.data;
+                    const dateTwo = new Date(data.date)
+                    const formattedDate = `${dateTwo.getFullYear()}-${String(dateTwo.getMonth() + 1).padStart(2, '0')}-${String(dateTwo.getDate()).padStart(2, '0')}`;
+
                     console.log(response.data.customerId)
                     if (!data || !data.jobId) {
                         console.log('Job with this id not found');
                     } else {
-                        setDate(data.date || '')
+                        setDate(formattedDate || '')
                         setLoadedJobId(data.jobId?.toString() || '')
                         setJobStatus(data.jobStatus || '')
-                        setJobType(data.jobType || '')
+                        setJobType(data.jobtype || '')
                         setPaymentOption(data.paymentOption || '')
-                        setSquareMeters(data.squareMeters?.toString() || '')
+                        setSquareMeters(data.squareMeters || '')
                         setTimeSlot(data.timeSlot || '')
                         setCustomerId(data.customerId)
                     }
@@ -88,49 +92,54 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
     return (
         <div style={styles.container}>
             <form style={styles.form} onSubmit={handleSubmit}>
-                <h2>Edit Booking</h2>
-                <input
-                    type="text"
-                    placeholder="JOb ID lär inte ändras"
-                    style={styles.input}
-                    value={`${loadedjobId}`}
-                    onChange={(e) => setLoadedJobId(Number(e.target.value))}
-                    disabled={true}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="job Type"
-                    style={styles.input}
-                    value={jobType}
-                    onChange={(e) => setJobType(e.target.value)}
-                    disabled={true}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Date"
-                    style={styles.input}
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    disabled={true}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Time slot"
-                    style={styles.input}
-                    value={timeSlot}
-                    onChange={(e) => setTimeSlot(e.target.value)}
-                    disabled={true}
-                    required
-                />
+                <h2 style={styles.h2}>Edit Booking</h2>
+                <p style={styles.pTag}>Job ID: {loadedjobId}</p>
+                {/*<input*/}
+                {/*    type="text"*/}
+                {/*    placeholder="JOb ID lär inte ändras"*/}
+                {/*    style={styles.input}*/}
+                {/*    value={`${loadedjobId}`}*/}
+                {/*    onChange={(e) => setLoadedJobId(Number(e.target.value))}*/}
+                {/*    disabled={true}*/}
+                {/*    required*/}
+                {/*/>*/}
+                <p style={styles.pTag}>Job Type: {jobType}</p>
+                {/*<input*/}
+                {/*    type="text"*/}
+                {/*    placeholder="job Type"*/}
+                {/*    style={styles.input}*/}
+                {/*    value={jobType}*/}
+                {/*    onChange={(e) => setJobType(e.target.value)}*/}
+                {/*    disabled={true}*/}
+                {/*    required*/}
+                {/*/>*/}
+                <p style={styles.pTag}>Date: {date}</p>
+                {/*<input*/}
+                {/*    type="text"*/}
+                {/*    placeholder="Date"*/}
+                {/*    style={styles.input}*/}
+                {/*    value={date}*/}
+                {/*    onChange={(e) => setDate(e.target.value)}*/}
+                {/*    disabled={true}*/}
+                {/*    required*/}
+                {/*/>*/}
+                <p style={styles.pTag}>Time: {ConvertTimeSlotToNiceTime(timeSlot)}</p>
+                {/*<input*/}
+                {/*    type="text"*/}
+                {/*    placeholder="Time slot"*/}
+                {/*    style={styles.input}*/}
+                {/*    value={timeSlot}*/}
+                {/*    onChange={(e) => setTimeSlot(e.target.value)}*/}
+                {/*    disabled={true}*/}
+                {/*    required*/}
+                {/*/>*/}
+                <p style={styles.pTag}>Choose job status :</p>
                 <select
                     value={jobStatus}
                     style={styles.select}
                     onChange={(e) => setJobStatus(e.target.value)}
                 >
-                    <option value="">Choose job status:</option>
+                    {/*<option value="">Choose job status:</option>*/}
                     <option value="PENDING">Pending</option>
                     <option value="DONE">Done</option>
                     <option value="APPROVED">Approved</option>
@@ -138,15 +147,16 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                     <option value="PAID">Paid</option>
                     <option value="CANCELLED">Cancelled</option>
                 </select>
+                <p style={styles.pTag}>Square meters :</p>
                 <input
-                    type="text"
+                    type="number"
                     placeholder="sqm"
                     style={styles.input}
-                    value={squareMeters}
-                    onChange={(e) => setSquareMeters(e.target.value)}
-                    disabled={true}
+                    value={`${squareMeters}`}
+                    onChange={(e) => setSquareMeters(Number(e.target.value))}
                     required
                 />
+                <br/>
                 <select
                     value={paymentOption}
                     style={styles.select}
@@ -156,6 +166,7 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                     <option value="KLARNA">Klarna</option>
                     {/*<option value="CASH">Cash</option>*/}
                 </select>
+                <br/>
                 <input
                     type="text"
                     value={message}
@@ -195,15 +206,6 @@ const styles = {
         marginTop: '2%',
         marginBottom: "2%"
     },
-    input: {
-        marginTop: '10px',
-        marginBottom: '15px',
-        padding: '10px',
-        width: '75%',
-        borderRadius: '5px',
-        fontFamily: "PlomPraeng",
-        fontSize: "1rem"
-    },
     button: {
         padding: '10px 20px',
         backgroundColor: '#2b7285',
@@ -214,13 +216,33 @@ const styles = {
         marginTop: '25px',
         width: "200px"
     },
-    select: {
-        marginTop: '10px',
-        marginBottom: '15px',
-        padding: '10px',
-        width: '80%',
+    input: {
+        marginTop: '3px',
+        marginBottom: '3px',
+        padding: '5px',
+        width: '47%',
         borderRadius: '5px',
         fontFamily: "PlomPraeng",
         fontSize: "1rem"
     },
+
+    select: {
+        marginTop: '3px',
+        marginBottom: '3px',
+        padding: '5px',
+        width: '50%',
+        borderRadius: '5px',
+        fontFamily: "PlomPraeng",
+        fontSize: "1rem"
+    },
+    pTag:{
+        margin: "0.3rem",
+        fontSize: "1.1rem"
+    },
+    h2:{
+        fontSize: "2rem",
+        margin: "1rem",
+        fontWeight: "bold",
+        textDecoration: "underline"
+    }
 }
