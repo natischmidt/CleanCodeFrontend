@@ -6,48 +6,7 @@ import {RegisterModal} from "../customer-components/customer-modals/RegisterModa
 import '../../styles/HeaderStyles.css'
 import {useUserType} from "../context/UserTypeContext";
 
-const styles = {
-    header: {
-        backgroundColor: '#a0c1cc',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '10px 20px',
-        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-        marginTop: '0rem',
-        height: '6rem',
-    },
-    logo: {
-        color: 'black',
-        fontWeight: 'bold',
-        fontSize: '24px',
-        height: '5rem',
-    },
-    navItem: {
-        margin: '0 10px',
-        color: 'black',
-        fontWeight: 'bold',
-        marginRight: '35px',
-        fontSize: "1.2rem"
-    },
-    link: {
-        fontWeight: 'bold',
-        textDecoration: 'none',
-        color: 'black',
-        cursor: 'pointer',
-    },
-    button: {
-        color: 'black',
-        backgroundColor: '#b3d9e3',
-        cursor: 'pointer',
-        padding: '5px 10px',
-        borderRadius: '5px',
-        fontWeight: 'bold',
-        border: '1px solid rgba(0, 0, 0, 0.1)',
-        boxShadow: '0px 4px 5px rgba(0, 0, 0, 0.2)',
-        margin: '0 5px',
-    }
-};
+
 
 interface HeaderProps {
     showLoggedIn: boolean;
@@ -73,7 +32,7 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
     const handleLogoutClick = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoggedIn(false);
-        customer.logout();
+        // customer.logout();
         goToHome("/CustomerHome")
     };
 
@@ -124,15 +83,15 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
                 )}
                 <li style={styles.navItem}>
                     {!loggedIn && (
-                        <>
-                            <li style={styles.link}>
+
+                            <div style={styles.link}>
                                 <button style={styles.button} onClick={handleLoginClick}>Log In</button>
                                 <button style={styles.button}
                                     onClick={handleRegisterClick}>
                                     Register
                                 </button>
-                            </li>
-                        </>
+                            </div>
+
                     )}
                 </li>
             </ul>
@@ -159,9 +118,9 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
                         <>
                             <li style={styles.link} onClick={handleLoginClick}>Log in
                             </li>
-                            <li>
+
                                 <li style={styles.link} onClick={handleRegisterClick}>Register</li>
-                            </li>
+
                         </>
                     )}
                     {loggedIn && (
@@ -171,11 +130,11 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
                                     My Pages
                                 </Link>
                             </li>
-                            <li>
-                                {/*<Link to="/CustomerBooking" style={styles.link}>*/}
-                                {/*    Book*/}
-                                {/*</Link>*/}
-                            </li>
+                            {/*<li>*/}
+                            {/*    /!*<Link to="/CustomerBooking" style={styles.link}>*!/*/}
+                            {/*    /!*    Book*!/*/}
+                            {/*    /!*</Link>*!/*/}
+                            {/*</li>*/}
                             <li style={styles.link} onClick={handleLogoutClick}>Log out
                             </li>
                         </>
@@ -186,3 +145,45 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
     );
 }
 export default CustomerHeader;
+const styles = {
+    header: {
+        backgroundColor: '#a0c1cc',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '10px 20px',
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+        marginTop: '0rem',
+        height: '6rem',
+    },
+    logo: {
+        color: 'black',
+        fontWeight: 'bold',
+        fontSize: '24px',
+        height: '5rem',
+    },
+    navItem: {
+        margin: '0 10px',
+        color: 'black',
+        fontWeight: 'bold',
+        marginRight: '35px',
+        fontSize: "1.2rem"
+    },
+    link: {
+        fontWeight: 'bold',
+        textDecoration: 'none',
+        color: 'black',
+        cursor: 'pointer',
+    },
+    button: {
+        color: 'black',
+        backgroundColor: '#b3d9e3',
+        cursor: 'pointer',
+        padding: '5px 10px',
+        borderRadius: '5px',
+        fontWeight: 'bold',
+        border: '1px solid rgba(0, 0, 0, 0.1)',
+        boxShadow: '0px 4px 5px rgba(0, 0, 0, 0.2)',
+        margin: '0 5px',
+    }
+};

@@ -184,7 +184,7 @@ const admin = {
         timeSlotList: string[],
         squareMeters: string | null,
         payment: string,
-        customerId: string,
+        customerId: string | null,
         message: string,
         // email: string
     ): Promise<void> => {

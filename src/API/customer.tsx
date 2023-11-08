@@ -6,9 +6,11 @@ import {useNavigate} from 'react-router-dom';
 import ConvertTimeSlotToNiceTime from "../components/layout/ConvertTimeSlotToNiceTime";
 
 
+
 const customer = {
 
     registerTemp: async (email: string) => {
+
 
         try {
             const url = 'http://localhost:8080/api/customer/create';
@@ -29,13 +31,16 @@ const customer = {
             const response = await axios.post(url, customerData);
             console.log('Customer was registered', response.data);
 
+            sessionStorage.setItem("tempId", response.data.userId)
+
             sessionStorage.setItem("jwt", response.data.jwt)
 
-            const idResponse = await axios.get(`http://localhost:8080/api/customer/getIdByEmail/${email}`);
-            console.log("id for non reg. user: " + idResponse.data);
-            const tempId = idResponse.data;
-            console.log("Steg 1: " + tempId);
+            // const idResponse = await axios.get(`http://localhost:8080/api/customer/getIdByEmail/${email}`);
+            // console.log("id for non reg. user: " + idResponse.data);
+            const tempId = response.data.userId;
+
             return tempId;
+
 
         } catch (error) {
             console.error('Error while trying to register a new customer', error);
@@ -55,12 +60,11 @@ const customer = {
         postalCode: string;
         orgNumber: string;
         email: string
-    }) => {
+    }, setLoggedIn: (value: (((prevState: boolean) => boolean) | boolean)) => void, setUserType: (value: (((prevState: ("ADMIN" | "CUSTOMER" | "EMPLOYEE" | null)) => ("ADMIN" | "CUSTOMER" | "EMPLOYEE" | null)) | "ADMIN" | "CUSTOMER" | "EMPLOYEE" | null)) => void, setId: (value: (((prevState: (string | null)) => (string | null)) | string | null)) => void) => {
+
 
         try {
             const url = 'http://localhost:8080/api/customer/create';
-
-
 
             const response = await axios.post(url, customerData);
             console.log('Customer was registered', response.data);
@@ -73,6 +77,15 @@ const customer = {
             // console.log("Steg 1: " + tempId);
             // return tempId;
 
+            if (response) {
+                setLoggedIn(true)
+                setUserType("CUSTOMER");
+                setId(response.data.userId);
+                setLoggedIn(true);
+
+            } else {
+                console.log("hur tusan hamna vi här?");
+            }
         } catch (error) {
             console.error('Error while trying to register a new customer', error);
         }
@@ -92,13 +105,16 @@ const customer = {
 
             if (id == null) {
                 // ICKE KUND
-                console.log("Bokning av en icke kund!");
-                customer.registerTemp(email).then(returnId => {
-                    admin.createBooking(jobType, dateToUseRef,
-                        timeList, squareMeters, paymentOption, returnId,
-                        message).then(r => {
-                    });
-                });
+                admin.createBooking(jobType,
+                    dateToUseRef,
+                    timeList,
+                    squareMeters,
+                    paymentOption,
+                    sessionStorage.getItem("tempId"),
+                    message,
+                    )
+
+
             } else if (id != null) {
                 // KUND
                 const email = "";
@@ -120,7 +136,7 @@ const customer = {
                 'Content-Type': 'application/json',
             };
 
-            const Url = 'http://localhost:8080/api/auth/logoutEmployee';
+            const Url = 'http://localhost:8080/api/auth/logoutCustomer';
 
             const response = await axios.post(Url, {headers: headers});
 
