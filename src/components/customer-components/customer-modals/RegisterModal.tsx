@@ -1,5 +1,6 @@
 import React, {useRef, useState} from 'react';
 import customer from "../../../API/customer";
+import {useUserType} from "../../context/UserTypeContext";
 
 export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
 
@@ -17,6 +18,9 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
     const [businessCustomer, setBusinessCustomer] = useState(false);
     // const [allNecessaryInformationEntered, setAllNecessaryInformationEntered] = useState(false);
     const allNecessaryInformationEntered = useRef(false);
+    const {setUserType , setId, setLoggedIn} = useUserType();
+
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -51,7 +55,7 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
 
         if (firstname !== '' &&
         lastname !== '' &&
-        // email.match('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$') &&
+        email.match('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$') &&
             email !== '' &&
         // phonenumber.match('^(\d+){8,12}$') &&
             phonenumber != '' &&
@@ -79,9 +83,8 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
     const handleRegister = async () => {
 
             try {
-                const tempId = await customer.register(customerData);
+                const tempId = await customer.register(customerData, setLoggedIn, setUserType, setId);
                 console.log('Customer was registered , tempId:', tempId);
-
                 onClose();
             } catch (error) {
                 console.error('Error while trying to register a new customer', error);

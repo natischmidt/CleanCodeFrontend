@@ -8,6 +8,7 @@ import advanced from "../../assets/advanced2.jpg";
 import windowclean from "../../assets/www.png";
 import {useUserType} from "../context/UserTypeContext";
 import customer from "../../API/customer";
+import SetTempEmail from "./customer-modals/SetTempEmail";
 
 const AddCustomerBookingOption = () => {
 
@@ -48,6 +49,8 @@ const AddCustomerBookingOption = () => {
         const monthString = useRef('')
         const yearToUse = useRef(0)
         const dateToUse = useRef('')
+
+        const [showSetTempEmail, setShowSetTempEmail] = useState(false)
 
         const [eight, setEight] = useState(false)
         const [nine, setNine] = useState(false)
@@ -116,8 +119,11 @@ const AddCustomerBookingOption = () => {
             setShowExtraInfoWin(!showExtraInfoWin);
         }
 
+        const settingTemporaryEmail = (value: string) => {
+            setEmailAddress(value)
+        }
 
-        function handleJobType(jobType: string) {
+        const continueToCalendar = (jobType: string) => {
             if (jobType == "BASIC") {
                 setHours(1)
             } else if (jobType == "ADVANCED") {
@@ -133,7 +139,30 @@ const AddCustomerBookingOption = () => {
             handleModal()
         }
 
-        async function checkDay(day: any) {
+
+        function handleJobType(jobType: string) {
+            if (jobType == "BASIC") {
+                setHours(1)
+            } else if (jobType == "ADVANCED") {
+                setHours(2)
+            } else if (jobType == "DIAMOND") {
+
+                setHours(3)
+            } else if (jobType == "WINDOW") {
+                setHours(2)
+            }
+            setJobType(jobType)
+            if (sessionStorage.getItem("jwt") === null ) {
+                setShowSetTempEmail(true)
+            } else {
+
+                setShowCalender(true)
+                handleModal()
+            }
+
+        }
+
+        async function checkDay(day: Date) {
             if (day) {
 
                 yearToUse.current = day.getFullYear().valueOf()
@@ -159,8 +188,11 @@ const AddCustomerBookingOption = () => {
                 dateToUse.current = yearToUse.current + "-" + monthString.current + "-" + dayToUse.current;
                 // @ts-ignore
 
+                console.log(dateToUse.current + "........." + hours)
                 await admin.getAvailableEmp(dateToUse.current, hours).then(response => {
                     if (response) {
+
+
                         setEight(response.at(0))
                         setNine(response.at(1))
                         setTen(response.at(2))
@@ -256,6 +288,7 @@ const AddCustomerBookingOption = () => {
                         <div style={styles.sectionTitle}>
                             <h2>What cleaning are you interested in?</h2>
                         </div>
+                        {!showSetTempEmail ?
                         <div style={styles.boxContainer}>
                             <div style={{
                                 ...styles.box,
@@ -378,7 +411,11 @@ const AddCustomerBookingOption = () => {
                                         </div>)}
                                 </div>
                             </div>
-                        </div>
+                        </div> :
+                            <SetTempEmail
+                                jobType={jobType}
+                            toCalendar = {continueToCalendar}
+                             email={settingTemporaryEmail}/>}
                     </div>)}
 
                 <div style={styles.container}>
