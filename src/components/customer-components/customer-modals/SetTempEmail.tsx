@@ -15,7 +15,7 @@ export default function SetTempEmail({email, jobType, toCalendar}: ISetTempEmail
     const setTheEmail = () => {
         email(tempMail)
 
-        customer.registerTemp(tempMail, setId).then(r => {
+        customer.registerTemp(tempMail).then(r => {
                 toCalendar(jobType)
         }
 

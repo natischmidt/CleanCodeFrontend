@@ -9,7 +9,7 @@ import ConvertTimeSlotToNiceTime from "../components/layout/ConvertTimeSlotToNic
 
 const customer = {
 
-    registerTemp: async (email: string, setId: (value: (((prevState: (string | null)) => (string | null)) | string | null)) => void) => {
+    registerTemp: async (email: string) => {
 
 
         try {
@@ -31,7 +31,7 @@ const customer = {
             const response = await axios.post(url, customerData);
             console.log('Customer was registered', response.data);
 
-            setId(response.data.id)
+            sessionStorage.setItem("tempId", response.data.userId)
 
             sessionStorage.setItem("jwt", response.data.jwt)
 
@@ -104,14 +104,17 @@ const customer = {
         try {
 
             if (id == null) {
-                // // ICKE KUND
-                // console.log("Bokning av en icke kund!");
-                // customer.registerTemp(email).then(returnId => {
-                //     admin.createBooking(jobType, dateToUseRef,
-                //         timeList, squareMeters, paymentOption, returnId,
-                //         message).then(r => {
-                //     });
-                // });
+                // ICKE KUND
+                admin.createBooking(jobType,
+                    dateToUseRef,
+                    timeList,
+                    squareMeters,
+                    paymentOption,
+                    sessionStorage.getItem("tempId"),
+                    message,
+                    )
+
+
             } else if (id != null) {
                 // KUND
                 const email = "";
