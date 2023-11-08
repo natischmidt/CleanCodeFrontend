@@ -27,14 +27,16 @@ export default function HeaderComp() {
         e.preventDefault();
 
         try {
-            const Url = 'http://localhost:8080/api/auth/logoutEmployee';
-            const headers = {
-                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
-                'Content-Type': 'application/json',
-            };
-            const response = await axios.post(Url, {headers});
-
-            console.log('Employee/Admin has successfully logged out', response.data);
+            // const headers = {
+            //     'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+            //     'Content-Type': 'application/json',
+            // };
+            //
+            // const Url = 'http://localhost:8080/api/auth/logoutEmployee';
+            //
+            // const response = await axios.post(Url, {headers: headers});
+            //
+            // console.log('Employee/Admin has successfully logged out', response.data);
 
             goToLogin("/")
 
