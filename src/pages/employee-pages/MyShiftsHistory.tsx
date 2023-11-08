@@ -25,12 +25,25 @@ const MyShiftHistory = () => {
     ];
 
     return (
-        <div style={styles.myShifts}>
-            <TableId
-                columns={columns}
-                data={employeeShiftHistory}
-                buttons={[]}
-            />
+        <div>
+            {employeeShiftHistory && employeeShiftHistory.length > 0 ? (
+                <>
+                    <div style={styles.myShifts}>
+                        <TableId
+                            columns={columns}
+                            data={employeeShiftHistory}
+                            buttons={[]}
+                        />
+                    </div>
+                </>
+            ) :(
+            <div>
+                <p>
+                    No bookings in the history!
+                </p>
+            </div>
+            )}
+
         </div>
     );
 }

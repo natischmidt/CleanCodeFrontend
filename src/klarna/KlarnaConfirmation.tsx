@@ -43,8 +43,8 @@ function KlarnaConfirmation() {
     return (
 
             <div style={styles.confCont}>
-                <p style={styles.bigText}>Tack för din beställning!</p>
-                <p style={styles.smallText}>Nu har din betalning gått igenom.</p>
+                <p style={styles.bigText}>Thank you for your order!</p>
+                <p style={styles.smallText}>Your payment have been registered.</p>
                 <button type="button" style={styles.button} onClick={handleClose} >
                     Go Back
                 </button>

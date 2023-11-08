@@ -77,6 +77,7 @@ const styles = {
         borderRadius: "5px",
         padding: "15px",
         marginTop: "3%",
+        width: "38rem",
         marginBottom: "3%",
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
         backgroundColor : "#b3d9e3",

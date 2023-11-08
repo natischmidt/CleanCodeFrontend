@@ -117,7 +117,8 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
                 <RateModal func1={func1} id={id} onClose={closeModal}/>
             </div>}
 
-            {!isModalOpen && (
+            {filteredCustomerData && filteredCustomerData.length > 0 ? (
+                <>
                 <div>
                     <div style={styles.filter}>
                         Filter by jobtype
@@ -155,11 +156,18 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
                                     rate(id, 'ThumbsDown')
                                 }
                             }
-                            // { label: "BILD HÄR", action: (id) => {handleNotOk(id)}, style:styles.cancel },
+
                         ]}
                     />
                 </div>
-            )}
+                </>)
+                :(
+                    <div>
+                        <p>
+                            No finished bookings!
+                        </p>
+                    </div>
+                )}
         </div>
     )
 }
@@ -175,6 +183,6 @@ const styles = {
         height: 40
     },
     filter: {
-        textAlign: "left" as 'left',
+        textAlign: "center" as "center",
     }
 }

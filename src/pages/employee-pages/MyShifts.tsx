@@ -57,15 +57,27 @@ const MyShifts = () => {
     ];
 
     return (
-        <div style={styles.myShifts}>
-            <TableId
-                columns={columns}
-                data={employeeShifts}
-                buttons={[
-                    {label: "Done", action:(jobId) => {handleDone(jobId)}, style:styles.done}
-                ]}
-                />
-        </div>
+        <div>
+            {employeeShifts && employeeShifts.length > 0 ? (
+                <>
+                    <div style={styles.myShifts}>
+                        <TableId
+                            columns={columns}
+                            data={employeeShifts}
+                            buttons={[
+                                {label: "Done", action:(jobId) => {handleDone(jobId)}, style:styles.done}
+                            ]}
+                            />
+                    </div>
+                </>)
+                :(
+                    <div>
+                        <p>
+                            No upcoming bookings!
+                        </p>
+                    </div>
+                )}
+    </div>
     )
 }
 

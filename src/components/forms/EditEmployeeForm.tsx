@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 
 interface editEmployeeProps {
-    empId?: number;
+    empId?: number | null;
     doneWithEdit: () => void;
 }
 
