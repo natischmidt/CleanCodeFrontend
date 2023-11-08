@@ -133,7 +133,7 @@ const customer = {
                 'Content-Type': 'application/json',
             };
 
-            const Url = 'http://localhost:8080/api/auth/logoutEmployee';
+            const Url = 'http://localhost:8080/api/auth/logoutCustomer';
 
             const response = await axios.post(Url, {headers: headers});
 

@@ -32,7 +32,7 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
     const handleLogoutClick = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoggedIn(false);
-        customer.logout();
+        // customer.logout();
         goToHome("/CustomerHome")
     };
 
