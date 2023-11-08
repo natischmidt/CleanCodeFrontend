@@ -37,6 +37,7 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate/*, onKlarna*/}) => 
         {key: 'date', title: 'Date'},
         {key: 'timeSlot', title: 'Time'},
         {key: 'jobStatus', title: 'Status'},
+        {key: 'rating', title: 'Rating'},
         // {key: 'squareMeters', title: 'Sqm'},
         // {key: 'paymentOption', title: 'Payment Option'},
         // {key: 'customerId', title: 'Customer Id'},
@@ -57,6 +58,7 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate/*, onKlarna*/}) => 
         (customer.date.includes(searchDate) || searchDate === '')
     )
 
+    // @ts-ignore
     return (
         <>
             <div style={styles.filterContainer}>
