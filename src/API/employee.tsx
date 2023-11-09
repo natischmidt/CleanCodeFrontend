@@ -116,8 +116,13 @@ const employee = {
         try {
             console.log(`Fetching jobs for empId: ${empId}`);
 
+            const headers = {
+                'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+                'Content-Type': 'application/json',
+            }
+
             const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForEmployeeWithStatus/${empId}`, {
-               headers,
+               headers: headers,
                 params: {
                     status: status
                 },
