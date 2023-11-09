@@ -44,7 +44,10 @@ const TableId: React.FC<Props> = ({ columns, data , buttons}) => {
             {data.map((item, index) => (
                 <tr key={index}>
                     {columns.map((column) => (
-                        <td key={column.key} style={styles.tableCell}>{item[column.key]}</td>
+                        <td key={column.key} style={styles.tableCell}>
+                            {column.key === 'rating' && item.rating === 0 ? "-" : item[column.key]}
+                        </td>
+                        // <td key={column.key} style={styles.tableCell}>{item[column.key]}</td>
                     ))}
                     <td style={styles.td}>
                         {buttons.map((button, buttonIndex) => (
@@ -77,6 +80,7 @@ const styles = {
         borderRadius: "5px",
         padding: "15px",
         marginTop: "3%",
+        width: "38rem",
         marginBottom: "3%",
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
         backgroundColor : "#b3d9e3",

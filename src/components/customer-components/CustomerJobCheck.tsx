@@ -34,21 +34,22 @@ const CustomerJobCheck = () => {
                                 <CustomerApprovalTable cusId={id} change={change} setChange={setChange}/>
                             </div>
 
-                            <div style={styles.cols}>
-                                <p style={styles.p}>Unapproved bookings</p>
-                                <CustomerUnapprovalTable cusId={id} change={change} setChange={setChange}/>
-                            </div>
+
                         </div>
 
                         <div style={styles.row}>
                             <div style={styles.cols}>
+
                                 <p style={styles.p}>Ready to pay</p>
                                 <CustomerKlarnaPayTable cusId={id} change={change} setChange={setChange}
                                                         showKlarna={(jobId: number) => {
                                                             showKlarna(jobId)
                                                         }}/>
                             </div>
-
+                            <div style={styles.cols}>
+                                <p style={styles.p}>Unapproved bookings</p>
+                                <CustomerUnapprovalTable cusId={id} change={change} setChange={setChange}/>
+                            </div>
                             <div style={styles.cols}>
                                 <p style={styles.p}>History</p>
                                 <CustomerJobHistoryTable cusId={id} change={change} setChange={setChange}/>
@@ -77,6 +78,7 @@ const styles = {
         borderBottom: "2px solid black"
     },
     p: {
+        alignSelf: "center" as "center",
         fontSize: "1.7rem",
         fontWeight: "bold" as "bold",
         textAlign: 'left' as 'left',

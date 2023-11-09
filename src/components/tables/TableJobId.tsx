@@ -20,7 +20,7 @@ interface Props {
 
 const TableJobId: React.FC<Props> = ({columns, data, buttons}) => {
     return (
-        <div className="table-container" style={{maxHeight: '9rem', overflowY: 'auto'}}>
+     /*   <div className="table-container" style={{maxHeight: '9rem', overflowY: 'auto'}}>*/
             <table className="data-table" style={styles.dataTable}>
                 <thead>
                 <tr>
@@ -52,7 +52,7 @@ const TableJobId: React.FC<Props> = ({columns, data, buttons}) => {
                 ))}
                 </tbody>
             </table>
-        </div>
+        /*</div>*/
     )
 }
 
@@ -69,7 +69,8 @@ const styles = {
         backgroundColor: "#b3d9e3",
         borderRadius: "5px",
         padding: "15px",
-        marginTop: "3%"
+        marginTop: "3%",
+        width: "38rem",
     },
     delete: {
         backgroundColor: "#f83f3f"

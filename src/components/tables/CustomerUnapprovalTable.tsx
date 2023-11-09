@@ -37,6 +37,8 @@ const CustomerUnapprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, ch
 
     return (
         <div>
+            {filteredCustomerData && filteredCustomerData.length > 0 ? (
+                <>
                 <div>
                     <div style={styles.filter}>
                         Filter by jobtype
@@ -68,6 +70,14 @@ const CustomerUnapprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, ch
                         ]}
                     />
                 </div>
+                </>)
+                :(
+                    <div>
+                        <p>
+                            No bookings have been unapproved.. wow nice!
+                        </p>
+                    </div>
+                )}
         </div>
     )
 }
@@ -80,6 +90,6 @@ const styles = {
         height: 40
     },
     filter: {
-        textAlign: "left" as 'left',
+        textAlign: "center" as "center",
     }
 }

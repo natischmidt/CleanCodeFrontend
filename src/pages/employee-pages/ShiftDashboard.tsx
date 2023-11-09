@@ -25,7 +25,7 @@ export default ShiftDashboard;
 const styles = {
     dashboardContainer: {
         display: "flex",
-        flexDirection: "row" as 'row',
+        flexDirection: "column" as 'column',
         alignItems: "center" as 'center',
         justifyContent: "space-between" as 'space-between',
         width: '100%',

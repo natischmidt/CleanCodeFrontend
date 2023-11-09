@@ -6,7 +6,7 @@ import {UserTypeContext} from "../context/UserTypeContext";
 import {DashboardUserData} from "./DashboardUserData";
 import employee from "../../API/employee";
 import EditEmployee from "../forms/EditEmployeeForm";
-import EmployeeShiftCont from "../../pages/employee-pages/EmployeeShiftCont";
+import EmployeeShiftCont from "../../pages/employee-pages/ShiftDashboard";
 import EditBookingForm from "../forms/EditBookingForm";
 
 interface DashboardProps {
@@ -218,7 +218,8 @@ const styles: { [key: string]: React.CSSProperties } = {
         fontWeight: 'bold',
         // marginBottom: '1%',
         fontSize: "1.7rem",
-        marginTop: "-3%",
+        marginTop: "-6%",
+        paddingLeft: "4%",
         textDecoration: "underline",
         // borderBottom: "2px solid black"
     },

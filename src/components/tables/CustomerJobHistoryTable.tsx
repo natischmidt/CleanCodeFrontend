@@ -30,30 +30,41 @@ const CustomerComingJobsHistoryTable: React.FC<CustomerComingJobsHistoryTablePro
 
     return (
         <div>
-            <div style={styles.filter}>
-                Filter by jobstatus
-                <select
-                    value={filter}
-                    onChange={(e) => setFilter(e.target.value)}
-                    style={{marginLeft: '0.5rem'}}
-                >
-                    <option value="">All</option>
-                    <option value="CANCELLED">CANCELLED</option>
-                    <option value="PAID">PAID</option>
-                </select>
-            </div>
-            <TableJobId
-                columns={[
-                    { key: 'jobId', title: 'Job ID' },
-                    {key: 'jobtype', title: 'Job Type'},
-                    {key: 'date', title: 'Date'},
-                    {key: 'timeSlot', title: 'Time Slot'},
-                    {key: 'jobStatus', title: 'Job Status'},
-                    {key: 'squareMeters', title: 'Square Meters'},
-                ]}
-                data={filteredCustomerData}
-                buttons={[]}
-            />
+            {filteredCustomerData && filteredCustomerData.length > 0 ? (
+                    <>
+                        <div style={styles.filter}>
+                            Filter by jobstatus
+                            <select
+                                value={filter}
+                                onChange={(e) => setFilter(e.target.value)}
+                                style={{marginLeft: '0.5rem'}}
+                            >
+                                <option value="">All</option>
+                                <option value="CANCELLED">CANCELLED</option>
+                                <option value="PAID">PAID</option>
+                            </select>
+                        </div>
+                        <TableJobId
+                            columns={[
+                                { key: 'jobId', title: 'Job ID' },
+                                {key: 'jobtype', title: 'Job Type'},
+                                {key: 'date', title: 'Date'},
+                                {key: 'timeSlot', title: 'Time Slot'},
+                                {key: 'jobStatus', title: 'Job Status'},
+                                {key: 'squareMeters', title: 'Square Meters'},
+                                { key: 'rating', title: 'Rating' },
+                            ]}
+                            data={filteredCustomerData}
+                            buttons={[]}
+                        />
+                    </>
+                     ):(
+                    <div>
+                        <p>
+                            No booking history!
+                        </p>
+                    </div>
+    )}
         </div>
     )
 }
@@ -62,6 +73,6 @@ export default CustomerComingJobsHistoryTable
 
 const styles = {
     filter: {
-        textAlign: "left" as 'left',
+        textAlign: "center" as "center",
     }
 }
