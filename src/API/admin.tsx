@@ -149,7 +149,7 @@ const admin = {
                 });
         };
     },
-    getAvailableEmp: async (date: string, hours: number): Promise<EmployeeData[]> => {
+    getAvailableEmp: async (date: string, hours: number) => {
 
 
         if (!date) {

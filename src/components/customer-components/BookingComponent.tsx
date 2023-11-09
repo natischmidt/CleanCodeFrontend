@@ -9,13 +9,14 @@ const styles: {
     bookButton: CSSProperties;
 } = {
     bookingContainer: {
+        marginTop: "10%",
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
-        backgroundColor: "#b3d9e3",
-        border: '2px solid #b3d9e3', // Add a border
+        // boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
+        // backgroundColor: "#b3d9e3",
+        // border: '2px solid #b3d9e3', // Add a border
     },
     citySelectContainer: {
         marginBottom: '20px',
