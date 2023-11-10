@@ -72,6 +72,7 @@ export default function HeaderComp() {
                         }
                     }}>Bookings
                     </button>
+
                     {userType == "ADMIN" && <button id="Employees" style={styles.btn} onClick={() => {
                         {
                             goToEmployees(("/Employees"));

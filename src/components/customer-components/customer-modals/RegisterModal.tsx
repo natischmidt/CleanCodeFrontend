@@ -171,6 +171,7 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                             setCity(e.target.value)
                             checkAllInformationEntered()
                         }}
+                        required
                     />
                     <input
                         type="text"
