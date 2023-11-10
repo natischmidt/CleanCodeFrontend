@@ -5,12 +5,9 @@ import {useUserType} from '../components/context/UserTypeContext';
 import {useNavigate} from 'react-router-dom';
 import ConvertTimeSlotToNiceTime from "../components/layout/ConvertTimeSlotToNiceTime";
 
-
-
 const customer = {
 
     registerTemp: async (email: string) => {
-
 
         try {
             const url = 'http://localhost:8080/api/customer/create';
@@ -45,8 +42,6 @@ const customer = {
         } catch (error) {
             console.error('Error while trying to register a new customer', error);
         }
-
-
     },
 
     register: async (customerData: {
@@ -60,8 +55,9 @@ const customer = {
         postalCode: string;
         orgNumber: string;
         email: string
-    }, setLoggedIn: (value: (((prevState: boolean) => boolean) | boolean)) => void, setUserType: (value: (((prevState: ("ADMIN" | "CUSTOMER" | "EMPLOYEE" | null)) => ("ADMIN" | "CUSTOMER" | "EMPLOYEE" | null)) | "ADMIN" | "CUSTOMER" | "EMPLOYEE" | null)) => void, setId: (value: (((prevState: (string | null)) => (string | null)) | string | null)) => void) => {
-
+    }, setLoggedIn: (value: (((prevState: boolean) => boolean) | boolean)) => void,
+                     setUserType: (value: (((prevState: ("ADMIN" | "CUSTOMER" | "EMPLOYEE" | null)) => ("ADMIN" | "CUSTOMER" | "EMPLOYEE" | null)) | "ADMIN" | "CUSTOMER" | "EMPLOYEE" | null)) => void,
+                     setId: (value: (((prevState: (string | null)) => (string | null)) | string | null)) => void) => {
 
         try {
             const url = 'http://localhost:8080/api/customer/create';
@@ -102,7 +98,6 @@ const customer = {
     ) => {
 
         try {
-
             if (id == null) {
                 // ICKE KUND
                 admin.createBooking(jobType,
@@ -113,7 +108,6 @@ const customer = {
                     sessionStorage.getItem("tempId"),
                     message,
                     )
-
 
             } else if (id != null) {
                 // KUND
@@ -143,7 +137,7 @@ const customer = {
             console.log('Employee/Admin has successfully logged out', response.data);
 
             const goToCustomerHome = useNavigate();
-            goToCustomerHome("/CustomerHome");
+            goToCustomerHome("/");
 
             setLoggedIn(false);
             id && setId(null);
@@ -244,7 +238,6 @@ const customer = {
             throw error;
         }
     }
-
 };
 
 export default customer;

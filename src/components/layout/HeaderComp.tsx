@@ -38,7 +38,7 @@ export default function HeaderComp() {
             //
             // console.log('Employee/Admin has successfully logged out', response.data);
 
-            goToLogin("/")
+            goToLogin("/Employee")
         } catch (error) {
             console.error('Error signing out employee/admin', error);
         }

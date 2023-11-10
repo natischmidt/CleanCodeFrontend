@@ -63,7 +63,7 @@ const LoginAdminOrEmployeeForm = () => {
             <div>
                 <button onClick={quickLoginAsAdmin}>logga in som admin</button>
                 <button onClick={quickLoginAsEmployee}>logga in som employee</button>
-                <button onClick={() => goToHomePage("/customerHome")}>gå till customer home</button>
+                <button onClick={() => goToHomePage("/")}>gå till customer home</button>
             </div>
 
                 <form style={styles.form} onSubmit={handleSubmit}>
