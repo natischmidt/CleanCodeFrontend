@@ -1,7 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import BookingTable from "../tables/BookingTable";
 import CustomerJobCheck from "../customer-components/CustomerJobCheck";
-import MyShifts from "../../pages/employee-pages/MyShifts";
 import {UserTypeContext} from "../context/UserTypeContext";
 import {DashboardUserData} from "./DashboardUserData";
 import employee from "../../API/employee";
@@ -59,10 +58,6 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
                     setUsername(data.firstName + " " +data.lastName)
                 });
             }
-            // else if(contextUserType === "Customer"){
-            //     console.log("OHHH" +userData.lastName);
-            //     setUsername(userData.firstName + " " +userData.lastName)
-            // }
         }
 
     }, [id, contextUserType]);
@@ -145,11 +140,13 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
                                             : 'My Upcoming Shifts'}
                                 </div>
                                 <div className="section-content">
-                                    {userType === "admin" && !showEdit ? <BookingTable onUpdate={handleBookingUpdate} /> : <></> }
-                                    {userType === "admin" && showEdit ? <EditBookingForm jobId={selectedJobId}  doneWithEdit={handleDoneEdit}/>: <></> }
+                                    {userType === "admin" && !showEdit ?
+                                        <BookingTable onUpdate={handleBookingUpdate}/> : <></> }
+                                    {userType === "admin" && showEdit ?
+                                        <EditBookingForm jobId={selectedJobId}  doneWithEdit={handleDoneEdit}/>: <></> }
 
 
-                                    {/*{userType === "admin" && <BookingTable onUpdate={handleBookingUpdate} onKlarna={handleKlarna}/>}*/}
+
                                     {userType === "customer" && <CustomerJobCheck/>}
                                     {userType === "employee" && <EmployeeShiftCont />}
                                 </div>
@@ -208,31 +205,24 @@ const styles: { [key: string]: React.CSSProperties } = {
     },
     section: {
         flex: 1,
-        // border: '1px solid #ccc',
         margin: '-0%',
         padding: '10px',
         textAlign: 'center',
-        // boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
     },
     sectionTitle: {
         fontWeight: 'bold',
-        // marginBottom: '1%',
         fontSize: "1.7rem",
         marginTop: "-6%",
         paddingLeft: "4%",
         textDecoration: "underline",
-        // borderBottom: "2px solid black"
     },
     timeSection: {
         flex: 1,
-        // border: '1px solid #ccc',
         margin: '10px',
         padding: '1px',
         textAlign: 'right',
-        // boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
     },
     sectionUserData: {
-        // flex: 1,
         border: '1px solid #ccc',
         margin: '10px',
         padding: '10px',

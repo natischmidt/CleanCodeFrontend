@@ -6,7 +6,6 @@ import {useUserType} from "../context/UserTypeContext";
 export const GDPRModal_employee: React.FC<{ onClose: () => void }> = ({onClose}) => {
 
     const {id} = useUserType();
-    // @ts-ignore
     const [firstName, setFirstName] = useState<string>("");
     const [lastName, setLastName] = useState<string>("");
     const [address, setAddress] = useState<string>("");

@@ -21,7 +21,7 @@ const AddCustomerBookingOption = () => {
         const [infoTextAdv, setInfoTextAdv] = useState('');
         const [infoTextDia, setInfoTextDia] = useState('');
         const [infoTextWin, setInfoTextWin] = useState('');
-        const {userType, id, loggedIn} = useUserType();
+        const {id, loggedIn} = useUserType();
         const [isModalOpen, setIsModalOpen] = useState(false);
         const [isSquareModalOpen, setIsSquareModalOpen] = useState(false);
         const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);

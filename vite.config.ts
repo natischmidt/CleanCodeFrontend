@@ -4,9 +4,8 @@ import * as fs from "fs";
 
 // https://vitejs.dev/config/
 const httpsOptions = {
-  key: fs.readFileSync('./key.pem'),
-  cert: fs.readFileSync('./cert.pem'),
-  passphrase: 'test'
+  key: fs.readFileSync('./CleanCode.key'),
+  cert: fs.readFileSync('./CleanCode.crt')
 };
 export default defineConfig({
 

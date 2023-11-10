@@ -8,16 +8,17 @@ export const RateModal: React.FC<{ onClose: () => void; func1: (id: number, rati
 
     // Catch Rating value
     const handleRating = (rate: number) => {
+
         // @ts-ignore
         setRating(rate)
-        // other logic
+
     }
     // Optinal callback functions
     const onPointerEnter = () => console.log('Enter')
     const onPointerLeave = () => console.log('Leave')
     const onPointerMove = (value: number, index: number) => console.log(value, index)
 
-    // @ts-ignore
+
     return (
         <div className='App' style={styles.modalContainer}>
             <div style={styles.rateContainer}>

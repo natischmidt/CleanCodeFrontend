@@ -28,28 +28,6 @@ const AddUserOption = () => {
                             Admin
                         </button>
                     )}
-                   {/* {userType === "Employee" && (
-                        <button
-                            type="submit"
-                            style={styles.button}
-                            onClick={() => {
-                                if (userType === "Employee") {
-                                    goToEmployeeForm("/AddEmployee");
-                                }
-                            }}
-                        >
-                            Employee
-                        </button>
-                    )}*/}
-                    {/*error here, changed variable names */}
-{/*
-                    {userType == "ADMIN" &&
-                        <button type="submit"
-                                style={styles.button}
-                                onClick={() =>
-                                {{goToAdminForm(("/AddAdmin"))}}}>
-                        Admin
-                    </button>}*/}
                     {userType === "ADMIN" &&
                         <button type="submit"
                                 style={styles.button}

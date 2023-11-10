@@ -4,7 +4,6 @@ import '../../App.css'
 export default function AddBookingOption() {
 
     const goToCreateNewBooking = useNavigate()
-    const goToUpdateBooking = useNavigate()
 
     return (
         <div className="addBookOptCon" style={styles.container}>

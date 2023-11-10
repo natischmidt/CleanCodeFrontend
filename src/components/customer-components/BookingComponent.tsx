@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CSSProperties } from 'react'; // Import CSSProperties
+import { CSSProperties } from 'react';
 
 const styles: {
-    bookingContainer: CSSProperties; // Define CSSProperties type
+    bookingContainer: CSSProperties;
     citySelectContainer: CSSProperties;
     citySelect: CSSProperties;
     bookButton: CSSProperties;
@@ -14,9 +14,6 @@ const styles: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        // boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
-        // backgroundColor: "#b3d9e3",
-        // border: '2px solid #b3d9e3', // Add a border
     },
     citySelectContainer: {
         marginBottom: '20px',

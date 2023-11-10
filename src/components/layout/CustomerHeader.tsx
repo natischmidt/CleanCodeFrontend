@@ -64,7 +64,7 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
 
             <ul className="navbar">
                 <li style={styles.navItem}>
-                    <Link to="/CustomerHome" style={styles.link}>
+                    <Link to="/" style={styles.link}>
                         Home
                     </Link>
                 </li>
@@ -113,7 +113,7 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
                 </div>
                 <ul className={`menu ${menuOpen ? 'open' : ''}`}>
                     <li>
-                        <Link to="/CustomerHome" style={styles.link}>
+                        <Link to="/" style={styles.link}>
                             Home
                         </Link>
                     </li>

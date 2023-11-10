@@ -3,6 +3,7 @@ import TableId from "./TableId";
 import admin from "../../API/admin";
 import ThumbsUp from "../../assets/ThumbsUp.png";
 import ThumbsDown from "../../assets/ThumbsDown.png";
+import {useUserType} from "../context/UserTypeContext";
 
 interface bookingTableProps {
     onUpdate: (jobId: number) => void;
@@ -16,6 +17,8 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate/*, onKlarna*/}) => 
     const [myFilter, setMyFilter] = useState('');
     const [status, setStatus] = useState('');
     const [searchDate, setSearchDate] = useState('');
+    const {userType} = useUserType();
+
 
     useEffect(() => {
         const fetchData = async () => {
