@@ -11,7 +11,6 @@ interface ISetTempEmail {
 export default function SetTempEmail({email, jobType, toCalendar}: ISetTempEmail) {
 
     const [tempMail, setTempMail] = useState('')
-    const {setId} = useUserType();
     const setTheEmail = () => {
         email(tempMail)
 

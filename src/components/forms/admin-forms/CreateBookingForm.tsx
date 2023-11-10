@@ -27,7 +27,6 @@ const CreateNewBooking: React.FC = () => {
     const [fourteen, setFourteen] = useState(false)
     const [fifteen, setFifteen] = useState(false)
     const [sixteen, setSixteen] = useState(false)
-    // const [timeList, setTimeList] = useState<[]>([])
     const [timeList, setTimeList] = useState([])
     const [message, setMessage] = useState("")
     const [showConfirmButton, setShowConfirmButton] = useState(false);

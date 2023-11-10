@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import axios from "axios";
 import {useUserType} from "../../context/UserTypeContext";
 import employee from "../../../API/employee";
 
@@ -7,7 +6,6 @@ import employee from "../../../API/employee";
 export const GDPRModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
 
     const {id} = useUserType();
-    // @ts-ignore
     const [firstName, setFirstName] = useState<string>("");
     const [lastName, setLastName] = useState<string>("");
     const [address, setAddress] = useState<string>("");

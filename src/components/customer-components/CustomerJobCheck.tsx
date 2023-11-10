@@ -12,8 +12,6 @@ const CustomerJobCheck = () => {
 
     const {id} = useUserType();
     const [change, setChange] = useState(0)
-    const [showBasicKlarna, setShowBasicKlarna] = useState(false)
-    const [selectedJobId, setSelectedJobId] = useState<number | null>(null);
 
     const navigate = useNavigate()
 
@@ -73,7 +71,6 @@ const styles = {
         display: 'flex',
         flexDirection: 'column' as 'column',
         width: "38rem",
-        // marginLeft: "2%",
         marginTop: "1%",
         borderBottom: "2px solid black"
     },
@@ -85,8 +82,6 @@ const styles = {
         textDecoration: "underline"
     },
     test: {
-        // display: "flex" as 'flex',
-        // justifyContent: "center" as 'center',
         marginTop: '-8rem',
         padding: 15,
         marginLeft: "25rem"

@@ -27,7 +27,6 @@ const CreateNewBooking: React.FC = () => {
     const [fourteen, setFourteen] = useState(false)
     const [fifteen, setFifteen] = useState(false)
     const [sixteen, setSixteen] = useState(false)
-    // const [timeList, setTimeList] = useState<[]>([])
     const [timeList,setTimeList] = useState([])
     const monthCorr = useRef(0)
     const monthToUse = useRef('')
@@ -38,7 +37,7 @@ const CreateNewBooking: React.FC = () => {
 
     type Value = Date | null;
 
-    const [date, setDate] = useState<Value>(new Date());
+    const [date] = useState<Value>(new Date());
 
     const handleModal = () => {
         setIsModalOpen(!isModalOpen);

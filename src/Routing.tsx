@@ -6,7 +6,6 @@ import BookingPage from "./pages/BookingPage";
 import EmployeePage from "./pages/EmployeePage";
 import CustomerPage from "./pages/admin-pages/CustomerPage";
 import {AdminHome} from "./pages/admin-pages/AdminHome";
-import AddUserPage from "./pages/admin-pages/AddUser";
 import AddAdmin from "./components/forms/AddAdminForm";
 import AddPrivateCustomer from "./components/forms/AddPrivateCustomerForm";
 import AddBusinessCustomer from "./components/forms/AddBusinessCustomerForm";
@@ -97,7 +96,7 @@ function Routing() {
                     <Route path="/KlarnaConfirmation/:jobId" element={<KlarnaConfirmation/>}/>
                     <Route path="/KlarnaPay/:jobId" element={<KlarnaModalPayment />} />
 
-                    <Route path="/AddUser" element={<AddUserPage/>}/>
+                    {/*<Route path="/AddUser" element={<AddUser/>}/>*/}
                     <Route path="/AddAdmin" element={<AddAdmin/>}/>
                     <Route path="/AddEmployee" element={<AddEmployee/>}/>
                     <Route path="/AddPrivateCustomer" element={<AddPrivateCustomer/>}/>

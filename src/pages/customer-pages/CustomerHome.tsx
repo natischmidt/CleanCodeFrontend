@@ -1,4 +1,4 @@
-import {customerStyles} from "../../styles/Styles";
+import {customerStyles} from "../../styles/styles";
 import React, {useState} from "react";
 import image from '/src/assets/water.png';
 import {CSSProperties} from 'react';

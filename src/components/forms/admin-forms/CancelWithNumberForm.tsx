@@ -7,8 +7,6 @@ const CancelWithNumberForm: React.FC = () => {
     const [customerId, setCustomerId] = useState('');
     const goBackToBooking = useNavigate();
 
-    // const goToCancelBooking = useNavigate();
-
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
     };
@@ -44,10 +42,6 @@ const CancelWithNumberForm: React.FC = () => {
                 <button type="submit" style={styles.button}>
                     Cancel Booking
                 </button>
-
-                {/*<button type="submit" style={styles.button} onClick={() => {{goToCancelBooking(("/CancelBooking"))}}}>*/}
-                {/*    Go to Cancel Booking*/}
-                {/*</button>*/}
 
                 <button type="submit" style={styles.button} onClick={() => {{goBackToBooking(("/Booking"))}}}>
                     Go back

@@ -1,6 +1,6 @@
 import HeaderComp from "../../components/layout/HeaderComp";
 import EmployeeFooter from "./EmployeeFooter";
-import {employeeStyles} from "../../styles/Styles";
+import {employeeStyles} from "../../styles/styles";
 import React, {useEffect, useState} from "react";
 import {useUserType} from "../../components/context/UserTypeContext";
 import Dashboard from "../../components/dashboard/Dashboard";

@@ -7,16 +7,6 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
     const [firstnameStyle, setFirstnameStyle] = useState(styles.input);
     const [lastnameStyle, setLastnameStyle] = useState(styles.input);
     const [emailStyle, setEmailStyle] = useState(styles.input);
-    const [phonenumberStyle, setPhoneNumberStyle] = useState('input');
-    const [addressStyle, setAdressStyle] = useState('input');
-    const [passwordStyle, setPasswordStyle] = useState('input');
-    // const passwordUseref = useRef('')
-    // const confirmPasswordUseref = useRef('')
-    const [confirmPasswordStyle, setConfirmPasswordStyle] = useState('input')
-    const [cityStyle, setCityStyle] = useState('input')
-    const [postalCodeStyle, setPostalCodeStyle] = useState('input')
-    const [companyStyle, setCompanyStyle] = useState('input');
-    const [orgNrStyle, setOrgNrStyle] = useState('input');
     const [businessCustomer, setBusinessCustomer] = useState(false);
     const firstname = useRef('');
     const lastname = useRef('');
@@ -29,9 +19,7 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
     const postalCode = useRef('');
     const company = useRef('');
     const orgNr = useRef('');
-    // const businessCustomer = useRef(false);
     const [allNecessaryInformationEntered, setAllNecessaryInformationEntered] = useState(false);
-    // const allNecessaryInformationEntered = useRef(false);
     const {setUserType, setId, setLoggedIn} = useUserType();
     const emailRegex = new RegExp("^(([^<>()[\\]\\\\.,;:\\s@\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\"]+)*)|.(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$");
 
@@ -57,9 +45,7 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
     const handleChangeCustomerType = (custType: string) => {
         if (custType === "business") {
             setBusinessCustomer(true)
-            // businessCustomer.current = true
         } else {
-            // businessCustomer.current = false
             setBusinessCustomer(false)
             company.current = ''
             orgNr.current = ''
@@ -86,10 +72,8 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
             postalCode.current != ''
         ) {
             setAllNecessaryInformationEntered(true);
-            // allNecessaryInformationEntered.current = true
         } else {
             setAllNecessaryInformationEntered(false)
-            // allNecessaryInformationEntered.current = false
         }
         if (businessCustomer &&
             (company.current == '' ||
@@ -243,7 +227,6 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         type="text"
                         placeholder="Postal code"
                         style={styles.input}
-                        // value={postalCode}
                         onChange={(e) => {
                             postalCode.current = e.target.value
                             checkAllInformationEntered()
@@ -278,7 +261,6 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                                 type="text"
                                 placeholder="Company name"
                                 style={styles.input}
-                                // value={company}
                                 onChange={(e) => {
                                     company.current = e.target.value
                                     checkAllInformationEntered()
@@ -289,7 +271,6 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                                 type="text"
                                 placeholder="Organisation Number"
                                 style={styles.input}
-                                // value={orgNr}
                                 onChange={(e) => {
                                     orgNr.current = e.target.value
                                     checkAllInformationEntered()
