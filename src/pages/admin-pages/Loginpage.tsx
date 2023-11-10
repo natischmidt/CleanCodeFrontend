@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import LoginAdminOrEmployee from "../../components/forms/LoginAdminOrEmployeeForm";
 import LoginCustomerForm from "../../components/forms/LoginCustomerForm";
 
-export default function LoginPage() {
+export default function Loginpage() {
 
     const [isEmployeeLogin, setIsEmployeeLogin] = useState(true);
 

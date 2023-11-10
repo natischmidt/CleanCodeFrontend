@@ -274,6 +274,7 @@ const admin = {
         try {
             const Url = 'http://localhost:8080/api/customer/create';
             const jwt = sessionStorage.getItem("jwt");
+            
             if (!jwt) {
                 throw new Error("JWT not found in sessionStorage");
             }
