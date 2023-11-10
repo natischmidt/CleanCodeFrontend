@@ -2,11 +2,11 @@ import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import ProtectRoutes from './ProtectRoutes';
 
-import BookingPage from "./pages/bookingPage";
-import EmployeePage from "./pages/employeePage";
-import CustomerPage from "./pages/admin-pages/customerPage";
+import BookingPage from "./pages/BookingPage";
+import EmployeePage from "./pages/EmployeePage";
+import CustomerPage from "./pages/admin-pages/CustomerPage";
 import {AdminHome} from "./pages/admin-pages/AdminHome";
-import AddUserPage from "./pages/admin-pages/adduser";
+import AddUserPage from "./pages/admin-pages/Adduser";
 import AddAdmin from "./components/forms/AddAdminForm";
 import AddPrivateCustomer from "./components/forms/AddPrivateCustomerForm";
 import AddBusinessCustomer from "./components/forms/AddBusinessCustomerForm";
