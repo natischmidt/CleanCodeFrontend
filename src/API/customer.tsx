@@ -127,8 +127,11 @@ const customer = {
         }
     },
 
-    logout: async () => {
-        const {setLoggedIn, setUserType, setId, userType, id} = useUserType();
+    logout: async (custId: string | null) => {
+        // const {setLoggedIn, setUserType, setId, userType, id} = useUserType();
+
+        console.log("%%%%%%%%%%%%%%%%" + custId)
+
         try {
 
             const headers = {
@@ -136,18 +139,16 @@ const customer = {
                 'Content-Type': 'application/json',
             };
 
-            const Url = 'http://localhost:8080/api/auth/logoutCustomer';
+            const Url = `http://localhost:8080/api/auth/logout/${custId}`;
 
-            const response = await axios.post(Url, {headers: headers});
+            const response = await axios.get(Url, {headers: headers});
 
-            console.log('Employee/Admin has successfully logged out', response.data);
+            console.log('Customer has successfully logged out', response.data);
 
-            const goToCustomerHome = useNavigate();
-            goToCustomerHome("/CustomerHome");
 
-            setLoggedIn(false);
-            id && setId(null);
-            userType && setUserType(null);
+            // setLoggedIn(false);
+            // id && setId(null);
+            // userType && setUserType(null);
         } catch (error) {
             console.error('Error signing out employee/admin', error);
         }

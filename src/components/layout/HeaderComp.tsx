@@ -5,6 +5,7 @@ import axios from "axios";
 import {UserTypeProvider, useUserType} from "../context/UserTypeContext";
 import {GDPRModal} from "../customer-components/customer-modals/GDPRModal";
 import {GDPRModal_employee} from "../modals/GDPRModal_employee";
+import employee from "../../API/employee";
 
 export default function HeaderComp() {
 
@@ -16,6 +17,7 @@ export default function HeaderComp() {
     const goToAddUser = useNavigate()
     const goToLogin = useNavigate()
     const {userType} = useUserType();
+    const {id} = useUserType();
 
     const [isGDPRModalOpen, setIsGDPRModalOpen] = useState(false);
 
@@ -27,17 +29,8 @@ export default function HeaderComp() {
         e.preventDefault();
 
         try {
-            // const headers = {
-            //     'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
-            //     'Content-Type': 'application/json',
-            // };
-            //
-            // const Url = 'http://localhost:8080/api/auth/logoutEmployee';
-            //
-            // const response = await axios.post(Url, {headers: headers});
-            //
-            // console.log('Employee/Admin has successfully logged out', response.data);
 
+            await employee.logoutEmployee(id)
             goToLogin("/")
         } catch (error) {
             console.error('Error signing out employee/admin', error);

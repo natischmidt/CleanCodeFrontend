@@ -7,17 +7,17 @@ import '../../styles/HeaderStyles.css'
 import {useUserType} from "../context/UserTypeContext";
 
 
-
 interface HeaderProps {
     showLoggedIn: boolean;
     setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
-    const {loggedIn, setLoggedIn, setUserType, setId} = useUserType();
+    const {loggedIn, setLoggedIn, setUserType, setId, id} = useUserType();
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
     const goToHome = useNavigate()
+
 
     const handleLoginClick = () => {
         setIsLoginModalOpen(true)
@@ -32,8 +32,16 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
     const handleLogoutClick = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoggedIn(false);
-        // customer.logout();
-        goToHome("/CustomerHome")
+        console.log("%%%%%%%%%%%%%%%%")
+        try {
+            await customer.logout(id);
+            goToHome("/CustomerHome")
+        } catch (e) {
+            console.log(e)
+        }
+        setLoggedIn(false);
+        setId(null);
+        setUserType(null);
     };
 
     const closeLoginModal = () => {
@@ -84,13 +92,13 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
                 <li style={styles.navItem}>
                     {!loggedIn && (
 
-                            <div style={styles.link}>
-                                <button style={styles.button} onClick={handleLoginClick}>Log In</button>
-                                <button style={styles.button}
+                        <div style={styles.link}>
+                            <button style={styles.button} onClick={handleLoginClick}>Log In</button>
+                            <button style={styles.button}
                                     onClick={handleRegisterClick}>
-                                    Register
-                                </button>
-                            </div>
+                                Register
+                            </button>
+                        </div>
 
                     )}
                 </li>
@@ -119,7 +127,7 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
                             <li style={styles.link} onClick={handleLoginClick}>Log in
                             </li>
 
-                                <li style={styles.link} onClick={handleRegisterClick}>Register</li>
+                            <li style={styles.link} onClick={handleRegisterClick}>Register</li>
 
                         </>
                     )}

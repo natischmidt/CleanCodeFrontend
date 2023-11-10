@@ -145,9 +145,26 @@ const employee = {
         } catch (error) {
             throw error;
         }
+    },
+
+    logoutEmployee: async (empId: string | null) => {
+        const headers = {
+            'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+            'Content-Type': 'application/json',
+        }
+        try {
+
+            console.log("########################" + empId)
+
+            const url = `http://localhost:8080/api/auth/logout/${empId}`
+
+            const response = await axios.get(url, {headers: headers})
+            console.log(response)
+
+        } catch (error){
+            throw error
+        }
     }
-
 };
-
 
 export default employee;
