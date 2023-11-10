@@ -192,7 +192,6 @@ const AddCustomerBookingOption = () => {
                 await admin.getAvailableEmp(dateToUse.current, hours).then(response => {
                     if (response) {
 
-
                         setEight(response.at(0))
                         setNine(response.at(1))
                         setTen(response.at(2))

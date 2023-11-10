@@ -149,7 +149,7 @@ const admin = {
                 });
         };
     },
-    getAvailableEmp: async (date: string, hours: number): Promise<EmployeeData[]> => {
+    getAvailableEmp: async (date: string, hours: number) => {
 
 
         if (!date) {
@@ -274,6 +274,7 @@ const admin = {
         try {
             const Url = 'http://localhost:8080/api/customer/create';
             const jwt = sessionStorage.getItem("jwt");
+            
             if (!jwt) {
                 throw new Error("JWT not found in sessionStorage");
             }

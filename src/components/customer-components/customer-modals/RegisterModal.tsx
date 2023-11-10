@@ -4,22 +4,36 @@ import {useUserType} from "../../context/UserTypeContext";
 
 export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
 
-    const [firstname, setFirstname] = useState('');
-    const [lastname, setLastname] = useState('');
-    const [email, setEmail] = useState('');
-    const [phonenumber, setPhoneNumber] = useState('');
-    const [address, setAdress] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('')
-    const [city, setCity] = useState('')
-    const [postalCode, setPostalCode] = useState('')
-    const [company, setCompany] = useState('');
-    const [orgNr, setOrgNr] = useState('');
+    const [firstnameStyle, setFirstnameStyle] = useState(styles.input);
+    const [lastnameStyle, setLastnameStyle] = useState(styles.input);
+    const [emailStyle, setEmailStyle] = useState(styles.input);
+    const [phonenumberStyle, setPhoneNumberStyle] = useState('input');
+    const [addressStyle, setAdressStyle] = useState('input');
+    const [passwordStyle, setPasswordStyle] = useState('input');
+    // const passwordUseref = useRef('')
+    // const confirmPasswordUseref = useRef('')
+    const [confirmPasswordStyle, setConfirmPasswordStyle] = useState('input')
+    const [cityStyle, setCityStyle] = useState('input')
+    const [postalCodeStyle, setPostalCodeStyle] = useState('input')
+    const [companyStyle, setCompanyStyle] = useState('input');
+    const [orgNrStyle, setOrgNrStyle] = useState('input');
     const [businessCustomer, setBusinessCustomer] = useState(false);
-    // const [allNecessaryInformationEntered, setAllNecessaryInformationEntered] = useState(false);
-    const allNecessaryInformationEntered = useRef(false);
-    const {setUserType , setId, setLoggedIn} = useUserType();
-
+    const firstname = useRef('');
+    const lastname = useRef('');
+    const email = useRef('');
+    const phonenumber = useRef('');
+    const address = useRef('');
+    const password = useRef('');
+    const confirmPassword = useRef('');
+    const city = useRef('');
+    const postalCode = useRef('');
+    const company = useRef('');
+    const orgNr = useRef('');
+    // const businessCustomer = useRef(false);
+    const [allNecessaryInformationEntered, setAllNecessaryInformationEntered] = useState(false);
+    // const allNecessaryInformationEntered = useRef(false);
+    const {setUserType, setId, setLoggedIn} = useUserType();
+    const emailRegex = new RegExp("^(([^<>()[\\]\\\\.,;:\\s@\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\"]+)*)|.(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$");
 
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -27,68 +41,105 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
     }
 
     const customerData = {
-        firstName: firstname,
-        lastName: lastname,
-        password: password,
-        companyName: company,
-        orgNumber: orgNr,
-        email: email,
-        city: city,
-        postalCode: postalCode,
-        phoneNumber: phonenumber,
-        address: address,
+        firstName: firstname.current,
+        lastName: lastname.current,
+        password: password.current,
+        companyName: company.current,
+        orgNumber: orgNr.current,
+        email: email.current,
+        city: city.current,
+        postalCode: postalCode.current,
+        phoneNumber: phonenumber.current,
+        address: address.current,
     };
 
 
     const handleChangeCustomerType = (custType: string) => {
         if (custType === "business") {
             setBusinessCustomer(true)
+            // businessCustomer.current = true
         } else {
+            // businessCustomer.current = false
             setBusinessCustomer(false)
-            setCompany('')
-            setOrgNr('')
+            company.current = ''
+            orgNr.current = ''
         }
     }
 
     const checkAllInformationEntered = () => {
-        console.log(firstname + " " + lastname + " " + email + " " + phonenumber + " " + address + " " + password + " " + confirmPassword + " " + city + " " + postalCode)
 
-        if (firstname !== '' &&
-        lastname !== '' &&
-        email.match('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$') &&
-            email !== '' &&
-        // phonenumber.match('^(\d+){8,12}$') &&
-            phonenumber != '' &&
-        address != '' &&
-        // password.match('^(?=(?:\\D*\\d){2,})(?=[^\\p{L}]*\\p{L})[a-zA-Z\\d\\W]{8,}$') &&
-        password === confirmPassword &&
-        city != '' &&
-        // postalCode.match('^(\d+){4,5}$') &&
-            postalCode != ''
+        // const passwordRegex = new RegExp("^(?=(?:\\D*\\d){2,})(?=[^\\\\p{L}]*\\\\p{L})[a-zA-Z\\d\\W]{8,}$")
+        const passwordRegex = new RegExp("^(?=(?:\\D*\\d){2})[A-Za-z\\d]{8,}$")
+        const postalCodeRegex = new RegExp("^(\\d){5}$")
+        const  phonenumberRegex = new RegExp("^(\\d){7,12}$")
+
+        if (
+            firstname.current !== '' &&
+            lastname.current !== '' &&
+            email.current.match(emailRegex) &&
+            phonenumber.current.match(phonenumberRegex) &&
+            address.current != '' &&
+            password.current.match(passwordRegex) &&
+            password.current === confirmPassword.current &&
+            city.current != '' &&
+            postalCode.current.match(postalCodeRegex) &&
+            postalCode.current != ''
         ) {
-            // setAllNecessaryInformationEntered(true);
-            allNecessaryInformationEntered.current = true
-        } /*else {
+            setAllNecessaryInformationEntered(true);
+            // allNecessaryInformationEntered.current = true
+        } else {
             setAllNecessaryInformationEntered(false)
-        }*/
-        // if (businessCustomer &&
-        //     (company == '' ||
-        //     orgNr == '')
-        // ) {
-        //     setAllNecessaryInformationEntered(false);
             // allNecessaryInformationEntered.current = false
-        // }
+        }
+        if (businessCustomer &&
+            (company.current == '' ||
+            orgNr.current == '')
+        ) {
+            setAllNecessaryInformationEntered(false);
+
+        }
     }
 
     const handleRegister = async () => {
 
-            try {
-                const tempId = await customer.register(customerData, setLoggedIn, setUserType, setId);
-                console.log('Customer was registered , tempId:', tempId);
-                onClose();
-            } catch (error) {
-                console.error('Error while trying to register a new customer', error);
+        try {
+            const tempId = await customer.register(customerData, setLoggedIn, setUserType, setId);
+            console.log('Customer was registered , tempId:', tempId);
+            onClose();
+        } catch (error) {
+            console.error('Error while trying to register a new customer', error);
+        }
+
+    }
+
+    const isTheFieldOk = (variable : string) => {
+        console.log(variable)
+        switch (variable){
+            case "firstname": {
+                if(firstname.current === '') {
+                    setFirstnameStyle(styles.invalidInput)
+                } else {
+                    setFirstnameStyle(styles.input)
+                }
+                break;
             }
+            case "lastname": {
+                if(lastname.current === '') {
+                    setLastnameStyle(styles.invalidInput)
+                } else {
+                    setLastnameStyle(styles.input)
+                }
+                break;
+            }
+            case "email": {
+                if(!email.current.match(emailRegex)) {
+                    setEmailStyle(styles.invalidInput)
+                } else {
+                    setEmailStyle(styles.input)
+                }
+            }
+        }
+
 
     }
 
@@ -106,13 +157,18 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         <option value="business" onClick={() => handleChangeCustomerType("business")}>Business</option>
                         <option value="private" onChange={() => handleChangeCustomerType("private")}>Private</option>
                     </select>
+
                     <input
                         type="text"
                         placeholder="Firstname"
-                        style={styles.input}
-                        value={firstname}
+                        style={firstnameStyle}
+                        // value={firstname}
+                        onFocus={() => {
+                            isTheFieldOk('firstname')
+                        }}
                         onChange={(e) => {
-                            setFirstname(e.target.value)
+                            firstname.current = (e.target.value)
+                            isTheFieldOk('firstname')
                             checkAllInformationEntered()
                         }}
 
@@ -121,10 +177,14 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                     <input
                         type="text"
                         placeholder="Lastname"
-                        style={styles.input}
-                        value={lastname}
+                        style={lastnameStyle}
+                        // value={lastname}
+                        onFocus={() => {
+                            isTheFieldOk('lastname')
+                        }}
                         onChange={(e) => {
-                            setLastname(e.target.value)
+                            lastname.current = e.target.value
+                            isTheFieldOk('lastname')
                             checkAllInformationEntered()
                         }}
                         required
@@ -132,32 +192,38 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                     <input
                         type="text"
                         placeholder="Email"
-                        style={styles.input}
-                        value={email}
+                        style={emailStyle}
+                        // value={email}
+                        onFocus={() => {
+                            isTheFieldOk('email')
+                        }}
                         onChange={(e) => {
-                            setEmail(e.target.value)
+                            email.current = e.target.value
+                            isTheFieldOk('email')
                             checkAllInformationEntered()
                         }}
                         required
                     />
+
                     <input
                         type="text"
                         placeholder="Phone Number"
                         style={styles.input}
-                        value={phonenumber}
+                        // value={phonenumber}
                         onChange={(e) => {
-                            setPhoneNumber(e.target.value)
+                            phonenumber.current = e.target.value
                             checkAllInformationEntered()
                         }}
                         required
                     />
+
                     <input
                         type="text"
                         placeholder="Address"
                         style={styles.input}
-                        value={address}
+                        // value={address}
                         onChange={(e) => {
-                            setAdress(e.target.value)
+                            address.current = e.target.value
                             checkAllInformationEntered()
                         }}
                         required
@@ -166,9 +232,9 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         type="text"
                         placeholder="City"
                         style={styles.input}
-                        value={city}
+                        // value={city}
                         onChange={(e) => {
-                            setCity(e.target.value)
+                            city.current = e.target.value
                             checkAllInformationEntered()
                         }}
                         required
@@ -177,9 +243,9 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         type="text"
                         placeholder="Postal code"
                         style={styles.input}
-                        value={postalCode}
+                        // value={postalCode}
                         onChange={(e) => {
-                            setPostalCode(e.target.value)
+                            postalCode.current = e.target.value
                             checkAllInformationEntered()
                         }}
                     />
@@ -187,10 +253,10 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         type="password"
                         placeholder="Password"
                         style={styles.input}
-                        value={password}
                         onChange={(e) => {
-                            setPassword(e.target.value)
+                            password.current = e.target.value
                             checkAllInformationEntered()
+
                         }}
                         required
                     />
@@ -200,7 +266,7 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         placeholder="Confirm password"
                         style={styles.input}
                         onChange={(e) => {
-                            setConfirmPassword(e.target.value)
+                            confirmPassword.current = e.target.value
                             checkAllInformationEntered()
                         }}
                         required
@@ -212,9 +278,9 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                                 type="text"
                                 placeholder="Company name"
                                 style={styles.input}
-                                value={company}
+                                // value={company}
                                 onChange={(e) => {
-                                    setCompany(e.target.value)
+                                    company.current = e.target.value
                                     checkAllInformationEntered()
                                 }}
                                 required
@@ -223,16 +289,16 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                                 type="text"
                                 placeholder="Organisation Number"
                                 style={styles.input}
-                                value={orgNr}
+                                // value={orgNr}
                                 onChange={(e) => {
-                                    setOrgNr(e.target.value)
+                                    orgNr.current = e.target.value
                                     checkAllInformationEntered()
                                 }}
                                 required
                             />
                         </div> : <></>}
 
-                    {allNecessaryInformationEntered.current ?
+                    {allNecessaryInformationEntered ?
                         <button type="submit" style={styles.button} onClick={handleRegister}>
                             Register
                         </button> :
@@ -285,6 +351,17 @@ const styles = {
         borderRadius: '5px',
         fontFamily: "PlomPraeng",
         fontSize: "1rem"
+    },
+    invalidInput: {
+        marginTop: '10px',
+        marginBottom: '15px',
+        padding: '10px',
+        width: '75%',
+        borderRadius: '5px',
+        fontFamily: "PlomPraeng",
+        fontSize: "1rem",
+        backgroundColor: "#ffe4e4",
+        border: "red 2px",
     },
     input_dropList: {
         marginTop: '10px',
