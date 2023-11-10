@@ -1,6 +1,6 @@
 import CustomerFooter from "../../components/layout/CustomerFooter";
 import Dashboard from "../../components/dashboard/Dashboard";
-import {customerStyles} from "../../styles/styles";
+import {customerStyles} from "../../styles/Styles";
 import React, {useEffect, useState} from "react";
 import {useUserType} from "../../components/context/UserTypeContext";
 import CustomerHeader from "../../components/layout/CustomerHeader";

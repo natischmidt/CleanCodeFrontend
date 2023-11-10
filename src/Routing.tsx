@@ -6,7 +6,7 @@ import BookingPage from "./pages/BookingPage";
 import EmployeePage from "./pages/EmployeePage";
 import CustomerPage from "./pages/admin-pages/CustomerPage";
 import {AdminHome} from "./pages/admin-pages/AdminHome";
-import AddUserPage from "./pages/admin-pages/Adduser";
+import AddUserPage from "./pages/admin-pages/AddUser";
 import AddAdmin from "./components/forms/AddAdminForm";
 import AddPrivateCustomer from "./components/forms/AddPrivateCustomerForm";
 import AddBusinessCustomer from "./components/forms/AddBusinessCustomerForm";

@@ -2,7 +2,7 @@ import HeaderComp from "../../components/layout/HeaderComp";
 import Dashboard from "../../components/dashboard/Dashboard";
 import React from "react";
 import {useUserType} from "../../components/context/UserTypeContext";
-import { adminStyles } from "../../styles/styles";
+import { adminStyles } from "../../styles/Styles";
 
 export const AdminHome : React.FC = () => {
     const { userType,id } = useUserType();
