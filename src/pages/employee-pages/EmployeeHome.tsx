@@ -4,8 +4,6 @@ import {employeeStyles} from "../../styles/styles";
 import React, {useEffect, useState} from "react";
 import {useUserType} from "../../components/context/UserTypeContext";
 import Dashboard from "../../components/dashboard/Dashboard";
-import axios from "axios";
-import cancelWithNumber from "../../components/forms/admin-forms/CancelWithNumberForm";
 import employee from "../../API/employee";
 
 export default function EmployeeHomePage() {

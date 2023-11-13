@@ -1,6 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
 import employee from "../../API/employee";
-// import Select from 'react-select'
 import {useUserType} from "../../components/context/UserTypeContext";
 import admin from "../../API/admin";
 
@@ -58,9 +57,6 @@ export default function JobDetails({jobId, close}: IjobDetails) {
                     setCustomerPostalCode(r.postalCode)
                 })
             }
-
-            // employee.getCustomer(r.customerId)
-
         )
 
     }, [])
@@ -160,7 +156,6 @@ const styles: { [key: string]: React.CSSProperties } = {
 
     noEditField: {
         backgroundColor: "#c4c4c4",
-        // margin: "1 rem",
         border: "1px black"
     },
     timeDiv: {
@@ -181,8 +176,6 @@ const styles: { [key: string]: React.CSSProperties } = {
         height: "3rem",
     },
     timeText: {
-        // alignSelf: "center",
-        // textAlign: "center" as "center",
     },
     jobTypeDiv: {
         borderRadius: "5px",
@@ -214,7 +207,6 @@ const styles: { [key: string]: React.CSSProperties } = {
 
     },
     messageText: {
-        // alignSelf: "flex-start"
     },
     addressDiv: {
         borderRadius: "5px",
