@@ -29,7 +29,7 @@ const styles = {
         alignItems: "center" as 'center',
         justifyContent: "space-between" as 'space-between',
         width: '100%',
-        padding: '20px'
+        padding: '20px',
     },
     shiftsContainer: {
         width: '100%',

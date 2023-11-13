@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
 import admin from "../../API/admin";
+import HeaderComp from "../layout/HeaderComp";
 
 const AddAdminForm = () => {
     const [firstname, setFirstname] = useState('');
@@ -54,95 +55,98 @@ const AddAdminForm = () => {
     };
 
     return (
-        <div style={styles.container}>
-            <form style={styles.form} onSubmit={handleSubmit}>
-                <h2>Create new Employee</h2>
-                <input
-                    type="text"
-                    placeholder="Firstname"
-                    style={styles.input}
-                    value={firstname}
-                    onChange={(e) => setFirstname(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Lastname"
-                    style={styles.input}
-                    value={lastname}
-                    onChange={(e) => setLastname(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Social Security Number"
-                    style={styles.input}
-                    value={ss}
-                    onChange={(e) => setSs(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Email"
-                    style={styles.input}
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Phone Number"
-                    style={styles.input}
-                    value={phonenumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Address"
-                    style={styles.input}
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="City"
-                    style={styles.input}
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder="Postal code"
-                    style={styles.input}
-                    value={postalCode}
-                    onChange={(e) => setPostalCode(e.target.value)}
-                />
-                <input
-                    type="number"
-                    placeholder="Hourly Salary"
-                    style={styles.input}
-                    value={salary}
-                    onChange={(e) => setSalary(parseFloat(e.target.value))}
-                    required
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    style={styles.input}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <button type="submit" style={styles.button}>
-                    Create new Admin
-                </button>
-                <button type="submit" style={styles.button} onClick={() => {{goBackToAddUser(("/AddUser"))}}}>
-                    Go Back
-                </button>
-            </form>
-        </div>
+        <>
+            <HeaderComp/>
+                <div style={styles.container}>
+                    <form style={styles.form} onSubmit={handleSubmit}>
+                        <h2>Create new Admin</h2>
+                        <input
+                            type="text"
+                            placeholder="Firstname"
+                            style={styles.input}
+                            value={firstname}
+                            onChange={(e) => setFirstname(e.target.value)}
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="Lastname"
+                            style={styles.input}
+                            value={lastname}
+                            onChange={(e) => setLastname(e.target.value)}
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="Social Security Number"
+                            style={styles.input}
+                            value={ss}
+                            onChange={(e) => setSs(e.target.value)}
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="Email"
+                            style={styles.input}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="Phone Number"
+                            style={styles.input}
+                            value={phonenumber}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="Address"
+                            style={styles.input}
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="City"
+                            style={styles.input}
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Postal code"
+                            style={styles.input}
+                            value={postalCode}
+                            onChange={(e) => setPostalCode(e.target.value)}
+                        />
+                        <input
+                            type="number"
+                            placeholder="Hourly Salary"
+                            style={styles.input}
+                            value={salary}
+                            onChange={(e) => setSalary(parseFloat(e.target.value))}
+                            required
+                        />
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            style={styles.input}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                        <button type="submit" style={styles.button}>
+                            Create new Admin
+                        </button>
+                        <button type="submit" style={styles.button} onClick={() => {{goBackToAddUser(("/adduser"))}}}>
+                            Go Back
+                        </button>
+                    </form>
+                </div>
+        </>
     );
 };
 

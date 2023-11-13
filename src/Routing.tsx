@@ -22,6 +22,7 @@ import LoginAdminOrEmployeeForm from "./components/forms/LoginAdminOrEmployeeFor
 import KlarnaConfirmation from "./klarna/KlarnaConfirmation";
 import SecurityFrontTestPage from "./security/SecurityFrontTestPage";
 import KlarnaModalPayment from "./klarna/KlarnaModalPayment";
+import AddUserOption from "./components/admin-components/AddUserOption";
 
 function isCustomerAuthenticated() {
 
@@ -96,7 +97,7 @@ function Routing() {
                     <Route path="/klarnaconfirmation/:jobId" element={<KlarnaConfirmation/>}/>
                     <Route path="/klarnapay/:jobId" element={<KlarnaModalPayment />} />
 
-                    {/*<Route path="/AddUser" element={<AddUser/>}/>*/}
+                    <Route path="/adduser" element={<AddUserOption/>}/>
                     <Route path="/addadmin" element={<AddAdmin/>}/>
                     <Route path="/addemployee" element={<AddEmployee/>}/>
                     <Route path="/addprivatecustomer" element={<AddPrivateCustomer/>}/>

@@ -177,7 +177,7 @@ const customer = {
             if (response) {
                 setUserType("CUSTOMER");
                 setId(resp.userId);
-                goToHomePage(`/CustomerMyPages`);
+                goToHomePage(`/customermypages`);
                 console.log("***" + email);
                 setLoggedIn(true);
                 sessionStorage.setItem("jwt", resp.jwt)

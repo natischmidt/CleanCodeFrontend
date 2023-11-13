@@ -29,9 +29,8 @@ export default function HeaderComp() {
         e.preventDefault();
 
         try {
-
             await employee.logoutEmployee(id)
-            goToLogin("/")
+            goToLogin("/employee")
         } catch (error) {
             console.error('Error signing out employee/admin', error);
         }

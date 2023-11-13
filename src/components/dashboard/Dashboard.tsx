@@ -139,13 +139,11 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
                                             ? ''
                                             : 'My Upcoming Shifts'}
                                 </div>
-                                <div className="section-content">
+                                <div className="section-content" style={styles.sectionContent}>
                                     {userType === "admin" && !showEdit ?
                                         <BookingTable onUpdate={handleBookingUpdate}/> : <></> }
                                     {userType === "admin" && showEdit ?
                                         <EditBookingForm jobId={selectedJobId}  doneWithEdit={handleDoneEdit}/>: <></> }
-
-
 
                                     {userType === "customer" && <CustomerJobCheck/>}
                                     {userType === "employee" && <EmployeeShiftCont />}
@@ -205,13 +203,19 @@ const styles: { [key: string]: React.CSSProperties } = {
     },
     section: {
         flex: 1,
-        margin: '-0%',
+        marginTop: '3rem',
+        padding: '10px',
+        textAlign: 'center',
+    },
+    sectionContent: {
+        flex: 1,
+        marginTop: '2rem',
         padding: '10px',
         textAlign: 'center',
     },
     sectionTitle: {
         fontWeight: 'bold',
-        fontSize: "1.7rem",
+        fontSize: "2rem",
         marginTop: "-6%",
         paddingLeft: "4%",
         textDecoration: "underline",

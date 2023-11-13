@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import admin from "../../API/admin";
+import HeaderComp from "../layout/HeaderComp";
 
 
 const AddBusinessCustomerForm = () => {
@@ -56,95 +57,98 @@ const AddBusinessCustomerForm = () => {
     };
 
     return (
-        <div style={styles.container}>
-            <form style={styles.form} onSubmit={handleSubmit}>
-                <h2>Create new Business Customer</h2>
-                <input
-                    type="text"
-                    placeholder="Firstname"
-                    style={styles.input}
-                    value={firstname}
-                    onChange={(e) => setFirstname(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Lastname"
-                    style={styles.input}
-                    value={lastname}
-                    onChange={(e) => setLastname(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Email"
-                    style={styles.input}
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Phone Number"
-                    style={styles.input}
-                    value={phonenumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Address"
-                    style={styles.input}
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="City"
-                    style={styles.input}
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder="Postal code"
-                    style={styles.input}
-                    value={postalCode}
-                    onChange={(e) => setPostalCode(e.target.value)}
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    style={styles.input}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Company name"
-                    style={styles.input}
-                    value={company}
-                    onChange={(e) => setCompany(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Organisation Number"
-                    style={styles.input}
-                    value={orgNr}
-                    onChange={(e) => setOrgNr(e.target.value)}
-                    required
-                />
-                <button type="submit" style={styles.button}>
-                    Create new Business Customer
-                </button>
-                <button type="submit" style={styles.button} onClick={() => {{goBackToAddUser(("/AddUser"))}}}>
-                    Go Back
-                </button>
-            </form>
-        </div>
+        <>
+            <HeaderComp/>
+                <div style={styles.container}>
+                    <form style={styles.form} onSubmit={handleSubmit}>
+                        <h2>Create new Business Customer</h2>
+                        <input
+                            type="text"
+                            placeholder="Firstname"
+                            style={styles.input}
+                            value={firstname}
+                            onChange={(e) => setFirstname(e.target.value)}
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="Lastname"
+                            style={styles.input}
+                            value={lastname}
+                            onChange={(e) => setLastname(e.target.value)}
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="Email"
+                            style={styles.input}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="Phone Number"
+                            style={styles.input}
+                            value={phonenumber}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="Address"
+                            style={styles.input}
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="City"
+                            style={styles.input}
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Postal code"
+                            style={styles.input}
+                            value={postalCode}
+                            onChange={(e) => setPostalCode(e.target.value)}
+                        />
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            style={styles.input}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="Company name"
+                            style={styles.input}
+                            value={company}
+                            onChange={(e) => setCompany(e.target.value)}
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="Organisation Number"
+                            style={styles.input}
+                            value={orgNr}
+                            onChange={(e) => setOrgNr(e.target.value)}
+                            required
+                        />
+                        <button type="submit" style={styles.button}>
+                            Create new Business Customer
+                        </button>
+                        <button type="submit" style={styles.button} onClick={() => {{goBackToAddUser(("/adduser"))}}}>
+                            Go Back
+                        </button>
+                    </form>
+                </div>
+        </>
     );
 };
 
