@@ -43,7 +43,7 @@ const CancelWithNumberForm: React.FC = () => {
                     Cancel Booking
                 </button>
 
-                <button type="submit" style={styles.button} onClick={() => {{goBackToBooking(("/Booking"))}}}>
+                <button type="submit" style={styles.button} onClick={() => {{goBackToBooking(("/booking"))}}}>
                     Go back
                 </button>
             </form>

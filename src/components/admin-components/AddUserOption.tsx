@@ -21,7 +21,7 @@ const AddUserOption = () => {
                             style={styles.button}
                             onClick={() => {
                                 if (userType === "ADMIN") {
-                                    goToAdminForm("/AddAdmin");
+                                    goToAdminForm("/addadmin");
                                 }
                             }}
                         >
@@ -32,13 +32,13 @@ const AddUserOption = () => {
                         <button type="submit"
                                 style={styles.button}
                                 onClick={() =>
-                                {{goToEmployeeForm(("/AddEmployee"))}}}>
+                                {{goToEmployeeForm(("/addemployee"))}}}>
                         Employee
                     </button>}
-                    <button type="submit" style={styles.button} onClick={() => {{goToPrivateCustomerForm(("/AddPrivateCustomer"))}}}>
+                    <button type="submit" style={styles.button} onClick={() => {{goToPrivateCustomerForm(("/addprivatecustomer"))}}}>
                         Private Customer
                     </button>
-                    <button type="submit" style={styles.button} onClick={() => {{goToBusinessCustomerForm(("/AddBusinessCustomer"))}}}>
+                    <button type="submit" style={styles.button} onClick={() => {{goToBusinessCustomerForm(("/addbusinesscustomer"))}}}>
                         Business Customer
                     </button>
                 </div>

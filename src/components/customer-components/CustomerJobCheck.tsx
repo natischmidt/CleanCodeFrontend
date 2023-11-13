@@ -16,7 +16,7 @@ const CustomerJobCheck = () => {
     const navigate = useNavigate()
 
     const showKlarna = (id: number) => {
-        navigate(`/KlarnaPay/${id}`)
+        navigate(`/klarnapay/${id}`)
     }
 
     return (

@@ -12,7 +12,7 @@ const KlarnaCheckout: React.FC<KlarnaCheckoutProps> = ({ htmlSnippet }) => {
     useEffect(() => {
         const handleIframeMessage = (event: MessageEvent) => {
             if (event.data === "navigateToCustomerMyPages") {
-                navigate("/CustomerMyPages");
+                navigate("/customermypages");
             }
         };
         window.addEventListener("message", handleIframeMessage);

@@ -10,7 +10,7 @@ export default function AddBookingOption() {
             <div className="h1" style={styles.h1}>
                 <h1>Bookings</h1>
                 <div className="Btns" style={styles.menuBtns}>
-                    <button type="submit" style={styles.button} className="addBookOptBtn" onClick={() => {{goToCreateNewBooking(("/CreateNewBooking"))}}}>
+                    <button type="submit" style={styles.button} className="addBookOptBtn" onClick={() => {{goToCreateNewBooking(("/createnewbooking"))}}}>
                         Create new booking
                     </button>
                 </div>

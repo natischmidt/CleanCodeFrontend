@@ -41,10 +41,10 @@ const GettingIdNumberForm: React.FC = () => {
                     onChange={(e) => setCustomerId(e.target.value)}
                     required
                 />
-                <button type="submit" style={styles.button} onClick={() => {{goToUpdateBooking(("/UpdateBookingForm"))}}}>
+                <button type="submit" style={styles.button} onClick={() => {{goToUpdateBooking(("/updatebookingform"))}}}>
                     Go to Update Booking
                 </button>
-                <button type="submit" style={styles.button} onClick={() => {{goBackToBooking(("/Booking"))}}}>
+                <button type="submit" style={styles.button} onClick={() => {{goBackToBooking(("/booking"))}}}>
                 Go Back
             </button>
             </form>

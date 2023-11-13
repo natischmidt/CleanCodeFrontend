@@ -243,7 +243,7 @@ const CreateNewBooking: React.FC = () => {
                     </button>
                     <button type="submit" style={styles.button} onClick={() => {
                         {
-                            goBackToBooking(("/Booking"))
+                            goBackToBooking(("/booking"))
                         }
                     }}>
                         Go Back
