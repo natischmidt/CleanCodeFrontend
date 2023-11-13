@@ -129,7 +129,7 @@ export const CustomerHomePage: React.FC = () => {
                                 {/*    big or small, deserves the best possible care. Whether it's an office, a home, or a*/}
                                 {/*    commercial space, you can trust Städafint AB to do the job with the utmost care and*/}
                                 {/*    professionalism.</p>*/}
-                                <p style={styles.subText}><br/> <br/><br/>Learn more →</p>
+                                <p style={styles.subText}><br/>Learn more →</p>
                                 {/*<p style={styles.subText}><br />Thank you for considering Städafint AB as your partner in cleanliness and sustainability. We look forward to being a part of your everyday life and continuing to set the standard for excellent and sustainable cleaning for generations to come.</p>*/}
                                 <BookingComponent/>
 
