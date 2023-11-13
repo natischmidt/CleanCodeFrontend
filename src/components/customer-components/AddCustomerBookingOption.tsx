@@ -425,6 +425,7 @@ const AddCustomerBookingOption = () => {
                                     <p>Choose date and time</p>
                                 </div>
                                 <Calendar
+                                    minDate={new Date()}
                                     onClickDay={(day) => {
                                         setShowCalNext(false);
                                         checkDay(day).then(r => {

@@ -20,7 +20,8 @@ export const CalenderModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
 
     return (
         <div>
-            <Calendar onChange={(e) => {
+            <Calendar minDate={new Date()}
+                onChange={(e) => {
                 onClick(e)
             }} value={value}/>
             {datePicked ? <div>

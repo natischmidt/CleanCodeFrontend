@@ -284,6 +284,7 @@ const CreateNewBooking: React.FC = () => {
             <div style={styles.calenderContainer}>
                 {showCalender && isModalOpen ?
                     <Calendar
+                        minDate={new Date()}
                         onClickDay={(day) => {
                             checkDay(day).then(r => {
                             })
