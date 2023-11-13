@@ -10,10 +10,6 @@ const MyShifts = () => {
     const {id, setId} = useUserType();
     const [employeeShifts, setEmployeeShifts] = useState<any[]>([])
     const [update, setUpdate] = useState(0)
-    //const update = useRef(0)
-    //const [showDetails, setShowDetails] = useState(false)
-
-    //const [jobId, setJobId] = useState(0)
 
     const handleDone = async (jobId: number) => {
         try {
@@ -51,9 +47,6 @@ const MyShifts = () => {
         {key: 'date', title: 'Date'},
         {key: 'timeSlot', title: 'Time'},
         {key: 'jobStatus', title: 'Job Status'},
-        // {key: 'squareMeters', title: 'Sqm'},
-        // {key: 'paymentOption', title: 'Payment Option'},
-        //{key: 'customerId', title: 'Customer Id'},
     ];
 
     return (

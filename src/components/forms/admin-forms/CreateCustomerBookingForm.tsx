@@ -33,7 +33,8 @@ const CreateNewBooking: React.FC = () => {
     const monthString = useRef('')
     const yearToUse = useRef(0)
     const dateToUse = useRef('')
-    let times = ["EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN", "FOURTEEN", "FIFTEEN", "SIXTEEN", "notbookable", "notbookable", "notbookable"]
+    let times = ["EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN",
+        "FOURTEEN", "FIFTEEN", "SIXTEEN", "notbookable", "notbookable", "notbookable"]
 
     type Value = Date | null;
 

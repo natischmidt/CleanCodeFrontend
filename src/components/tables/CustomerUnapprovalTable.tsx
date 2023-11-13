@@ -9,12 +9,10 @@ interface CustomerOkOrNotTableProps {
     setChange: React.Dispatch<React.SetStateAction<number>>
 }
 
-const CustomerUnapprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, change, setChange}) => {
+const CustomerUnapprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, change}) => {
 
     const [theData, setTheData] = useState([])
     const [filter, setFilter] = useState('');
-    // const [func, setMyFunc] = useState(null);
-    // const [id, setId] = useState('');
 
     const filteredCustomerData = theData.filter((customer) => {
         const {jobtype} = customer;

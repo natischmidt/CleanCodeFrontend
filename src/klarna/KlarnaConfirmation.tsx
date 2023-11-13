@@ -8,7 +8,7 @@ import employee from "../API/employee";
 function KlarnaConfirmation() {
 
     const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);
+    new URLSearchParams(location.search);
     const { jobId } = useParams<{jobId: string}>();
     const parsedJobId = Number(jobId)
 
@@ -61,10 +61,6 @@ const styles = {
         flexDirection: "column" as "column",
         alignItems: "center" as  "center",
         justifyContent: "center" as "center",
-        /*border: "solid black 1px",
-        margin: "3rem"*/
-
-
     },
     bigText: {
         paddingTop: "2rem",
