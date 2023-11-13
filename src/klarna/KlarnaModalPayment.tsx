@@ -85,7 +85,7 @@ const KlarnaModalPayment: React.FC = () => {
                     "merchant_urls": {
                         "terms": "https://www.example.com/terms.html",
                         "checkout": "https://www.example.com/checkout.html?order_id={checkout.order.id}",
-                        "confirmation": `https://localhost:5173/KlarnaConfirmation/${jobId}`,
+                        "confirmation": `https://localhost:5173/klarnaconfirmation/${jobId}`,
                         "push": "https://www.example.com/api/push?order_id={checkout.order.id}"
                     }
                 };

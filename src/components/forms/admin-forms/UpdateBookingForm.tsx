@@ -112,7 +112,7 @@ const UpdateBookingForm: React.FC = () => {
                 <button type="submit" style={styles.button}>
                     Update Booking
                 </button>
-                <button type="submit" style={styles.button} onClick={() => {{goBackToBooking(("/Booking"))}}}>
+                <button type="submit" style={styles.button} onClick={() => {{goBackToBooking(("/booking"))}}}>
                     Go Back
                 </button>
             </form>

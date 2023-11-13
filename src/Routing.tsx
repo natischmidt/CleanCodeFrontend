@@ -57,53 +57,53 @@ function Routing() {
 
                     {/*<ProtectRoutes isAuth={isCusAuth} path="/">*/}
                     {/*    <Route index element={<CustomerHomePage/>} />*/}
-                    {/*    <Route path="/CustomerMyPages" element={<CustomerMyPages/>}/>*/}
-                    {/*    <Route path="/CustomerBooking" element={<CustomerBookingPage/>}/>*/}
+                    {/*    <Route path="/customermypages" element={<CustomerMyPages/>}/>*/}
+                    {/*    <Route path="/customerbooking" element={<CustomerBookingPage/>}/>*/}
                     {/*</ProtectRoutes>*/}
 
                     <Route path="/" element={<CustomerHomePage/>}/>
-                    <Route path="/CustomerMyPages" element={<CustomerMyPages/>}/>
-                    <Route path="/CustomerBooking" element={<CustomerBookingPage/>}/>
+                    <Route path="/customermypages" element={<CustomerMyPages/>}/>
+                    <Route path="/customerbooking" element={<CustomerBookingPage/>}/>
 
-                    {/*<ProtectRoutes isAuth={isEmpAuth} path="/Employee">*/}
+                    {/*<ProtectRoutes isAuth={isEmpAuth} path="/employee">*/}
                     {/*    <Route index element={<LoginAdminOrEmployeeForm/>} />*/}
-                    {/*    <Route path="/AdminHome" element={<AdminHome/>}/>*/}
-                    {/*    <Route path="/CreateNewBooking" element={<CreateNewBooking/>}/>*/}
-                    {/*    <Route path="/Booking" element={<BookingPage/>}/>*/}
-                    {/*    <Route path="/Employees" element={<EmployeePage/>}/>*/}
-                    {/*    <Route path="/Customers" element={<CustomerPage/>}/>*/}
-                    {/*    <Route path="/AddAdmin" element={<AddAdmin/>}/>*/}
-                    {/*    <Route path="/AddEmployee" element={<AddEmployee/>}/>*/}
+                    {/*    <Route path="/adminhome" element={<AdminHome/>}/>*/}
+                    {/*    <Route path="/createnewbooking" element={<CreateNewBooking/>}/>*/}
+                    {/*    <Route path="/booking" element={<BookingPage/>}/>*/}
+                    {/*    <Route path="/employees" element={<EmployeePage/>}/>*/}
+                    {/*    <Route path="/customers" element={<CustomerPage/>}/>*/}
+                    {/*    <Route path="/addadmin" element={<AddAdmin/>}/>*/}
+                    {/*    <Route path="/addemployee" element={<AddEmployee/>}/>*/}
                     {/*</ProtectRoutes>*/}
 
-                    <Route path="/Employee" element={<LoginAdminOrEmployeeForm/>} />
-                    <Route path="/AdminHome" element={<AdminHome/>}/>
-                    <Route path="/EmployeeHome" element={<EmployeeHomePage/>}/>
-                    <Route path="/CreateNewBooking" element={<CreateNewBooking/>}/>
-                    <Route path="/Booking" element={<BookingPage/>}/>
-                    <Route path="/Employees" element={<EmployeePage/>}/>
-                    <Route path="/Customers" element={<CustomerPage/>}/>
+                    <Route path="/employee" element={<LoginAdminOrEmployeeForm/>} />
+                    <Route path="/adminhome" element={<AdminHome/>}/>
+                    <Route path="/employeehome" element={<EmployeeHomePage/>}/>
+                    <Route path="/createnewbooking" element={<CreateNewBooking/>}/>
+                    <Route path="/booking" element={<BookingPage/>}/>
+                    <Route path="/employees" element={<EmployeePage/>}/>
+                    <Route path="/customers" element={<CustomerPage/>}/>
 
-                    {/*<ProtectRoutes isAuth={isAdminAuth} path="/Employee">*/}
+                    {/*<ProtectRoutes isAuth={isAdminAuth} path="/employee">*/}
                     {/*    <Route index element={<LoginAdminOrEmployeeForm/>} />*/}
-                    {/*    <Route path="/EmployeeHome" element={<EmployeeHomePage/>}/>*/}
-                    {/*    <Route path="/CreateNewBooking" element={<CreateNewBooking/>}/>*/}
-                    {/*    /!*<Route path="/Booking" element={<BookingPage/>}/>*!/*/}
-                    {/*    <Route path="/Employees" element={<EmployeePage/>}/>*/}
-                    {/*    <Route path="/Customers" element={<CustomerPage/>}/>*/}
+                    {/*    <Route path="/employeehome" element={<EmployeeHomePage/>}/>*/}
+                    {/*    <Route path="/createnewbooking" element={<CreateNewBooking/>}/>*/}
+                    {/*    /!*<Route path="/booking" element={<BookingPage/>}/>*!/*/}
+                    {/*    <Route path="/employees" element={<EmployeePage/>}/>*/}
+                    {/*    <Route path="/customers" element={<CustomerPage/>}/>*/}
                     {/*</ProtectRoutes>*/}
 
-                    <Route path="/KlarnaConfirmation/:jobId" element={<KlarnaConfirmation/>}/>
-                    <Route path="/KlarnaPay/:jobId" element={<KlarnaModalPayment />} />
+                    <Route path="/klarnaconfirmation/:jobId" element={<KlarnaConfirmation/>}/>
+                    <Route path="/klarnapay/:jobId" element={<KlarnaModalPayment />} />
 
                     {/*<Route path="/AddUser" element={<AddUser/>}/>*/}
-                    <Route path="/AddAdmin" element={<AddAdmin/>}/>
-                    <Route path="/AddEmployee" element={<AddEmployee/>}/>
-                    <Route path="/AddPrivateCustomer" element={<AddPrivateCustomer/>}/>
-                    <Route path="/AddBusinessCustomer" element={<AddBusinessCustomer/>}/>
-                    <Route path="/UpdateBookingForm" element={<UpdateBookingForm/>}/>
-                    <Route path="/GettingIdNumberForm" element={<GettingIdNumberForm/>}/>
-                    <Route path="/CancelWithNumberForm" element={<CancelWithNumberForm/>}/>
+                    <Route path="/addadmin" element={<AddAdmin/>}/>
+                    <Route path="/addemployee" element={<AddEmployee/>}/>
+                    <Route path="/addprivatecustomer" element={<AddPrivateCustomer/>}/>
+                    <Route path="/addbusinesscustomer" element={<AddBusinessCustomer/>}/>
+                    <Route path="/updatebookingform" element={<UpdateBookingForm/>}/>
+                    <Route path="/gettingidnumberform" element={<GettingIdNumberForm/>}/>
+                    <Route path="/cancelwithnumberform" element={<CancelWithNumberForm/>}/>
 
                     <Route path="/sec" element={<SecurityFrontTestPage/>}/>
                 </Routes>

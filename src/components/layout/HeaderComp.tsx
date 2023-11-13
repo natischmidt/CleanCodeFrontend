@@ -41,9 +41,9 @@ export default function HeaderComp() {
         console.log("Körs jag?")
         console.log("TYPE: " + userType);
         if (userType == "ADMIN") {
-            gotoDashBoard(("/AdminHome"))
+            gotoDashBoard(("/adminhome"))
         } else if (userType == "EMPLOYEE") {
-            gotoDashBoard(("/EmployeeHome"))
+            gotoDashBoard(("/employeehome"))
         }
     }
 
@@ -61,19 +61,19 @@ export default function HeaderComp() {
                     {/*<button id="goBackToDashboard" style={styles.btn} onClick={() => goBackToDashboard()}>Home</button>*/}
                     <button id="Booking" style={styles.btn} onClick={() => {
                         {
-                            goToBooking(("/Booking"));
+                            goToBooking(("/booking"));
                         }
                     }}>Bookings
                     </button>
 
                     {userType == "ADMIN" && <button id="Employees" style={styles.btn} onClick={() => {
                         {
-                            goToEmployees(("/Employees"));
+                            goToEmployees(("/employees"));
                         }
                     }}>Employees</button>}
                     <button id="Customers" style={styles.btn} onClick={() => {
                         {
-                            goToCustomers(("/Customers"));
+                            goToCustomers(("/customers"));
                         }
                     }}>Customers
                     </button>

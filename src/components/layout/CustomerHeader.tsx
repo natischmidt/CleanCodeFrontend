@@ -70,7 +70,7 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
                 </li>
                 {(
                     <li style={styles.navItem}>
-                        <Link to="/CustomerBooking" style={styles.link}>
+                        <Link to="/customerbooking" style={styles.link}>
                             Book
                         </Link>
                     </li>
@@ -78,7 +78,7 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
                 {loggedIn && (
                     <>
                         <li style={styles.navItem}>
-                            <Link to="/CustomerMyPages" style={styles.link}>
+                            <Link to="/customermypages" style={styles.link}>
                                 My Pages
                             </Link>
                         </li>
@@ -118,7 +118,7 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/CustomerBooking" style={styles.link}>
+                        <Link to="/customerbooking" style={styles.link}>
                             Book
                         </Link>
                     </li>
@@ -134,12 +134,12 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
                     {loggedIn && (
                         <>
                             <li>
-                                <Link to="/CustomerMyPages" style={styles.link}>
+                                <Link to="/customermypages" style={styles.link}>
                                     My Pages
                                 </Link>
                             </li>
                             {/*<li>*/}
-                            {/*    /!*<Link to="/CustomerBooking" style={styles.link}>*!/*/}
+                            {/*    /!*<Link to="/customerbooking" style={styles.link}>*!/*/}
                             {/*    /!*    Book*!/*/}
                             {/*    /!*</Link>*!/*/}
                             {/*</li>*/}
