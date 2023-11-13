@@ -33,7 +33,8 @@ const CreateNewBooking: React.FC = () => {
     const monthString = useRef('')
     const yearToUse = useRef(0)
     const dateToUse = useRef('')
-    let times = ["EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN", "FOURTEEN", "FIFTEEN", "SIXTEEN", "notbookable", "notbookable", "notbookable"]
+    let times = ["EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN",
+        "FOURTEEN", "FIFTEEN", "SIXTEEN", "notbookable", "notbookable", "notbookable"]
 
     type Value = Date | null;
 
@@ -253,6 +254,7 @@ const CreateNewBooking: React.FC = () => {
             <div style={styles.calenderContainer}>
                 {showCalender && isModalOpen ?
                     <Calendar
+                        minDate={new Date()}
                         onClickDay={(day) => {
                             checkDay(day).then(r => {})
                         }}

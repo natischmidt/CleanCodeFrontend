@@ -17,9 +17,6 @@ interface Props {
     columns: Column[];
     data: any[];
     buttons: ButtonConfig[]
-   /* onDelete: (id: number) => void;
-    onUpdate: (id: number) => void;
-    onKlarna: (id: number) => void;*/
 }
 
 const TableId: React.FC<Props> = ({ columns, data , buttons}) => {
@@ -47,7 +44,6 @@ const TableId: React.FC<Props> = ({ columns, data , buttons}) => {
                         <td key={column.key} style={styles.tableCell}>
                             {column.key === 'rating' && item.rating === 0 ? "-" : item[column.key]}
                         </td>
-                        // <td key={column.key} style={styles.tableCell}>{item[column.key]}</td>
                     ))}
                     <td style={styles.td}>
                         {buttons.map((button, buttonIndex) => (
@@ -130,7 +126,6 @@ const styles = {
     tableCell: {
         border: '1px solid #729ca890',
         margin: 33 //fix
-        // borderRadius: "0.5rem",
     },
     btn: {
         display: "flex",

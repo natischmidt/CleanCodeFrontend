@@ -11,7 +11,8 @@ interface CustomerKlarnaPayProps {
     showKlarna: (jobId: number) => void
 }
 
-const CustomerKlarnaPayTable: React.FC<CustomerKlarnaPayProps> =  ({cusId, change, setChange,showKlarna}) => {
+const CustomerKlarnaPayTable: React.FC<CustomerKlarnaPayProps> =
+    ({cusId, change, setChange,showKlarna}) => {
     const [theData, setTheData] = useState([])
     const goToKlarna = useNavigate()
     const [filter, setFilter] = useState('');

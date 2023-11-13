@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {GDPRModal} from "../customer-components/customer-modals/GDPRModal";
+import {AboutModal} from "../customer-components/customer-modals/AboutModal";
 
 const styles = {
     footer: {
@@ -32,8 +33,8 @@ const styles = {
         cursor: 'pointer'
     },
     logo: {
-        height: "6.5vh",
-        marginRight: '3rem',
+        height: "6vh",
+        marginRight: '2rem',
         marginTop: '1.5rem',
         filter: 'drop-shadow(6px 2px 4px rgba(0, 0, 0, 0.3))', // Add a shadow to the image
         cursor: "pointer"
@@ -45,8 +46,16 @@ const styles = {
 };
 
 const CustomerFooter: React.FC = () => {
-
+    const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
     const [isGDPRModalOpen, setIsGDPRModalOpen] = useState(false);
+
+    const handleAboutClick = () => {
+        setIsAboutModalOpen(true)
+    }
+
+    const closeAboutModal = () => {
+        setIsAboutModalOpen(false);
+    };
 
     const handleGDPRClick = () => {
         setIsGDPRModalOpen(true)
@@ -69,11 +78,17 @@ const CustomerFooter: React.FC = () => {
                         <li>
                             <img onClick={handleGDPRClick} src="src/assets/gggg.png" alt="Logo" style={styles.logo}/>
                         </li>
+                        <li>
+                            <img onClick={handleAboutClick} src="src/assets/about.png" alt="Logo" style={styles.logo}/>
+                        </li>
                     </ul>
                 </div>
             </div>
             {isGDPRModalOpen && (
                 <GDPRModal onClose={closeGDRPModal}/>
+            )}
+            {isAboutModalOpen && (
+                <AboutModal onClose={closeAboutModal}/>
             )}
         </footer>
     );

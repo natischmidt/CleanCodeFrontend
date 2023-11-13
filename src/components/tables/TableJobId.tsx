@@ -5,13 +5,10 @@ interface ButtonConfig {
     action: (id: number, date: Date) => void
     style?: React.CSSProperties
 }
-
 interface Column {
     key: string
     title: string
-
 }
-
 interface Props {
     columns: Column[]
     data: any[]
@@ -20,7 +17,6 @@ interface Props {
 
 const TableJobId: React.FC<Props> = ({columns, data, buttons}) => {
     return (
-     /*   <div className="table-container" style={{maxHeight: '9rem', overflowY: 'auto'}}>*/
             <table className="data-table" style={styles.dataTable}>
                 <thead>
                 <tr>
@@ -65,7 +61,6 @@ const styles = {
         margin: 2
     },
     dataTable: {
-        // marginLeft: "23%",
         backgroundColor: "#b3d9e3",
         borderRadius: "5px",
         padding: "15px",

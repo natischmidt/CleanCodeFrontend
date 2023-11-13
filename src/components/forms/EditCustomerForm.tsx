@@ -58,6 +58,7 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
             };
 
             const editCustomerData = {
+                id: cusId,
                 firstName: firstname,
                 lastName: lastname,
                 password: password,
@@ -100,7 +101,6 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
                     style={styles.input}
                     value={firstname}
                     onChange={(e) => setFirstname(e.target.value)}
-                    required
                 />
                 <input
                     type="text"
@@ -108,7 +108,7 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
                     style={styles.input}
                     value={lastname}
                     onChange={(e) => setLastname(e.target.value)}
-                    required
+
                 />
                 <input
                     type="text"
@@ -116,7 +116,7 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
                     style={styles.input}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    required
+
                 />
                 <input
                     type="text"
@@ -124,7 +124,7 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
                     style={styles.input}
                     value={phonenumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
-                    required
+
                 />
                 <input
                     type="text"
@@ -132,7 +132,7 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
                     style={styles.input}
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
-                    required
+
                 />
                 <input
                     type="text"
@@ -154,7 +154,7 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
                     style={styles.input}
                     value={compName}
                     onChange={(e) => setCompName(e.target.value)}
-                    required
+
                 />
                 <input
                     type="text"
@@ -162,7 +162,7 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
                     style={styles.input}
                     value={orgNr}
                     onChange={(e) => setOrgNr(e.target.value)}
-                    required
+
                 />
                 <input
                     type="password"

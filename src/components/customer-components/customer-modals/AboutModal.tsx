@@ -3,7 +3,7 @@ import {useUserType} from "../../context/UserTypeContext";
 import employee from "../../../API/employee";
 
 
-export const GDPRModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
+export const AboutModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
 
     const {id} = useUserType();
     const [firstName, setFirstName] = useState<string>("");
@@ -45,28 +45,12 @@ export const GDPRModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
         <div style={styles.modalContainer}>
             <div style={styles.modalInnerContainer}>
                 <div style={styles.form} onSubmit={handleSubmit}>
-                    <h2>GDPR</h2>
-                    <p style={styles.ptext}>Your Privacy Matters to Us.
-
-                        We value your trust, and we want to be transparent about how we collect and use your data. When
-                        you interact with our website or services, we may collect and store information about you. This
-                        may include personal data such as your name, email address, or other contact details.
-                        <p></p>
-                        We use your data for various purposes, including providing you with our products or services,
-                        improving your user experience, and complying with legal requirements.
-                        <p></p>
-                        Rest assured, your data is treated with the utmost care and security. We have implemented
-                        measures to safeguard your information and protect your privacy.
-                        <p></p>
-                        <p style={styles.boldText}>Data stored about you:</p>
-                        <p><strong>Name:</strong> {firstName} {lastName}<br/>
-                            <strong>Address:</strong> {address} <br/>
-                            <strong>City:</strong> {city} <br/>
-                            <strong>Email:</strong> {email} <br/>
-                            <strong>Postcode:</strong> {postalCode} <br/>
-                            <strong>Phone-number:</strong> {phone}
-                        </p>
-                        <p style={{fontWeight: 'bold'}}>If you wish to remove this data, please contact us at <a href={"mailto:StadaFintAB@gmail.com"}>StadaFintAB@gmail.com</a></p>
+                    <h2>ABOUT US</h2>
+                    <p style={styles.ptext}>This page was developed by Java programmers at Ecu Education.
+                        The page is not deployed online and is only shown locally for training purpose.
+                        The frontend is made with react and the backend is done with java (spring boot).
+                        We go by the name "Clean coders" and the crew is made of Ola, Adrian, Nati, Jimmy and Anton.
+                        <p style={{fontWeight: 'bold'}}>For more informationen contact us at <a href={"mailto:StadaFintAB@gmail.com"}>StadaFintAB@gmail.com</a></p>
 
                     </p>
                     <button type="submit" style={styles.button} onClick={onClose}>
@@ -135,7 +119,7 @@ const styles = {
         width: "100%"
     },
     boldText: {
-        fontWeight: 'bold'
+        textDecoration: "underline"
     },
     ptext: {
         fontSize: "0.8rem",

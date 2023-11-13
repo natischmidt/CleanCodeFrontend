@@ -12,7 +12,6 @@ interface CustomerComingJobsTableProps {
 const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId, change, setChange}) => {
 
     const [theData, setTheData] = useState([])
-   // const [theDate, setTheDate] = useState<string>("")
     const [filter, setFilter] = useState('');
 
     // @ts-ignore
@@ -81,7 +80,8 @@ const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId,
                     ]}
                     data={filteredCustomerData}
                     buttons={[
-                        { label: 'Cancel', action: (jobId, date) => {handleCancel(jobId, date)},  style:styles.cancel },
+                        { label: 'Cancel', action: (jobId, date) =>
+                            {handleCancel(jobId, date)},  style:styles.cancel },
                     ]}
                 />
                 </>)
@@ -103,7 +103,6 @@ const styles = {
         backgroundColor: "#f83f3f",
     },
     filter: {
-        //textAlign: "left" as 'left',
         textAlign: "center" as "center",
     }
 }

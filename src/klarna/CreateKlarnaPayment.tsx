@@ -1,5 +1,4 @@
 import React from "react";
-import KlarnaModalPayment from "./KlarnaModalPayment";
 import {useNavigate} from "react-router-dom";
 
 interface editKlarnaProps {
@@ -52,9 +51,7 @@ const styles = {
         display: 'flex',
         alignItems: 'center' as "center",
         justifyContent: 'center' as "center",
-        color: '#000001',
-        // boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
-    },
+        color: '#000001',},
     klarnaCont2: {
         display: 'flex',
         alignItems: 'center' as "center",
