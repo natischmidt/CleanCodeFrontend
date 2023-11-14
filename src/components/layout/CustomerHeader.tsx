@@ -35,7 +35,7 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
         console.log("%%%%%%%%%%%%%%%%")
         try {
             await customer.logout(id);
-            goToHome("/CustomerHome")
+            goToHome("/")
         } catch (e) {
             console.log(e)
         }
