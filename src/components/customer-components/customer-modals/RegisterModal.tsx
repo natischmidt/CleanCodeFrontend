@@ -122,8 +122,6 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                 }
             }
         }
-
-
     }
 
 
