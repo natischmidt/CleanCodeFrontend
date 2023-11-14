@@ -9,15 +9,32 @@ import {BookingComponent} from "../../components/customer-components/BookingComp
 import '../../styles/CustomerHome.css'
 
 const styles: {
-    container: CSSProperties;
-    halfContainer: CSSProperties;
-    imageSection: CSSProperties;
-    bookingSection: CSSProperties;
-    whiteSection: CSSProperties;
-    textContainer: CSSProperties;
-    headerText: CSSProperties;
-    subHeaderText: CSSProperties;
-    subText: CSSProperties;
+    container: {
+        boxShadow: string;
+        alignItems: string;
+        flexDirection: string;
+        display: string;
+        justifyContent: string;
+        marginTop: string
+    };
+    bookingSection: {
+        alignItems: string;
+        flexDirection: string;
+        display: string;
+        width: string;
+        justifyContent: string
+    };
+    halfContainer: { display: string; width: string; height: string };
+    imageSection: { boxShadow: string; margin: string; flex: number; backgroundRepeat: string };
+    textContainer: {
+        boxShadow: string;
+        backgroundColor: string;
+        borderRadius: string;
+        color: string;
+        textAlign: string;
+        flex: number;
+        marginTop: string
+    }
 } = {
     container: {
         display: 'flex',

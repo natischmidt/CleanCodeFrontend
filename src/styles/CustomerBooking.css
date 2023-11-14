@@ -1,0 +1,69 @@
+.container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.boxContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.box {
+    background-image: url("../assets/diamond3.png");
+    display: flex;
+    width: 12rem;
+    height: 18rem;
+    border: 3px solid #ccc;
+    padding: 2rem;
+    margin: 1rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #b3d9e3;
+    background-size: cover;
+
+}
+.buttonText {
+    font-size: 0.9rem;
+    color: #000000;
+
+}
+.showInfo {
+    border: 1px solid black;
+    align-items: center;
+}
+
+@media (max-width: 1500px) {
+    .box {
+        display: flex;
+        flex-wrap: wrap;
+        overflow: hidden;
+        margin: 0 auto;
+        height: 15rem;
+    }
+    .buttonText {
+        font-size: 0.6rem;
+    }
+    .showInfo {
+    }
+}
+
+@media (max-width: 1000px) {
+    .box {
+        display: flex;
+        flex-wrap: wrap;
+        overflow: hidden;
+        margin: 0 auto;
+        height: 18rem;
+    }
+    .buttonText {
+        font-size: 0.55rem;
+    }
+    .showInfo {
+    }
+}
+
+

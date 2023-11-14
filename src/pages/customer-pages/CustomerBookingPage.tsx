@@ -4,6 +4,7 @@ import AddCustomerBookingOption from "../../components/customer-components/AddCu
 import React, {useState} from "react";
 
 
+
 export default function CustomerBookingPage() {
     const [loggedIn, setLoggedIn] = useState(true);
 

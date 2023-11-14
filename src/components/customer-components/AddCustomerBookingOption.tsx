@@ -9,6 +9,7 @@ import windowclean from "../../assets/www.png";
 import {useUserType} from "../context/UserTypeContext";
 import customer from "../../API/customer";
 import SetTempEmail from "./customer-modals/SetTempEmail";
+import "../../styles/CustomerBooking.css"
 
 const AddCustomerBookingOption = () => {
 
@@ -283,20 +284,19 @@ const AddCustomerBookingOption = () => {
         return (
             <>{!isModalOpen
                 && (
-                    <div style={styles.container}>
+                    <div style={styles.container1}>
                         <div style={styles.sectionTitle}>
                             <h2>What cleaning are you interested in?</h2>
                         </div>
                         {!showSetTempEmail ?
                         <div style={styles.boxContainer}>
-                            <div style={{
-                                ...styles.box,
+                            <div className="box" style={{
                                 backgroundImage: `url(${basic})`
                             }}>
                                 <div>
-                                    <div>
+                                    <div style={styles.btn}>
                                         <button
-                                            style={styles.showInfo}
+                                            className="showInfo"
                                             onClick={() => handleExtraInformation(
                                                 "Our 'Basic Cleaning' service provides essential cleaning tasks such as " +
                                                 "surface cleaning, floor care, and bathroom and kitchen maintenance to maintain a " +
@@ -305,7 +305,7 @@ const AddCustomerBookingOption = () => {
                                     </div>
                                     {showExtraInfo && (
                                         <div style={styles.buttonTextContainer}>
-                                            <div style={styles.buttonText}>
+                                            <div className="buttonText">
                                                 {infoText}
                                                 <div>
                                                     <br/>
@@ -318,14 +318,13 @@ const AddCustomerBookingOption = () => {
                                         </div>)}
                                 </div>
                             </div>
-                            <div style={{
-                                ...styles.box,
+                            <div className="box" style={{
                                 backgroundImage: `url(${advanced})`
                             }}>
                                 <div>
-                                    <div>
+                                    <div style={styles.btn}>
                                         <button
-                                            style={styles.showInfo}
+                                            className="showInfo"
                                             onClick={() => handleExtraInformationAdv(
                                                 "Our 'Advanced Cleaning' service goes beyond the basics, offering a" +
                                                 " comprehensive and deep cleaning experience that includes thorough " +
@@ -336,7 +335,7 @@ const AddCustomerBookingOption = () => {
                                     </div>
                                     {showExtraInfoAdv && (
                                         <div style={styles.buttonTextContainer}>
-                                            <div style={styles.buttonText}>
+                                            <div className="buttonText">
                                                 {infoTextAdv}
                                                 <div>
                                                     <br/>
@@ -349,14 +348,13 @@ const AddCustomerBookingOption = () => {
                                         </div>)}
                                 </div>
                             </div>
-                            <div style={{
-                                ...styles.box,
+                            <div className="box" style={{
                                 backgroundImage: `url(${diamond})`
                             }}>
                                 <div>
-                                    <div>
+                                    <div style={styles.btn}>
                                         <button
-                                            style={styles.showInfo}
+                                            className="showInfo"
                                             onClick={() => handleExtraInformationDia(
                                                 "Our 'Diamond Cleaning' service represents the pinnacle of " +
                                                 "cleanliness, providing a top-tier, comprehensive cleaning experience" +
@@ -367,7 +365,7 @@ const AddCustomerBookingOption = () => {
                                     </div>
                                     {showExtraInfoDia && (
                                         <div style={styles.buttonTextContainer}>
-                                            <div style={styles.buttonText}>
+                                            <div className="buttonText">
                                                 {infoTextDia}
                                                 <div>
                                                     <br/>
@@ -380,14 +378,13 @@ const AddCustomerBookingOption = () => {
                                         </div>)}
                                 </div>
                             </div>
-                            <div style={{
-                                ...styles.box,
+                            <div className="box" style={{
                                 backgroundImage: `url(${windowclean})`
                             }}>
                                 <div>
-                                    <div>
+                                    <div style={styles.btn}>
                                         <button
-                                            style={styles.showInfo}
+                                            className="showInfo"
                                             onClick={() => handleExtraInformationWin(
 
                                                 "Our 'Window Cleaning' service is dedicated to ensuring" +
@@ -397,7 +394,7 @@ const AddCustomerBookingOption = () => {
                                     </div>
                                     {showExtraInfoWin && (
                                         <div style={styles.buttonTextContainer}>
-                                            <div style={styles.buttonText}>
+                                            <div className="buttonText">
                                                 {infoTextWin}
                                                 <div>
                                                     <br/>
@@ -417,7 +414,7 @@ const AddCustomerBookingOption = () => {
                              email={settingTemporaryEmail}/>}
                     </div>)}
 
-                <div style={styles.container}>
+                <div style={styles.container1}>
                     {showCalender && isModalOpen ? (
                         <div style={styles.cal}>
                             <div style={styles.calenderStyles}>
@@ -502,7 +499,7 @@ const AddCustomerBookingOption = () => {
                                                             }}>16.00</button>}
                                     </>)}
 
-                                {showCalender && (<div>
+                                {showCalender && (<div style={styles.calenderBox}>
 
                                     <button type="submit" style={styles.bookButton} onClick={handleModal}>Go back
                                     </button>
@@ -652,45 +649,30 @@ const AddCustomerBookingOption = () => {
 export default AddCustomerBookingOption;
 
 const styles: { [key: string]: React.CSSProperties } = {
-    container: {
+    calenderBox: {
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center',
-        fontSize: "0.9rem",
-        // marginTop: "2rem"
+        justifyContent: 'center',
     },
     form: {
         display: 'flex',
         alignItems: 'center',
         textAlign: 'center',
         flexDirection: 'column',
-        // marginTop: '2%',
     },
     sectionTitle: {
         fontWeight: 'bold',
         margin: '10px',
+        textAlign: 'center',
     },
     cal: {
+        display: 'flex',
+        justifyContent: 'center',
         marginTop: '4%',
     },
     boxContainer: {
         display: 'flex',
         justifyContent: 'center',
         width: '100%',
-    },
-    box: {
-        backgroundImage: `url(${diamond})`,
-        display: 'flex',
-        width: '12rem',
-        height: '18rem',
-        border: '3px solid #ccc',
-        padding: '2rem',
-        margin: '1rem',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#b3d9e3',
-        backgroundSize: 'cover',
     },
     boxText: {
         display: 'flex',
@@ -701,7 +683,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         alignItems: 'center',
     },
     calenderStyles: {
-        backgroundColor: "#b3d9e3"
+        backgroundColor: "#b3d9e3",
     },
     bookButton: {
         padding: '8px 16px',
@@ -723,10 +705,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         marginTop: "7%",
         padding: 30,
         fontSize: "1.2rem",
-    },
-    buttonText: {
-        fontSize: '0.9rem',
-        color: "#000000",
+        textAlign: 'center',
     },
     buttonTextContainer: {
         backgroundColor: '#ffffff',
@@ -738,16 +717,17 @@ const styles: { [key: string]: React.CSSProperties } = {
     bookNow: {
         border: "1px solid black"
     },
-    showInfo: {
-        border: "1px solid black"
+    slotsContainer: {
+        textAlign: 'center',
     },
     slots: {
-        margin: 10,
+        margin: 0,
         marginTop: "4%",
         border: "1px solid silver",
     },
     confirm: {
-        fontSize: "1.2rem"
+        fontSize: "1.2rem",
+        textAlign: 'center',
     },
     input: {
         // marginTop: '10px',
@@ -758,4 +738,8 @@ const styles: { [key: string]: React.CSSProperties } = {
         fontFamily: "PlomPraeng",
         fontSize: "0.9rem"
     },
+    btn: {
+        display: "flex",
+        justifyContent: "center",
+    }
 };
