@@ -139,8 +139,9 @@ const styles = {
     filterContainer: {
         display: 'flex',
         justifyContent: 'center',
-        marginBottom: '1.5rem',
-        gridGap: '2rem',
+        marginTop: '1.3rem',
+        marginBottom: '3rem',
+        gridGap: '3rem',
     },
     container: {
         display: 'flex',

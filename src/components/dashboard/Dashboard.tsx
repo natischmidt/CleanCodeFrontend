@@ -152,7 +152,7 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
                             </div>
                             { userType == "employee" &&
                             <div className="section" style={styles.sectionUserData}>
-                                <div className="section-title" style={styles.sectionTitle}>
+                                <div className="section-title" style={styles.sectionTitle2}>
                                     My personal information
                                 </div>
                                 <div className="section-content" style={styles.personalInformationDiv}>
@@ -215,8 +215,16 @@ const styles: { [key: string]: React.CSSProperties } = {
     },
     sectionTitle: {
         fontWeight: 'bold',
-        fontSize: "2rem",
-        marginTop: "-6%",
+        fontSize: "2.3rem",
+        marginTop: "-7%",
+        marginBottom: "-2rem",
+        paddingLeft: "4%",
+        textDecoration: "underline",
+    },
+    sectionTitle2: {
+        fontWeight: 'bold',
+        fontSize: "1.5rem",
+        // marginTop: "-6%",
         paddingLeft: "4%",
         textDecoration: "underline",
     },
