@@ -170,7 +170,7 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) =>
                     style={styles.input}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    required
+
                 />
                 <button type="submit" style={styles.button}>
                     Update Employee
