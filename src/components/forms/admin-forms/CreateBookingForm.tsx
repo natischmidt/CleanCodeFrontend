@@ -6,6 +6,7 @@ import admin from "../../../API/admin";
 
 import 'react-calendar/dist/Calendar.css';
 import axios from "axios";
+import HeaderComp from "../../layout/HeaderComp";
 
 const CreateNewBooking: React.FC = () => {
     const [jobType, setJobType] = useState('');
@@ -198,6 +199,9 @@ const CreateNewBooking: React.FC = () => {
     }
 
     return (
+        <>
+            <HeaderComp/>
+
         <div style={styles.container}>
             {!isModalOpen && (
                 <form style={styles.form} onSubmit={() => handleSelectTime}>
@@ -343,6 +347,7 @@ const CreateNewBooking: React.FC = () => {
                 )}
             </div>
         </div>
+        </>
     );
 };
 

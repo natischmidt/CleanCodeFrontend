@@ -55,5 +55,6 @@ const styles = {
         display: "flex",
         justifyContent: "center" as 'center',
         alignItems: "center" as 'center',
+        marginTop: "-1rem"
     }
 };

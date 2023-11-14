@@ -1,5 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import {useUserType} from "../context/UserTypeContext";
+import HeaderComp from "../layout/HeaderComp";
+import React from "react";
 
 const AddUserOption = () => {
 
@@ -9,41 +11,43 @@ const AddUserOption = () => {
     const goToBusinessCustomerForm = useNavigate()
     const {userType} = useUserType();
 
-
     return (
-        <div style={styles.container}>
-            <div className="h1" style={styles.h1}>
-                <h1>Create new:</h1>
-                <div className="menuBtn" style={styles.menuBtns}>
-                    {userType === "ADMIN" && (
-                        <button
-                            type="submit"
-                            style={styles.button}
-                            onClick={() => {
-                                if (userType === "ADMIN") {
-                                    goToAdminForm("/addadmin");
-                                }
-                            }}
-                        >
-                            Admin
-                        </button>
-                    )}
-                    {userType === "ADMIN" &&
-                        <button type="submit"
-                                style={styles.button}
-                                onClick={() =>
-                                {{goToEmployeeForm(("/addemployee"))}}}>
-                        Employee
-                    </button>}
-                    <button type="submit" style={styles.button} onClick={() => {{goToPrivateCustomerForm(("/addprivatecustomer"))}}}>
-                        Private Customer
-                    </button>
-                    <button type="submit" style={styles.button} onClick={() => {{goToBusinessCustomerForm(("/addbusinesscustomer"))}}}>
-                        Business Customer
-                    </button>
+        <>
+            <HeaderComp/>
+                <div style={styles.container}>
+                    <div className="h1" style={styles.h1}>
+                        <h1>Create new:</h1>
+                        <div className="menuBtn" style={styles.menuBtns}>
+                            {userType === "ADMIN" && (
+                                <button
+                                    type="submit"
+                                    style={styles.button}
+                                    onClick={() => {
+                                        if (userType === "ADMIN") {
+                                            goToAdminForm("/addadmin");
+                                        }
+                                    }}
+                                >
+                                    Admin
+                                </button>
+                            )}
+                            {userType === "ADMIN" &&
+                                <button type="submit"
+                                        style={styles.button}
+                                        onClick={() =>
+                                        {{goToEmployeeForm(("/addemployee"))}}}>
+                                Employee
+                            </button>}
+                            <button type="submit" style={styles.button} onClick={() => {{goToPrivateCustomerForm(("/addprivatecustomer"))}}}>
+                                Private Customer
+                            </button>
+                            <button type="submit" style={styles.button} onClick={() => {{goToBusinessCustomerForm(("/addbusinesscustomer"))}}}>
+                                Business Customer
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+        </>
     );
 };
 

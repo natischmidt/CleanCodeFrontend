@@ -51,7 +51,6 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) =>
         try {
             const Url = `http://localhost:8080/api/employee/editEmployee`;
 
-
             const editEmployeeData = {
                 firstName: firstname,
                 lastName: lastname,
@@ -94,7 +93,7 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) =>
     return (
         <div style={styles.container}>
             <form style={styles.form} onSubmit={handleSubmit}>
-                <h2>Edit information</h2>
+                <h2>Edit Employee</h2>
                 <input
                     type="text"
                     placeholder="Firstname"
