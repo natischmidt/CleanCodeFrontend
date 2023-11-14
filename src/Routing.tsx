@@ -20,7 +20,6 @@ import EmployeeHomePage from "./pages/employee-pages/EmployeeHome";
 import CustomerBookingPage from "./pages/customer-pages/CustomerBookingPage";
 import LoginAdminOrEmployeeForm from "./components/forms/LoginAdminOrEmployeeForm";
 import KlarnaConfirmation from "./klarna/KlarnaConfirmation";
-import SecurityFrontTestPage from "./security/SecurityFrontTestPage";
 import KlarnaModalPayment from "./klarna/KlarnaModalPayment";
 import AddUserOption from "./components/admin-components/AddUserOption";
 
@@ -106,7 +105,7 @@ function Routing() {
                     <Route path="/gettingidnumberform" element={<GettingIdNumberForm/>}/>
                     <Route path="/cancelwithnumberform" element={<CancelWithNumberForm/>}/>
 
-                    <Route path="/sec" element={<SecurityFrontTestPage/>}/>
+
                 </Routes>
             </BrowserRouter>
         </>
