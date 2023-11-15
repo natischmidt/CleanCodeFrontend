@@ -23,18 +23,12 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
         if (jobId !== null) {
             const preFillForm = async () => {
                 try {
-                    const url = `http://localhost:8080/api/jobs/getJob`;
-                    const headers = {
-                        'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
-                        'Content-Type': 'application/json',
-                        'jobId': jobId?.toString() || '',
-                    };
-                    const response = await axios.get(url, { headers });
-                    const data = response.data;
+
+                    const data = await admin.getJobDetails(jobId)
                     const dateTwo = new Date(data.date)
                     const formattedDate = `${dateTwo.getFullYear()}-${String(dateTwo.getMonth() + 1).padStart(2, '0')}-${String(dateTwo.getDate()).padStart(2, '0')}`;
 
-                    console.log(response.data.customerId)
+                    console.log(data.customerId)
                     if (!data || !data.jobId) {
                         console.log('Job with this id not found');
                     } else {

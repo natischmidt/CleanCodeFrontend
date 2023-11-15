@@ -326,27 +326,29 @@ const admin = {
     getJobDetails: async (jobId: number | null) => {
         try {
             if (jobId !== null) {
-                const url = `http://localhost:8080/api/jobs/getJob`;
+                const url = `${backendUrl}api/jobs/getJob`;
                 const headers = {
                     'jobId': jobId?.toString() || '',
                     'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`
                 };
                 const response = await axios.get(url, { headers });
                 const data = response.data;
-                console.log(response.data.customerId);
+
                 if (!data || !data.jobId) {
                     console.log('Job with this id not found');
-                } else {
-                    return {
-                        date: data.date || '',
-                        loadedJobId: data.jobId?.toString() || '',
-                        jobStatus: data.jobStatus || '',
-                        jobType: data.jobType || '',
-                        paymentOption: data.paymentOption || '',
-                        squareMeters: data.squareMeters?.toString() || '',
-                        timeSlot: data.timeSlot || '',
-                        customerId: data.customerId,
-                    };
+                } else
+                {
+                    return data;
+                    // return {
+                    //     date: data.date || '',
+                    //     loadedJobId: data.jobId?.toString() || '',
+                    //     jobStatus: data.jobStatus || '',
+                    //     jobType: data.jobType || '',
+                    //     paymentOption: data.paymentOption || '',
+                    //     squareMeters: data.squareMeters?.toString() || '',
+                    //     timeSlot: data.timeSlot || '',
+                    //     customerId: data.customerId,
+                    // };
                 }
             }
         } catch (error) {
