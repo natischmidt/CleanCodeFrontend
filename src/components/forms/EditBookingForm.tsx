@@ -14,7 +14,7 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
     const [jobStatus, setJobStatus] = useState("")
     const [jobType, setJobType] = useState("")
     const [paymentOption, setPaymentOption] = useState("")
-    const [squareMeters, setSquareMeters] = useState<number | null>(null)
+    const [squareMeters, setSquareMeters] = useState(0)
     const [timeSlot, setTimeSlot] = useState("")
     const [message, setMessage] = useState<string>("");
     const [customerId, setCustomerId] = useState<String | null>(null);
@@ -37,7 +37,7 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                         setJobStatus(data.jobStatus || '')
                         setJobType(data.jobtype || '')
                         setPaymentOption(data.paymentOption || '')
-                        setSquareMeters(data.squareMeters || '')
+                        setSquareMeters(data.squareMeters || 0)
                         setTimeSlot(data.timeSlot || '')
                         setCustomerId(data.customerId)
                     }
@@ -53,28 +53,23 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
         e.preventDefault();
         try {
             if (jobId !== null) {
-                const url = `http://localhost:8080/api/jobs/updateJob`;
-
-                const headers = {
-                    'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
-                    'Content-Type': 'application/json',
-                };
 
                 const editJobData = {
-                    date,
                     jobId,
-                    jobStatus,
                     jobType,
-                    paymentOption,
-                    squareMeters,
+                    date,
                     timeSlot,
-                    customerId
-
+                    jobStatus,
+                    squareMeters,
+                    paymentOption,
+                    message,
+                    customerId,
                 };
 
                 console.log(jobId)
                 console.log(customerId)
-                await axios.put(url, editJobData, {headers,params: {message}});
+                // await axios.put(url, editJobData, {headers,params: {message}});
+                await admin.updateJobStatus(editJobData);
                 console.log('Job was updated');
                 doneWithEdit();
             }

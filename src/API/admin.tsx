@@ -223,6 +223,7 @@ const admin = {
             throw error;
         }
     },
+
     deleteJob: async (jobId: number): Promise<void> => {
         try {
 
