@@ -7,6 +7,12 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
     const [firstnameStyle, setFirstnameStyle] = useState(styles.input);
     const [lastnameStyle, setLastnameStyle] = useState(styles.input);
     const [emailStyle, setEmailStyle] = useState(styles.input);
+    const [phonenumberStyle, setPhonenumberStyle] = useState(styles.input)
+    const [addressStyle, setAddressStyle] = useState(styles.input)
+    const [cityStyle, setCityStyle] = useState(styles.input)
+    const [postalCodeStyle, setPostalCodeStyle] = useState(styles.input)
+    const [passwordStyle, setPasswordStyle] = useState(styles.input)
+    const [confirmPasswordStyle, setConfirmPasswordStyle] = useState(styles.input)
     const [businessCustomer, setBusinessCustomer] = useState(false);
     const firstname = useRef('');
     const lastname = useRef('');
@@ -22,6 +28,10 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
     const [allNecessaryInformationEntered, setAllNecessaryInformationEntered] = useState(false);
     const {setUserType, setId, setLoggedIn} = useUserType();
     const emailRegex = new RegExp("^(([^<>()[\\]\\\\.,;:\\s@\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\"]+)*)|.(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$");
+    const phonenumberRegex = new RegExp("^(\\d){7,12}$")
+    const passwordRegex = new RegExp("^(?=(?:\\D*\\d){2})[A-Za-z\\d]{8,}$")
+
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -54,9 +64,7 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
     const checkAllInformationEntered = () => {
 
         // const passwordRegex = new RegExp("^(?=(?:\\D*\\d){2,})(?=[^\\\\p{L}]*\\\\p{L})[a-zA-Z\\d\\W]{8,}$")
-        const passwordRegex = new RegExp("^(?=(?:\\D*\\d){2})[A-Za-z\\d]{8,}$")
         const postalCodeRegex = new RegExp("^(\\d){5}$")
-        const  phonenumberRegex = new RegExp("^(\\d){7,12}$")
 
         if (
             firstname.current !== '' &&
@@ -120,6 +128,56 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                 } else {
                     setEmailStyle(styles.input)
                 }
+                break;
+            }
+            case "phonenumber": {
+                if(!phonenumber.current.match(phonenumberRegex)) {
+                    setPhonenumberStyle(styles.invalidInput)
+                } else {
+                    setPhonenumberStyle(styles.input)
+                }
+                break;
+            }
+            case "address": {
+                if(address.current == null || address.current == '') {
+                    setAddressStyle(styles.invalidInput)
+                } else {
+                    setAddressStyle(styles.input)
+                }
+                break;
+            }
+            case "city": {
+                if(city.current == null || city.current == '') {
+                    setCityStyle(styles.invalidInput)
+
+                } else {
+                    setCityStyle(styles.input)
+                }
+                break;
+            }
+            case "postalcode": {
+                if(postalCode.current == null || postalCode.current == '') {
+                    setPostalCodeStyle(styles.invalidInput)
+                } else {
+                    setPostalCodeStyle(styles.input)
+                }
+                break;
+            }
+            case "password": {
+                if(!password.current.match(passwordRegex)) {
+                    setPasswordStyle(styles.invalidInput)
+                } else {
+                    setPasswordStyle(styles.input)
+                }
+                break;
+            }
+            case "confirmpassword": {
+                if(!confirmPassword.current.match(passwordRegex) || confirmPassword.current == '') {
+                    setConfirmPasswordStyle(styles.invalidInput)
+                } else {
+                    setConfirmPasswordStyle(styles.input)
+                }
+                break;
             }
         }
     }
@@ -189,10 +247,13 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                     <input
                         type="text"
                         placeholder="Phone Number"
-                        style={styles.input}
-                        // value={phonenumber}
+                        style={phonenumberStyle}
+                        onFocus={() => {
+                            isTheFieldOk("phonenumber")
+                        }}
                         onChange={(e) => {
                             phonenumber.current = e.target.value
+                            isTheFieldOk('phonenumber')
                             checkAllInformationEntered()
                         }}
                         required
@@ -201,10 +262,13 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                     <input
                         type="text"
                         placeholder="Address"
-                        style={styles.input}
-                        // value={address}
+                        style={addressStyle}
+                        onFocus={() => {
+                            isTheFieldOk("address")
+                        }}
                         onChange={(e) => {
                             address.current = e.target.value
+                            isTheFieldOk("address")
                             checkAllInformationEntered()
                         }}
                         required
@@ -212,10 +276,13 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                     <input
                         type="text"
                         placeholder="City"
-                        style={styles.input}
-                        // value={city}
+                        style={cityStyle}
+                        onFocus={() => {
+                            isTheFieldOk("city")
+                        }}
                         onChange={(e) => {
                             city.current = e.target.value
+                            isTheFieldOk("city")
                             checkAllInformationEntered()
                         }}
                         required
@@ -223,18 +290,26 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                     <input
                         type="text"
                         placeholder="Postal code"
-                        style={styles.input}
+                        style={postalCodeStyle}
+                        onFocus={() => {
+                            isTheFieldOk("postalcode")
+                        }}
                         onChange={(e) => {
                             postalCode.current = e.target.value
+                            isTheFieldOk("postalcode")
                             checkAllInformationEntered()
                         }}
                     />
                     <input
                         type="password"
                         placeholder="Password"
-                        style={styles.input}
+                        style={passwordStyle}
+                        onFocus={() => {
+                            isTheFieldOk("password")
+                        }}
                         onChange={(e) => {
                             password.current = e.target.value
+                            isTheFieldOk("password")
                             checkAllInformationEntered()
 
                         }}
@@ -244,9 +319,13 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                     <input
                         type="password"
                         placeholder="Confirm password"
-                        style={styles.input}
+                        style={confirmPasswordStyle}
+                        onFocus={() => {
+                            isTheFieldOk("confirmpassword")
+                        }}
                         onChange={(e) => {
                             confirmPassword.current = e.target.value
+                            isTheFieldOk("confirmpassword")
                             checkAllInformationEntered()
                         }}
                         required
