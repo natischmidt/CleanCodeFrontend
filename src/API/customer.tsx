@@ -6,14 +6,13 @@ import {useNavigate} from 'react-router-dom';
 import ConvertTimeSlotToNiceTime from "../components/layout/ConvertTimeSlotToNiceTime";
 
 
-
+const backendUrl = "http://localhost:8080/";
 const customer = {
 
     registerTemp: async (email: string) => {
 
-
         try {
-            const url = 'http://localhost:8080/api/customer/create';
+            const url = `${backendUrl}api/customer/create`;
 
             const customerData = {
                 firstName: "",
@@ -65,7 +64,7 @@ const customer = {
                      setId: (value: (((prevState: (string | null)) => (string | null)) | string | null)) => void) => {
 
         try {
-            const url = 'http://localhost:8080/api/customer/create';
+            const url = `${backendUrl}api/customer/create`;
 
             const response = await axios.post(url, customerData);
             console.log('Customer was registered', response.data);
@@ -112,9 +111,10 @@ const customer = {
                     paymentOption,
                     sessionStorage.getItem("tempId"),
                     message,
+
                     )
 
-            } else if (id != null) {
+            } else {
                 // KUND
                 const email = "";
                 console.log("Bokning av inloggad kund:");
@@ -138,7 +138,7 @@ const customer = {
                 'Content-Type': 'application/json',
             };
 
-            const Url = `http://localhost:8080/api/auth/logout/${custId}`;
+            const Url = `${backendUrl}api/auth/logout/${custId}`;
 
             const response = await axios.get(Url, {headers: headers});
 
@@ -162,7 +162,7 @@ const customer = {
                 'Content-Type': 'application/json',
             };
 
-            const url = 'http://localhost:8080/api/auth/loginCustomer';
+            const url = `${backendUrl}api/auth/loginCustomer`;
 
             const customerData = {
                 email: email,
@@ -196,7 +196,7 @@ const customer = {
             if (!jwt) {
                 throw new Error("JWT not found in sessionStorage");
             }
-            const response = await axios.get(`http://localhost:8080/api/customer/${customerId}`,{
+            const response = await axios.get(`${backendUrl}api/customer/${customerId}`,{
                 headers: {
                     'Authorization': `Bearer ${jwt}`
                 }
@@ -216,7 +216,7 @@ const customer = {
                 throw new Error("JWT not found in sessionStorage");
             }
 
-            const response = await axios.get(`http://localhost:8080/api/jobs/getAllJobsForCustomerWithStatus/${customerId}`, {
+            const response = await axios.get(`${backendUrl}api/jobs/getAllJobsForCustomerWithStatus/${customerId}`, {
                 headers: {
                     'Authorization': `Bearer ${jwt}`
                 },

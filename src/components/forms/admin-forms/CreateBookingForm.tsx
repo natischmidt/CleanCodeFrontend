@@ -7,14 +7,13 @@ import admin from "../../../API/admin";
 import 'react-calendar/dist/Calendar.css';
 import axios from "axios";
 import HeaderComp from "../../layout/HeaderComp";
+import {useUserType} from "../../context/UserTypeContext";
 
 const CreateNewBooking: React.FC = () => {
     const [jobType, setJobType] = useState('');
     const [dateAndTime, setDateAndTime] = useState('');
-    const [timeSlotList, setTimeSlotList] = useState<string[]>([]);
     const [squareMeters, setSquareMeters] = useState('');
     const [payment, setPayment] = useState('');
-    const [customer, setCustomer] = useState('')
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [showCalender, setShowCalender] = useState(false)
     const [hours, setHours] = useState(0)
@@ -46,6 +45,7 @@ const CreateNewBooking: React.FC = () => {
 
     const [customerData, setCustomerData] = useState<any[]>([]);
     const [selectedCustomer, setSelectedCustomer] = useState('');
+
 
     useEffect(() => {
 

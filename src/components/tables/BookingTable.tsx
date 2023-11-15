@@ -7,7 +7,6 @@ import {useUserType} from "../context/UserTypeContext";
 
 interface bookingTableProps {
     onUpdate: (jobId: number) => void;
-   // onKlarna: (jobId: number) => void;
 }
 
 const BookingTable: React.FC<bookingTableProps> = ({onUpdate/*, onKlarna*/}) => {
@@ -17,8 +16,6 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate/*, onKlarna*/}) => 
     const [myFilter, setMyFilter] = useState('');
     const [status, setStatus] = useState('');
     const [searchDate, setSearchDate] = useState('');
-    const {userType} = useUserType();
-
 
     useEffect(() => {
         const fetchData = async () => {

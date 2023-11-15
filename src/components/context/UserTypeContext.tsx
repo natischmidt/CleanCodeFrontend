@@ -12,7 +12,6 @@ interface UserTypeContextProps {
     setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-
 export const UserTypeContext = createContext<UserTypeContextProps | undefined>(
     undefined
 );

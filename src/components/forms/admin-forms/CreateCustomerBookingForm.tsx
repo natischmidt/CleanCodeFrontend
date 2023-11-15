@@ -3,13 +3,11 @@ import {useNavigate} from "react-router-dom";
 
 import Calendar from "react-calendar";
 import admin from "../../../API/admin";
-
 import 'react-calendar/dist/Calendar.css';
 
 const CreateNewBooking: React.FC = () => {
     const [jobType, setJobType] = useState('');
     const [dateAndTime, setDateAndTime] = useState('');
-    const [timeSlotList, setTimeSlotList] = useState<string[]>([]);
     const [squareMeters, setSquareMeters] = useState('');
     const [payment, setPayment] = useState('');
     const [message, setMessage] = useState('')
@@ -35,7 +33,6 @@ const CreateNewBooking: React.FC = () => {
     const dateToUse = useRef('')
     let times = ["EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN",
         "FOURTEEN", "FIFTEEN", "SIXTEEN", "notbookable", "notbookable", "notbookable"]
-
     type Value = Date | null;
 
     const [date] = useState<Value>(new Date());

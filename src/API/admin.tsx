@@ -8,7 +8,6 @@ interface Job {
     jobId: number;
     customerId: string;
     timeSlot: string;
-
 }
 
 interface LoginCredentials {
@@ -29,18 +28,6 @@ interface EmployeeData {
     role: string;
     salary: number;
 }
-
-/*interface TimeSlots {
-    EIGHT: boolean
-    NINE: boolean
-    TEN: boolean
-    ELEVEN: boolean
-    TWELVE: boolean
-    THIRTEEN: boolean
-    FOURTEEN: boolean
-    FIFTEEN: boolean
-    SIXTEEN: boolean
-}*/
 
 interface BusinessCustomerData {
     firstName: string;
@@ -68,6 +55,8 @@ interface PrivateCustomerData {
     postalCode: string;
 }
 
+const backendUrl = "http://localhost:8080/"
+
 const admin = {
     getAllJobs: async (): Promise<Job[]> => {
         try {
@@ -76,7 +65,7 @@ const admin = {
                 throw new Error("JWT not found in sessionStorage");
             }
 
-            const response = await axios.get('http://localhost:8080/api/jobs/getAllJobs', {
+            const response = await axios.get(`${backendUrl}api/jobs/getAllJobs`, {
                 headers: {
                     'Authorization': `Bearer ${jwt}`
                 }
@@ -106,7 +95,7 @@ const admin = {
             if (!jwt) {
                 throw new Error("JWT not found in sessionStorage");
             }
-            const response = await axios.get('http://localhost:8080/api/jobs/getByStatus', {
+            const response = await axios.get(`${backendUrl}api/jobs/getByStatus`, {
                 params: { statuses },
                 paramsSerializer: params => {
                     return `statuses=${statuses.join('&statuses=')}`;
@@ -157,7 +146,8 @@ const admin = {
             return [];
         }
         try {
-            const Url = 'http://localhost:8080/api/jobs/getAvailableEmployees';
+
+            const Url = `${backendUrl}api/jobs/getAvailableEmployees`;
             const checkEmployees = {
                 date: date,
                 lookForAvailableThisManyHours: hours
@@ -166,6 +156,7 @@ const admin = {
             if (!jwt) {
                 throw new Error("JWT not found in sessionStorage");
             }
+
             const response = await axios.post(Url, checkEmployees, {
                 headers: {
                     'Authorization': `Bearer ${jwt}`
@@ -186,11 +177,10 @@ const admin = {
         payment: string,
         customerId: string | null,
         message: string,
-        // email: string
+
     ): Promise<void> => {
-        console.log("................*********" + timeSlotList);
         try {
-            const Url = 'http://localhost:8080/api/jobs/createJob';
+            const Url = `${backendUrl}api/jobs/createJob`;
             const bookingData = {
                 jobtype: jobType,
                 date: dateAndTime,
@@ -221,7 +211,8 @@ const admin = {
             if (!jwt) {
                 throw new Error("JWT not found in sessionStorage");
             }
-            const response = await axios.put('http://localhost:8080/api/jobs/updateJob', updateJobDTO, {
+
+            const response = await axios.put(`${backendUrl}api/jobs/updateJob`, updateJobDTO, {
                 headers: {
                     'Authorization': `Bearer ${jwt}`
                 }
@@ -234,7 +225,8 @@ const admin = {
     },
     deleteJob: async (jobId: number): Promise<void> => {
         try {
-            const Url = `http://localhost:8080/api/jobs/deleteJob`;
+
+            const Url = `${backendUrl}api/jobs/deleteJob`;
             const headers = {
                 'jobId': jobId?.toString() || '',
                 'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`
@@ -253,7 +245,7 @@ const admin = {
     },
     createAdmin: async (adminData: EmployeeData): Promise<void> => {
         try {
-            const Url = 'http://localhost:8080/api/employee/createEmployee';
+            const Url = `${backendUrl}api/employee/createEmployee`;
             const jwt = sessionStorage.getItem("jwt");
             if (!jwt) {
                 throw new Error("JWT not found in sessionStorage");
@@ -272,7 +264,7 @@ const admin = {
     },
     createBusinessCustomer: async (businessCustomerData: BusinessCustomerData): Promise<void> => {
         try {
-            const Url = 'http://localhost:8080/api/customer/create';
+            const Url = `${backendUrl}api/customer/create`;
             const jwt = sessionStorage.getItem("jwt");
             
             if (!jwt) {
@@ -293,7 +285,7 @@ const admin = {
     },
     createEmployee: async (employeeData: EmployeeData): Promise<void> => {
         try {
-            const Url = 'http://localhost:8080/api/employee/createEmployee';
+            const Url = `${backendUrl}api/employee/createEmployee`;
             const jwt = sessionStorage.getItem("jwt");
 
             if (!jwt) {
@@ -313,7 +305,7 @@ const admin = {
     },
     createPrivateCustomer: async (privateCustomerData: PrivateCustomerData) => {
         try {
-            const Url = 'http://localhost:8080/api/customer/create';
+            const Url = `${backendUrl}api/customer/create`;
             const jwt = sessionStorage.getItem("jwt");
             if (!jwt) {
                 throw new Error("JWT not found in sessionStorage");
