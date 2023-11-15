@@ -69,6 +69,7 @@ export default TableId;
 const styles = {
     td: {
         display: "flex",
+        justifyContent: "center" as "center",
         flexDirection: "row" as "row",
         margin: 2,
     },

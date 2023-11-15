@@ -57,12 +57,11 @@ export default TableJobId
 const styles = {
     td: {
         display: "flex",
+        justifyContent: "center" as "center",
         flexDirection: "row" as "row",
         margin: 2
     },
     dataTable: {
-        display: "block",
-        justifyContent: "space-between",
         backgroundColor: "#b3d9e3",
         borderRadius: "5px",
         padding: "15px",
