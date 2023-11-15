@@ -108,6 +108,7 @@ const AddBusinessCustomerForm = () => {
                             style={styles.input}
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
+                            required
                         />
                         <input
                             type="text"
@@ -115,6 +116,7 @@ const AddBusinessCustomerForm = () => {
                             style={styles.input}
                             value={postalCode}
                             onChange={(e) => setPostalCode(e.target.value)}
+                            required
                         />
                         <input
                             type="password"

@@ -123,6 +123,7 @@ const AddEmployeeForm = () => {
                             style={styles.input}
                             value={postalCode}
                             onChange={(e) => setPostalCode(e.target.value)}
+                            required
                         />
                         <input
                             type="text"
