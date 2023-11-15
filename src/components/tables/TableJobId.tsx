@@ -61,11 +61,13 @@ const styles = {
         margin: 2
     },
     dataTable: {
+        display: "block",
+        justifyContent: "space-between",
         backgroundColor: "#b3d9e3",
         borderRadius: "5px",
         padding: "15px",
         marginTop: "3%",
-        width: "30rem",
+        width: "38rem",
     },
     delete: {
         backgroundColor: "#f83f3f"

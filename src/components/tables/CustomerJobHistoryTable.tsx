@@ -30,20 +30,21 @@ const CustomerComingJobsHistoryTable: React.FC<CustomerComingJobsHistoryTablePro
 
     return (
         <div>
+            <div style={styles.filter}>
+                Filter by jobstatus
+                <select
+                    value={filter}
+                    onChange={(e) => setFilter(e.target.value)}
+                    style={{marginLeft: '0.5rem'}}
+                >
+                    <option value="">All</option>
+                    <option value="CANCELLED">CANCELLED</option>
+                    <option value="PAID">PAID</option>
+                </select>
+            </div>
             {filteredCustomerData && filteredCustomerData.length > 0 ? (
                     <>
-                        <div style={styles.filter}>
-                            Filter by jobstatus
-                            <select
-                                value={filter}
-                                onChange={(e) => setFilter(e.target.value)}
-                                style={{marginLeft: '0.5rem'}}
-                            >
-                                <option value="">All</option>
-                                <option value="CANCELLED">CANCELLED</option>
-                                <option value="PAID">PAID</option>
-                            </select>
-                        </div>
+
                         <TableJobId
                             columns={[
                                 { key: 'jobId', title: 'Job ID' },
