@@ -114,6 +114,7 @@ const AddAdminForm = () => {
                             style={styles.input}
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
+                            required
                         />
                         <input
                             type="text"
@@ -121,6 +122,7 @@ const AddAdminForm = () => {
                             style={styles.input}
                             value={postalCode}
                             onChange={(e) => setPostalCode(e.target.value)}
+                            required
                         />
                         <input
                             type="number"
