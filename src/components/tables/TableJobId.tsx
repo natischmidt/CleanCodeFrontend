@@ -17,6 +17,7 @@ interface Props {
 
 const TableJobId: React.FC<Props> = ({columns, data, buttons}) => {
     return (
+        <div style={{ overflowX: 'auto', maxWidth: "100vw"}}>
             <table className="data-table" style={styles.dataTable}>
                 <thead>
                 <tr>
@@ -48,6 +49,7 @@ const TableJobId: React.FC<Props> = ({columns, data, buttons}) => {
                 ))}
                 </tbody>
             </table>
+        </div>
         /*</div>*/
     )
 }
@@ -59,7 +61,7 @@ const styles = {
         display: "flex",
         justifyContent: "center" as "center",
         flexDirection: "row" as "row",
-        margin: 2
+        margin: 2,
     },
     dataTable: {
         backgroundColor: "#b3d9e3",
@@ -90,7 +92,6 @@ const styles = {
     },
     tableCell: {
         border: '1px solid #729ca890',
-        margin: 33 // pls fix
-        // borderRadius: "0.5rem",
+        margin: 33,
     },
 }
