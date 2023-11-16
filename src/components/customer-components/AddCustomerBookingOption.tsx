@@ -10,6 +10,7 @@ import {useUserType} from "../context/UserTypeContext";
 import customer from "../../API/customer";
 import SetTempEmail from "./customer-modals/SetTempEmail";
 import "../../styles/CustomerBooking.css"
+import {useNavigate} from "react-router-dom";
 
 const AddCustomerBookingOption = () => {
 
@@ -17,6 +18,7 @@ const AddCustomerBookingOption = () => {
         const [showExtraInfoAdv, setShowExtraInfoAdv] = useState(false);
         const [showExtraInfoDia, setShowExtraInfoDia] = useState(false);
         const [showExtraInfoWin, setShowExtraInfoWin] = useState(false);
+        const [squareMetersStyle, setSquareMetersStyle] = useState(styles.input)
 
         const [infoText, setInfoText] = useState('');
         const [infoTextAdv, setInfoTextAdv] = useState('');
@@ -31,12 +33,12 @@ const AddCustomerBookingOption = () => {
         const [jobType, setJobType] = useState('');
         const [showCalender, setShowCalender] = useState(false)
         const [showTimeSlots, setShowTimeSlots] = useState(false)
-        const [squareMeters, setSquareMeters] = useState('');
+        const squareMeters = useRef('');
         const [emailaddress, setEmailAddress] = useState('');
-        const [paymentOption, setPaymentOption] = useState("")
+        const paymentOption = 'KLARNA'
         const [message, setMessage] = useState("")
         const [showCalNext, setShowCalNext] = useState(false)
-        // const [tempId, setTempId] = useState<any>(null);
+        const navigate = useNavigate();
 
         type Value = Date | null;
         const [date, setDate] = useState<Value>(new Date());
@@ -90,7 +92,7 @@ const AddCustomerBookingOption = () => {
 
 
         const handleBooking = (email: string) => {
-            customer.book(jobType, dateToUse.current, timeList, squareMeters, paymentOption, id, message, email);
+            customer.book(jobType, dateToUse.current, timeList, squareMeters.current, paymentOption, id, message, email);
         }
 
         const handleExtraInformation = (text: String) => {
@@ -207,7 +209,18 @@ const AddCustomerBookingOption = () => {
             setShowTimeSlots(true);
             console.log(dateToUse.current);
             // @ts-ignore
+        }
 
+        const isTheFieldOk = (input: string) => {
+            switch (input) {
+                case "size": {
+                    if(squareMeters.current == '' || isNaN(Number(squareMeters.current))) {
+                        setSquareMetersStyle(styles.invalidInput)
+                    } else {
+                        setSquareMetersStyle(styles.input)
+                    }
+                }
+            }
         }
 
         const handleSelectTime = async (event: React.MouseEvent<HTMLButtonElement>, startTime: number) => {
@@ -282,10 +295,12 @@ const AddCustomerBookingOption = () => {
             <>{!isModalOpen
                 && (
                     <div style={styles.container1}>
-                        <div style={styles.sectionTitle}>
-                            <h2>What cleaning are you interested in?</h2>
-                        </div>
+
                         {!showSetTempEmail ?
+                            <div>
+                            <div style={styles.sectionTitle}>
+                                <h2>What cleaning are you interested in?</h2>
+                            </div>
                         <div style={styles.boxContainer}>
                             <div className="box" style={{
                                 backgroundImage: `url(${basic})`
@@ -404,12 +419,15 @@ const AddCustomerBookingOption = () => {
                                         </div>)}
                                 </div>
                             </div>
+                        </div>
                         </div> :
                             <SetTempEmail
                                 jobType={jobType}
                             toCalendar = {continueToCalendar}
                              email={settingTemporaryEmail}/>}
-                    </div>)}
+
+                    </div>
+                            )}
 
                 <div style={styles.container1}>
                     {showCalender && isModalOpen ? (
@@ -517,32 +535,26 @@ const AddCustomerBookingOption = () => {
                                             handleSquarePaymentModal();
                                         }}>
                                             <div style={styles.sectionTitle}>
-                                                <h3>Whats the size of your accommodation?</h3>
+                                                <h3>What is the size of your accommodation?</h3>
                                             </div>
                                             <input
                                                 type="number"
                                                 placeholder="Square meters"
-                                                style={styles.input}
-                                                value={squareMeters}
-                                                onChange={(e) => setSquareMeters(e.target.value)}
+                                                style={squareMetersStyle}
+
+                                                onFocus={() => {
+                                                    isTheFieldOk("size")
+                                                }}
+                                                onChange={(e) => {
+                                                    squareMeters.current = e.target.value
+                                                    isTheFieldOk("size")
+
+                                                }}
                                                 required
                                             />
-                                            <div style={styles.sectionTitle}>
-                                                <h3>Choose payment method</h3>
-                                            </div>
-                                            <select
-                                                value={paymentOption}
-                                                style={styles.input}
-                                                onChange={(e) => setPaymentOption(e.target.value)}
-                                                required
-                                            >
-                                                <option value="">Choose payment option:</option>
-                                                <option value="KLARNA">Klarna</option>
-                                                {/*<option value="CASH">Cash</option>*/}
-                                            </select>
 
                                             <div style={styles.sectionTitle}>
-                                                <h3>Is anything you want to add?</h3>
+                                                <h3>Is there anything you want to add? (optional)</h3>
                                             </div>
                                             <textarea
                                                 placeholder="Write a message..."
@@ -552,7 +564,7 @@ const AddCustomerBookingOption = () => {
                                             />
                                             {!loggedIn && (
                                                 <div style={styles.sectionTitle}>
-                                                    <h3>Whats your email address?</h3>
+                                                    <h3>What is your email address?</h3>
                                                 </div>)}
 
                                             {!loggedIn && (<input
@@ -586,30 +598,27 @@ const AddCustomerBookingOption = () => {
                                         <h2>Confirm your booking </h2>
                                     </div>
                                     {
-                                        loggedIn ? (
-                                            <>
+                                        loggedIn ?
+
+                                            <p>
                                                 You want to have your accommodation cleaned
-                                                on {date}, {timeList[0].toLowerCase()} a'clock.
+                                                on {date}, {timeList[0].toLowerCase()} o'clock.<br/>
                                                 You have chosen our {jobType.toLowerCase()} service which
                                                 takes {hours} hour(s)
                                                 for completion.<br/>
-                                                The size of your accommodation is {squareMeters} square meters and you wish
-                                                to
-                                                pay with {paymentOption}.
-                                            </>
-                                        ) : (
+                                                The size of your accommodation is {squareMeters.current} square meters.
+                                            </p>
+                                         :
                                             // JSX content when loggedIn is false
-                                            <>
+                                            <p>
                                                 You want to have your accommodation cleaned
-                                                on {date}, {timeList[0].toLowerCase()} a'clock.
+                                                on {date}, {timeList[0].toLowerCase()} o'clock.<br/>
                                                 You have chosen our {jobType.toLowerCase()} service which
                                                 takes {hours} hour(s)
                                                 for completion.<br/>
-                                                The size of your accommodation is {squareMeters} square meters and you wish
-                                                to
-                                                pay with {paymentOption}.
-                                            </>
-                                        )
+                                                The size of your accommodation is {squareMeters.current} square meters.
+                                            </p>
+
                                     }
 
 
@@ -617,6 +626,8 @@ const AddCustomerBookingOption = () => {
                                         <button type="button" style={styles.bookButton} onClick={() => {
                                             handleConfirm();
                                             handleModal();
+                                            navigate(("/"))
+
                                         }}>Cancel
                                         </button>
 
@@ -631,7 +642,7 @@ const AddCustomerBookingOption = () => {
                             }
                             {isBookingDone &&
                                 <div style={styles.centered}>
-                                    <h2>Your booking was successfully created. <br/>You will have a confirmation email sent
+                                    <h2>Your booking was successfully created. <br/>A confirmation email has been sent
                                         to you. <br/> Thank you!</h2>
                                 </div>}
                         </>
@@ -736,6 +747,16 @@ const styles: { [key: string]: React.CSSProperties } = {
         borderRadius: '5px',
         fontFamily: "PlomPraeng",
         fontSize: "0.9rem"
+    },
+    invalidInput: {
+
+        padding: '10px',
+        width: '75%',
+        borderRadius: '5px',
+        fontFamily: "PlomPraeng",
+        fontSize: "0.9rem",
+        backgroundColor: "#ffe4e4",
+        border: "red 2px",
     },
     btn: {
         display: "flex",

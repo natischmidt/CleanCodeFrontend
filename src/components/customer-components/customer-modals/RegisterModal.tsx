@@ -217,7 +217,6 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         type="text"
                         placeholder="Lastname"
                         style={lastnameStyle}
-                        // value={lastname}
                         onFocus={() => {
                             isTheFieldOk('lastname')
                         }}
@@ -232,7 +231,6 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         type="text"
                         placeholder="Email"
                         style={emailStyle}
-                        // value={email}
                         onFocus={() => {
                             isTheFieldOk('email')
                         }}

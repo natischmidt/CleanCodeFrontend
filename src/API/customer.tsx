@@ -111,7 +111,6 @@ const customer = {
                     paymentOption,
                     sessionStorage.getItem("tempId"),
                     message,
-
                     )
 
             } else {
