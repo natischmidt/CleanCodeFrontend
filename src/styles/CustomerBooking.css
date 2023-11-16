@@ -36,6 +36,11 @@
     align-items: center;
 }
 
+.btn {
+    display: flex;
+    justify-content: center;
+}
+
 @media (max-width: 1500px) {
     .box {
         display: flex;
@@ -49,6 +54,9 @@
     }
     .showInfo {
     }
+    .btn {
+        fontSize: 0.7rem;
+    }
 }
 
 @media (max-width: 1000px) {
@@ -57,12 +65,15 @@
         flex-wrap: wrap;
         overflow: hidden;
         margin: 0 auto;
-        height: 18rem;
+        height: 22rem;
     }
     .buttonText {
-        font-size: 0.55rem;
+        font-size: 0.5rem;
     }
     .showInfo {
+    }
+    .btn {
+        font-size: 0.7rem;
     }
 }
 

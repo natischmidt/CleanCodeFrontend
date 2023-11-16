@@ -291,7 +291,7 @@ const AddCustomerBookingOption = () => {
                                 backgroundImage: `url(${basic})`
                             }}>
                                 <div>
-                                    <div style={styles.btn}>
+                                    <div className="btn">
                                         <button
                                             className="showInfo"
                                             onClick={() => handleExtraInformation(
@@ -319,7 +319,7 @@ const AddCustomerBookingOption = () => {
                                 backgroundImage: `url(${advanced})`
                             }}>
                                 <div>
-                                    <div style={styles.btn}>
+                                    <div className="btn">
                                         <button
                                             className="showInfo"
                                             onClick={() => handleExtraInformationAdv(
@@ -349,7 +349,7 @@ const AddCustomerBookingOption = () => {
                                 backgroundImage: `url(${diamond})`
                             }}>
                                 <div>
-                                    <div style={styles.btn}>
+                                    <div className="btn">
                                         <button
                                             className="showInfo"
                                             onClick={() => handleExtraInformationDia(
@@ -379,7 +379,7 @@ const AddCustomerBookingOption = () => {
                                 backgroundImage: `url(${windowclean})`
                             }}>
                                 <div>
-                                    <div style={styles.btn}>
+                                    <div className="btn">
                                         <button
                                             className="showInfo"
                                             onClick={() => handleExtraInformationWin(
@@ -737,8 +737,4 @@ const styles: { [key: string]: React.CSSProperties } = {
         fontFamily: "PlomPraeng",
         fontSize: "0.9rem"
     },
-    btn: {
-        display: "flex",
-        justifyContent: "center",
-    }
 };
