@@ -405,7 +405,7 @@ const AddCustomerBookingOption = () => {
                                         </div>)}
                                 </div>
                             </div>
-                        </div>
+
                         </div> :
                             <SetTempEmail
                                 jobType={jobType}

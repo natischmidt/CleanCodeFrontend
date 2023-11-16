@@ -34,7 +34,7 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
     const [workedHours, setWorkedHours] = useState(0)
     const [hourlySalary, setHourlySalary] = useState(0)
     const [showEdit, setShowEdit] = useState(false)
-    const[selectedJobId, setSelectedJobId] = useState<number | null>(null)
+    const [selectedJobId, setSelectedJobId] = useState<number | null>(null)
     const [data, setData] = useState({
         firstName: "",
         lastName: "",

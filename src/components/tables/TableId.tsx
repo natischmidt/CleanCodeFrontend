@@ -14,10 +14,11 @@ interface Column {
 interface Props {
     columns: Column[];
     data: any[];
-    buttons: ButtonConfig[]
+    buttons: ButtonConfig[],
+    //userRole?: string | null;
 }
 
-const TableId: React.FC<Props> = ({ columns, data , buttons}) => {
+const TableId: React.FC<Props> = ({ columns, data , buttons/*, userRole*/}) => {
 
 
     return (
@@ -38,6 +39,7 @@ const TableId: React.FC<Props> = ({ columns, data , buttons}) => {
                             {column.key === 'rating' && item.rating === 0 ? "-" : item[column.key]}
                         </td>
                     ))}
+
                     <td style={styles.td}>
                         {buttons.map((button, buttonIndex) => (
                             <button
@@ -49,6 +51,7 @@ const TableId: React.FC<Props> = ({ columns, data , buttons}) => {
                             </button>
                         ))}
                     </td>
+
                 </tr>
             ))}
             </tbody>

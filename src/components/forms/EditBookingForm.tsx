@@ -151,12 +151,11 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                     {/*<option value="CASH">Cash</option>*/}
                 </select>
                 <br/>
-                <input
-                    type="text"
+                <textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Add message..."
-                    style={styles.input}
+                    style={styles.inputText}
                 />
 
                 <button type="submit" style={styles.button}>
@@ -228,5 +227,15 @@ const styles = {
         margin: "1rem",
         fontWeight: "bold",
         textDecoration: "underline"
+    },
+    inputText:{
+        marginTop: '3px',
+        marginBottom: '3px',
+        padding: '5px',
+        width: '47%',
+        height:"70px",
+        borderRadius: '5px',
+        fontFamily: "PlomPraeng",
+        fontSize: "1rem"
     }
 }
