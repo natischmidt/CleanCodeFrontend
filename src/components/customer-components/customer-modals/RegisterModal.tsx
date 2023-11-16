@@ -95,7 +95,6 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
 
         try {
             const tempId = await customer.register(customerData, setLoggedIn, setUserType, setId);
-            console.log('Customer was registered , tempId:', tempId);
             onClose();
         } catch (error) {
             console.error('Error while trying to register a new customer', error);
@@ -104,7 +103,6 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
     }
 
     const isTheFieldOk = (variable : string) => {
-        console.log(variable)
         switch (variable){
             case "firstname": {
                 if(firstname.current === '') {

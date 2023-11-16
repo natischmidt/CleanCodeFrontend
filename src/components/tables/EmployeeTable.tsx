@@ -61,7 +61,7 @@ export const EmployeeTable: React.FC<employeeTableProps> = ({onUpdate}) => {
             console.log('Deleting employee was successful', response.data);
             setDeleted(x => x + 1)
         } catch (error) {
-            console.error('Error deleting employee', error);
+            console.error(error)
         }
     };
 

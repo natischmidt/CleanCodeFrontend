@@ -13,6 +13,7 @@ export const RateModal: React.FC<{ onClose: () => void; func1: (id: number, rati
         setRating(rate)
 
     }
+
     // Optinal callback functions
     const onPointerEnter = () => console.log('Enter')
     const onPointerLeave = () => console.log('Leave')
@@ -46,7 +47,6 @@ export const RateModal: React.FC<{ onClose: () => void; func1: (id: number, rati
                         // @ts-ignore
                         func1(id, rating);
                         onClose();
-                        console.log("YOU RATED: " + rating);
                     }}
                     >
                         Rate

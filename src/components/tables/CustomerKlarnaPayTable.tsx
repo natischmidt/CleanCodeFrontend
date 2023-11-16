@@ -29,7 +29,7 @@ const CustomerKlarnaPayTable: React.FC<CustomerKlarnaPayProps> =
                     const data = await customer.fetchJobsForCustomer(cusId, ["PROCESSING"]);
                     setTheData(data);
                 } catch (error) {
-                    console.log("An error occurred:", error);
+                    console.error(error)
                 }
             }
 

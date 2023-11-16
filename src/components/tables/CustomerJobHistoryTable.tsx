@@ -23,7 +23,6 @@ const CustomerComingJobsHistoryTable: React.FC<CustomerComingJobsHistoryTablePro
 
     useEffect(() => {
         customer.fetchJobsForCustomer(cusId, ["CANCELLED", "PAID" ]).then(r => {
-            console.log(r)
             setTheData(r)
         })
     }, [change]);

@@ -36,10 +36,7 @@ const AddBusinessCustomerForm = () => {
                 postalCode: postalCode,
             };
 
-            console.log(BusinessCustomerData)
             const response = await admin.createBusinessCustomer(BusinessCustomerData);
-            console.log('Business Customer was created', response);
-
             setFirstname('');
             setLastname('');
             setEmail('');

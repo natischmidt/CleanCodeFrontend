@@ -17,7 +17,6 @@ import {AdminHome} from "./pages/admin-pages/AdminHome";
 import EmployeePage from "./pages/EmployeePage";
 import AddAdmin from "./components/forms/AddAdminForm";
 import AddEmployee from "./components/forms/AddEmployeeForm";
-import image from "./assets/water.png";
 import React from "react";
 
 function Routing() {

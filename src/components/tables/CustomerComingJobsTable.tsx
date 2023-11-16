@@ -23,7 +23,6 @@ const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId,
 
     useEffect(() => {
         customer.fetchJobsForCustomer(cusId, ["PENDING"]).then(r => {
-            console.log(r)
             setTheData(r)
         })
     }, [change]);
@@ -44,7 +43,7 @@ const CustomerComingJobsTable: React.FC<CustomerComingJobsTableProps> = ({cusId,
             await axios.put("http://localhost:8080/api/jobs/updateJob", updateJobDTO, {headers: headers})
             setChange(x => x + 1)
         } catch (error) {
-            console.log("It didn't go as planned.. : ", error)
+            console.error(error)
         }
     }
 

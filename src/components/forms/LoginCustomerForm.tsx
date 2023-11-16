@@ -34,11 +34,10 @@ const LoginCustomerForm = () => {
                 setId(response.userId)
                 goToHomePage(`/CustomerHome`)
             } else {
-                console.log("hur tusan hamna vi här?")
+                console.error()
             }
         } catch (error) {
-            console.log("neeeej?")
-            console.log(error)
+            console.error(error)
         }
     };
 

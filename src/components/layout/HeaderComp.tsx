@@ -37,8 +37,6 @@ export default function HeaderComp() {
     }
 
     const goBackToDashboard = () => {
-        console.log("Körs jag?")
-        console.log("TYPE: " + userType);
         if (userType == "ADMIN") {
             gotoDashBoard(("/adminhome"))
         } else if (userType == "EMPLOYEE") {

@@ -162,7 +162,6 @@ const admin = {
                     'Authorization': `Bearer ${jwt}`
                 }
             });
-            console.log(response.data);
             return response.data;
         } catch (error) {
             console.error('Error creating employee', error);
@@ -199,7 +198,6 @@ const admin = {
                     'Authorization': `Bearer ${jwt}`
                 }
             });
-            console.log('Booking was created', response.data);
         } catch (error) {
             console.error('Error creating booking', error);
             throw error;
@@ -217,7 +215,6 @@ const admin = {
                     'Authorization': `Bearer ${jwt}`
                 }
             });
-            console.log("update request was made: ", response.status);
         } catch (error) {
             console.error('Error updating job', error);
             throw error;
@@ -237,7 +234,6 @@ const admin = {
                 throw new Error("JWT not found in sessionStorage");
             }
             const response = await axios.delete(Url, { headers });
-            console.log('Deleting job was successful', response.data);
 
         } catch (error) {
             console.error('Error deleting job', error);
@@ -257,7 +253,6 @@ const admin = {
                     'Authorization': `Bearer ${jwt}`
                 }
             });
-            console.log('Admin was created', response.data);
         } catch (error) {
             console.error('Error creating admin', error);
             throw error;
@@ -277,7 +272,6 @@ const admin = {
                     'Authorization': `Bearer ${jwt}`
                 }
             });
-            console.log('Business Customer was created', response.data);
         } catch (error) {
 
             console.error('Error creating business customer', error);
@@ -298,7 +292,6 @@ const admin = {
                     'Authorization': `Bearer ${jwt}`
                 }
             });
-            console.log('Employee was created', response.data);
         } catch (error) {
             console.error('Error creating employee', error);
             throw error;
@@ -317,7 +310,6 @@ const admin = {
                     'Authorization': `Bearer ${jwt}`
                 }
             });
-            console.log('Private Customer was created', response.data);
             return response.data;
         } catch (error) {
             console.error('Error creating private customer', error);
@@ -336,20 +328,9 @@ const admin = {
                 const data = response.data;
 
                 if (!data || !data.jobId) {
-                    console.log('Job with this id not found');
                 } else
                 {
                     return data;
-                    // return {
-                    //     date: data.date || '',
-                    //     loadedJobId: data.jobId?.toString() || '',
-                    //     jobStatus: data.jobStatus || '',
-                    //     jobType: data.jobType || '',
-                    //     paymentOption: data.paymentOption || '',
-                    //     squareMeters: data.squareMeters?.toString() || '',
-                    //     timeSlot: data.timeSlot || '',
-                    //     customerId: data.customerId,
-                    // };
                 }
             }
         } catch (error) {
@@ -390,7 +371,6 @@ const admin = {
                         'Authorization': `Bearer ${jwt}`
                     }
                 });
-                console.log('Job was updated');
             }
         } catch (error) {
             console.error('Error updating booking', error);

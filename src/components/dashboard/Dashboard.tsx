@@ -55,7 +55,6 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
                 fetchEmployeeData(id).then((data) => {
                     // @ts-ignore
                     setData(data);
-                    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%", data)
                     setUsername(data.firstName + " " +data.lastName)
                 });
             }
@@ -74,7 +73,6 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
     };
 
     const handleBookingUpdate = (jobId: number) => {
-        console.log(`Booking ${jobId} was updated.`);
         setSelectedJobId(jobId)
         setShowEdit(true)
     }

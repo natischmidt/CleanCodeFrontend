@@ -186,7 +186,6 @@ const AddCustomerBookingOption = () => {
                 dateToUse.current = yearToUse.current + "-" + monthString.current + "-" + dayToUse.current;
                 // @ts-ignore
 
-                console.log(dateToUse.current + "........." + hours)
                 await admin.getAvailableEmp(dateToUse.current, hours).then(response => {
                     if (response) {
 
@@ -205,7 +204,6 @@ const AddCustomerBookingOption = () => {
             // @ts-ignore
             setDate(dateToUse.current);
             setShowTimeSlots(true);
-            console.log(dateToUse.current);
             // @ts-ignore
 
         }
@@ -214,7 +212,6 @@ const AddCustomerBookingOption = () => {
             event.preventDefault();
 
             timeList.length = 0;
-            console.log("!#!#!#!#!#!#!!#!##!#!#!#!" + startTime)
 
             const doTheLoop = (start: number) => {
 
@@ -227,52 +224,43 @@ const AddCustomerBookingOption = () => {
             switch (startTime) {
                 case 8: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     // @ts-ignore
                     break
                 }
                 case 9: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
+
                     break
                 }
                 case 10: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 case 11: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 case 12: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 case 13: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 case 14: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 case 15: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 case 16: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 default: {
-                    console.log("we shouldnt end up here")
                     break
                 }
             }

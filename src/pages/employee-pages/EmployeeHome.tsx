@@ -30,11 +30,8 @@ export default function EmployeeHomePage() {
         phoneNumber: phonenumber,
     };
 
-    console.log("jajaja, test4future : _ : " + id)
-
     useEffect(() => {
      employee.getEmployee(id).then(r => {
-            console.log(r.firstName)
             setFirstname(r.firstName)
             setLastname(r.lastName)
             setEmail(r.email)

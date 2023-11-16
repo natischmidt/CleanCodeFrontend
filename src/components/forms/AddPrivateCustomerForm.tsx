@@ -36,8 +36,6 @@ const AddPrivateCustomerForm = () => {
 
             const response = await admin.createPrivateCustomer(privateCustomerData);
 
-            console.log('Private Customer was created', response);
-
             setFirstname('');
             setLastname('');
             setEmail('');

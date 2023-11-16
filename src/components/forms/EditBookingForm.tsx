@@ -28,9 +28,8 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                     const dateTwo = new Date(data.date)
                     const formattedDate = `${dateTwo.getFullYear()}-${String(dateTwo.getMonth() + 1).padStart(2, '0')}-${String(dateTwo.getDate()).padStart(2, '0')}`;
 
-                    console.log(data.customerId)
                     if (!data || !data.jobId) {
-                        console.log('Job with this id not found');
+
                     } else {
                         setDate(formattedDate || '')
                         setLoadedJobId(data.jobId?.toString() || '')
@@ -66,11 +65,7 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                     customerId,
                 };
 
-                console.log(jobId)
-                console.log(customerId)
-                // await axios.put(url, editJobData, {headers,params: {message}});
                 await admin.updateJobStatus(editJobData);
-                console.log('Job was updated');
                 doneWithEdit();
             }
         } catch (error) {

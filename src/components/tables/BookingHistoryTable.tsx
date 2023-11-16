@@ -10,7 +10,6 @@ const BookingHistoryTable = () => {
         const fetchData = async () => {
             try {const formattedData = await admin.getJobByStatus();
                 setHistoryData(formattedData);
-                console.log(formattedData);
 
             } catch (error) {
                 console.error('Error fetching jobs:', error);
@@ -31,15 +30,7 @@ const BookingHistoryTable = () => {
         { key: 'customerId', title: 'Customer Id' },
     ];
 
-/*
-    const handleDelete = (id: number | undefined) => {
-        console.log(id)
-    };
 
-    const handleUpdate = (id: number | undefined) => {
-        console.log(id)
-    };
-*/
 
 
 
