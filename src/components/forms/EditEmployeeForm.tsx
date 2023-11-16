@@ -30,6 +30,8 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) =>
             const response = await axios.get(url, {headers})
             const data = response.data
 
+            console.log(data)
+
             setFirstname(data.firstName)
             setLastname(data.lastName)
             setEmail(data.email)
@@ -39,13 +41,13 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) =>
             setAddress(data.address)
             setCity(data.city)
             setPostalCode(data.postalCode)
-            setPassword(data.password)
         }
         preFillForm();
     }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
 
         try {
             const Url = `http://localhost:8080/api/employee/editEmployee`;
@@ -63,6 +65,8 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) =>
                 role: "EMPLOYEE",
                 hourlySalary: salary,
             };
+
+            console.log(editEmployeeData)
 
             const headers = {
                 'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,

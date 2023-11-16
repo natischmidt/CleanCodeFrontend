@@ -29,7 +29,11 @@ const customer = {
 
             const response = await axios.post(url, customerData);
             sessionStorage.setItem("tempId", response.data.userId)
-            sessionStorage.setItem("jwt", response.data.jwt)
+            // sessionStorage.setItem("jwt", response.data.jwt)
+            sessionStorage.setItem("jwt", response.data.response.body.access_token)
+            sessionStorage.setItem("refresh_token", response.data.response.body.refresh_token)
+
+
             const tempId = response.data.userId;
 
             return tempId;
@@ -62,8 +66,9 @@ const customer = {
 
             const response = await axios.post(url, customerData);
 
-            sessionStorage.setItem("jwt", response.data.jwt)
-
+            // sessionStorage.setItem("jwt", response.data.jwt)
+            sessionStorage.setItem("jwt", response.data.response.body.access_token)
+            sessionStorage.setItem("refresh_token", response.data.response.body.refresh_token)
 
             if (response) {
                 setLoggedIn(true)
@@ -155,7 +160,8 @@ const customer = {
                 setId(resp.userId);
                 goToHomePage(`/customermypages`);
                 setLoggedIn(true);
-                sessionStorage.setItem("jwt", resp.jwt)
+                sessionStorage.setItem("jwt", resp.response.body.access_token)
+                sessionStorage.setItem("refresh_token", resp.response.body.refresh_token)
             } else {
             }
         } catch (error) {

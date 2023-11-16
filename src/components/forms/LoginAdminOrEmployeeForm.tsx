@@ -30,11 +30,13 @@ const LoginAdminOrEmployeeForm = () => {
             };
 
             const response = await axios.post(Url, loginData,{headers});
+
             setUserType(response.data.role)
             setEmail('')
             setPassword('')
             setId(response.data.id)
-            sessionStorage.setItem("jwt", response.data.jwt)
+            sessionStorage.setItem("jwt", response.data.response.body.access_token)
+            sessionStorage.setItem("refresh_token", response.data.response.body.refresh_token)
             goToHomePage(`/${response.data.role}Home`)
 
         } catch (error) {

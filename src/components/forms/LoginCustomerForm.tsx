@@ -20,7 +20,6 @@ const LoginCustomerForm = () => {
             password
         }
         const headers = {
-            // 'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
             'Content-Type': 'application/json',
         };
 

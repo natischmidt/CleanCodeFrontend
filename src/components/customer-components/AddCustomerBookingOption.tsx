@@ -406,13 +406,17 @@ const AddCustomerBookingOption = () => {
                                 </div>
                             </div>
                         </div>
-                        </div> :
+
+                         :
                             <SetTempEmail
                                 jobType={jobType}
                             toCalendar = {continueToCalendar}
-                             email={settingTemporaryEmail}/>}
+                             email={settingTemporaryEmail}/>
+
+                    }
 
                     </div>
+
                             )}
 
                 <div style={styles.container1}>
