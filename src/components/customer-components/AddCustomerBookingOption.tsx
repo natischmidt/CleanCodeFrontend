@@ -718,9 +718,11 @@ const styles: { [key: string]: React.CSSProperties } = {
         textAlign: 'center',
     },
     slots: {
-        margin: 0,
-        marginTop: "4%",
+        // margin: 1,
+        marginTop: "1.8%",
         border: "1px solid silver",
+        marginLeft: "0.5%",
+        marginRight: "0.5%"
     },
     confirm: {
         fontSize: "1.2rem",

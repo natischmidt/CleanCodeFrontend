@@ -38,9 +38,9 @@ const styles: {
 } = {
     container: {
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
+        flexDirection: 'column' as "column",
+        alignItems: 'center' as "center",
+        justifyContent: 'center' as "center",
         marginTop: "0%",
         boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
     },
@@ -57,8 +57,8 @@ const styles: {
     },
     textContainer: {
         borderRadius: "2rem",
-        marginTop: '40px',
-        textAlign: 'center',
+        marginTop: '0rem',
+        textAlign: 'center' as "center",
         color: 'black',
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
 
@@ -69,8 +69,8 @@ const styles: {
     bookingSection: {
         width: '100%',
         display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: 'center' as "center",
+        justifyContent: 'center' as "center",
         flexDirection: 'column',
     }
 };

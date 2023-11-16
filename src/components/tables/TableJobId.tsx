@@ -66,7 +66,7 @@ const styles = {
         borderRadius: "5px",
         padding: "15px",
         marginTop: "3%",
-        width: "38rem",
+        // width: "38rem",
     },
     delete: {
         backgroundColor: "#f83f3f"

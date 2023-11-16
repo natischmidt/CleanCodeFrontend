@@ -26,7 +26,7 @@ const KlarnaCheckout: React.FC<KlarnaCheckoutProps> = ({ htmlSnippet }) => {
             <iframe
                 srcDoc={htmlSnippet}
                 width="500"
-                height="800"
+                height="830"
             ></iframe>
         </div>
     );
