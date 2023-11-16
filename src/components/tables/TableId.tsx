@@ -1,7 +1,5 @@
-import React, {useEffect} from 'react';
-import {useUserType} from "../context/UserTypeContext";
-import employee from "../../API/employee";
-import {useNavigate} from "react-router-dom";
+import React from 'react';
+
 
 interface ButtonConfig {
     label: string | React.ReactElement
@@ -21,11 +19,6 @@ interface Props {
 
 const TableId: React.FC<Props> = ({ columns, data , buttons}) => {
 
-    const userType = useUserType().userType;
-
-    useEffect(() => {
-        console.log(userType)
-    }, [])
 
     return (
         <div className="table-container" style={{ maxHeight: '25rem', overflowY: 'auto' }}>

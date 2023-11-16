@@ -93,7 +93,6 @@ const CreateNewBooking: React.FC = () => {
         event.preventDefault();
 
         timeList.length = 0;
-        console.log("!#!#!#!#!#!#!!#!##!#!#!#!" + startTime)
 
         const doTheLoop = (start: number) => {
 
@@ -106,52 +105,42 @@ const CreateNewBooking: React.FC = () => {
         switch (startTime) {
             case 8: {
                 doTheLoop(startTime - 8)
-                console.log(timeList)
                 // @ts-ignore
                 break
             }
             case 9: {
                 doTheLoop(startTime - 8)
-                console.log(timeList)
                 break
             }
             case 10: {
                 doTheLoop(startTime - 8)
-                console.log(timeList)
                 break
             }
             case 11: {
                 doTheLoop(startTime - 8)
-                console.log(timeList)
                 break
             }
             case 12: {
                 doTheLoop(startTime - 8)
-                console.log(timeList)
                 break
             }
             case 13: {
                 doTheLoop(startTime - 8)
-                console.log(timeList)
                 break
             }
             case 14: {
                 doTheLoop(startTime - 8)
-                console.log(timeList)
                 break
             }
             case 15: {
                 doTheLoop(startTime - 8)
-                console.log(timeList)
                 break
             }
             case 16: {
                 doTheLoop(startTime - 8)
-                console.log(timeList)
                 break
             }
             default: {
-                console.log("we shouldnt end up here")
                 break
             }
         }
@@ -163,7 +152,7 @@ const CreateNewBooking: React.FC = () => {
             })
 
         } catch (error) {
-            console.log(error + "this is not right dude")
+            console.error(error)
         }
     }
 

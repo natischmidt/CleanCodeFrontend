@@ -76,7 +76,6 @@ export default function JobDetails({jobId, close}: IjobDetails) {
                customerId: customerId
            }
             admin.updateJobStatus(dataToSend).then(r => {
-                console.log(r)
             })
 
         } else { // @ts-ignore
@@ -93,7 +92,6 @@ export default function JobDetails({jobId, close}: IjobDetails) {
                                 customerId: customerId
                             }
                             employee.updateJobStatus(dataToSend).then(r => {
-                                console.log(r)
                             })
                         }
                     }

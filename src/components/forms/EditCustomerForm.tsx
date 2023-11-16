@@ -29,7 +29,6 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
 
             const data = response.data
 
-            console.log(data)
 
             setFirstname(data.firstName)
             setLastname(data.lastName)
@@ -85,7 +84,6 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
             setPassword('')
 
             const response = await axios.patch(url, editCustomerData, {headers});
-            console.log('Employee was updated', response.data);
             doneWithEdit();
         } catch (error) {
             console.error('Error updating employee', error);

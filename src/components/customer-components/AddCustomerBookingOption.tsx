@@ -188,7 +188,6 @@ const AddCustomerBookingOption = () => {
                 dateToUse.current = yearToUse.current + "-" + monthString.current + "-" + dayToUse.current;
                 // @ts-ignore
 
-                console.log(dateToUse.current + "........." + hours)
                 await admin.getAvailableEmp(dateToUse.current, hours).then(response => {
                     if (response) {
 
@@ -207,7 +206,6 @@ const AddCustomerBookingOption = () => {
             // @ts-ignore
             setDate(dateToUse.current);
             setShowTimeSlots(true);
-            console.log(dateToUse.current);
             // @ts-ignore
         }
 
@@ -227,7 +225,6 @@ const AddCustomerBookingOption = () => {
             event.preventDefault();
 
             timeList.length = 0;
-            console.log("!#!#!#!#!#!#!!#!##!#!#!#!" + startTime)
 
             const doTheLoop = (start: number) => {
 
@@ -240,52 +237,43 @@ const AddCustomerBookingOption = () => {
             switch (startTime) {
                 case 8: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     // @ts-ignore
                     break
                 }
                 case 9: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
+
                     break
                 }
                 case 10: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 case 11: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 case 12: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 case 13: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 case 14: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 case 15: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 case 16: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 default: {
-                    console.log("we shouldnt end up here")
                     break
                 }
             }
@@ -295,18 +283,16 @@ const AddCustomerBookingOption = () => {
             <>{!isModalOpen
                 && (
                     <div style={styles.container1}>
-
+                        <div style={styles.sectionTitle}>
+                            <h2>What cleaning are you interested in?</h2>
+                        </div>
                         {!showSetTempEmail ?
-                            <div>
-                            <div style={styles.sectionTitle}>
-                                <h2>What cleaning are you interested in?</h2>
-                            </div>
                         <div style={styles.boxContainer}>
                             <div className="box" style={{
                                 backgroundImage: `url(${basic})`
                             }}>
                                 <div>
-                                    <div style={styles.btn}>
+                                    <div className="btn">
                                         <button
                                             className="showInfo"
                                             onClick={() => handleExtraInformation(
@@ -334,7 +320,7 @@ const AddCustomerBookingOption = () => {
                                 backgroundImage: `url(${advanced})`
                             }}>
                                 <div>
-                                    <div style={styles.btn}>
+                                    <div className="btn">
                                         <button
                                             className="showInfo"
                                             onClick={() => handleExtraInformationAdv(
@@ -364,7 +350,7 @@ const AddCustomerBookingOption = () => {
                                 backgroundImage: `url(${diamond})`
                             }}>
                                 <div>
-                                    <div style={styles.btn}>
+                                    <div className="btn">
                                         <button
                                             className="showInfo"
                                             onClick={() => handleExtraInformationDia(
@@ -394,7 +380,7 @@ const AddCustomerBookingOption = () => {
                                 backgroundImage: `url(${windowclean})`
                             }}>
                                 <div>
-                                    <div style={styles.btn}>
+                                    <div className="btn">
                                         <button
                                             className="showInfo"
                                             onClick={() => handleExtraInformationWin(

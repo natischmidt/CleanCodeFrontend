@@ -63,18 +63,20 @@ const styles = {
         display: "flex",
         flexDirection: "column" as "column",
         height: "100vh", // 100% of the viewport height
+        overflow: 'hidden',
     },
     header: {
-        flex: "12%", // Takes 20% of the container's height
-        backgroundColor: "#e0e0e0", // Add background color for clarity
+        flex: "12%",
+        backgroundColor: "#e0e0e0",
     },
     middle: {
-        flex: "76%", // Takes 60% of the container's height
-        backgroundColor: "#f0f0f0", // Add background color for clarity
+        flex: "76%",
+        backgroundColor: "#f0f0f0",
         overflowY: "auto" as "auto",
+        overflowX: 'hidden',
     },
     footer: {
-        flex: "8.9%", // Takes 20% of the container's height
-        backgroundColor: "#e0e0e0", // Add background color for clarity
+        flex: "8.9%",
+        backgroundColor: "#e0e0e0",
     },
 };

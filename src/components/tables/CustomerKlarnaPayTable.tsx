@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import TableJobId from "./TableJobId";
 import {useNavigate} from "react-router-dom";
 import customer from "../../API/customer";
@@ -30,7 +29,7 @@ const CustomerKlarnaPayTable: React.FC<CustomerKlarnaPayProps> =
                     const data = await customer.fetchJobsForCustomer(cusId, ["PROCESSING"]);
                     setTheData(data);
                 } catch (error) {
-                    console.log("An error occurred:", error);
+                    console.error(error)
                 }
             }
 

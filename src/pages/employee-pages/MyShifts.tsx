@@ -35,7 +35,6 @@ const MyShifts = () => {
 
     useEffect(() => {
         employee.fetchJobsForEmployeeWithStatus(id, ["PENDING"]).then(r => {
-            console.log(r)
             setEmployeeShifts(r)
         })
     }, [update])

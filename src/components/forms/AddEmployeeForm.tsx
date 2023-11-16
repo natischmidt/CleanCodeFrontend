@@ -38,7 +38,6 @@ const AddEmployeeForm = () => {
             };
 
             const response = await admin.createEmployee(employeeData)
-            console.log('Employee was created', response, employeeData);
 
             setFirstname('')
             setLastname('')

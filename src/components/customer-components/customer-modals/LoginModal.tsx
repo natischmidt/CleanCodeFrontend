@@ -22,7 +22,6 @@ export const LoginModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
     }
 
     const isTheFieldOk = (variable: string) => {
-        console.log(variable)
         switch (variable) {
             case "email": {
                 if (email.current == '' || !email.current.match(emailRegex)) {

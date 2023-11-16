@@ -50,7 +50,6 @@ export const CustomerTable: React.FC<customerTableProps> = ({onUpdate}) => {
 
             const Url = `http://localhost:8080/api/customer/delete/${id}`;
             const response = await axios.delete(Url, {headers: headers});
-            console.log('Deleting employee was successful', response.data);
             setDeleted(x => x + 1)
 
         } catch (error) {

@@ -20,7 +20,6 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) =>
     const [password, setPassword] = useState('');
 
     useEffect(() => {
-        console.log(empId)
         const preFillForm = async () => {
             const url = `http://localhost:8080/api/employee/getEmployee`
             const headers = {
@@ -83,7 +82,6 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) =>
             setPassword('')
 
             const response = await axios.put(Url, editEmployeeData, {headers});
-            console.log('Employee was updated', response.data);
             doneWithEdit();
         } catch (error) {
             console.error('Error updating employee', error);

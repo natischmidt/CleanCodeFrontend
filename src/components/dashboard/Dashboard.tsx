@@ -7,6 +7,7 @@ import employee from "../../API/employee";
 import EditEmployee from "../forms/EditEmployeeForm";
 import EmployeeShiftCont from "../../pages/employee-pages/ShiftDashboard";
 import EditBookingForm from "../forms/EditBookingForm";
+import "../../styles/Dashboard.css";
 
 interface DashboardProps {
     userType: 'customer' | 'employee' | 'admin';
@@ -54,7 +55,6 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
                 fetchEmployeeData(id).then((data) => {
                     // @ts-ignore
                     setData(data);
-                    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%", data)
                     setUsername(data.firstName + " " +data.lastName)
                 });
             }
@@ -73,7 +73,6 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
     };
 
     const handleBookingUpdate = (jobId: number) => {
-        console.log(`Booking ${jobId} was updated.`);
         setSelectedJobId(jobId)
         setShowEdit(true)
     }
@@ -122,14 +121,14 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
 
                     /> :
                     <div>
-                        <div className="section" style={styles.timeSection}>
-                            <div className="section-content">
+                        <div className="section timeSection">
+                            <div className="section-content hidewelcome">
                                 <div>Welcome {username}! </div>
                                 <div>Today's Date: {new Date().toLocaleDateString()}</div>
                                 <div>Time: {time.toLocaleTimeString()}</div>
                             </div>
                         </div>
-                        <div className="dashboard" style={styles.dashboard}>
+                        <div className="dashboard">
 
                             <div className="section" style={styles.section}>
                                 <div className="section-title" style={styles.sectionTitle}>
@@ -195,12 +194,6 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
 };
 
 const styles: { [key: string]: React.CSSProperties } = {
-    dashboard: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        color: 'black',
-    },
     section: {
         flex: 1,
         marginTop: '3rem',
@@ -212,6 +205,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         marginTop: '2rem',
         padding: '10px',
         textAlign: 'center',
+
     },
     sectionTitle: {
         fontWeight: 'bold',
@@ -227,12 +221,6 @@ const styles: { [key: string]: React.CSSProperties } = {
         // marginTop: "-6%",
         paddingLeft: "4%",
         textDecoration: "underline",
-    },
-    timeSection: {
-        flex: 1,
-        margin: '10px',
-        padding: '1px',
-        textAlign: 'right',
     },
     sectionUserData: {
         border: '1px solid #ccc',
@@ -250,7 +238,11 @@ const styles: { [key: string]: React.CSSProperties } = {
     },
     buttonDiv: {
         display: "flex",
-        justifyContent: "space-evenly"
+        justifyContent: "space-evenly",
+    },
+    test: {
+        display: "flex",
+        justifyContent: "left",
     }
 };
 export default Dashboard;

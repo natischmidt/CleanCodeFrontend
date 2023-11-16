@@ -32,12 +32,11 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
     const handleLogoutClick = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoggedIn(false);
-        console.log("%%%%%%%%%%%%%%%%")
         try {
             await customer.logout(id);
             goToHome("/")
         } catch (e) {
-            console.log(e)
+            console.error(e)
         }
         setLoggedIn(false);
         setId(null);

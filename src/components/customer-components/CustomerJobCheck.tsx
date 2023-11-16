@@ -7,6 +7,7 @@ import CustomerKlarnaPayTable from "../tables/CustomerKlarnaPayTable";
 import KlarnaModalPayment from "../../klarna/KlarnaModalPayment";
 import {useNavigate} from "react-router-dom";
 import CustomerUnapprovalTable from "../tables/CustomerUnapprovalTable";
+import "../../styles/CustomerJobCheck.css"
 
 const CustomerJobCheck = () => {
 
@@ -21,35 +22,35 @@ const CustomerJobCheck = () => {
 
     return (
             <div className="checkCont">
-                    <div style={styles.test}>
-                        <div style={styles.row}>
+                    <div className="cont">
+                        <div className="row">
                             <div style={styles.cols}>
-                                <p style={styles.p}>Upcoming bookings</p>
+                                <p className="ptext">Upcoming bookings</p>
                                 <CustomerComingJobsTable cusId={id} change={change} setChange={setChange}/>
                             </div>
                             <div style={styles.cols}>
-                                <p style={styles.p}>Finished bookings</p>
+                                <p className="ptext">Finished bookings</p>
                                 <CustomerApprovalTable cusId={id} change={change} setChange={setChange}/>
                             </div>
 
 
                         </div>
 
-                        <div style={styles.row}>
+                        <div className="row">
                             <div style={styles.cols}>
 
-                                <p style={styles.p}>Ready to pay</p>
+                                <p className="ptext">Ready to pay</p>
                                 <CustomerKlarnaPayTable cusId={id} change={change} setChange={setChange}
                                                         showKlarna={(jobId: number) => {
                                                             showKlarna(jobId)
                                                         }}/>
                             </div>
                             <div style={styles.cols}>
-                                <p style={styles.p}>Unapproved bookings</p>
+                                <p className="ptext">Unapproved bookings</p>
                                 <CustomerUnapprovalTable cusId={id} change={change} setChange={setChange}/>
                             </div>
                             <div style={styles.cols}>
-                                <p style={styles.p}>History</p>
+                                <p className="ptext">History</p>
                                 <CustomerJobHistoryTable cusId={id} change={change} setChange={setChange}/>
                             </div>
                         </div>
@@ -61,29 +62,12 @@ const CustomerJobCheck = () => {
 export default CustomerJobCheck
 
 const styles = {
-    row: {
-        display: "flex" as "flex",
-        flexDirection: "column" as "column",
-        justifyContent: "center" as "center",
-        textAlign: "center" as "center",
-    },
     cols: {
         display: 'flex',
         flexDirection: 'column' as 'column',
         width: "38rem",
         marginTop: "1%",
-        borderBottom: "2px solid black"
+        borderBottom: "2px solid black",
+        justifyContent: 'left',
     },
-    p: {
-        alignSelf: "center" as "center",
-        fontSize: "1.7rem",
-        fontWeight: "bold" as "bold",
-        textAlign: 'left' as 'left',
-        textDecoration: "underline"
-    },
-    test: {
-        marginTop: '-8rem',
-        padding: 15,
-        marginLeft: "25rem"
-    }
 }

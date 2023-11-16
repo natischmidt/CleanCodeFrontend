@@ -49,7 +49,7 @@ const AddAdminForm = () => {
             setPassword('');
 
         } catch (error) {
-            console.log(error);
+            console.error(error)
         }
 
     };

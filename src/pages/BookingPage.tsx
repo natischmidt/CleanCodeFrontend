@@ -13,13 +13,11 @@ export default function BookingPage() {
     const [selectedBookingId, setSelectedBookingId] = useState<number | null>(null)
 
     const handleUpdate = (jobId: number) =>{
-        console.log("jobId inside myOnUpdateFunction:", jobId);
         setSelectedBookingId(jobId);
         setShowUpdateBooking(true);
     }
 
     const handleKlarna = (jobId: number) =>{
-        console.log("KLARNA:", jobId);
         setSelectedBookingId(jobId);
         setShowKlarna(true);
     }
