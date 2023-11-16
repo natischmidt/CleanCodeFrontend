@@ -416,7 +416,6 @@ const AddCustomerBookingOption = () => {
                     }
 
                     </div>
-
                             )}
 
                 <div style={styles.container1}>
