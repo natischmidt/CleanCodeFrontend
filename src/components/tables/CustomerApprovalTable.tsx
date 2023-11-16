@@ -3,7 +3,6 @@ import axios from "axios";
 import TableJobId from "./TableJobId";
 import ThumbsDown from "../../assets/ThumbsDown.png"
 import ThumbsUp from "../../assets/ThumbsUp.png"
-import spray from "../../assets/spray.png"
 import customer from "../../API/customer";
 // @ts-ignore
 import {RateModal} from "../customer-components/customer-modals/RateModal";

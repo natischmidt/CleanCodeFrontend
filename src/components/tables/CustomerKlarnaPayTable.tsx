@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import TableJobId from "./TableJobId";
 import {useNavigate} from "react-router-dom";
 import customer from "../../API/customer";

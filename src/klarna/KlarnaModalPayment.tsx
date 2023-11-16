@@ -2,9 +2,6 @@ import React, {useEffect, useState} from 'react';
 import KlarnaCheckout from './KlarnaCheckout';
 import axios from "axios";
 import {useParams} from "react-router-dom";
-/*interface KlarnaModalPaymentProp {
-    jobId: number | null
-}*/
 
 interface OrderDetails {
     name: string;
@@ -12,7 +9,6 @@ interface OrderDetails {
     taxAmout: number;
 }
 
-//const KlarnaModalPayment: React.FC<KlarnaModalPaymentProp> = ({jobId}) => {
 const KlarnaModalPayment: React.FC = () => {
     const { jobId } = useParams<{ jobId: string }>();
     const [htmlSnippet, setHtmlSnippet] = useState("");

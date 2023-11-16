@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import TableId from "./TableId";
 import admin from "../../API/admin";
-import {useUserType} from "../context/UserTypeContext";
 
 const BookingHistoryTable = () => {
 
