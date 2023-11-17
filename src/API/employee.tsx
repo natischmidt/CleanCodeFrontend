@@ -1,10 +1,6 @@
 import axios from 'axios';
 import ConvertTimeSlotToNiceTime from "../components/layout/ConvertTimeSlotToNiceTime";
 
-const headers = {
-    'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
-    'Content-Type': 'application/json',
-};
 
 const backendUrl = "http://localhost:8080/"
 
@@ -76,6 +72,10 @@ const employee = {
     },
 
     updateJobStatus: async (updateJobDTO: object) => {
+        const headers = {
+            'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+            'Content-Type': 'application/json',
+        };
 
         try {
             const response = await axios.put(`${backendUrl}api/jobs/updateJob`, updateJobDTO, {
