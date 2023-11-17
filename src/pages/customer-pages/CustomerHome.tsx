@@ -1,41 +1,13 @@
 import {customerStyles} from "../../styles/styles";
 import React, {useState} from "react";
-import image from '/src/assets/water.png';
-import {CSSProperties} from 'react';
+// import image from '/src/assets/water.png';
 import CustomerFooter from "../../components/layout/CustomerFooter";
 import {useUserType} from "../../components/context/UserTypeContext";
 import CustomerHeader from "../../components/layout/CustomerHeader";
 import {BookingComponent} from "../../components/customer-components/BookingComponent";
 import '../../styles/CustomerHome.css'
 
-const styles: {
-    container: {
-        boxShadow: string;
-        alignItems: string;
-        flexDirection: string;
-        display: string;
-        justifyContent: string;
-        marginTop: string
-    };
-    bookingSection: {
-        alignItems: string;
-        flexDirection: string;
-        display: string;
-        width: string;
-        justifyContent: string
-    };
-    halfContainer: { display: string; width: string; height: string };
-    imageSection: { boxShadow: string; margin: string; flex: number; backgroundRepeat: string };
-    textContainer: {
-        boxShadow: string;
-        backgroundColor: string;
-        borderRadius: string;
-        color: string;
-        textAlign: string;
-        flex: number;
-        marginTop: string
-    }
-} = {
+const styles = {
     container: {
         display: 'flex',
         flexDirection: 'column' as "column",
@@ -63,15 +35,14 @@ const styles: {
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
 
         backgroundColor: "rgba(230,250,250,0.75)",
-        flex: 1, // Allow textContainer to expand, pushing bookingSection to the bottom
+        flex: 1,
     },
-
     bookingSection: {
         width: '100%',
         display: 'flex',
         alignItems: 'center' as "center",
         justifyContent: 'center' as "center",
-        flexDirection: 'column',
+        flexDirection: 'column' as "column",
     }
 };
 
@@ -104,7 +75,6 @@ export const CustomerHomePage: React.FC = () => {
                                 <div><p></p></div>
                             </div>
                         </div>
-                        {/*<div style={styles.imageSection}></div>*/}
                     </div>
                 </div>
             </div>

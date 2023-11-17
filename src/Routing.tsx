@@ -95,10 +95,6 @@ export default Routing;
 
 const styles = {
     noAccessCont: {
-        // backgroundImage: `url(${image})`,
-        // backgroundSize: 'cover' as "cover",
-        // backgroundPosition: 'center' as "center",
-        // height: '100vh',
         marginTop: "8rem",
         textAlign: 'center' as "center",
         fontSize: "1.3rem",

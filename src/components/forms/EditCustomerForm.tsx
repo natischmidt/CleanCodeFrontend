@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 interface editEmployeeProps {
-    cusId: number | null;
+    cusId: string | null;
     doneWithEdit: () => void;
 }
 const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) => {
