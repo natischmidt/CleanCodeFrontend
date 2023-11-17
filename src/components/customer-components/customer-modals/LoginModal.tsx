@@ -5,8 +5,8 @@ import {useUserType} from "../../context/UserTypeContext";
 
 export const LoginModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
 
-    const email = useRef('hanna.root@ikea.se')
-    const password = useRef('password')
+    const email = useRef('')
+    const password = useRef('')
     const goToHomePage = useNavigate();
     const {setUserType, setId, setLoggedIn} = useUserType();
     const [emailStyle, setEmailStyle] = useState(styles.input);
@@ -22,7 +22,6 @@ export const LoginModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
     }
 
     const isTheFieldOk = (variable: string) => {
-        console.log(variable)
         switch (variable) {
             case "email": {
                 if (email.current == '' || !email.current.match(emailRegex)) {
@@ -58,7 +57,6 @@ export const LoginModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         type="text"
                         placeholder="Email"
                         style={emailStyle}
-                        // value={email.current}
                         onFocus={() => {
                             isTheFieldOk("email")
                         }}
@@ -72,7 +70,6 @@ export const LoginModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         type="password"
                         placeholder="Password"
                         style={passwordStyle}
-                        // value={password.current}
                         onFocus={() => {
                             isTheFieldOk("password")
                         }}

@@ -10,7 +10,7 @@ const styles = {
         alignItems: 'right' as 'right',
         position: 'fixed' as 'fixed',
         width: '100%',
-        height: '8rem',
+        height: '10%',
         justifyContent: 'flex-end',
     },
     category: {
@@ -67,7 +67,7 @@ const CustomerFooter: React.FC = () => {
 
     // @ts-ignore
     return (
-        <footer style={styles.footer}>
+        <div style={styles.footer}>
             <div style={styles.bottomContainer}>
                 <div className="footer-category" style={styles.category}>
                     <ul style={styles.subCategory}>
@@ -90,7 +90,7 @@ const CustomerFooter: React.FC = () => {
             {isAboutModalOpen && (
                 <AboutModal onClose={closeAboutModal}/>
             )}
-        </footer>
+        </div>
     );
 };
 

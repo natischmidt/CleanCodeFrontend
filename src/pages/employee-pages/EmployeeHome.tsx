@@ -1,5 +1,4 @@
 import HeaderComp from "../../components/layout/HeaderComp";
-import EmployeeFooter from "./EmployeeFooter";
 import {employeeStyles} from "../../styles/styles";
 import React, {useEffect, useState} from "react";
 import {useUserType} from "../../components/context/UserTypeContext";
@@ -30,11 +29,8 @@ export default function EmployeeHomePage() {
         phoneNumber: phonenumber,
     };
 
-    console.log("jajaja, test4future : _ : " + id)
-
     useEffect(() => {
      employee.getEmployee(id).then(r => {
-            console.log(r.firstName)
             setFirstname(r.firstName)
             setLastname(r.lastName)
             setEmail(r.email)

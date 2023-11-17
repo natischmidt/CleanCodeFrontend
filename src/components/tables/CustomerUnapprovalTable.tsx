@@ -26,7 +26,7 @@ const CustomerUnapprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, ch
                     const data = await customer.fetchJobsForCustomer(cusId, ["UNAPPROVED"]);
                     setTheData(data);
                 } catch (error) {
-                    console.log("An error occurred:", error);
+                    console.error(error)
                 }
             }
         };

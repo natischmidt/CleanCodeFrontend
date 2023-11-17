@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import TableJobId from "./TableJobId";
 import customer from "../../API/customer";
+import "../../styles/CustomerJobHistoryTable.css"
 
 interface CustomerComingJobsHistoryTableProps {
     cusId: string | null;
@@ -22,7 +23,6 @@ const CustomerComingJobsHistoryTable: React.FC<CustomerComingJobsHistoryTablePro
 
     useEffect(() => {
         customer.fetchJobsForCustomer(cusId, ["CANCELLED", "PAID" ]).then(r => {
-            console.log(r)
             setTheData(r)
         })
     }, [change]);
@@ -30,7 +30,7 @@ const CustomerComingJobsHistoryTable: React.FC<CustomerComingJobsHistoryTablePro
 
     return (
         <div>
-            <div style={styles.filter}>
+            <div className="filter">
                 Filter by jobstatus
                 <select
                     value={filter}
@@ -71,9 +71,3 @@ const CustomerComingJobsHistoryTable: React.FC<CustomerComingJobsHistoryTablePro
 }
 
 export default CustomerComingJobsHistoryTable
-
-const styles = {
-    filter: {
-        textAlign: "center" as "center",
-    }
-}

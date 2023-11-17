@@ -26,7 +26,6 @@ const employee = {
 
             const response = await axios.get(`${backendUrl}api/employee/getEmployee`, {headers});
             const data = response.data
-            console.log(data)
             return data;
 
         } catch (error) {
@@ -53,7 +52,7 @@ const employee = {
             })
 
         } catch (error) {
-            console.log(error)
+            console.error(error)
         }
     },
 
@@ -69,7 +68,6 @@ const employee = {
                headers
             });
             const data = response.data
-            console.log(data)
             return data;
 
         } catch (error) {
@@ -78,16 +76,14 @@ const employee = {
     },
 
     updateJobStatus: async (updateJobDTO: object) => {
-        console.log("-----------------------------", updateJobDTO)
 
         try {
             const response = await axios.put(`${backendUrl}api/jobs/updateJob`, updateJobDTO, {
                 headers
             })
-            console.log("update request was made: ", response.status)
 
         } catch (error) {
-            console.log(error)
+            console.error(error)
         }
     },
     getCustomer: async (customerId: string) => {
@@ -100,7 +96,7 @@ const employee = {
             return response.data
 
         } catch (error) {
-            console.log(error)
+            console.error(error)
         }
     },
 
@@ -111,13 +107,11 @@ const employee = {
             })
             return response.data
         } catch (error) {
-            console.log(error)
+            console.error(error)
         }
     },
     fetchJobsForEmployeeWithStatus: async (empId: string | null, status: string[]) => {
         try {
-            console.log(`Fetching jobs for empId: ${empId}`);
-
             const headers = {
                 'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
                 'Content-Type': 'application/json',
@@ -155,13 +149,9 @@ const employee = {
             'Content-Type': 'application/json',
         }
         try {
-
-            console.log("########################" + empId)
-
             const url = `${backendUrl}api/auth/logout/${empId}`
 
             const response = await axios.get(url, {headers: headers})
-            console.log(response)
 
         } catch (error){
             throw error

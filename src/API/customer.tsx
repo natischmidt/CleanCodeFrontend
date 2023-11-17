@@ -28,14 +28,12 @@ const customer = {
             };
 
             const response = await axios.post(url, customerData);
-            console.log('Customer was registered', response.data);
-
             sessionStorage.setItem("tempId", response.data.userId)
+            // sessionStorage.setItem("jwt", response.data.jwt)
+            sessionStorage.setItem("jwt", response.data.response.body.access_token)
+            sessionStorage.setItem("refresh_token", response.data.response.body.refresh_token)
 
-            sessionStorage.setItem("jwt", response.data.jwt)
 
-            // const idResponse = await axios.get(`http://localhost:8080/api/customer/getIdByEmail/${email}`);
-            // console.log("id for non reg. user: " + idResponse.data);
             const tempId = response.data.userId;
 
             return tempId;
@@ -67,15 +65,10 @@ const customer = {
             const url = `${backendUrl}api/customer/create`;
 
             const response = await axios.post(url, customerData);
-            console.log('Customer was registered', response.data);
 
-            sessionStorage.setItem("jwt", response.data.jwt)
-
-            // const idResponse = await axios.get(`http://localhost:8080/api/customer/getIdByEmail/${email}`);
-            // console.log("id for non reg. user: " + idResponse.data);
-            // const tempId = idResponse.data;
-            // console.log("Steg 1: " + tempId);
-            // return tempId;
+            // sessionStorage.setItem("jwt", response.data.jwt)
+            sessionStorage.setItem("jwt", response.data.response.body.access_token)
+            sessionStorage.setItem("refresh_token", response.data.response.body.refresh_token)
 
             if (response) {
                 setLoggedIn(true)
@@ -84,7 +77,6 @@ const customer = {
                 setLoggedIn(true);
 
             } else {
-                console.log("hur tusan hamna vi här?");
             }
         } catch (error) {
             console.error('Error while trying to register a new customer', error);
@@ -111,25 +103,21 @@ const customer = {
                     paymentOption,
                     sessionStorage.getItem("tempId"),
                     message,
-
                     )
 
             } else {
                 // KUND
                 const email = "";
-                console.log("Bokning av inloggad kund:");
                 admin.createBooking(jobType, dateToUseRef, timeList, squareMeters, paymentOption, id, message).then(r => {
                 });
             }
         } catch (error) {
-            console.log(error + "this is not right dude");
+            console.error();
         }
     },
 
     logout: async (custId: string | null) => {
         // const {setLoggedIn, setUserType, setId, userType, id} = useUserType();
-
-        console.log("%%%%%%%%%%%%%%%%" + custId)
 
         try {
 
@@ -142,12 +130,6 @@ const customer = {
 
             const response = await axios.get(Url, {headers: headers});
 
-            console.log('Customer has successfully logged out', response.data);
-
-
-            // setLoggedIn(false);
-            // id && setId(null);
-            // userType && setUserType(null);
         } catch (error) {
             console.error('Error signing out employee/admin', error);
         }
@@ -172,17 +154,15 @@ const customer = {
             const response = await axios.post(url, customerData, {headers} );
             const resp = response.data;
 
-            console.log(resp);
 
             if (response) {
                 setUserType("CUSTOMER");
                 setId(resp.userId);
                 goToHomePage(`/customermypages`);
-                console.log("***" + email);
                 setLoggedIn(true);
-                sessionStorage.setItem("jwt", resp.jwt)
+                sessionStorage.setItem("jwt", resp.response.body.access_token)
+                sessionStorage.setItem("refresh_token", resp.response.body.refresh_token)
             } else {
-                console.log("hur tusan hamna vi här?");
             }
         } catch (error) {
             console.error('Error signing in customer', error);
@@ -208,9 +188,6 @@ const customer = {
     },
     fetchJobsForCustomer : async (customerId: string | null, statuses: string[]) => {
         try {
-            console.log(`Fetching data for cusId: ${customerId}`);
-
-
             const jwt = sessionStorage.getItem("jwt");
             if (!jwt) {
                 throw new Error("JWT not found in sessionStorage");

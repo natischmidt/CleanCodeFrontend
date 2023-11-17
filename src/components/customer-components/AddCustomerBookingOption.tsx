@@ -10,6 +10,7 @@ import {useUserType} from "../context/UserTypeContext";
 import customer from "../../API/customer";
 import SetTempEmail from "./customer-modals/SetTempEmail";
 import "../../styles/CustomerBooking.css"
+import {useNavigate} from "react-router-dom";
 
 const AddCustomerBookingOption = () => {
 
@@ -17,6 +18,7 @@ const AddCustomerBookingOption = () => {
         const [showExtraInfoAdv, setShowExtraInfoAdv] = useState(false);
         const [showExtraInfoDia, setShowExtraInfoDia] = useState(false);
         const [showExtraInfoWin, setShowExtraInfoWin] = useState(false);
+        const [squareMetersStyle, setSquareMetersStyle] = useState(styles.input)
 
         const [infoText, setInfoText] = useState('');
         const [infoTextAdv, setInfoTextAdv] = useState('');
@@ -31,12 +33,12 @@ const AddCustomerBookingOption = () => {
         const [jobType, setJobType] = useState('');
         const [showCalender, setShowCalender] = useState(false)
         const [showTimeSlots, setShowTimeSlots] = useState(false)
-        const [squareMeters, setSquareMeters] = useState('');
+        const squareMeters = useRef('');
         const [emailaddress, setEmailAddress] = useState('');
-        const [paymentOption, setPaymentOption] = useState("")
+        const paymentOption = 'KLARNA'
         const [message, setMessage] = useState("")
         const [showCalNext, setShowCalNext] = useState(false)
-        // const [tempId, setTempId] = useState<any>(null);
+        const navigate = useNavigate();
 
         type Value = Date | null;
         const [date, setDate] = useState<Value>(new Date());
@@ -90,7 +92,7 @@ const AddCustomerBookingOption = () => {
 
 
         const handleBooking = (email: string) => {
-            customer.book(jobType, dateToUse.current, timeList, squareMeters, paymentOption, id, message, email);
+            customer.book(jobType, dateToUse.current, timeList, squareMeters.current, paymentOption, id, message, email);
         }
 
         const handleExtraInformation = (text: String) => {
@@ -186,7 +188,6 @@ const AddCustomerBookingOption = () => {
                 dateToUse.current = yearToUse.current + "-" + monthString.current + "-" + dayToUse.current;
                 // @ts-ignore
 
-                console.log(dateToUse.current + "........." + hours)
                 await admin.getAvailableEmp(dateToUse.current, hours).then(response => {
                     if (response) {
 
@@ -205,16 +206,25 @@ const AddCustomerBookingOption = () => {
             // @ts-ignore
             setDate(dateToUse.current);
             setShowTimeSlots(true);
-            console.log(dateToUse.current);
             // @ts-ignore
+        }
 
+        const isTheFieldOk = (input: string) => {
+            switch (input) {
+                case "size": {
+                    if(squareMeters.current == '' || isNaN(Number(squareMeters.current))) {
+                        setSquareMetersStyle(styles.invalidInput)
+                    } else {
+                        setSquareMetersStyle(styles.input)
+                    }
+                }
+            }
         }
 
         const handleSelectTime = async (event: React.MouseEvent<HTMLButtonElement>, startTime: number) => {
             event.preventDefault();
 
             timeList.length = 0;
-            console.log("!#!#!#!#!#!#!!#!##!#!#!#!" + startTime)
 
             const doTheLoop = (start: number) => {
 
@@ -227,52 +237,43 @@ const AddCustomerBookingOption = () => {
             switch (startTime) {
                 case 8: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     // @ts-ignore
                     break
                 }
                 case 9: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
+
                     break
                 }
                 case 10: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 case 11: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 case 12: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 case 13: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 case 14: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 case 15: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 case 16: {
                     doTheLoop(startTime - 8)
-                    console.log(timeList)
                     break
                 }
                 default: {
-                    console.log("we shouldnt end up here")
                     break
                 }
             }
@@ -281,27 +282,43 @@ const AddCustomerBookingOption = () => {
         return (
             <>{!isModalOpen
                 && (
-                    <div style={styles.container1}>
-                        <div style={styles.sectionTitle}>
+                    <div
+                        className = "bookingBody"
+                        style={styles.container1}>
+                        <div
+                            className = "sectionTitleDiv"
+                            style={styles.sectionTitle}>
                             <h2>What cleaning are you interested in?</h2>
                         </div>
                         {!showSetTempEmail ?
-                        <div style={styles.boxContainer}>
-                            <div className="box" style={{
-                                backgroundImage: `url(${basic})`
+                        <div
+                            className="boxContainer"
+                            >
+                            <div className="boxBasic" style={{
+                                // backgroundImage: `url(${basic})`
                             }}>
                                 <div>
-                                    <div style={styles.btn}>
+                                    <div className="btn">
                                         <button
                                             className="showInfo"
-                                            onClick={() => handleExtraInformation(
-                                                "Our 'Basic Cleaning' service provides essential cleaning tasks such as " +
-                                                "surface cleaning, floor care, and bathroom and kitchen maintenance to maintain a " +
-                                                "clean and fresh living or working space.")}>BASIC
+                                            onClick={() => {
+                                                if(window.innerWidth > 900) {
+                                                    handleExtraInformation(
+                                                        "Our 'Basic Cleaning' service provides essential cleaning tasks such as " +
+                                                        "surface cleaning, floor care, and bathroom and kitchen maintenance to maintain a " +
+                                                        "clean and fresh living or working space.")
+                                                } else if (window.innerWidth < 450) {
+                                                    handleJobType("BASIC")
+                                                } else {
+                                                    handleExtraInformation("This our standard service, suitable for regular, recurring cleanings.")
+                                                }
+                                                }}>BASIC
                                         </button>
                                     </div>
                                     {showExtraInfo && (
-                                        <div style={styles.buttonTextContainer}>
+                                        <div
+                                            className="buttonTextContainer"
+                                            style={styles.buttonTextContainer}>
                                             <div className="buttonText">
                                                 {infoText}
                                                 <div>
@@ -315,23 +332,33 @@ const AddCustomerBookingOption = () => {
                                         </div>)}
                                 </div>
                             </div>
-                            <div className="box" style={{
-                                backgroundImage: `url(${advanced})`
+                            <div className="boxAdvanced" style={{
+                                // backgroundImage: `url(${advanced})`
                             }}>
                                 <div>
-                                    <div style={styles.btn}>
+                                    <div className="btn">
                                         <button
                                             className="showInfo"
-                                            onClick={() => handleExtraInformationAdv(
-                                                "Our 'Advanced Cleaning' service goes beyond the basics, offering a" +
-                                                " comprehensive and deep cleaning experience that includes thorough " +
-                                                "cleaning of hard-to-reach areas, detailed kitchen and bathroom " +
-                                                "cleaning, and a meticulous focus on all surfaces, ensuring a spotless " +
-                                                "environment.")}>ADVANCED
+                                            onClick={() => {
+                                                if (window.innerWidth > 900) {
+                                                    handleExtraInformationAdv(
+                                                        "Our 'Advanced Cleaning' service goes beyond the basics, offering a" +
+                                                        " comprehensive and deep cleaning experience that includes thorough " +
+                                                        "cleaning of hard-to-reach areas, detailed kitchen and bathroom " +
+                                                        "cleaning, and a meticulous focus on all surfaces, ensuring a spotless " +
+                                                        "environment.")
+                                                } else if (window.innerWidth < 450) {
+                                                    handleJobType("ADVANCED")
+                                                }else {
+                                                    handleExtraInformationAdv("A more thorough cleaning than basic.")
+                                                }
+                                                }}>ADVANCED
                                         </button>
                                     </div>
                                     {showExtraInfoAdv && (
-                                        <div style={styles.buttonTextContainer}>
+                                        <div
+                                            className="buttonTextContainer"
+                                            style={styles.buttonTextContainer}>
                                             <div className="buttonText">
                                                 {infoTextAdv}
                                                 <div>
@@ -345,23 +372,33 @@ const AddCustomerBookingOption = () => {
                                         </div>)}
                                 </div>
                             </div>
-                            <div className="box" style={{
-                                backgroundImage: `url(${diamond})`
+                            <div className="boxDiamond" style={{
+                                // backgroundImage: `url(${diamond})`
                             }}>
                                 <div>
-                                    <div style={styles.btn}>
+                                    <div className="btn">
                                         <button
                                             className="showInfo"
-                                            onClick={() => handleExtraInformationDia(
-                                                "Our 'Diamond Cleaning' service represents the pinnacle of " +
-                                                "cleanliness, providing a top-tier, comprehensive cleaning experience" +
-                                                " with meticulous attention to detail, specialized cleaning solutions," +
-                                                " and a commitment to delivering the highest standard of cleanliness" +
-                                                " and hygiene for your space.")}>DIAMOND
+                                            onClick={() => {
+                                                if (window.innerWidth > 900) {
+                                                    handleExtraInformationDia(
+                                                        "Our 'Diamond Cleaning' service represents the pinnacle of " +
+                                                        "cleanliness, providing a top-tier, comprehensive cleaning experience" +
+                                                        " with meticulous attention to detail, specialized cleaning solutions," +
+                                                        " and a commitment to delivering the highest standard of cleanliness" +
+                                                        " and hygiene for your space.")
+                                                } else if (window.innerWidth < 450) {
+                                                    handleJobType("DIAMOND")
+                                                }else {
+                                                    handleExtraInformationDia("Our most luxurious service. Everything will be sparkling clean.")
+                                                }
+                                                }}>DIAMOND
                                         </button>
                                     </div>
                                     {showExtraInfoDia && (
-                                        <div style={styles.buttonTextContainer}>
+                                        <div
+                                            className="buttonTextContainer"
+                                            style={styles.buttonTextContainer}>
                                             <div className="buttonText">
                                                 {infoTextDia}
                                                 <div>
@@ -375,22 +412,32 @@ const AddCustomerBookingOption = () => {
                                         </div>)}
                                 </div>
                             </div>
-                            <div className="box" style={{
-                                backgroundImage: `url(${windowclean})`
+                            <div className="boxWindow" style={{
+                                // backgroundImage: `url(${windowclean})`
                             }}>
                                 <div>
-                                    <div style={styles.btn}>
+                                    <div className="btn">
                                         <button
                                             className="showInfo"
-                                            onClick={() => handleExtraInformationWin(
+                                            onClick={() => {
+                                                if(window.innerWidth > 900) {
+                                                    handleExtraInformationWin(
+                                                        "Our 'Window Cleaning' service is dedicated to ensuring" +
+                                                        " crystal-clear, streak-free windows that allow natural light to flood " +
+                                                        "your space, enhancing its overall cleanliness and appearance.")
+                                                } else if (window.innerWidth < 450) {
+                                                    handleJobType("WINDOW")
+                                                }else {
+                                                    handleExtraInformationWin("Your windows will be transparent again!")
+                                                }
 
-                                                "Our 'Window Cleaning' service is dedicated to ensuring" +
-                                                " crystal-clear, streak-free windows that allow natural light to flood " +
-                                                "your space, enhancing its overall cleanliness and appearance.")}>WINDOW
+                                            }}>WINDOW
                                         </button>
                                     </div>
                                     {showExtraInfoWin && (
-                                        <div style={styles.buttonTextContainer}>
+                                        <div
+                                            className="buttonTextContainer"
+                                            style={styles.buttonTextContainer}>
                                             <div className="buttonText">
                                                 {infoTextWin}
                                                 <div>
@@ -404,12 +451,18 @@ const AddCustomerBookingOption = () => {
                                         </div>)}
                                 </div>
                             </div>
-                        </div> :
+                        </div>
+
+                         :
                             <SetTempEmail
                                 jobType={jobType}
                             toCalendar = {continueToCalendar}
-                             email={settingTemporaryEmail}/>}
-                    </div>)}
+                             email={settingTemporaryEmail}/>
+
+                    }
+
+                    </div>
+                            )}
 
                 <div style={styles.container1}>
                     {showCalender && isModalOpen ? (
@@ -517,32 +570,26 @@ const AddCustomerBookingOption = () => {
                                             handleSquarePaymentModal();
                                         }}>
                                             <div style={styles.sectionTitle}>
-                                                <h3>Whats the size of your accommodation?</h3>
+                                                <h3>What is the size of your accommodation?</h3>
                                             </div>
                                             <input
                                                 type="number"
                                                 placeholder="Square meters"
-                                                style={styles.input}
-                                                value={squareMeters}
-                                                onChange={(e) => setSquareMeters(e.target.value)}
+                                                style={squareMetersStyle}
+
+                                                onFocus={() => {
+                                                    isTheFieldOk("size")
+                                                }}
+                                                onChange={(e) => {
+                                                    squareMeters.current = e.target.value
+                                                    isTheFieldOk("size")
+
+                                                }}
                                                 required
                                             />
-                                            <div style={styles.sectionTitle}>
-                                                <h3>Choose payment method</h3>
-                                            </div>
-                                            <select
-                                                value={paymentOption}
-                                                style={styles.input}
-                                                onChange={(e) => setPaymentOption(e.target.value)}
-                                                required
-                                            >
-                                                <option value="">Choose payment option:</option>
-                                                <option value="KLARNA">Klarna</option>
-                                                {/*<option value="CASH">Cash</option>*/}
-                                            </select>
 
                                             <div style={styles.sectionTitle}>
-                                                <h3>Is anything you want to add?</h3>
+                                                <h3>Is there anything you want to add? (optional)</h3>
                                             </div>
                                             <textarea
                                                 placeholder="Write a message..."
@@ -552,7 +599,7 @@ const AddCustomerBookingOption = () => {
                                             />
                                             {!loggedIn && (
                                                 <div style={styles.sectionTitle}>
-                                                    <h3>Whats your email address?</h3>
+                                                    <h3>What is your email address?</h3>
                                                 </div>)}
 
                                             {!loggedIn && (<input
@@ -586,30 +633,27 @@ const AddCustomerBookingOption = () => {
                                         <h2>Confirm your booking </h2>
                                     </div>
                                     {
-                                        loggedIn ? (
-                                            <>
+                                        loggedIn ?
+
+                                            <p>
                                                 You want to have your accommodation cleaned
-                                                on {date}, {timeList[0].toLowerCase()} a'clock.
+                                                on {date}, {timeList[0].toLowerCase()} o'clock.<br/>
                                                 You have chosen our {jobType.toLowerCase()} service which
                                                 takes {hours} hour(s)
                                                 for completion.<br/>
-                                                The size of your accommodation is {squareMeters} square meters and you wish
-                                                to
-                                                pay with {paymentOption}.
-                                            </>
-                                        ) : (
+                                                The size of your accommodation is {squareMeters.current} square meters.
+                                            </p>
+                                         :
                                             // JSX content when loggedIn is false
-                                            <>
+                                            <p>
                                                 You want to have your accommodation cleaned
-                                                on {date}, {timeList[0].toLowerCase()} a'clock.
+                                                on {date}, {timeList[0].toLowerCase()} o'clock.<br/>
                                                 You have chosen our {jobType.toLowerCase()} service which
                                                 takes {hours} hour(s)
                                                 for completion.<br/>
-                                                The size of your accommodation is {squareMeters} square meters and you wish
-                                                to
-                                                pay with {paymentOption}.
-                                            </>
-                                        )
+                                                The size of your accommodation is {squareMeters.current} square meters.
+                                            </p>
+
                                     }
 
 
@@ -617,6 +661,8 @@ const AddCustomerBookingOption = () => {
                                         <button type="button" style={styles.bookButton} onClick={() => {
                                             handleConfirm();
                                             handleModal();
+                                            navigate(("/"))
+
                                         }}>Cancel
                                         </button>
 
@@ -631,7 +677,7 @@ const AddCustomerBookingOption = () => {
                             }
                             {isBookingDone &&
                                 <div style={styles.centered}>
-                                    <h2>Your booking was successfully created. <br/>You will have a confirmation email sent
+                                    <h2>Your booking was successfully created. <br/>A confirmation email has been sent
                                         to you. <br/> Thank you!</h2>
                                 </div>}
                         </>
@@ -666,11 +712,11 @@ const styles: { [key: string]: React.CSSProperties } = {
         justifyContent: 'center',
         marginTop: '4%',
     },
-    boxContainer: {
-        display: 'flex',
-        justifyContent: 'center',
-        width: '100%',
-    },
+    // boxContainer: {
+    //     display: 'flex',
+    //     justifyContent: 'center',
+    //     width: '100%',
+    // },
     boxText: {
         display: 'flex',
     },
@@ -706,6 +752,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     },
     buttonTextContainer: {
         backgroundColor: '#ffffff',
+
         padding: '10px',
         textAlign: 'center',
         marginTop: '2rem',
@@ -736,6 +783,16 @@ const styles: { [key: string]: React.CSSProperties } = {
         borderRadius: '5px',
         fontFamily: "PlomPraeng",
         fontSize: "0.9rem"
+    },
+    invalidInput: {
+
+        padding: '10px',
+        width: '75%',
+        borderRadius: '5px',
+        fontFamily: "PlomPraeng",
+        fontSize: "0.9rem",
+        backgroundColor: "#ffe4e4",
+        border: "red 2px",
     },
     btn: {
         display: "flex",

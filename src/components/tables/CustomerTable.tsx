@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import axios from 'axios';
 import TableId from "./TableId";
+import {UserTypeContext, useUserType} from "../context/UserTypeContext";
 
 interface customerTableProps {
     onUpdate: (cusId: number) => void;
@@ -12,7 +13,8 @@ export const CustomerTable: React.FC<customerTableProps> = ({onUpdate}) => {
     const [deleted, setDeleted] = useState(0);
     const [myFilter, setMyFilter] = useState('');
     const [searchUser, setSearchUser] = useState('');
-
+    const userRole = useContext(UserTypeContext)
+    const role = userRole?.userType
     useEffect(() => {
 
         const headers = {
@@ -50,7 +52,6 @@ export const CustomerTable: React.FC<customerTableProps> = ({onUpdate}) => {
 
             const Url = `http://localhost:8080/api/customer/delete/${id}`;
             const response = await axios.delete(Url, {headers: headers});
-            console.log('Deleting employee was successful', response.data);
             setDeleted(x => x + 1)
 
         } catch (error) {
@@ -61,6 +62,14 @@ export const CustomerTable: React.FC<customerTableProps> = ({onUpdate}) => {
     const handleUpdate = (cusId: number) => {
         onUpdate(cusId)
     };
+    const buttons = role === "ADMIN" ? [
+        {
+            label: "Update", action: handleUpdate, style: styles.update
+        },
+        {
+            label: "Delete", action: handleDelete, style: styles.delete
+        }
+    ] : [];
 
     const filteredCustomerData = customerData.filter((customer) =>
         (myFilter === '' || customer.customerType === myFilter) &&
@@ -94,18 +103,7 @@ export const CustomerTable: React.FC<customerTableProps> = ({onUpdate}) => {
             <div className="customer-table" style={styles.customerTable}>
                 <TableId columns={columns}
                          data={filteredCustomerData}
-                         buttons={[
-                             {
-                                 label: "Update", action: (id) => {
-                                     handleUpdate(id)
-                                 }, style: styles.update
-                             },
-                             {
-                                 label: "Delete", action: (id) => {
-                                     handleDelete(id)
-                                 }, style: styles.delete
-                             },
-                         ]}
+                             buttons={buttons}
                 />
             </div>
         </>

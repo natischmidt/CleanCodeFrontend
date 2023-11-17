@@ -121,10 +121,7 @@ const CreateNewBooking: React.FC = () => {
 
     const handleSelectTime = async (event: React.MouseEvent<HTMLButtonElement>, startTime: number) => {
         event.preventDefault();
-
         timeList.length = 0;
-        console.log("!#!#!#!#!#!#!!#!##!#!#!#!" + startTime)
-
         const doTheLoop = (start: number) => {
 
             for (let i = 0; i < hours; i++) {
@@ -136,52 +133,42 @@ const CreateNewBooking: React.FC = () => {
         switch (startTime) {
             case 8: {
                 doTheLoop(startTime - 8)
-                console.log(timeList)
                 // @ts-ignore
                 break
             }
             case 9: {
                 doTheLoop(startTime - 8)
-                console.log(timeList)
                 break
             }
             case 10: {
                 doTheLoop(startTime - 8)
-                console.log(timeList)
                 break
             }
             case 11: {
                 doTheLoop(startTime - 8)
-                console.log(timeList)
                 break
             }
             case 12: {
                 doTheLoop(startTime - 8)
-                console.log(timeList)
                 break
             }
             case 13: {
                 doTheLoop(startTime - 8)
-                console.log(timeList)
                 break
             }
             case 14: {
                 doTheLoop(startTime - 8)
-                console.log(timeList)
                 break
             }
             case 15: {
                 doTheLoop(startTime - 8)
-                console.log(timeList)
                 break
             }
             case 16: {
                 doTheLoop(startTime - 8)
-                console.log(timeList)
                 break
             }
             default: {
-                console.log("we shouldnt end up here")
                 break
             }
         }
@@ -189,12 +176,11 @@ const CreateNewBooking: React.FC = () => {
 
     const handleBooking = () => {
         try {
-            console.log("****" +selectedCustomer)
             admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, payment, selectedCustomer, message).then(r => {
             })
 
         } catch (error) {
-            console.log(error + "this is not right dude")
+            console.error(error)
         }
     }
 

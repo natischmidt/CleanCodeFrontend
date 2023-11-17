@@ -3,7 +3,6 @@ import axios from "axios";
 import TableJobId from "./TableJobId";
 import ThumbsDown from "../../assets/ThumbsDown.png"
 import ThumbsUp from "../../assets/ThumbsUp.png"
-import spray from "../../assets/spray.png"
 import customer from "../../API/customer";
 // @ts-ignore
 import {RateModal} from "../customer-components/customer-modals/RateModal";
@@ -45,7 +44,7 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
                     const data = await customer.fetchJobsForCustomer(cusId, ["DONE"]);
                     setTheData(data);
                 } catch (error) {
-                    console.log("An error occurred:", error);
+                    console.error(error);
                 }
             }
         };
@@ -65,11 +64,10 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
                 customerId: cusId,
                 rating: rating
             }
-            console.log(updateJobDTO.jobId + " ÄR DEN HÄR?")
             await axios.put("http://localhost:8080/api/jobs/updateJob", updateJobDTO, {headers: headers})
             setChange(x => x + 1)
         } catch (error) {
-            console.log("Tumme up did not work!?: ", error)
+            console.error(error)
         }
     }
     const handleNotOk = async (id: number, rating: number) => {
@@ -85,12 +83,11 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
                 customerId: cusId,
                 rating: rating
             }
-            console.log("Sending JobID:", id);
 
             await axios.put("http://localhost:8080/api/jobs/updateJob", updateJobDTO, {headers: headers})
             setChange(x => x + 1)
         } catch (error) {
-            console.log("Tumme ner did not work!?: ", error)
+            console.error(error)
         }
     }
 

@@ -14,7 +14,6 @@ export const CalenderModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
 
     const onClick = (e: Value) => {
         onChange(e)
-        console.log(e)
         setDatePicked(true)
     }
 

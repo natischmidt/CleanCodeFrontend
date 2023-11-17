@@ -1,0 +1,10 @@
+.filter {
+    text-align: center;
+}
+
+
+@media (max-width: 1400px) {
+    .filter {
+        text-align: left;
+    }
+}
