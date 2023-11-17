@@ -66,7 +66,7 @@ export const CustomerTable: React.FC<customerTableProps> = ({onUpdate}) => {
         (myFilter === '' || customer.customerType === myFilter) &&
         (customer.lastName.toLowerCase().includes(searchUser.toLowerCase()) || searchUser === '')
     )
-    //style={styles.container}
+
     return (
         <>
             <div style={styles.filterContainer}>
@@ -111,8 +111,7 @@ export const CustomerTable: React.FC<customerTableProps> = ({onUpdate}) => {
         </>
     );
 };
-/*onDelete={handleDelete}
-onUpdate={handleUpdate}*/
+
 const styles = {
     customerTable: {
         textAlign: "left" as 'left',

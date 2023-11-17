@@ -17,7 +17,6 @@ import {AdminHome} from "./pages/admin-pages/AdminHome";
 import EmployeePage from "./pages/EmployeePage";
 import AddAdmin from "./components/forms/AddAdminForm";
 import AddEmployee from "./components/forms/AddEmployeeForm";
-import image from "./assets/water.png";
 import React from "react";
 
 function Routing() {
@@ -96,10 +95,6 @@ export default Routing;
 
 const styles = {
     noAccessCont: {
-        // backgroundImage: `url(${image})`,
-        // backgroundSize: 'cover' as "cover",
-        // backgroundPosition: 'center' as "center",
-        // height: '100vh',
         marginTop: "8rem",
         textAlign: 'center' as "center",
         fontSize: "1.3rem",

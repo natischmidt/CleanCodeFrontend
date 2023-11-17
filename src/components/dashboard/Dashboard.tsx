@@ -7,6 +7,8 @@ import employee from "../../API/employee";
 import EditEmployee from "../forms/EditEmployeeForm";
 import EmployeeShiftCont from "../../pages/employee-pages/ShiftDashboard";
 import EditBookingForm from "../forms/EditBookingForm";
+import customer from "../../API/customer";
+import EditCustomerForm from "../forms/EditCustomerForm";
 
 interface DashboardProps {
     userType: 'customer' | 'employee' | 'admin';
@@ -28,12 +30,14 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
     const userTypeContext = useContext(UserTypeContext);
     const id = userTypeContext?.id;
     const contextUserType = userTypeContext?.userType;
-    const [showPersonalInformationComponent, setShowPersonalInformationComponent] = useState(false)
+    const [showEmployeePersonalInformationComponent, setShowEmployeePersonalInformationComponent] = useState(false)
+    const [showCustomerPersonalInformationComponent, setShowCustomerPersonalInformationComponent] = useState(false)
     const [showSalary, setShowSalary] = useState(false)
     const [workedHours, setWorkedHours] = useState(0)
     const [hourlySalary, setHourlySalary] = useState(0)
     const [showEdit, setShowEdit] = useState(false)
-    const[selectedJobId, setSelectedJobId] = useState<number | null>(null)
+    const [selectedJobId, setSelectedJobId] = useState<number | null>(null)
+    const [change, setChange] = useState(0)
     const [data, setData] = useState({
         firstName: "",
         lastName: "",
@@ -49,23 +53,34 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
 
     useEffect(() => {
         if (contextUserType && id) {
-            // @ts-ignore
             if (contextUserType === "EMPLOYEE" || contextUserType === "ADMIN") {
                 fetchEmployeeData(id).then((data) => {
-                    // @ts-ignore
                     setData(data);
-                    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%", data)
                     setUsername(data.firstName + " " +data.lastName)
                 });
             }
+            if (contextUserType === "CUSTOMER") {
+                fetchCustomerData(id).then((data) => {
+                    setData(data)
+                    setUsername(data.firstName + " " +data.lastName)
+                })
+            }
         }
 
-    }, [id, contextUserType]);
+    }, [id, contextUserType, change]);
 
     const fetchEmployeeData = async (id: string): Promise<DashboardUserData> => {
         try {
-            // @ts-ignore
             const response = await employee.getEmployee(id.toString())
+            return response;
+        } catch (error) {
+            throw new Error(`Error fetching employee ${error}`);
+        }
+    };
+
+    const fetchCustomerData = async (id: string): Promise<DashboardUserData> => {
+        try {
+            const response = await customer.fetchData(id.toString())
             return response;
         } catch (error) {
             throw new Error(`Error fetching employee ${error}`);
@@ -81,12 +96,14 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
         setShowEdit(false)
     }
 
-    const handleUpdate = () => {
-        setShowPersonalInformationComponent(!showPersonalInformationComponent)
+    const handleEmployeeUpdate = () => {
+        setShowEmployeePersonalInformationComponent(!showEmployeePersonalInformationComponent)
+        setChange(x => x +1)
     }
 
-    const handleKlarna = () => {
-        setShowPersonalInformationComponent(!showPersonalInformationComponent)
+    const handleCustomerUpdate = () => {
+        setShowCustomerPersonalInformationComponent(!showCustomerPersonalInformationComponent)
+        setChange(x => x +1)
     }
 
     const goToSalary = () => {
@@ -116,11 +133,6 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
     return (
         <div>
             <div>
-                {showPersonalInformationComponent ? <EditEmployee
-                    empId={id ? parseInt(id, 10) : undefined}
-                    doneWithEdit={handleUpdate}
-
-                    /> :
                     <div>
                         <div className="section" style={styles.timeSection}>
                             <div className="section-content">
@@ -134,10 +146,11 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
                             <div className="section" style={styles.section}>
                                 <div className="section-title" style={styles.sectionTitle}>
                                     {userType === 'admin'
-                                        ? 'All upcoming bookings'
-                                        : userType === 'customer'
-                                            ? ''
-                                            : 'My Upcoming Shifts'}
+                                        ? 'All upcoming bookings' :
+                                        userType === 'customer' && !showCustomerPersonalInformationComponent
+                                            ? '' :
+                                            userType === 'employee' && !showEmployeePersonalInformationComponent
+                                            ? 'My Upcoming Shifts' : 'Edit Information'}
                                 </div>
                                 <div className="section-content" style={styles.sectionContent}>
                                     {userType === "admin" && !showEdit ?
@@ -145,8 +158,16 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
                                     {userType === "admin" && showEdit ?
                                         <EditBookingForm jobId={selectedJobId}  doneWithEdit={handleDoneEdit}/>: <></> }
 
-                                    {userType === "customer" && <CustomerJobCheck/>}
-                                    {userType === "employee" && <EmployeeShiftCont />}
+                                    {userType === "customer" && !showCustomerPersonalInformationComponent && <CustomerJobCheck/>}
+                                    {userType === "customer" && showCustomerPersonalInformationComponent && <EditCustomerForm
+                                        cusId={id || null}
+                                        doneWithEdit={handleCustomerUpdate}
+                                    /> }
+                                    {userType === "employee" && !showEmployeePersonalInformationComponent && <EmployeeShiftCont/>}
+                                    {userType === "employee" && showEmployeePersonalInformationComponent && <EditEmployee
+                                        empId={id ? parseInt(id, 10) : undefined}
+                                        doneWithEdit={handleEmployeeUpdate}
+                                    /> }
                                 </div>
 
                             </div>
@@ -179,16 +200,38 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
 
                                     <button
                                         style={styles.updatePersonalInformationButton}
-                                        onClick={() => setShowPersonalInformationComponent(true)}
+                                        onClick={() => setShowEmployeePersonalInformationComponent(!showEmployeePersonalInformationComponent)}
                                     >Change my data
                                     </button>
                                     </div>
                                 </div>
                             </div>
                              }
+                            { userType == "customer" &&
+                                <div className="section" style={styles.sectionUserData}>
+                                    <div className="section-title" style={styles.sectionTitle2}>
+                                        My personal information
+                                    </div>
+                                    <div className="section-content" style={styles.personalInformationDiv}>
+                                        <div>{data.firstName} {data.lastName}</div>
+
+                                        <div>{data.email}</div>
+                                        {data.address !== '' ? <div>{data.address}</div> : <></>}
+                                        <div>{data.postalCode}</div>
+                                        <div>{data.city}</div>
+                                        <div>{data.phoneNumber}</div>
+                                        <div style = {styles.buttonDiv}>
+                                            <button
+                                                style={styles.updatePersonalInformationButton}
+                                                onClick={() => setShowCustomerPersonalInformationComponent(!showCustomerPersonalInformationComponent)}
+                                            >Change my data
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
                         </div>
                     </div>
-                }
             </div>
         </div>
     );
