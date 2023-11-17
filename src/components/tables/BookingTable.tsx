@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import TableId from "./TableId";
 import admin from "../../API/admin";
 import ThumbsUp from "../../assets/ThumbsUp.png";
 import ThumbsDown from "../../assets/ThumbsDown.png";
-import {useUserType} from "../context/UserTypeContext";
+import {UserTypeContext, useUserType} from "../context/UserTypeContext";
 
 interface bookingTableProps {
     onUpdate: (jobId: number) => void;
@@ -16,6 +16,8 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate/*, onKlarna*/}) => 
     const [myFilter, setMyFilter] = useState('');
     const [status, setStatus] = useState('');
     const [searchDate, setSearchDate] = useState('');
+    const userRole = useContext(UserTypeContext)
+    const role = userRole?.userType
 
     useEffect(() => {
         const fetchData = async () => {
@@ -57,7 +59,18 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate/*, onKlarna*/}) => 
         (myFilter === '' || customer.jobtype === myFilter) && (status === '' || customer.jobStatus === status) &&
         (customer.date.includes(searchDate) || searchDate === '')
     )
-
+// ta bort deleteknapp för employeee
+    const buttons = role === "ADMIN" ? [
+        {
+            label: "Update", action: handleUpdate, style: styles.update
+        },
+        {
+            label: "Delete", action: handleDelete, style: styles.delete
+        }
+    ] : role === "EMPLOYEE" ? [{
+        label: "Update", action: handleUpdate, style: styles.update
+    }
+        ] : [];
     // @ts-ignore
     return (
         <>
@@ -104,18 +117,7 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate/*, onKlarna*/}) => 
                 <TableId
                     columns={columns}
                     data={filteredCustomerData}
-                    buttons={[
-                        {
-                            label: "Update", action: (id) => {
-                                handleUpdate(id)
-                            }, style: styles.update
-                        },
-                        {
-                            label: "Delete", action: (id) => {
-                                handleDelete(id)
-                            }, style: styles.delete
-                        },
-                    ]}
+                    buttons={buttons}
                 />
             </div>
         </>

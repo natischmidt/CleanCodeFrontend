@@ -50,7 +50,7 @@ function Routing() {
         }
     };
 
-    return <BrowserRouter>{getRoutesBasedOnUserType()}</BrowserRouter>;
+    return getRoutesBasedOnUserType();
 }
 
 const CustomerRoutes = () => (

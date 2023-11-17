@@ -24,11 +24,13 @@ import Routing from "./Routing";
 
 function App() {
     return (
-        <UserTypeProvider>
-            <div className="container">
-                <Routing />
-            </div>
-        </UserTypeProvider>
+        <BrowserRouter>
+            <UserTypeProvider>
+                <div className="container">
+                    <Routing />
+                </div>
+            </UserTypeProvider>
+        </BrowserRouter>
     );
 }
 
