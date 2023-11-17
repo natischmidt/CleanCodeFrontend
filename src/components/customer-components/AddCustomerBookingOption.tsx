@@ -282,27 +282,43 @@ const AddCustomerBookingOption = () => {
         return (
             <>{!isModalOpen
                 && (
-                    <div style={styles.container1}>
-                        <div style={styles.sectionTitle}>
+                    <div
+                        className = "bookingBody"
+                        style={styles.container1}>
+                        <div
+                            className = "sectionTitleDiv"
+                            style={styles.sectionTitle}>
                             <h2>What cleaning are you interested in?</h2>
                         </div>
                         {!showSetTempEmail ?
-                        <div style={styles.boxContainer}>
-                            <div className="box" style={{
-                                backgroundImage: `url(${basic})`
+                        <div
+                            className="boxContainer"
+                            >
+                            <div className="boxBasic" style={{
+                                // backgroundImage: `url(${basic})`
                             }}>
                                 <div>
                                     <div className="btn">
                                         <button
                                             className="showInfo"
-                                            onClick={() => handleExtraInformation(
-                                                "Our 'Basic Cleaning' service provides essential cleaning tasks such as " +
-                                                "surface cleaning, floor care, and bathroom and kitchen maintenance to maintain a " +
-                                                "clean and fresh living or working space.")}>BASIC
+                                            onClick={() => {
+                                                if(window.innerWidth > 900) {
+                                                    handleExtraInformation(
+                                                        "Our 'Basic Cleaning' service provides essential cleaning tasks such as " +
+                                                        "surface cleaning, floor care, and bathroom and kitchen maintenance to maintain a " +
+                                                        "clean and fresh living or working space.")
+                                                } else if (window.innerWidth < 450) {
+                                                    handleJobType("BASIC")
+                                                } else {
+                                                    handleExtraInformation("This our standard service, suitable for regular, recurring cleanings.")
+                                                }
+                                                }}>BASIC
                                         </button>
                                     </div>
                                     {showExtraInfo && (
-                                        <div style={styles.buttonTextContainer}>
+                                        <div
+                                            className="buttonTextContainer"
+                                            style={styles.buttonTextContainer}>
                                             <div className="buttonText">
                                                 {infoText}
                                                 <div>
@@ -316,23 +332,33 @@ const AddCustomerBookingOption = () => {
                                         </div>)}
                                 </div>
                             </div>
-                            <div className="box" style={{
-                                backgroundImage: `url(${advanced})`
+                            <div className="boxAdvanced" style={{
+                                // backgroundImage: `url(${advanced})`
                             }}>
                                 <div>
                                     <div className="btn">
                                         <button
                                             className="showInfo"
-                                            onClick={() => handleExtraInformationAdv(
-                                                "Our 'Advanced Cleaning' service goes beyond the basics, offering a" +
-                                                " comprehensive and deep cleaning experience that includes thorough " +
-                                                "cleaning of hard-to-reach areas, detailed kitchen and bathroom " +
-                                                "cleaning, and a meticulous focus on all surfaces, ensuring a spotless " +
-                                                "environment.")}>ADVANCED
+                                            onClick={() => {
+                                                if (window.innerWidth > 900) {
+                                                    handleExtraInformationAdv(
+                                                        "Our 'Advanced Cleaning' service goes beyond the basics, offering a" +
+                                                        " comprehensive and deep cleaning experience that includes thorough " +
+                                                        "cleaning of hard-to-reach areas, detailed kitchen and bathroom " +
+                                                        "cleaning, and a meticulous focus on all surfaces, ensuring a spotless " +
+                                                        "environment.")
+                                                } else if (window.innerWidth < 450) {
+                                                    handleJobType("ADVANCED")
+                                                }else {
+                                                    handleExtraInformationAdv("A more thorough cleaning than basic.")
+                                                }
+                                                }}>ADVANCED
                                         </button>
                                     </div>
                                     {showExtraInfoAdv && (
-                                        <div style={styles.buttonTextContainer}>
+                                        <div
+                                            className="buttonTextContainer"
+                                            style={styles.buttonTextContainer}>
                                             <div className="buttonText">
                                                 {infoTextAdv}
                                                 <div>
@@ -346,23 +372,33 @@ const AddCustomerBookingOption = () => {
                                         </div>)}
                                 </div>
                             </div>
-                            <div className="box" style={{
-                                backgroundImage: `url(${diamond})`
+                            <div className="boxDiamond" style={{
+                                // backgroundImage: `url(${diamond})`
                             }}>
                                 <div>
                                     <div className="btn">
                                         <button
                                             className="showInfo"
-                                            onClick={() => handleExtraInformationDia(
-                                                "Our 'Diamond Cleaning' service represents the pinnacle of " +
-                                                "cleanliness, providing a top-tier, comprehensive cleaning experience" +
-                                                " with meticulous attention to detail, specialized cleaning solutions," +
-                                                " and a commitment to delivering the highest standard of cleanliness" +
-                                                " and hygiene for your space.")}>DIAMOND
+                                            onClick={() => {
+                                                if (window.innerWidth > 900) {
+                                                    handleExtraInformationDia(
+                                                        "Our 'Diamond Cleaning' service represents the pinnacle of " +
+                                                        "cleanliness, providing a top-tier, comprehensive cleaning experience" +
+                                                        " with meticulous attention to detail, specialized cleaning solutions," +
+                                                        " and a commitment to delivering the highest standard of cleanliness" +
+                                                        " and hygiene for your space.")
+                                                } else if (window.innerWidth < 450) {
+                                                    handleJobType("DIAMOND")
+                                                }else {
+                                                    handleExtraInformationDia("Our most luxurious service. Everything will be sparkling clean.")
+                                                }
+                                                }}>DIAMOND
                                         </button>
                                     </div>
                                     {showExtraInfoDia && (
-                                        <div style={styles.buttonTextContainer}>
+                                        <div
+                                            className="buttonTextContainer"
+                                            style={styles.buttonTextContainer}>
                                             <div className="buttonText">
                                                 {infoTextDia}
                                                 <div>
@@ -376,22 +412,32 @@ const AddCustomerBookingOption = () => {
                                         </div>)}
                                 </div>
                             </div>
-                            <div className="box" style={{
-                                backgroundImage: `url(${windowclean})`
+                            <div className="boxWindow" style={{
+                                // backgroundImage: `url(${windowclean})`
                             }}>
                                 <div>
                                     <div className="btn">
                                         <button
                                             className="showInfo"
-                                            onClick={() => handleExtraInformationWin(
+                                            onClick={() => {
+                                                if(window.innerWidth > 900) {
+                                                    handleExtraInformationWin(
+                                                        "Our 'Window Cleaning' service is dedicated to ensuring" +
+                                                        " crystal-clear, streak-free windows that allow natural light to flood " +
+                                                        "your space, enhancing its overall cleanliness and appearance.")
+                                                } else if (window.innerWidth < 450) {
+                                                    handleJobType("WINDOW")
+                                                }else {
+                                                    handleExtraInformationWin("Your windows will be transparent again!")
+                                                }
 
-                                                "Our 'Window Cleaning' service is dedicated to ensuring" +
-                                                " crystal-clear, streak-free windows that allow natural light to flood " +
-                                                "your space, enhancing its overall cleanliness and appearance.")}>WINDOW
+                                            }}>WINDOW
                                         </button>
                                     </div>
                                     {showExtraInfoWin && (
-                                        <div style={styles.buttonTextContainer}>
+                                        <div
+                                            className="buttonTextContainer"
+                                            style={styles.buttonTextContainer}>
                                             <div className="buttonText">
                                                 {infoTextWin}
                                                 <div>
@@ -666,11 +712,11 @@ const styles: { [key: string]: React.CSSProperties } = {
         justifyContent: 'center',
         marginTop: '4%',
     },
-    boxContainer: {
-        display: 'flex',
-        justifyContent: 'center',
-        width: '100%',
-    },
+    // boxContainer: {
+    //     display: 'flex',
+    //     justifyContent: 'center',
+    //     width: '100%',
+    // },
     boxText: {
         display: 'flex',
     },
@@ -706,6 +752,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     },
     buttonTextContainer: {
         backgroundColor: '#ffffff',
+
         padding: '10px',
         textAlign: 'center',
         marginTop: '2rem',

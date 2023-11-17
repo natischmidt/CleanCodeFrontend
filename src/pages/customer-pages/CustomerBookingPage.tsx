@@ -9,14 +9,22 @@ export default function CustomerBookingPage() {
     const [loggedIn, setLoggedIn] = useState(true);
 
     return (
-        <div style={styles.container}>
-            <div style={styles.header}>
+        <div
+            className="containerDiv"
+            style={styles.container}>
+            <div
+                className="headerDiv"
+                style={styles.header}>
                 <CustomerHeader showLoggedIn={loggedIn} setLoggedIn={setLoggedIn} />
             </div>
-            <div style={styles.middle}>
+            <div
+                className="middleDiv"
+                style={styles.middle}>
                 <AddCustomerBookingOption />
             </div>
-            <div style={styles.footer}>
+            <div
+                className="footerDiv"
+                style={styles.footer}>
                 <CustomerFooter />
             </div>
         </div>

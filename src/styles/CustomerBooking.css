@@ -12,7 +12,34 @@
     width: 100%;
 }
 
-.box {
+.boxBasic {
+    background-image: url("../assets/clouds.png");
+    display: flex;
+    width: 12rem;
+    height: 18rem;
+    border: 3px solid #ccc;
+    padding: 2rem;
+    margin: 1rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #b3d9e3;
+    background-size: cover;
+}
+
+.boxAdvanced {
+    background-image: url("../assets/Water_clear water.png");
+    display: flex;
+    width: 12rem;
+    height: 18rem;
+    border: 3px solid #ccc;
+    padding: 2rem;
+    margin: 1rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #b3d9e3;
+    background-size: cover;
+}
+.boxDiamond {
     background-image: url("../assets/diamond3.png");
     display: flex;
     width: 12rem;
@@ -24,8 +51,46 @@
     align-items: center;
     background-color: #b3d9e3;
     background-size: cover;
-
 }
+.boxWindow {
+    background-image: url("../assets/advanced2.jpg");
+    display: flex;
+    width: 12rem;
+    height: 18rem;
+    border: 3px solid #ccc;
+    padding: 2rem;
+    margin: 1rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #b3d9e3;
+    background-size: cover;
+}
+.boxContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.buttonTextContainer {
+
+    width: 100%;
+}
+
+/*.box {*/
+/*    background-image: url("../assets/advanced2.jpg");*/
+
+/*    display: flex;*/
+/*    width: 12rem;*/
+/*    height: 18rem;*/
+/*    border: 3px solid #ccc;*/
+/*    padding: 2rem;*/
+/*    margin: 1rem;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    background-color: #b3d9e3;*/
+/*    background-size: cover;*/
+
+/*}*/
 .buttonText {
     font-size: 0.9rem;
     color: #000000;
@@ -34,11 +99,14 @@
 .showInfo {
     border: 1px solid black;
     align-items: center;
+    box-shadow: 0 0 10px #000000;
+
 }
 
 .btn {
     display: flex;
     justify-content: center;
+    border-radius: 7px;
 }
 
 @media (max-width: 1500px) {
@@ -54,18 +122,18 @@
     }
     .showInfo {
     }
-    .btn {
-        fontSize: 0.7rem;
-    }
+   
+    
 }
 
 @media (max-width: 1000px) {
-    .box {
+    .boxBasic, .boxAdvanced, .boxDiamond, .boxWindow {
         display: flex;
         flex-wrap: wrap;
         overflow: hidden;
         margin: 0 auto;
-        height: 22rem;
+        width: 9rem;
+        height: 13.5rem;
     }
     .buttonText {
         font-size: 0.5rem;
@@ -73,8 +141,68 @@
     .showInfo {
     }
     .btn {
-        font-size: 0.7rem;
+        font-size: 1rem;
+    }
+    .buttonTextContainer {
+        font-family: Montserrat, serif;
+        width: 100%;
     }
 }
 
+@media (max-width: 650px) {
+    .boxBasic, .boxAdvanced, .boxDiamond, .boxWindow {
+        display: flex;
+        flex-wrap: wrap;
+        overflow: hidden;
+        margin: 0 auto;
+
+        width: 6rem;
+        height: 9rem;
+    }
+    .buttonText {
+        font-size: 0.5rem;
+    }
+    .showInfo {
+    }
+    .btn {
+        font-size: 0.8rem;
+    }
+
+}
+
+@media (max-width: 450px) {
+    .boxBasic, .boxAdvanced, .boxDiamond, .boxWindow {
+        background: #00f0f000;
+        display: flex;
+        flex-wrap: wrap;
+        overflow: hidden;
+        margin: 0 auto;
+        border: 0;
+        width: 9rem;
+        height: 13.5rem;
+    }
+    .buttonText {
+        font-size: 0.5rem;
+    }
+    .showInfo {
+    }
+    .btn {
+        font-size: 1rem;
+    }
+    .boxContainer {
+        margin-top: 5rem;
+        background-image: url("../assets/water_mobile_view_bg.png");
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 20rem;
+    }
+    .bookingBody {
+
+        background: #ffffff;
+
+    }
+}
 
