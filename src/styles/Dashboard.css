@@ -5,6 +5,15 @@
     color: black;
 }
 
+.sectionTitle {
+    font-weight: bold;
+    font-size: 2.3rem;
+    margin-top: -7%;
+    margin-bottom: -2rem;
+    padding-left: 4%;
+    text-decoration: underline;
+}
+
 @media (max-width: 1400px) {
     .hidewelcome {
         display: none;
@@ -12,4 +21,14 @@
     .dashboard {
         margin-top: 3rem;
     }
+    .sectionTitle {
+        margin-top: -10%;
+    }
 }
+
+@media (max-width: 800px) {
+    .sectionTitle {
+        text-align: left;
+    }
+}
+

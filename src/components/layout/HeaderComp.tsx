@@ -1,11 +1,12 @@
 import logo from "../../assets/stadaFint.png";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import React, {useState} from "react";
 import axios from "axios";
 import {UserTypeProvider, useUserType} from "../context/UserTypeContext";
 import {GDPRModal} from "../customer-components/customer-modals/GDPRModal";
 import {GDPRModal_employee} from "../modals/GDPRModal_employee";
 import employee from "../../API/employee";
+import '../../styles/HeaderComp.css'
 
 export default function HeaderComp() {
 
@@ -18,6 +19,12 @@ export default function HeaderComp() {
     const goToLogin = useNavigate()
     const {userType} = useUserType();
     const {id} = useUserType();
+
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
 
     const [isGDPRModalOpen, setIsGDPRModalOpen] = useState(false);
 
@@ -46,65 +53,94 @@ export default function HeaderComp() {
 
     return (
         <>
-            <div className="headerContainer" style={styles.header}>
+            <div className="headerContainer">
                 <div className="logo">
                     <img id="logo3" src={logo} alt="logo3" style={styles.logo}/>
                 </div>
-                <div className="menuButtons" style={styles.menuButtons}>
-                    <button id="Employees" style={styles.btn} onClick={() => {
-                        goBackToDashboard()
-                    }}>Home
-                    </button>
-                    {/*<button id="goBackToDashboard" style={styles.btn} onClick={() => goBackToDashboard()}>Home</button>*/}
-                    <button id="Booking" style={styles.btn} onClick={() => {
-                        {
-                            goToBooking(("/booking"));
-                        }
-                    }}>Bookings
-                    </button>
+                <div className="headerMenu">
+                    <div className="menuButtons" style={styles.menuButtons}>
+                        <button id="Employees" style={styles.btn} onClick={() => {
+                            goBackToDashboard()
+                        }}>Home
+                        </button>
+                        {/*<button id="goBackToDashboard" style={styles.btn} onClick={() => goBackToDashboard()}>Home</button>*/}
+                        <button id="Booking" style={styles.btn} onClick={() => {
+                            {
+                                goToBooking(("/booking"));
+                            }
+                        }}>Bookings
+                        </button>
 
-                    {userType == "ADMIN" && <button id="Employees" style={styles.btn} onClick={() => {
-                        {
-                            goToEmployees(("/employees"));
-                        }
-                    }}>Employees</button>}
-                    <button id="Customers" style={styles.btn} onClick={() => {
-                        {
-                            goToCustomers(("/customers"));
-                        }
-                    }}>Customers
-                    </button>
-                    <button id="AddUser" style={styles.btn} onClick={() => {
-                        {
-                            goToAddUser(("/AddUser"));
-                        }
-                    }}>Create New User
-                    </button>
-                    <button id="SignOut" style={styles.btn} onClick={handleLogout}>Sign Out</button>
+                        {userType == "ADMIN" && <button id="Employees" style={styles.btn} onClick={() => {
+                            {
+                                goToEmployees(("/employees"));
+                            }
+                        }}>Employees</button>}
+                        <button id="Customers" style={styles.btn} onClick={() => {
+                            {
+                                goToCustomers(("/customers"));
+                            }
+                        }}>Customers
+                        </button>
+                        <button id="AddUser" style={styles.btn} onClick={() => {
+                            {
+                                goToAddUser(("/AddUser"));
+                            }
+                        }}>Create New User
+                        </button>
+                        <button id="SignOut" style={styles.btn} onClick={handleLogout}>Sign Out</button>
+                    </div>
                 </div>
-            </div>
-            <div>
-                {isGDPRModalOpen && (
-                    <GDPRModal_employee onClose={closeGDRPModal}/>
-                )}
+                <div>
+                    {isGDPRModalOpen && (
+                        <GDPRModal_employee onClose={closeGDRPModal}/>
+                    )}
+                </div>
+                <div className="hamburger-text">
+                    <div className={`menu-toggle ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+                        <div className="bar"></div>
+                        <div className="bar"></div>
+                        <div className="bar"></div>
+                    </div>
+                    <ul className={`menu ${menuOpen ? 'open' : ''}`}>
+                        <li>
+                            <Link to="/adminhome" style={styles.link}>
+                                Home
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/booking" style={styles.link}>
+                                Bookings
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/employees" style={styles.link}>
+                                Employees
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/customers" style={styles.link}>
+                                Customers
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/AddUser" style={styles.link}>
+                                Create new user
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/" style={styles.link} onClick={handleLogout}>
+                                Sign out
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </>
     )
 }
 
 const styles = {
-    header: {
-        backgroundColor: '#E2FFF8' as '#E2FFF8',
-        borderBottom: '5px solid #729ca8',
-        display: 'flex',
-        position: 'relative' as 'relative',
-        padding: '20px',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        flexWrap: 'wrap' as 'wrap',
-        // fontFamily: 'Childos',
-        // fontSize: "1.2rem"
-    },
     logo: {
         maxWidth: '200px',
         marginBottom: '10px',
@@ -124,5 +160,11 @@ const styles = {
         width: '200px',
         height: '60px',
         fontWeight: 'normal',
+    },
+    link: {
+        fontWeight: 'bold',
+        textDecoration: 'none',
+        color: 'black',
+        cursor: 'pointer',
     },
 };

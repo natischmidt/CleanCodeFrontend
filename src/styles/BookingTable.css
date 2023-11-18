@@ -1,0 +1,17 @@
+.filterContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.3rem;
+    margin-bottom: 3rem;
+    grid-gap: 3rem;
+}
+
+@media (max-width: 800px) {
+
+    .filterContainer {
+        flex-direction: column;
+        justify-content: left;
+        grid-gap: 0rem;
+        align-items: flex-start;
+    }
+}

@@ -144,7 +144,7 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
                         <div className="dashboard">
 
                             <div className="section" style={styles.section}>
-                                <div className="section-title" style={styles.sectionTitle}>
+                                <div className="section-title sectionTitle">
                                     {userType === 'admin'
                                         ? 'All upcoming bookings' :
                                         userType === 'customer' && !showCustomerPersonalInformationComponent
@@ -250,14 +250,6 @@ const styles: { [key: string]: React.CSSProperties } = {
         padding: '10px',
         textAlign: 'center',
 
-    },
-    sectionTitle: {
-        fontWeight: 'bold',
-        fontSize: "2.3rem",
-        marginTop: "-7%",
-        marginBottom: "-2rem",
-        paddingLeft: "4%",
-        textDecoration: "underline",
     },
     sectionTitle2: {
         fontWeight: 'bold',

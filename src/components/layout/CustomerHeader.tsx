@@ -3,7 +3,6 @@ import {Link, useNavigate} from "react-router-dom";
 import {LoginModal} from "../customer-components/customer-modals/LoginModal";
 import customer from "../../API/customer";
 import {RegisterModal} from "../customer-components/customer-modals/RegisterModal";
-import '../../styles/HeaderStyles.css'
 import {useUserType} from "../context/UserTypeContext";
 
 
@@ -110,29 +109,29 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
                     <div className="bar"></div>
                     <div className="bar"></div>
                 </div>
-                <ul className={`menu ${menuOpen ? 'open' : ''}`}>
-                    <li>
+                <ul style={{padding: "10px"}} className={`menu ${menuOpen ? 'open' : ''}`}>
+                    <li style={{fontSize: "1.2rem"}}>
                         <Link to="/" style={styles.link}>
                             Home
                         </Link>
                     </li>
-                    <li>
+                    <li style={{fontSize: "1.2rem"}}>
                         <Link to="/customerbooking" style={styles.link}>
                             Book
                         </Link>
                     </li>
                     {!loggedIn && (
                         <>
-                            <li style={styles.link} onClick={handleLoginClick}>Log in
+                            <li style={{...styles.link, fontSize: "1.2rem"}} onClick={handleLoginClick}>Log in
                             </li>
 
-                            <li style={styles.link} onClick={handleRegisterClick}>Register</li>
+                            <li style={{...styles.link, fontSize: "1.2rem"}} onClick={handleRegisterClick}>Register</li>
 
                         </>
                     )}
                     {loggedIn && (
                         <>
-                            <li>
+                            <li style={{fontSize: "1.2rem"}}>
                                 <Link to="/customermypages" style={styles.link}>
                                     My Pages
                                 </Link>
@@ -142,7 +141,7 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
                             {/*    /!*    Book*!/*/}
                             {/*    /!*</Link>*!/*/}
                             {/*</li>*/}
-                            <li style={styles.link} onClick={handleLogoutClick}>Log out
+                            <li style={{...styles.link, fontSize: "1.2rem"}} onClick={handleLogoutClick}>Log out
                             </li>
                         </>
                     )}

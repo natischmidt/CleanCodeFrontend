@@ -1,0 +1,8 @@
+
+
+@media (max-width: 800px) {
+    .tableCont {
+        overflow: auto;
+        max-width: 100vw;
+    }
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "../../styles/TableId.css"
 
 interface ButtonConfig {
     label: string | React.ReactElement
@@ -22,7 +22,7 @@ const TableId: React.FC<Props> = ({ columns, data , buttons/*, userRole*/}) => {
 
 
     return (
-        <div className="table-container" style={{ maxHeight: '25rem', overflowY: 'auto' }}>
+        <div className="table-container tableCont" style={{ maxHeight: '25rem'}}>
         <table className="data-table" style={styles.dataTable}>
             <thead>
             <tr>

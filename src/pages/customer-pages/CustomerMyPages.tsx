@@ -29,18 +29,6 @@ export const CustomerMyPages: React.FC = () => {
                 });
         }
     }, [id, userType]);
-    //
-    // return (
-    //     <>
-    //         <CustomerHeader showLoggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
-    //         <div className="bookingCont" style={{...styles.middleSection, ...selectedStyles}}>
-    //             <Dashboard userType="customer" userData={userData}/>
-    //         </div>
-    //         <div style={styles.footer}>
-    //             <CustomerFooter/>
-    //         </div>
-    //     </>
-    // );
 
     return (
         <div style={styles.container}>
