@@ -1,9 +1,8 @@
 import React, {useState} from "react";
 import HeaderComp from "../../components/layout/HeaderComp";
-// import CustomerFooter from "../layout/footer";
 import {CustomerTable} from "../../components/tables/CustomerTable";
-import CustomerFooter from "../../components/layout/CustomerFooter";
 import EditCustomerForm from "../../components/forms/EditCustomerForm";
+import "../../styles/CustomerPage.css"
 
 export default function CustomerPage() {
 
@@ -21,7 +20,7 @@ export default function CustomerPage() {
     return (
         <>
             <HeaderComp/>
-            <div className="h1" style={styles.h1}>
+            <div className="h1 h11">
                 <h1>Customers</h1>
 
                 {!showUpdateCustomer ? <CustomerTable onUpdate={(cusId: number) => handleUpdate(cusId)} /> :
@@ -30,12 +29,4 @@ export default function CustomerPage() {
             </div>
         </>
     )
-}
-
-const styles = {
-    h1: {
-        marginTop: "4%",
-        justifyContent: "center" as 'center',
-        textAlign: "center" as 'center'
-    }
 }

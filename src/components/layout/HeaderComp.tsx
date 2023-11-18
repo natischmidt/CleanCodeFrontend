@@ -50,6 +50,13 @@ export default function HeaderComp() {
             gotoDashBoard(("/employeehome"))
         }
     }
+    const goBackToDashboardHam = () => {
+        if (userType == "ADMIN") {
+            gotoDashBoard(("/adminhome"))
+        } else if (userType == "EMPLOYEE") {
+            gotoDashBoard(("/employeehome"))
+        }
+    }
 
     return (
         <>
@@ -59,36 +66,36 @@ export default function HeaderComp() {
                 </div>
                 <div className="headerMenu">
                     <div className="menuButtons" style={styles.menuButtons}>
-                        <button id="Employees" style={styles.btn} onClick={() => {
+                        <button id="Employees" className="btn" onClick={() => {
                             goBackToDashboard()
                         }}>Home
                         </button>
                         {/*<button id="goBackToDashboard" style={styles.btn} onClick={() => goBackToDashboard()}>Home</button>*/}
-                        <button id="Booking" style={styles.btn} onClick={() => {
+                        <button id="Booking" className="btn" onClick={() => {
                             {
                                 goToBooking(("/booking"));
                             }
                         }}>Bookings
                         </button>
 
-                        {userType == "ADMIN" && <button id="Employees" style={styles.btn} onClick={() => {
+                        {userType == "ADMIN" && <button id="Employees" className="btn" onClick={() => {
                             {
                                 goToEmployees(("/employees"));
                             }
                         }}>Employees</button>}
-                        <button id="Customers" style={styles.btn} onClick={() => {
+                        <button id="Customers" className="btn" onClick={() => {
                             {
                                 goToCustomers(("/customers"));
                             }
                         }}>Customers
                         </button>
-                        <button id="AddUser" style={styles.btn} onClick={() => {
+                        <button id="AddUser" className="btn" onClick={() => {
                             {
                                 goToAddUser(("/AddUser"));
                             }
-                        }}>Create New User
+                        }}>Create new user
                         </button>
-                        <button id="SignOut" style={styles.btn} onClick={handleLogout}>Sign Out</button>
+                        <button id="SignOut" className="btn" onClick={handleLogout}>Sign Out</button>
                     </div>
                 </div>
                 <div>
@@ -104,7 +111,10 @@ export default function HeaderComp() {
                     </div>
                     <ul className={`menu ${menuOpen ? 'open' : ''}`}>
                         <li>
-                            <Link to="/adminhome" style={styles.link}>
+                            <Link to={{}} style={styles.link} onClick={(e) => {
+                                e.preventDefault();
+                                goBackToDashboard()
+                            }}>
                                 Home
                             </Link>
                         </li>
@@ -113,11 +123,13 @@ export default function HeaderComp() {
                                 Bookings
                             </Link>
                         </li>
-                        <li>
-                            <Link to="/employees" style={styles.link}>
-                                Employees
-                            </Link>
-                        </li>
+                        {userType == "ADMIN" && (
+                            <li>
+                                <Link to="/employees" style={styles.link}>
+                                    Employees
+                                </Link>
+                            </li>
+                        )}
                         <li>
                             <Link to="/customers" style={styles.link}>
                                 Customers
@@ -153,13 +165,6 @@ const styles = {
         flexGrow: 1,
         justifyContent: 'flex-end',
         marginTop: '10px',
-    },
-    btn: {
-        backgroundColor: '#b3d9e3',
-        marginLeft: '1%',
-        width: '200px',
-        height: '60px',
-        fontWeight: 'normal',
     },
     link: {
         fontWeight: 'bold',

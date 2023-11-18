@@ -2,6 +2,7 @@ import {useNavigate} from "react-router-dom";
 import {useUserType} from "../context/UserTypeContext";
 import HeaderComp from "../layout/HeaderComp";
 import React from "react";
+import "../../styles/AddUserOption.css";
 
 const AddUserOption = () => {
 
@@ -21,7 +22,7 @@ const AddUserOption = () => {
                             {userType === "ADMIN" && (
                                 <button
                                     type="submit"
-                                    style={styles.button}
+                                    className="button"
                                     onClick={() => {
                                         if (userType === "ADMIN") {
                                             goToAdminForm("/addadmin");
@@ -33,15 +34,15 @@ const AddUserOption = () => {
                             )}
                             {userType === "ADMIN" &&
                                 <button type="submit"
-                                        style={styles.button}
+                                        className="button"
                                         onClick={() =>
                                         {{goToEmployeeForm(("/addemployee"))}}}>
                                 Employee
                             </button>}
-                            <button type="submit" style={styles.button} onClick={() => {{goToPrivateCustomerForm(("/addprivatecustomer"))}}}>
+                            <button type="submit" className="button" onClick={() => {{goToPrivateCustomerForm(("/addprivatecustomer"))}}}>
                                 Private Customer
                             </button>
-                            <button type="submit" style={styles.button} onClick={() => {{goToBusinessCustomerForm(("/addbusinesscustomer"))}}}>
+                            <button type="submit" className="button" onClick={() => {{goToBusinessCustomerForm(("/addbusinesscustomer"))}}}>
                                 Business Customer
                             </button>
                         </div>
@@ -64,13 +65,6 @@ const styles = {
     menuBtns: {
         display: "flex",
         marginTop: '8%',
-    },
-    button: {
-        backgroundColor: '#b3d9e3',
-        marginLeft: '5%',
-        height: '60px',
-        fontWeight: 'normal',
-        width: "250px"
     },
     h1: {
         justifyContent: "center" as 'center',

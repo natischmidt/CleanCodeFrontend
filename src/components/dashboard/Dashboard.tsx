@@ -172,7 +172,7 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
 
                             </div>
                             { userType == "employee" &&
-                            <div className="section" style={styles.sectionUserData}>
+                            <div className="section sectionUserData">
                                 <div className="section-title" style={styles.sectionTitle2}>
                                     My personal information
                                 </div>
@@ -208,7 +208,7 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
                             </div>
                              }
                             { userType == "customer" &&
-                                <div className="section" style={styles.sectionUserData}>
+                                <div className="section sectionUserData">
                                     <div className="section-title" style={styles.sectionTitle2}>
                                         My personal information
                                     </div>
@@ -249,7 +249,6 @@ const styles: { [key: string]: React.CSSProperties } = {
         marginTop: '2rem',
         padding: '10px',
         textAlign: 'center',
-
     },
     sectionTitle2: {
         fontWeight: 'bold',
@@ -257,15 +256,6 @@ const styles: { [key: string]: React.CSSProperties } = {
         // marginTop: "-6%",
         paddingLeft: "4%",
         textDecoration: "underline",
-    },
-    sectionUserData: {
-        border: '1px solid #ccc',
-        margin: '10px',
-        padding: '10px',
-        textAlign: 'center',
-        boxShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
-        width: "17%",
-        height: "80%",
     },
     updatePersonalInformationButton: {
         backgroundColor: "#729ca8",

@@ -1,3 +1,11 @@
+.btn {
+    background-color: #b3d9e3;
+    margin-left: 1%;
+    width: 200px;
+    height: 60px;
+    font-weight: normal;
+}
+
 .headerContainer {
     background-color: #E2FFF8;
     border-bottom: 5px solid #729ca8;
@@ -86,4 +94,15 @@
         justify-content: center; /* Add this line to horizontally center text */
     }
 }
+
+@media (max-width: 1300px) {
+    .btn {
+        width: 112px;
+        height: 60px;
+        font-weight: normal;
+        font-size: 0.8rem;
+    }
+}
+
+
 

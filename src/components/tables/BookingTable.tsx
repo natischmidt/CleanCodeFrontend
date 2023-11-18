@@ -1,9 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react';
 import TableId from "./TableId";
 import admin from "../../API/admin";
-import ThumbsUp from "../../assets/ThumbsUp.png";
-import ThumbsDown from "../../assets/ThumbsDown.png";
 import {UserTypeContext, useUserType} from "../context/UserTypeContext";
+import "../../styles/BookingTable.css"
 
 interface bookingTableProps {
     onUpdate: (jobId: number) => void;
@@ -74,7 +73,7 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate/*, onKlarna*/}) => 
     // @ts-ignore
     return (
         <>
-            <div style={styles.filterContainer}>
+            <div className="filterContainer2">
                 <div>
                     Filter by type
                     <select
@@ -134,13 +133,6 @@ const styles = {
         display: "flex" as 'flex',
         justifyContent: "center" as 'center',
         marginTop: '-1.5rem',
-    },
-    filterContainer: {
-        display: 'flex',
-        justifyContent: 'center',
-        marginTop: '1.3rem',
-        marginBottom: '3rem',
-        gridGap: '3rem',
     },
     container: {
         display: 'flex',

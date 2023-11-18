@@ -1,0 +1,13 @@
+.button {
+    background-color: #b3d9e3;
+    margin-left: 5%;
+    height: 60px;
+    font-weight: normal;
+    width: 250px;
+}
+
+@media (max-width: 800px) {
+    .button {
+        width: 200px;
+    }
+}

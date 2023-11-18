@@ -1,0 +1,10 @@
+.h11 {
+    margin-top: 4%;
+    justify-content: center;
+    text-align: center;
+}
+
+@media (max-width: 800px) {
+    .h11 {
+    }
+}

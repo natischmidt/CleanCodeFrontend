@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import axios from 'axios';
 import TableId from "./TableId";
 import {UserTypeContext, useUserType} from "../context/UserTypeContext";
+import "../../styles/CustomerTable.css"
 
 interface customerTableProps {
     onUpdate: (cusId: number) => void;
@@ -78,7 +79,7 @@ export const CustomerTable: React.FC<customerTableProps> = ({onUpdate}) => {
 
     return (
         <>
-            <div style={styles.filterContainer}>
+            <div className="filterContainer">
                 <div>
                     Search by lastname:
                     <input
@@ -115,11 +116,6 @@ const styles = {
         textAlign: "left" as 'left',
         display: "flex" as 'flex',
         justifyContent: "center" as 'center'
-    },
-    filterContainer: {
-        display: 'flex',
-        justifyContent: 'center',
-        gridGap: '2rem',
     },
     delete: {
         backgroundColor: "#f83f3f",
