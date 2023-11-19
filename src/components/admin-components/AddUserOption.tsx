@@ -18,7 +18,7 @@ const AddUserOption = () => {
                 <div style={styles.container}>
                     <div className="h1" style={styles.h1}>
                         <h1>Create new:</h1>
-                        <div className="menuBtn" style={styles.menuBtns}>
+                        <div className="menuBtn menuBtns">
                             {userType === "ADMIN" && (
                                 <button
                                     type="submit"
@@ -61,10 +61,6 @@ const styles = {
         justifyContent: 'center' as "center",
         marginTop: '2%',
         color: '#000001',
-    },
-    menuBtns: {
-        display: "flex",
-        marginTop: '8%',
     },
     h1: {
         justifyContent: "center" as 'center',

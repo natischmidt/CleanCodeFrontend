@@ -75,7 +75,7 @@
 }
 
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
 
     .header {
         display: none;
@@ -95,7 +95,7 @@
     }
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1450px) {
     .btn {
         width: 112px;
         height: 60px;

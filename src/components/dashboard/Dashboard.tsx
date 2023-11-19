@@ -243,6 +243,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         marginTop: '3rem',
         padding: '10px',
         textAlign: 'center',
+        marginLeft: "-10%",
     },
     sectionContent: {
         flex: 1,
