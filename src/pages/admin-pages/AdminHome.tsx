@@ -6,7 +6,7 @@ import { adminStyles } from "../../styles/styles";
 
 
 export const AdminHome : React.FC = () => {
-    const { userType,id } = useUserType();
+    const { userType} = useUserType();
 
     const selectedStyles =
         userType === "ADMIN" ? adminStyles : {};

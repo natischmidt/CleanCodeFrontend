@@ -311,7 +311,7 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         }}
                         required
                     />
-                    <label>At least 6 letters, 2 numbers)</label>
+                    <label>At least 6 letters and 2 numbers</label>
                     <input
                         type="password"
                         placeholder="Confirm password"
