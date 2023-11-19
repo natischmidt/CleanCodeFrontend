@@ -1,12 +1,12 @@
 import React from "react";
 import MyShifts from "./MyShifts";
 import MyShiftHistory from "./MyShiftsHistory";
-
+import "../../styles/ShiftDashboard.css";
 
 const ShiftDashboard = () => {
 
     return (
-        <div style={styles.dashboardContainer}>
+        <div className="dashboardContainer">
             <div style={styles.shiftsContainer}>
                 <h2>My Shifts</h2>
                 <MyShifts />
@@ -23,14 +23,6 @@ const ShiftDashboard = () => {
 export default ShiftDashboard;
 
 const styles = {
-    dashboardContainer: {
-        display: "flex",
-        flexDirection: "column" as 'column',
-        alignItems: "center" as 'center',
-        justifyContent: "space-between" as 'space-between',
-        width: '100%',
-        padding: '20px',
-    },
     shiftsContainer: {
         width: '100%',
     },

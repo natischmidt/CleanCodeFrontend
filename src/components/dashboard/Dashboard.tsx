@@ -143,7 +143,7 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
                         </div>
                         <div className="dashboard">
 
-                            <div className="section" style={styles.section}>
+                            <div className="section section1">
                                 <div className="section-title sectionTitle">
                                     {userType === 'admin'
                                         ? 'All upcoming bookings' :
@@ -238,13 +238,6 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
 };
 
 const styles: { [key: string]: React.CSSProperties } = {
-    section: {
-        flex: 1,
-        marginTop: '3rem',
-        padding: '10px',
-        textAlign: 'center',
-        marginLeft: "-10%",
-    },
     sectionContent: {
         flex: 1,
         marginTop: '2rem',

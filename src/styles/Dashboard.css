@@ -1,6 +1,13 @@
+.section1 {
+    flex: 1;
+    margin-top: 3rem;
+    padding: 10px;
+    text-align: center;
+    margin-left: -10%;
+}
+
 .dashboard {
     display: flex;
-    /*flex-wrap: wrap;*/
     justify-content: space-between;
     color: black;
 }
@@ -30,20 +37,32 @@
     .dashboard {
         margin-top: 3rem;
         justify-content: center;
+        flex-wrap: wrap;
     }
     .sectionTitle {
         margin-top: -10%;
+    }
+    .sectionUserData {
+        /*display: none;*/
+    }
+    .section {
+        margin-left: -0%;
     }
 }
 
 @media (max-width: 800px) {
     .sectionTitle {
-        text-align: center;
+        text-align: left;
+        font-size: 2rem;
     }
     .sectionUserData{
-        justify-content: center;
-        width: 73%;
+        width: 48%;
         font-size: 0.7rem;
+        margin-left: 1.5rem;
+
+    }
+    .dashboard {
+        justify-content: left;
     }
 }
 

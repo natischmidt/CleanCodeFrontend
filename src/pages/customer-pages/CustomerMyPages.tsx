@@ -6,7 +6,7 @@ import {useUserType} from "../../components/context/UserTypeContext";
 import CustomerHeader from "../../components/layout/CustomerHeader";
 import {DashboardUserData} from "../../components/dashboard/DashboardUserData";
 import customer from "../../API/customer";
-import AddCustomerBookingOption from "../../components/customer-components/AddCustomerBookingOption";
+import "../../styles/CustomerMyPages.css"
 
 export const CustomerMyPages: React.FC = () => {
     const {userType, id} = useUserType();
@@ -35,7 +35,7 @@ export const CustomerMyPages: React.FC = () => {
             <div style={styles.header}>
                 <CustomerHeader showLoggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
             </div>
-            <div style={styles.middle}>
+            <div className="middle">
                 <Dashboard userType="customer" userData={userData}/>
             </div>
             <div style={styles.footer}>
@@ -56,12 +56,6 @@ const styles = {
     header: {
         flex: "12%",
         backgroundColor: "#e0e0e0",
-    },
-    middle: {
-        flex: "76%",
-        backgroundColor: "#f0f0f0",
-        overflowY: "auto" as "auto",
-        overflowX: 'hidden',
     },
     footer: {
         flex: "8.9%",
