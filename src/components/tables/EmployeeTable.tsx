@@ -50,7 +50,6 @@ export const EmployeeTable: React.FC<employeeTableProps> = ({onUpdate}) => {
 
     const handleDelete = async (empId: number) => {
         try {
-
             const Url = `http://localhost:8080/api/employee/deleteEmployee`;
             const headers = {
                 'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
