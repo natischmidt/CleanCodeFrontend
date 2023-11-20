@@ -294,7 +294,7 @@ const AddCustomerBookingOption = () => {
                                 // backgroundImage: `url(${basic})`
                             }}>
                                 <div className="bigDiv">
-                                    <div className="btn">
+                                    <div className="btn2">
                                         <button
                                             className="showInfo"
                                             onClick={() => {
@@ -332,7 +332,7 @@ const AddCustomerBookingOption = () => {
                                 // backgroundImage: `url(${advanced})`
                             }}>
                                 <div className="bigDiv">
-                                    <div className="btn">
+                                    <div className="btn2">
                                         <button
                                             className="showInfo"
                                             onClick={() => {
@@ -372,7 +372,7 @@ const AddCustomerBookingOption = () => {
                                 // backgroundImage: `url(${diamond})`
                             }}>
                                 <div className="bigDiv">
-                                    <div className="btn">
+                                    <div className="btn2">
                                         <button
                                             className="showInfo"
                                             onClick={() => {
@@ -412,7 +412,7 @@ const AddCustomerBookingOption = () => {
                                 // backgroundImage: `url(${windowclean})`
                             }}>
                                 <div className="bigDiv">
-                                    <div className="btn">
+                                    <div className="btn2">
                                         <button
                                             className="showInfo"
                                             onClick={() => {
@@ -790,7 +790,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         backgroundColor: "#ffe4e4",
         border: "red 2px",
     },
-    btn: {
+    btn2: {
         display: "flex",
         justifyContent: "center",
     }

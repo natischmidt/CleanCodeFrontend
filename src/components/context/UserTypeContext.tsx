@@ -2,6 +2,8 @@ import React, {createContext, useContext, useState, ReactNode, useEffect} from "
 import {useLocation, useNavigate} from "react-router-dom";
 import {timeToJwtExpire} from "../jwt/TimeToJwtExpire";
 import refreshJwtToken from "../jwt/RefreshJwtToken";
+import {Simulate} from "react-dom/test-utils";
+import seeking = Simulate.seeking;
 
 type UserType = "ADMIN" | "CUSTOMER" | "EMPLOYEE";
 type id = string | null
@@ -28,7 +30,8 @@ export const UserTypeProvider: React.FC<{ children: ReactNode }> = ({  children}
     useEffect(() => {
         const checkJwtToken = async() => {
             const token = sessionStorage.getItem("jwt")
-            if (token){
+            const token2 = sessionStorage.getItem("tempId")
+            if (token && !token2){
                 const timeLeft = timeToJwtExpire(token)
                 if (timeLeft <= 90){
                     try {
@@ -43,7 +46,8 @@ export const UserTypeProvider: React.FC<{ children: ReactNode }> = ({  children}
                         navigate("/")
                     }
                 } else {
-                    setLoggedIn(true)
+                   setLoggedIn(true)
+                    console.log("gogogo?")
                 }
             }
         }

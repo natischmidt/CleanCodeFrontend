@@ -95,13 +95,13 @@
     align-items: center;
 
 }
-
+/*
 .btn {
     display: flex;
     justify-content: center;
     border-radius: 7px;
     height: 250px;
-}
+}*/
 
 @media (max-width: 1500px) {
     .box {

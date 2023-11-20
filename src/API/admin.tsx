@@ -198,6 +198,12 @@ const admin = {
                     'Authorization': `Bearer ${jwt}`
                 }
             });
+            if (customerId === sessionStorage.getItem("tempId")){
+                sessionStorage.removeItem("jwt")
+                sessionStorage.removeItem("refresh_token")
+                sessionStorage.removeItem("tempId")
+
+            }
         } catch (error) {
             console.error('Error creating booking', error);
             throw error;
