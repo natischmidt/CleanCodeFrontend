@@ -37,6 +37,8 @@ export default function HeaderComp() {
 
         try {
             await employee.logoutEmployee(id)
+            sessionStorage.removeItem("jwt")
+            sessionStorage.removeItem("refresh_token")
             goToLogin("/employee")
         } catch (error) {
             console.error('Error signing out employee/admin', error);

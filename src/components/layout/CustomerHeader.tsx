@@ -33,6 +33,8 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
         setLoggedIn(false);
         try {
             await customer.logout(id);
+            sessionStorage.removeItem("jwt")
+            sessionStorage.removeItem("refresh_token")
             goToHome("/")
         } catch (e) {
             console.error(e)

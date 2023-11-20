@@ -31,9 +31,7 @@ const employee = {
 
     getJobsByEmployee: async (id: string | null) => {
         try {
-            const response = await axios.get(`${backendUrl}api/jobs/getAllJobsForEmployee/${id}`,{
-                headers
-            })
+            const response = await axios.get(`${backendUrl}api/jobs/getAllJobsForEmployee/${id}`,{headers})
             return response.data.map((job: any) => {
                 const date = new Date(job.date);
                 const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
