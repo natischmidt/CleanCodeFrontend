@@ -59,12 +59,12 @@ export const GDPRModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         measures to safeguard your information and protect your privacy.
                         <p></p>
                         <p style={styles.boldText}>Data stored about you:</p>
-                        <p><strong>Name:</strong> {firstName} {lastName}<br/>
-                            <strong>Address:</strong> {address} <br/>
-                            <strong>City:</strong> {city} <br/>
-                            <strong>Email:</strong> {email} <br/>
-                            <strong>Postcode:</strong> {postalCode} <br/>
-                            <strong>Phone-number:</strong> {phone}
+                        <p><u>Name:</u> {firstName} {lastName}<br/>
+                            <u>Address:</u> {address} <br/>
+                            <u>City:</u> {city} <br/>
+                            <u>Email:</u> {email} <br/>
+                            <u>Postcode:</u> {postalCode} <br/>
+                            <u>Phone-number:</u> {phone}
                         </p>
                         <p style={{fontWeight: 'bold'}}>If you wish to remove this data, please contact us at <a href={"mailto:StadaFintAB@gmail.com"}>StadaFintAB@gmail.com</a></p>
 

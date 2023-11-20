@@ -48,7 +48,7 @@ export const AboutModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                     <h2>ABOUT US</h2>
                     <p style={styles.ptext}>This page was developed by Java programmers at EC Education.
                         The page is not deployed online and is only shown locally for training purpose.
-                        The frontend is made with react and the backend is done with Hava (spring boot).
+                        The frontend is made with react and the backend is done with Java (spring boot).
                         We go by the name "Clean coders" and the crew is made of Ola, Adrian, Nati, Jimmy and Anton.
                         <p style={{fontWeight: 'bold'}}>For more informationen contact us at <a href={"mailto:StadaFintAB@gmail.com"}>StadaFintAB@gmail.com</a></p>
 

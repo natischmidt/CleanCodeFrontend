@@ -87,6 +87,10 @@ const employee = {
         }
     },
     getCustomer: async (customerId: string) => {
+        const headers = {
+            'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+            'Content-Type': 'application/json',
+        };
 
         try {
             const response = await axios.get(`${backendUrl}api/customer/${customerId}`,{
