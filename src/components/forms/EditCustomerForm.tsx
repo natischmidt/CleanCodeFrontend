@@ -17,6 +17,7 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
     const [compName, setCompName] = useState  ("");
     const [cusType, setCusType] = useState("")
     const [password, setPassword] = useState('');
+    const [privateRole, setPrivateRole] = useState(false)
 
     useEffect(() => {
         const preFillForm = async () => {
@@ -29,6 +30,9 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
 
             const data = response.data
 
+            if (data.customerType === "PRIVATE"){
+                setPrivateRole(true)
+            }
 
             setFirstname(data.firstName)
             setLastname(data.lastName)
@@ -146,25 +150,28 @@ const EditCustomerForm: React.FC<editEmployeeProps> = ({ cusId, doneWithEdit }) 
                     value={postalCode}
                     onChange={(e) => setPostalCode(e.target.value)}
                 />
-                <input
-                    type="text"
-                    placeholder="Company name"
-                    style={styles.input}
-                    value={compName}
-                    onChange={(e) => setCompName(e.target.value)}
+                {!privateRole && <>
+                    <input
+                        type="text"
+                        placeholder="Company name"
+                        style={styles.input}
+                        value={compName}
+                        onChange={(e) => setCompName(e.target.value)}
 
-                />
-                <input
-                    type="text"
-                    placeholder="Organisation number"
-                    style={styles.input}
-                    value={orgNr}
-                    onChange={(e) => setOrgNr(e.target.value)}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Organisation number"
+                        style={styles.input}
+                        value={orgNr}
+                        onChange={(e) => setOrgNr(e.target.value)}
 
-                />
+                    />
+
+                </>}
                 <input
                     type="password"
-                    placeholder="Password, låt va tills vidare"
+                    placeholder="Password"
                     style={styles.input}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
