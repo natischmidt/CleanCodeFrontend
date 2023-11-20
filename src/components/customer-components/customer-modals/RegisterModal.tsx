@@ -30,7 +30,7 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
     const emailRegex = new RegExp("^(([^<>()[\\]\\\\.,;:\\s@\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\"]+)*)|.(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$");
     const phonenumberRegex = new RegExp("^(\\d){7,12}$")
     const passwordRegex = new RegExp("^(?=(?:\\D*\\d){2})[A-Za-z\\d]{8,}$")
-
+    const postalCodeRegex = new RegExp("^(\\d){5}$")
 
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -63,8 +63,6 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
 
     const checkAllInformationEntered = () => {
 
-        // const passwordRegex = new RegExp("^(?=(?:\\D*\\d){2,})(?=[^\\\\p{L}]*\\\\p{L})[a-zA-Z\\d\\W]{8,}$")
-        const postalCodeRegex = new RegExp("^(\\d){5}$")
 
         if (
             firstname.current !== '' &&
@@ -269,6 +267,7 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         }}
                         required
                     />
+
                     <input
                         type="text"
                         placeholder="City"
@@ -311,10 +310,11 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         }}
                         required
                     />
-                    {password.current.length > 1
-                    && confirmPassword.current.length > 1
-                    && password.current != confirmPassword.current &&
-                        <label style={styles.passwordError}>Passwords do not match!</label>
+                    {{/*password.current.length >= 2
+                    && confirmPassword.current.length >= 2*/}
+                    && password.current != confirmPassword.current ?
+                        <p style={styles.passwordError}> Passwords do not match!</p>
+                        : <></>
                         }
                     <label>At least 6 letters and 2 numbers</label>
                     <input
@@ -324,6 +324,7 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         onFocus={() => {
                             isTheFieldOk("confirmpassword")
                         }}
+
                         onChange={(e) => {
                             confirmPassword.current = e.target.value
                             isTheFieldOk("confirmpassword")
@@ -360,7 +361,11 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         <button type="submit" style={styles.button} onClick={handleRegister}>
                             Register
                         </button> :
-                        <button type="submit" style={styles.inactiveButton}>
+                        <button
+                            disabled={true}
+                            type="submit"
+
+                            style={styles.inactiveButton}>
                             Register
                         </button>
                     }
@@ -390,6 +395,7 @@ const styles = {
         justifyContent: "center",
         alignItems: "center",
     },
+
     passwordError: {
         color: "red",
     },
@@ -451,10 +457,9 @@ const styles = {
         color: 'white',
         border: 'none',
         borderRadius: '10px',
-        cursor: 'pointer',
+        cursor: 'default',
         marginTop: '3%',
         width: "150px",
-
     },
     label: {
         color: "black" as 'black',

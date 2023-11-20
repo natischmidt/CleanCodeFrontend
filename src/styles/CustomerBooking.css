@@ -10,6 +10,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
+
 }
 
 .boxBasic {
@@ -22,7 +23,6 @@
     margin: 1rem;
     justify-content: center;
     align-items: center;
-    background-color: #b3d9e3;
     background-size: cover;
 }
 
@@ -76,30 +76,23 @@
     width: 100%;
 }
 
-/*.box {*/
-/*    background-image: url("../assets/advanced2.jpg");*/
 
-/*    display: flex;*/
-/*    width: 12rem;*/
-/*    height: 18rem;*/
-/*    border: 3px solid #ccc;*/
-/*    padding: 2rem;*/
-/*    margin: 1rem;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    background-color: #b3d9e3;*/
-/*    background-size: cover;*/
-
-/*}*/
 .buttonText {
     font-size: 0.9rem;
     color: #000000;
-
 }
+
 .showInfo {
     border: 1px solid black;
     align-items: center;
     box-shadow: 0 0 10px #000000;
+}
+
+.bigDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 }
 
@@ -107,6 +100,7 @@
     display: flex;
     justify-content: center;
     border-radius: 7px;
+    height: 250px;
 }
 
 @media (max-width: 1500px) {

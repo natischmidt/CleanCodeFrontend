@@ -2,10 +2,6 @@ import '../../App.css'
 import React, {useRef, useState} from "react";
 import Calendar from "react-calendar";
 import admin from "../../API/admin";
-import diamond from "../../assets/diamond3.png";
-import basic from "../../assets/basic2.png";
-import advanced from "../../assets/advanced2.jpg";
-import windowclean from "../../assets/www.png";
 import {useUserType} from "../context/UserTypeContext";
 import customer from "../../API/customer";
 import SetTempEmail from "./customer-modals/SetTempEmail";
@@ -288,7 +284,7 @@ const AddCustomerBookingOption = () => {
                         <div
                             className = "sectionTitleDiv"
                             style={styles.sectionTitle}>
-                            <h2>What cleaning are you interested in?</h2>
+                            <h2>Which cleaning are you interested in?</h2>
                         </div>
                         {!showSetTempEmail ?
                         <div
@@ -297,7 +293,7 @@ const AddCustomerBookingOption = () => {
                             <div className="boxBasic" style={{
                                 // backgroundImage: `url(${basic})`
                             }}>
-                                <div>
+                                <div className="bigDiv">
                                     <div className="btn">
                                         <button
                                             className="showInfo"
@@ -335,7 +331,7 @@ const AddCustomerBookingOption = () => {
                             <div className="boxAdvanced" style={{
                                 // backgroundImage: `url(${advanced})`
                             }}>
-                                <div>
+                                <div className="bigDiv">
                                     <div className="btn">
                                         <button
                                             className="showInfo"
@@ -375,7 +371,7 @@ const AddCustomerBookingOption = () => {
                             <div className="boxDiamond" style={{
                                 // backgroundImage: `url(${diamond})`
                             }}>
-                                <div>
+                                <div className="bigDiv">
                                     <div className="btn">
                                         <button
                                             className="showInfo"
@@ -415,7 +411,7 @@ const AddCustomerBookingOption = () => {
                             <div className="boxWindow" style={{
                                 // backgroundImage: `url(${windowclean})`
                             }}>
-                                <div>
+                                <div className="bigDiv">
                                     <div className="btn">
                                         <button
                                             className="showInfo"
