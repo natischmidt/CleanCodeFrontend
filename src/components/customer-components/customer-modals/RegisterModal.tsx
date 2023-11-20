@@ -311,6 +311,11 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         }}
                         required
                     />
+                    {password.current.length > 1
+                    && confirmPassword.current.length > 1
+                    && password.current != confirmPassword.current &&
+                        <label style={styles.passwordError}>Passwords do not match!</label>
+                        }
                     <label>At least 6 letters and 2 numbers</label>
                     <input
                         type="password"
@@ -384,6 +389,9 @@ const styles = {
     modalInnerContainer: {
         justifyContent: "center",
         alignItems: "center",
+    },
+    passwordError: {
+        color: "red",
     },
     form: {
         display: 'flex',
