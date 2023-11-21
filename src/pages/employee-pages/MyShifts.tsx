@@ -2,8 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import employee from "../../API/employee";
 import {useUserType} from "../../components/context/UserTypeContext";
 import TableId from "../../components/tables/TableId";
-
-
+import customer from "../../API/customer";
 
 const MyShifts = () => {
 
@@ -22,7 +21,7 @@ const MyShifts = () => {
                 squareMeters: r.squareMeters,
                 paymentOption: r.paymentOption,
                 message: r.message,
-                customerId: r.customerId
+                customer: r.customer.id
             };
             await employee.updateJobStatus(dataToSend);
             setUpdate(c => c + 1);
@@ -31,17 +30,15 @@ const MyShifts = () => {
         }
     }
 
-
-
     useEffect(() => {
         employee.fetchJobsForEmployeeWithStatus(id, ["PENDING"]).then(r => {
             setEmployeeShifts(r)
         })
     }, [update])
 
-
     const columns = [
         {key: 'jobId', title: 'Booking ID'},
+        {key: 'customer', title: 'Customer ID'},
         {key: 'jobtype', title: 'Job type'},
         {key: 'date', title: 'Date'},
         {key: 'timeSlot', title: 'Time'},

@@ -39,7 +39,7 @@ export const EmployeeTable: React.FC<employeeTableProps> = ({onUpdate}) => {
         {key: 'id', title: 'Employee ID'},
         {key: 'firstName', title: 'Firstname'},
         {key: 'lastName', title: 'Lastname'},
-        {key: 'password', title: 'Password'},
+        // {key: 'password', title: 'Password'},
         {key: 'ssNumber', title: 'SSN'},
         {key: 'email', title: 'Email'},
         {key: 'phoneNumber', title: 'Phone Number'},

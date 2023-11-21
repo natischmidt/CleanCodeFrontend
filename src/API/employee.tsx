@@ -12,12 +12,6 @@ const employee = {
             'Content-Type': 'application/json',
             empId: id?.toString()
         }
-        // const config = {
-        //     headers: {
-        //         'empId': id?.toString() || ''
-        //     },
-        // };
-
         try {
 
             const response = await axios.get(`${backendUrl}api/employee/getEmployee`, {headers});
@@ -136,7 +130,7 @@ const employee = {
                     ...job,
                     date: formattedDate,
                     id: job.jobId,
-                    employeeId: job.employee ? job.employee.id : 'N/A',
+                    customer: job.customer.id,
                     timeSlot: ConvertTimeSlotToNiceTime(job.timeSlot)
                 }
             });

@@ -8,7 +8,7 @@ interface bookingTableProps {
     onUpdate: (jobId: number) => void;
 }
 
-const BookingTable: React.FC<bookingTableProps> = ({onUpdate/*, onKlarna*/}) => {
+const BookingTable: React.FC<bookingTableProps> = ({onUpdate}) => {
 
     const [deleted, setDeleted] = useState(0);
     const [customerData, setCustomerData] = useState<any[]>([]);
@@ -31,9 +31,9 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate/*, onKlarna*/}) => 
         })
     }, [deleted])
 
-
     const columns = [
         {key: 'jobId', title: 'Job ID'},
+        // {key: 'cusId', title: 'Customer ID'},
         {key: 'jobtype', title: 'Job type'},
         {key: 'date', title: 'Date'},
         {key: 'timeSlot', title: 'Time'},
@@ -122,9 +122,7 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate/*, onKlarna*/}) => 
         </>
     )
 }
-/*onDelete={handleDelete}
-onKlarna={handleKlarna}
-onUpdate={handleUpdate}*/
+
 export default BookingTable
 
 const styles = {

@@ -25,7 +25,6 @@ export default function CustomerPage() {
 
                 {!showUpdateCustomer ? <CustomerTable onUpdate={(cusId: number) => handleUpdate(cusId)} /> :
                 <EditCustomerForm cusId={selectedCustomerId} doneWithEdit={handleUpdateComplete} /> }
-                {/*<CustomerFooter/>*/}
             </div>
         </>
     )

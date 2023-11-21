@@ -47,7 +47,6 @@ export const UserTypeProvider: React.FC<{ children: ReactNode }> = ({  children}
                     }
                 } else {
                    setLoggedIn(true)
-                    console.log("gogogo?")
                 }
             }
         }
