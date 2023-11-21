@@ -17,6 +17,7 @@ const MyShiftHistory = () => {
 
     const columns = [
         {key: 'jobId', title: 'Booking ID'},
+        {key: 'customer', title: 'Customer ID'},
         {key: 'jobtype', title: 'Job type'},
         {key: 'date', title: 'Date'},
         {key: 'timeSlot', title: 'Time'},

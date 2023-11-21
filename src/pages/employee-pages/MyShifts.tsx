@@ -21,7 +21,7 @@ const MyShifts = () => {
                 squareMeters: r.squareMeters,
                 paymentOption: r.paymentOption,
                 message: r.message,
-                customer: r.customer.id
+                customerId: r.customerId
             };
             await employee.updateJobStatus(dataToSend);
             setUpdate(c => c + 1);
