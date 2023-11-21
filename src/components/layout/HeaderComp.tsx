@@ -66,8 +66,8 @@ export default function HeaderComp() {
                 <div className="logo">
                     <img id="logo3" src={logo} alt="logo3" style={styles.logo}/>
                 </div>
-                <div className="headerMenu">
-                    <div className="menuButtons" style={styles.menuButtons}>
+                <div className="headerMenu" style={styles.headerMenuButtons}>
+                    <div className="menuButtons" style={styles.headerMenuButtons}>
                         <button id="Employees" className="btn" onClick={() => {
                             goBackToDashboard()
                         }}>Home
@@ -159,14 +159,14 @@ const styles = {
         maxWidth: '200px',
         marginBottom: '10px',
     },
-    menuButtons: {
+    headerMenuButtons: {
         display: 'flex',
         color: '#000001',
         // marginLeft: "7%",
         flexBasis: 'auto',
         flexGrow: 1,
         justifyContent: 'flex-end',
-        marginTop: '10px',
+        // marginTop: '10px',
     },
     link: {
         fontWeight: 'bold',

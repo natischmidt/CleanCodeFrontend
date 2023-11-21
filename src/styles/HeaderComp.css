@@ -12,7 +12,7 @@
     display: flex;
     position: relative;
     padding: 20px;
-    justify-content: space-between;
+    /*justify-content: center;*/
     align-items: center;
     flex-wrap: wrap;
 }
@@ -85,13 +85,13 @@
     }
     .hamburger-text {
         display: block;
-        align-items: center; /* Add this line */
-        justify-content: center; /* Add this line to horizontally center text */
+        align-items: center;
+        justify-content: center;
     }
     .navbar {
         display: none;
-        align-items: center; /* Add this line */
-        justify-content: center; /* Add this line to horizontally center text */
+        align-items: center;
+        justify-content: center;
     }
 }
 
@@ -103,6 +103,3 @@
         font-size: 0.8rem;
     }
 }
-
-
-
