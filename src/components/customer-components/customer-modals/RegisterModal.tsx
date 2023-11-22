@@ -381,7 +381,7 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
 const styles = {
     modalContainer: {
         width: "100vw",
-        height: "100vh",
+        height: "115vh",
         zIndex: 333,
         position: "absolute" as 'absolute',
         top: 0,
@@ -395,7 +395,6 @@ const styles = {
         justifyContent: "center",
         alignItems: "center",
     },
-
     passwordError: {
         color: "red",
     },
@@ -408,7 +407,7 @@ const styles = {
         borderRadius: '5px',
         backgroundColor: '#b3d9e3',
         width: "400px",
-        marginTop: '4%'
+        // marginTop: '2%'
     },
     input: {
         marginTop: '10px',

@@ -141,6 +141,7 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                     required
                 />
                 <br/>
+                <p style={styles.pTag}>Payment method :</p>
                 <select
                     value={paymentOption}
                     style={styles.select}
@@ -224,16 +225,16 @@ const styles = {
     },
     h2:{
         fontSize: "2rem",
-        margin: "1rem",
+        margin: "0.5rem",
         fontWeight: "bold",
         textDecoration: "underline"
     },
     inputText:{
-        marginTop: '3px',
+        marginTop: '5%',
         marginBottom: '3px',
         padding: '5px',
-        width: '47%',
-        height:"70px",
+        width: '70%',
+        height: "5rem",
         borderRadius: '5px',
         fontFamily: "PlomPraeng",
         fontSize: "1rem"
