@@ -97,6 +97,11 @@ const employee = {
     },
 
     getSalary: async (empId: any) => {
+        const headers = {
+            'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+            'Content-Type': 'application/json',
+        };
+
         try {
             const response = await axios.get(`${backendUrl}api/employee/getSalary/${empId}`,{
                 headers
