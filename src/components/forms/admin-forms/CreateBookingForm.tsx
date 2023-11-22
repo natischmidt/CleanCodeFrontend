@@ -13,7 +13,7 @@ const CreateNewBooking: React.FC = () => {
     const [jobType, setJobType] = useState('');
     const [dateAndTime, setDateAndTime] = useState('');
     const [squareMeters, setSquareMeters] = useState('');
-    const [payment, setPayment] = useState('');
+    const [payment, setPayment] = useState('KLARNA');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [showCalender, setShowCalender] = useState(false)
     const [hours, setHours] = useState(0)
@@ -48,8 +48,12 @@ const CreateNewBooking: React.FC = () => {
 
 
     useEffect(() => {
+        const headers = {
+            'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
+            'Content-Type': 'application/json',
+        };
 
-        axios.get('http://localhost:8080/api/customer/all')
+        axios.get('http://localhost:8080/api/customer/all', {headers: headers})
             .then((response) => {
                 setCustomerData(response.data);
             })
@@ -175,13 +179,18 @@ const CreateNewBooking: React.FC = () => {
     };
 
     const handleBooking = () => {
-        try {
-            admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, payment, selectedCustomer, message).then(r => {
-            })
 
-        } catch (error) {
-            console.error(error)
-        }
+            admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, payment, selectedCustomer, message)
+        // try {
+        //
+        //
+        //     admin.createBooking(jobType, dateToUse.current, timeList, squareMeters, payment, selectedCustomer, message).then(r => {
+                goBackToBooking(("/booking"))
+        //     })
+        //
+        // } catch (error) {
+        //     console.error(error)
+        // }
     }
 
     return (
@@ -234,9 +243,9 @@ const CreateNewBooking: React.FC = () => {
                     <select
                         value={payment}
                         style={styles.select}
+                        required
                         onChange={(e) => setPayment(e.target.value)}
                     >
-                        <option>Choose payment option</option>
                         <option value="KLARNA">Klarna</option>
                         {/*<option value="CASH">Cash</option>*/}
                     </select>
@@ -262,6 +271,7 @@ const CreateNewBooking: React.FC = () => {
                     >
                         Create new booking
                     </button>
+
                     <button type="submit" style={styles.button} onClick={() => {
                         {
                             goBackToBooking(("/booking"))

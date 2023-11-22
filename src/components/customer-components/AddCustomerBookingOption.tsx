@@ -595,18 +595,20 @@ const AddCustomerBookingOption = () => {
                                             />
                                             {!loggedIn && (
                                                 <div style={styles.sectionTitle}>
-                                                    <h3>What is your email address?</h3>
+                                                    <h3>We will contact you at: <br/>
+                                                        {emailaddress}
+                                                    </h3>
                                                 </div>)}
 
-                                            {!loggedIn && (<input
-                                                    type="email"
-                                                    placeholder="Email address"
-                                                    style={styles.input}
-                                                    value={emailaddress}
-                                                    onChange={(e) => setEmailAddress(e.target.value)}
-                                                    required
-                                                />
-                                            )}
+                                            {/*{!loggedIn && (<input*/}
+                                            {/*        type="email"*/}
+                                            {/*        placeholder="Email address"*/}
+                                            {/*        style={styles.input}*/}
+                                            {/*        value={emailaddress}*/}
+                                            {/*        onChange={(e) => setEmailAddress(e.target.value)}*/}
+                                            {/*        required*/}
+                                            {/*    />*/}
+                                            {/*)}*/}
                                             <div style={styles.button}>
 
                                                 <button style={styles.bookButton} onClick={() => {

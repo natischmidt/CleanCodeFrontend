@@ -203,6 +203,7 @@ const admin = {
                 sessionStorage.removeItem("refresh_token")
                 sessionStorage.removeItem("tempId")
 
+
             }
         } catch (error) {
             console.error('Error creating booking', error);
