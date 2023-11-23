@@ -295,6 +295,7 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                             checkAllInformationEntered()
                         }}
                     />
+                    <label>At least 6 letters and 2 numbers</label>
                     <input
                         type="password"
                         placeholder="Password"
@@ -316,7 +317,7 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         <p style={styles.passwordError}> Passwords do not match!</p>
                         : <></>
                         }
-                    <label>At least 6 letters and 2 numbers</label>
+
                     <input
                         type="password"
                         placeholder="Confirm password"
