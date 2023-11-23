@@ -7,7 +7,6 @@ interface editEmployeeProps {
 }
 
 const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) => {
-
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
@@ -18,6 +17,7 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) =>
     const [city, setCity] = useState('')
     const [postalCode, setPostalCode] = useState('')
     const [password, setPassword] = useState('');
+    const [role, setRole] = useState('');
 
     useEffect(() => {
         const preFillForm = async () => {
@@ -25,7 +25,7 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) =>
             const headers = {
                 'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
                 'Content-Type': 'application/json',
-                'empId': empId?.toString()  // ? tar bort rödmarkering, avbryter det om det är null/undefined
+                'empId': empId?.toString()
             }
             const response = await axios.get(url, {headers})
             const data = response.data
@@ -41,13 +41,13 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) =>
             setAddress(data.address)
             setCity(data.city)
             setPostalCode(data.postalCode)
+            setRole(data.role)
         }
         preFillForm();
     }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-
 
         try {
             const Url = `http://localhost:8080/api/employee/editEmployee`;
@@ -62,8 +62,8 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) =>
                 address: address,
                 city: city,
                 postalCode: postalCode,
-                role: "EMPLOYEE",
-                hourlySalary: salary,
+                role: role,
+                hourlySalary: salary
             };
 
             console.log(editEmployeeData)
@@ -71,7 +71,7 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) =>
             const headers = {
                 'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
                 'Content-Type': 'application/json',
-                'empId': empId?.toString()  // ? tar bort rödmarkering, avbryter det om det är null/undefined
+                'empId': empId?.toString()
             }
 
             setFirstname('')
@@ -84,6 +84,7 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) =>
             setCity('')
             setPostalCode('')
             setPassword('')
+            setRole('')
 
             const response = await axios.put(Url, editEmployeeData, {headers});
             doneWithEdit();
@@ -172,7 +173,6 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) =>
                     style={styles.input}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-
                 />
                 <button type="submit" style={styles.button}>
                     Update Employee
