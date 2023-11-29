@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import axios from 'axios';
 import TableId from "./TableId";
-import {UserTypeContext, useUserType} from "../context/UserTypeContext";
+import {UserTypeContext} from "../context/UserTypeContext";
 import "../../styles/CustomerTable.css"
 
 interface customerTableProps {

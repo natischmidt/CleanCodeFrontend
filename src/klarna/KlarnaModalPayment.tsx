@@ -55,11 +55,9 @@ const KlarnaModalPayment: React.FC = () => {
         }
     }, []);
 
-
     useEffect(() => {
        if (orderDetails.name){
             const fetchData = async () => {
-
 
                 const Payload = {
                     "purchase_country": "SE",
@@ -85,9 +83,6 @@ const KlarnaModalPayment: React.FC = () => {
                         "push": "https://www.example.com/api/push?order_id={checkout.order.id}"
                     }
                 };
-                // http://localhost:5173/KlarnaConfirmation?order_id={checkout.order.id}
-                //"confirmation": "https://www.example.com/confirmation.html?order_id={checkout.order.id}",
-
 
                 const response = await fetch("http://localhost:8080/api/klarna/createOrder", {
                     method: "POST",

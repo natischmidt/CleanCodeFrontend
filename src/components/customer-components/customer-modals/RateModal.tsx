@@ -1,7 +1,6 @@
 import React, { useState} from 'react'
 import {Rating} from 'react-simple-star-rating'
 
-// export const RateModal: React.FC<{ onClose: () => void; func1: () => void; id: number }> = ({ onClose, func1, id }) => {
 export const RateModal: React.FC<{ onClose: () => void; func1: (id: number, rating: number) => void; id: number }> = ({ onClose, func1, id }) => {
 
     const [rating, setRating] = useState(null)
@@ -11,14 +10,12 @@ export const RateModal: React.FC<{ onClose: () => void; func1: (id: number, rati
 
         // @ts-ignore
         setRating(rate)
-
     }
 
-    // Optinal callback functions
+    // Optional callback functions
     const onPointerEnter = () => console.log('Enter')
     const onPointerLeave = () => console.log('Leave')
     const onPointerMove = (value: number, index: number) => console.log(value, index)
-
 
     return (
         <div className='App' style={styles.modalContainer}>

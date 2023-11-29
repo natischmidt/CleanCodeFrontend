@@ -115,29 +115,7 @@ const admin = {
             throw error;
         }
     },
-    LogIn: (credentials: LoginCredentials): void => {
-        const [email, setEmail] = useState<string>('');
-        const [password, setPassword] = useState<string>('');
 
-        const handleLogin = (): void => {
-            const baseURL = 'null';
-
-            const credentials = {
-                email,
-                password
-            };
-
-            axios
-                .post(baseURL, credentials)
-                .then((response: AxiosResponse) => {
-
-                })
-                .catch((error: AxiosError) => {
-                    console.error('Admin log in failed: ' + error.message);
-                    throw error;
-                });
-        };
-    },
     getAvailableEmp: async (date: string, hours: number) => {
 
 
@@ -344,46 +322,6 @@ const admin = {
             console.error(error);
         }
     },
-    updateJob: async (
-        date: string,
-        jobId: number | null,
-        jobStatus: string,
-        jobType: string,
-        paymentOption: string,
-        squareMeters: string | null,
-        timeSlot: string,
-        customerId: string | null,
-        message: string,
-    ) => {
-        try {
-            if (jobId !== null) {
-                const url = `http://localhost:8080/api/jobs/updateJob`;
-                const editJobData = {
-                    date,
-                    jobId,
-                    jobStatus,
-                    jobType,
-                    paymentOption,
-                    squareMeters,
-                    timeSlot,
-                    customerId,
-                };
-                const jwt = sessionStorage.getItem("jwt");
-                if (!jwt) {
-                    throw new Error("JWT not found in sessionStorage");
-                }
-                await axios.put(url, editJobData, {
-                    params: { message },
-                    headers: {
-                        'Authorization': `Bearer ${jwt}`
-                    }
-                });
-            }
-        } catch (error) {
-            console.error('Error updating booking', error);
-        }
-    },
-
 };
 
 export default admin;

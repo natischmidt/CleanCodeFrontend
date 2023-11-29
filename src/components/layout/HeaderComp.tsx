@@ -1,9 +1,7 @@
 import logo from "../../assets/stadaFint.png";
 import {Link, useNavigate} from "react-router-dom";
 import React, {useState} from "react";
-import axios from "axios";
-import {UserTypeProvider, useUserType} from "../context/UserTypeContext";
-import {GDPRModal} from "../customer-components/customer-modals/GDPRModal";
+import {useUserType} from "../context/UserTypeContext";
 import {GDPRModal_employee} from "../modals/GDPRModal_employee";
 import employee from "../../API/employee";
 import '../../styles/HeaderComp.css'
@@ -14,7 +12,6 @@ export default function HeaderComp() {
     const goToBooking = useNavigate()
     const goToEmployees = useNavigate()
     const goToCustomers = useNavigate()
-    const goToGDPR = useNavigate()
     const goToAddUser = useNavigate()
     const goToLogin = useNavigate()
     const {userType} = useUserType();
@@ -52,13 +49,6 @@ export default function HeaderComp() {
             gotoDashBoard(("/employeehome"))
         }
     }
-    const goBackToDashboardHam = () => {
-        if (userType == "ADMIN") {
-            gotoDashBoard(("/adminhome"))
-        } else if (userType == "EMPLOYEE") {
-            gotoDashBoard(("/employeehome"))
-        }
-    }
 
     return (
         <>
@@ -72,7 +62,6 @@ export default function HeaderComp() {
                             goBackToDashboard()
                         }}>Home
                         </button>
-                        {/*<button id="goBackToDashboard" style={styles.btn} onClick={() => goBackToDashboard()}>Home</button>*/}
                         <button id="Booking" className="btn" onClick={() => {
                             {
                                 goToBooking(("/booking"));
@@ -162,11 +151,9 @@ const styles = {
     headerMenuButtons: {
         display: 'flex',
         color: '#000001',
-        // marginLeft: "7%",
         flexBasis: 'auto',
         flexGrow: 1,
         justifyContent: 'flex-end',
-        // marginTop: '10px',
     },
     link: {
         fontWeight: 'bold',

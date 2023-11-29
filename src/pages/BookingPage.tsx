@@ -1,6 +1,5 @@
 import HeaderComp from "../components/layout/HeaderComp";
 import AddBookingOption from "../components/admin-components/AddBookingOption";
-import CustomerFooter from "../components/layout/CustomerFooter";
 import {useState} from "react";
 import EditBookingForm from "../components/forms/EditBookingForm";
 import BookingTable from "../components/tables/BookingTable";
@@ -17,12 +16,7 @@ export default function BookingPage() {
         setShowUpdateBooking(true);
     }
 
-    const handleKlarna = (jobId: number) =>{
-        setSelectedBookingId(jobId);
-        setShowKlarna(true);
-    }
-
-    const handleUpdateComplete = () => {
+       const handleUpdateComplete = () => {
         setShowUpdateBooking(false)
     }
     const handleKlarnaComplete = () => {
@@ -36,7 +30,6 @@ export default function BookingPage() {
                     <AddBookingOption/> <BookingTable onUpdate={(jobId : number) => handleUpdate(jobId)}  />
             </div>  :
              <> </>
-                // <EditBookingForm jobId={selectedBookingId} doneWithEdit={handleUpdateComplete} />
             }
             {showUpdateBooking && !showKlarna ?
                 <EditBookingForm jobId={selectedBookingId} doneWithEdit={handleUpdateComplete} /> : <></> }

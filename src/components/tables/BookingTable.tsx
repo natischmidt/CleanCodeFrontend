@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import TableId from "./TableId";
 import admin from "../../API/admin";
-import {UserTypeContext, useUserType} from "../context/UserTypeContext";
+import {UserTypeContext} from "../context/UserTypeContext";
 import "../../styles/BookingTable.css"
 
 interface bookingTableProps {
@@ -9,7 +9,6 @@ interface bookingTableProps {
 }
 
 const BookingTable: React.FC<bookingTableProps> = ({onUpdate}) => {
-
     const [deleted, setDeleted] = useState(0);
     const [customerData, setCustomerData] = useState<any[]>([]);
     const [myFilter, setMyFilter] = useState('');
@@ -33,15 +32,11 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate}) => {
 
     const columns = [
         {key: 'jobId', title: 'Job ID'},
-        // {key: 'cusId', title: 'Customer ID'},
         {key: 'jobtype', title: 'Job type'},
         {key: 'date', title: 'Date'},
         {key: 'timeSlot', title: 'Time'},
         {key: 'jobStatus', title: 'Status'},
         {key: 'rating', title: 'Rating'},
-        // {key: 'squareMeters', title: 'Sqm'},
-        // {key: 'paymentOption', title: 'Payment Option'},
-        // {key: 'customerId', title: 'Customer Id'},
     ];
 
     const handleDelete = async (jobId: number) => {
@@ -58,7 +53,6 @@ const BookingTable: React.FC<bookingTableProps> = ({onUpdate}) => {
         (myFilter === '' || customer.jobtype === myFilter) && (status === '' || customer.jobStatus === status) &&
         (customer.date.includes(searchDate) || searchDate === '')
     )
-// ta bort deleteknapp för employeee
     const buttons = role === "ADMIN" ? [
         {
             label: "Update", action: handleUpdate, style: styles.update

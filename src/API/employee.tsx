@@ -1,7 +1,6 @@
 import axios from 'axios';
 import ConvertTimeSlotToNiceTime from "../components/layout/ConvertTimeSlotToNiceTime";
 
-
 const backendUrl = "http://localhost:8080/"
 
 const employee = {
@@ -20,27 +19,6 @@ const employee = {
 
         } catch (error) {
             console.error('Error fetching jobs:', error);
-        }
-    },
-
-    getJobsByEmployee: async (id: string | null) => {
-        try {
-            const response = await axios.get(`${backendUrl}api/jobs/getAllJobsForEmployee/${id}`,{headers})
-            return response.data.map((job: any) => {
-                const date = new Date(job.date);
-                const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-                return {
-                    ...job,
-                    date: formattedDate,
-                    id: job.jobId,
-                    customerId: job.customer ? job.customer.id : 'N/A',
-                    timeSlot: ConvertTimeSlotToNiceTime(job.timeSlot)
-                }
-
-            })
-
-        } catch (error) {
-            console.error(error)
         }
     },
 
@@ -88,9 +66,7 @@ const employee = {
             const response = await axios.get(`${backendUrl}api/customer/${customerId}`,{
                headers
             })
-
             return response.data
-
         } catch (error) {
             console.error(error)
         }
@@ -101,7 +77,6 @@ const employee = {
             'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
             'Content-Type': 'application/json',
         };
-
         try {
             const response = await axios.get(`${backendUrl}api/employee/getSalary/${empId}`,{
                 headers
@@ -111,13 +86,13 @@ const employee = {
             console.error(error)
         }
     },
+
     fetchJobsForEmployeeWithStatus: async (empId: string | null, status: string[]) => {
         try {
             const headers = {
                 'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
                 'Content-Type': 'application/json',
             }
-
             const response = await axios.get(`${backendUrl}api/jobs/getAllJobsForEmployeeWithStatus/${empId}`, {
                headers: headers,
                 params: {
@@ -151,9 +126,7 @@ const employee = {
         }
         try {
             const url = `${backendUrl}api/auth/logout/${empId}`
-
-            const response = await axios.get(url, {headers: headers})
-
+            await axios.get(url, {headers: headers})
         } catch (error){
             throw error
         }

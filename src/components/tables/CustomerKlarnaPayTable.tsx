@@ -13,7 +13,6 @@ interface CustomerKlarnaPayProps {
 const CustomerKlarnaPayTable: React.FC<CustomerKlarnaPayProps> =
     ({cusId, change, setChange,showKlarna}) => {
     const [theData, setTheData] = useState([])
-    const goToKlarna = useNavigate()
     const [filter, setFilter] = useState('');
 
     // @ts-ignore

@@ -113,9 +113,7 @@ export default function JobDetails({jobId, close}: IjobDetails) {
                 <div style={styles.timeField}><h3 style={styles.timeText}>{date.substring(0,10)}</h3></div>
                 <div style={styles.timeField}><h3 style={styles.timeText}>{timeSlot}</h3></div>
             </div>
-
             <div style={styles.jobTypeDiv}>
-
 
                 <select
                     style={styles.select}

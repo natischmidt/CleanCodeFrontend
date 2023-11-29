@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import axios from "axios";
 import {useUserType} from "../context/UserTypeContext";
 
 
@@ -13,7 +12,6 @@ export const GDPRModal_employee: React.FC<{ onClose: () => void }> = ({onClose})
     const [email, setEmail] = useState<string>("");
     const [postalCode, setPostalCode] = useState<string>("");
     const [phone, setPhone] = useState<string>("");
-
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();

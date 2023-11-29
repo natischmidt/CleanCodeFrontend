@@ -62,8 +62,6 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
     }
 
     const checkAllInformationEntered = () => {
-
-
         if (
             firstname.current !== '' &&
             lastname.current !== '' &&
@@ -90,9 +88,8 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
     }
 
     const handleRegister = async () => {
-
         try {
-            const tempId = await customer.register(customerData, setLoggedIn, setUserType, setId);
+            await customer.register(customerData, setLoggedIn, setUserType, setId);
             onClose();
         } catch (error) {
             console.error('Error while trying to register a new customer', error);
@@ -178,7 +175,6 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
         }
     }
 
-
     return (
         <div style={styles.modalContainer}>
             <div style={styles.modalInnerContainer}>
@@ -197,7 +193,6 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         type="text"
                         placeholder="Firstname"
                         style={firstnameStyle}
-                        // value={firstname}
                         onFocus={() => {
                             isTheFieldOk('firstname')
                         }}
@@ -311,9 +306,7 @@ export const RegisterModal: React.FC<{ onClose: () => void }> = ({onClose}) => {
                         }}
                         required
                     />
-                    {{/*password.current.length >= 2
-                    && confirmPassword.current.length >= 2*/}
-                    && password.current != confirmPassword.current ?
+                    {password.current != confirmPassword.current ?
                         <p style={styles.passwordError}> Passwords do not match!</p>
                         : <></>
                         }

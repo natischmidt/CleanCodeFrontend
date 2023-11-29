@@ -7,7 +7,6 @@ import 'react-calendar/dist/Calendar.css';
 
 const CreateNewBooking: React.FC = () => {
     const [jobType, setJobType] = useState('');
-    const [dateAndTime, setDateAndTime] = useState('');
     const [squareMeters, setSquareMeters] = useState('');
     const [payment, setPayment] = useState('');
     const [message, setMessage] = useState('')
@@ -178,7 +177,7 @@ const CreateNewBooking: React.FC = () => {
                         placeholder="Date and time"
                         style={styles.input}
                         value={dateToUse.current}
-                        onChange={(e) => setDateAndTime(e.target.value)}
+
                         readOnly
                         required
                     />
@@ -187,7 +186,6 @@ const CreateNewBooking: React.FC = () => {
                         placeholder="Hours: "
                         style={styles.input}
                         value={"Estimated time for cleaning: " +hours +" hour"}
-                        onChange={(e) => setDateAndTime(e.target.value)}
                         readOnly
                         required
                     />

@@ -2,13 +2,11 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import TableId from "./TableId";
 
-
 interface employeeTableProps {
     onUpdate: (empId: number) => void;
 }
 
 export const EmployeeTable: React.FC<employeeTableProps> = ({onUpdate}) => {
-
     const [deleted, setDeleted] = useState(0);
     const [employeeData, setEmployeeData] = useState<any[]>([]);
     const [myFilter, setMyFilter] = useState('');
@@ -20,7 +18,6 @@ export const EmployeeTable: React.FC<employeeTableProps> = ({onUpdate}) => {
     )
 
     useEffect(() => {
-
         const headers = {
             'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
             'Content-Type': 'application/json',
@@ -39,7 +36,6 @@ export const EmployeeTable: React.FC<employeeTableProps> = ({onUpdate}) => {
         {key: 'id', title: 'Employee ID'},
         {key: 'firstName', title: 'Firstname'},
         {key: 'lastName', title: 'Lastname'},
-        // {key: 'password', title: 'Password'},
         {key: 'ssNumber', title: 'SSN'},
         {key: 'email', title: 'Email'},
         {key: 'phoneNumber', title: 'Phone Number'},

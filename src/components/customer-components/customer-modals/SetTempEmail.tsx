@@ -1,6 +1,5 @@
 import {useRef, useState} from "react";
 import customer from "../../../API/customer";
-import {useUserType} from "../../context/UserTypeContext";
 
 interface ISetTempEmail {
     email: (tempMail: string) => void
@@ -15,7 +14,6 @@ export default function SetTempEmail({email, jobType, toCalendar}: ISetTempEmail
     const [emailStyle, setEmailStyle] = useState(styles.input);
     const emailRegex = new RegExp("^(([^<>()[\\]\\\\.,;:\\s@\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\"]+)*)|.(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$");
 
-
     const isTheFieldOk = () => {
         if(tempMail.current == '' || !tempMail.current.match(emailRegex)) {
             setEmailStyle(styles.invalidInput)
@@ -24,23 +22,19 @@ export default function SetTempEmail({email, jobType, toCalendar}: ISetTempEmail
             setEmailStyle(styles.input)
             setOkToGoOn(true)
         }
-
     }
 
     const setTheEmail = () => {
         email(tempMail.current)
-
         customer.registerTemp(tempMail.current).then(r => {
                 toCalendar(jobType)
         }
-
         )
     }
 
     return (
         <div style={styles.body}>
             <p>You may make an order without registering with us. Please enter your email adress, and we will be in touch with you shortly after you have completed the booking..</p>
-
             <input
                 placeholder={"enter your email address"}
                 style={emailStyle}
@@ -51,7 +45,6 @@ export default function SetTempEmail({email, jobType, toCalendar}: ISetTempEmail
                 onChange={(value) => {
                     tempMail.current = value.target.value
                     isTheFieldOk()
-
                 }}
             />
             {okToGoOn ?

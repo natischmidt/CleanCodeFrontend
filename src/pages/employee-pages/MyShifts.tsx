@@ -2,11 +2,10 @@ import React, {useEffect, useRef, useState} from "react";
 import employee from "../../API/employee";
 import {useUserType} from "../../components/context/UserTypeContext";
 import TableId from "../../components/tables/TableId";
-import customer from "../../API/customer";
 
 const MyShifts = () => {
 
-    const {id, setId} = useUserType();
+    const {id} = useUserType();
     const [employeeShifts, setEmployeeShifts] = useState<any[]>([])
     const [update, setUpdate] = useState(0)
 

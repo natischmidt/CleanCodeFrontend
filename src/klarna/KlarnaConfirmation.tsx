@@ -1,9 +1,6 @@
 import React, {useEffect} from "react";
 import {useLocation,useParams} from "react-router-dom";
-import customer from "../API/customer";
 import employee from "../API/employee";
-
-
 
 function KlarnaConfirmation() {
 

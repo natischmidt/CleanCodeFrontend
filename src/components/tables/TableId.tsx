@@ -15,12 +15,9 @@ interface Props {
     columns: Column[];
     data: any[];
     buttons: ButtonConfig[],
-    //userRole?: string | null;
 }
 
 const TableId: React.FC<Props> = ({ columns, data , buttons/*, userRole*/}) => {
-
-
     return (
         <div className="table-container tableCont" style={{ maxHeight: '25rem'}}>
         <table className="data-table" style={styles.dataTable}>
@@ -84,7 +81,6 @@ const styles = {
         paddingRight: "8px",
         alignItems: 'center' as 'center',
         marginLeft: "4%",
-        // width: "110%"
     },
     delete: {
         display: "flex",
@@ -122,7 +118,7 @@ const styles = {
     },
     tableCell: {
         border: '1px solid #729ca890',
-        margin: 33 //fix
+        margin: 33
     },
     btn: {
         display: "flex",

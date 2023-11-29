@@ -86,7 +86,7 @@ const EditEmployeeForm: React.FC<editEmployeeProps> = ({empId, doneWithEdit}) =>
             setPassword('')
             setRole('')
 
-            const response = await axios.put(Url, editEmployeeData, {headers});
+            await axios.put(Url, editEmployeeData, {headers});
             doneWithEdit();
         } catch (error) {
             console.error('Error updating employee', error);
@@ -202,7 +202,6 @@ const styles = {
         borderRadius: '5px',
         backgroundColor: '#b3d9e3',
         width: "500px",
-        // height: '760px',
         marginTop: '1%',
         marginBottom: "2%"
     },

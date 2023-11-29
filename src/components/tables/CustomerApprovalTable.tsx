@@ -20,7 +20,6 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
     // @ts-ignore
     const [func1, setFunc1] = useState<(id: number, rating: number) => void | null>(null);
     const [id, setId] = useState(0);
-
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleClick = () => {
@@ -107,7 +106,6 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
         }
     }
 
-
     return (
         <div>
             {isModalOpen && <div>
@@ -153,7 +151,6 @@ const CustomerApprovalTable: React.FC<CustomerOkOrNotTableProps> = ({cusId, chan
                                     rate(id, 'ThumbsDown')
                                 }
                             }
-
                         ]}
                     />
                 </div>

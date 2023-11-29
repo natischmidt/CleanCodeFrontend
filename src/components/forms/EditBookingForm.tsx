@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import axios from "axios";
 import admin from "../../API/admin";
 import ConvertTimeSlotToNiceTime from "../layout/ConvertTimeSlotToNiceTime";
 
@@ -78,52 +77,17 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
             <form style={styles.form} onSubmit={handleSubmit}>
                 <h2 style={styles.h2}>Edit Booking</h2>
                 <p style={styles.pTag}>Job ID: {loadedjobId}</p>
-                {/*<input*/}
-                {/*    type="text"*/}
-                {/*    placeholder="JOb ID lär inte ändras"*/}
-                {/*    style={styles.input}*/}
-                {/*    value={`${loadedjobId}`}*/}
-                {/*    onChange={(e) => setLoadedJobId(Number(e.target.value))}*/}
-                {/*    disabled={true}*/}
-                {/*    required*/}
-                {/*/>*/}
                 <p style={styles.pTag}>Job Type: {jobType}</p>
-                {/*<input*/}
-                {/*    type="text"*/}
-                {/*    placeholder="job Type"*/}
-                {/*    style={styles.input}*/}
-                {/*    value={jobType}*/}
-                {/*    onChange={(e) => setJobType(e.target.value)}*/}
-                {/*    disabled={true}*/}
-                {/*    required*/}
-                {/*/>*/}
                 <p style={styles.pTag}>Date: {date}</p>
-                {/*<input*/}
-                {/*    type="text"*/}
-                {/*    placeholder="Date"*/}
-                {/*    style={styles.input}*/}
-                {/*    value={date}*/}
-                {/*    onChange={(e) => setDate(e.target.value)}*/}
-                {/*    disabled={true}*/}
-                {/*    required*/}
-                {/*/>*/}
                 <p style={styles.pTag}>Time: {ConvertTimeSlotToNiceTime(timeSlot)}</p>
-                {/*<input*/}
-                {/*    type="text"*/}
-                {/*    placeholder="Time slot"*/}
-                {/*    style={styles.input}*/}
-                {/*    value={timeSlot}*/}
-                {/*    onChange={(e) => setTimeSlot(e.target.value)}*/}
-                {/*    disabled={true}*/}
-                {/*    required*/}
-                {/*/>*/}
+
                 <p style={styles.pTag}>Choose job status :</p>
                 <select
                     value={jobStatus}
                     style={styles.select}
                     onChange={(e) => setJobStatus(e.target.value)}
                 >
-                    {/*<option value="">Choose job status:</option>*/}
+
                     <option value="PENDING">Pending</option>
                     <option value="DONE">Done</option>
                     <option value="APPROVED">Approved</option>
@@ -149,7 +113,6 @@ const EditBookingForm: React.FC<editBookingProps> = ({jobId, doneWithEdit}) =>{
                 >
                     <option value="">Choose payment option:</option>
                     <option value="KLARNA">Klarna</option>
-                    {/*<option value="CASH">Cash</option>*/}
                 </select>
                 <br/>
                 <textarea

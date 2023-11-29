@@ -78,17 +78,12 @@ const AddCustomerBookingOption = () => {
             setIsConfirmModalOpen(!isConfirmModalOpen)
         }
 
-        const handleTimeSlots = () => {
-            setShowTimeSlots(!showTimeSlots)
-        }
-
         const handleBookingDone = () => {
             setIsBookingDone(!isBookingDone);
         }
 
-
         const handleBooking = (email: string) => {
-            customer.book(jobType, dateToUse.current, timeList, squareMeters.current, paymentOption, id, message, email);
+            customer.book(jobType, dateToUse.current, timeList, squareMeters.current, paymentOption, id, message);
         }
 
         const handleExtraInformation = (text: String) => {
@@ -291,7 +286,6 @@ const AddCustomerBookingOption = () => {
                             className="boxContainer"
                             >
                             <div className="boxBasic" style={{
-                                // backgroundImage: `url(${basic})`
                             }}>
                                 <div className="bigDiv">
                                     <div className="btn2">
@@ -329,7 +323,6 @@ const AddCustomerBookingOption = () => {
                                 </div>
                             </div>
                             <div className="boxAdvanced" style={{
-                                // backgroundImage: `url(${advanced})`
                             }}>
                                 <div className="bigDiv">
                                     <div className="btn2">
@@ -369,7 +362,6 @@ const AddCustomerBookingOption = () => {
                                 </div>
                             </div>
                             <div className="boxDiamond" style={{
-                                // backgroundImage: `url(${diamond})`
                             }}>
                                 <div className="bigDiv">
                                     <div className="btn2">
@@ -409,7 +401,6 @@ const AddCustomerBookingOption = () => {
                                 </div>
                             </div>
                             <div className="boxWindow" style={{
-                                // backgroundImage: `url(${windowclean})`
                             }}>
                                 <div className="bigDiv">
                                     <div className="btn2">
@@ -454,12 +445,9 @@ const AddCustomerBookingOption = () => {
                                 jobType={jobType}
                             toCalendar = {continueToCalendar}
                              email={settingTemporaryEmail}/>
-
                     }
-
                     </div>
                             )}
-
                 <div style={styles.container1}>
                     {showCalender && isModalOpen ? (
                         <div style={styles.cal}>
@@ -479,7 +467,6 @@ const AddCustomerBookingOption = () => {
                             </div>
                         </div>
                     ) : <></>}
-
                     {isModalOpen && (
                         <>
                             <div style={styles.slotsContainer}>
@@ -546,10 +533,8 @@ const AddCustomerBookingOption = () => {
                                     </>)}
 
                                 {showCalender && (<div style={styles.calenderBox}>
-
                                     <button type="submit" style={styles.bookButton} onClick={handleModal}>Go back
                                     </button>
-
                                     {showCalNext && <button type="submit" style={styles.bookButton} onClick={() => {
                                         handleSquarePaymentModal();
                                         handleCalender();
@@ -600,17 +585,7 @@ const AddCustomerBookingOption = () => {
                                                     </h3>
                                                 </div>)}
 
-                                            {/*{!loggedIn && (<input*/}
-                                            {/*        type="email"*/}
-                                            {/*        placeholder="Email address"*/}
-                                            {/*        style={styles.input}*/}
-                                            {/*        value={emailaddress}*/}
-                                            {/*        onChange={(e) => setEmailAddress(e.target.value)}*/}
-                                            {/*        required*/}
-                                            {/*    />*/}
-                                            {/*)}*/}
                                             <div style={styles.button}>
-
                                                 <button style={styles.bookButton} onClick={() => {
                                                     handleSquarePaymentModal()
                                                     handleCalender()

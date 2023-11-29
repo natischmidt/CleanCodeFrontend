@@ -1,8 +1,5 @@
-import React, {useRef, useState} from 'react';
 import axios from 'axios';
 import admin from "./admin";
-import {useUserType} from '../components/context/UserTypeContext';
-import {useNavigate} from 'react-router-dom';
 import ConvertTimeSlotToNiceTime from "../components/layout/ConvertTimeSlotToNiceTime";
 
 
@@ -29,7 +26,6 @@ const customer = {
 
             const response = await axios.post(url, customerData);
             sessionStorage.setItem("tempId", response.data.userId)
-            // sessionStorage.setItem("jwt", response.data.jwt)
             sessionStorage.setItem("jwt", response.data.response.body.access_token)
             sessionStorage.setItem("refresh_token", response.data.response.body.refresh_token)
 
@@ -66,7 +62,6 @@ const customer = {
 
             const response = await axios.post(url, customerData);
 
-            // sessionStorage.setItem("jwt", response.data.jwt)
             sessionStorage.setItem("jwt", response.data.response.body.access_token)
             sessionStorage.setItem("refresh_token", response.data.response.body.refresh_token)
 
@@ -90,7 +85,6 @@ const customer = {
            paymentOption: string,
            id: string | null,
            message: string,
-           email: string
     ) => {
 
         try {
@@ -107,7 +101,6 @@ const customer = {
 
             } else {
                 // KUND
-                const email = "";
                 admin.createBooking(jobType, dateToUseRef, timeList, squareMeters, paymentOption, id, message).then(r => {
                 });
             }
@@ -117,19 +110,15 @@ const customer = {
     },
 
     logout: async (custId: string | null) => {
-        // const {setLoggedIn, setUserType, setId, userType, id} = useUserType();
 
         try {
-
             const headers = {
                 'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
                 'Content-Type': 'application/json',
             };
 
             const Url = `${backendUrl}api/auth/logout/${custId}`;
-
             const response = await axios.get(Url, {headers: headers});
-
         } catch (error) {
             console.error('Error signing out employee/admin', error);
         }
@@ -140,7 +129,6 @@ const customer = {
 
         try {
             const headers = {
-                // 'Authorization': `Bearer ${sessionStorage.getItem("jwt")}`,
                 'Content-Type': 'application/json',
             };
 

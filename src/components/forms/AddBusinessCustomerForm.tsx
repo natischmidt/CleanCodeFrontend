@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
-import axios from "axios";
 import admin from "../../API/admin";
 import HeaderComp from "../layout/HeaderComp";
 

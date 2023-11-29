@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import TableJobId from "./TableJobId";
 import customer from "../../API/customer";
 import "../../styles/CustomerJobHistoryTable.css"
@@ -44,7 +43,6 @@ const CustomerComingJobsHistoryTable: React.FC<CustomerComingJobsHistoryTablePro
             </div>
             {filteredCustomerData && filteredCustomerData.length > 0 ? (
                     <>
-
                         <TableJobId
                             columns={[
                                 { key: 'jobId', title: 'Job ID' },

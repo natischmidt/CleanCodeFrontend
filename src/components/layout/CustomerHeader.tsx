@@ -17,7 +17,6 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
     const goToHome = useNavigate()
 
-
     const handleLoginClick = () => {
         setIsLoginModalOpen(true)
     }
@@ -138,11 +137,7 @@ const CustomerHeader: React.FC<HeaderProps> = ({showLoggedIn}) => {
                                     My Pages
                                 </Link>
                             </li>
-                            {/*<li>*/}
-                            {/*    /!*<Link to="/customerbooking" style={styles.link}>*!/*/}
-                            {/*    /!*    Book*!/*/}
-                            {/*    /!*</Link>*!/*/}
-                            {/*</li>*/}
+
                             <li style={{...styles.link, fontSize: "1.2rem"}} onClick={handleLogoutClick}>Log out
                             </li>
                         </>

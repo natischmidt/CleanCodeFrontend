@@ -27,7 +27,6 @@ interface DashboardProps {
 }
 
 const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
-    const lala = userData.address;
     const userTypeContext = useContext(UserTypeContext);
     const id = userTypeContext?.id;
     const contextUserType = userTypeContext?.userType;
@@ -142,7 +141,6 @@ const Dashboard: React.FC<DashboardProps> = ({userType,userData}) => {
                             </div>
                         </div>
                         <div className="dashboard">
-
                             <div className="section section1">
                                 <div className="section-title sectionTitle">
                                     {userType === 'admin'
@@ -247,7 +245,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     sectionTitle2: {
         fontWeight: 'bold',
         fontSize: "1.5rem",
-        // marginTop: "-6%",
         paddingLeft: "4%",
         textDecoration: "underline",
     },

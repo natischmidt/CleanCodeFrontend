@@ -3,9 +3,8 @@ import employee from "../../API/employee";
 import {useUserType} from "../../components/context/UserTypeContext";
 import TableId from "../../components/tables/TableId";
 
-
 const MyShiftHistory = () => {
-    const {id, setId} = useUserType();
+    const {id} = useUserType();
     const [employeeShiftHistory, setEmployeeShiftHistory] = useState<any[]>([]);
     const [update, setUpdate] = useState(0);
 

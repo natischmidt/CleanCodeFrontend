@@ -1,9 +1,7 @@
 import React, {createContext, useContext, useState, ReactNode, useEffect} from "react";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {timeToJwtExpire} from "../jwt/TimeToJwtExpire";
 import refreshJwtToken from "../jwt/RefreshJwtToken";
-import {Simulate} from "react-dom/test-utils";
-import seeking = Simulate.seeking;
 
 type UserType = "ADMIN" | "CUSTOMER" | "EMPLOYEE";
 type id = string | null

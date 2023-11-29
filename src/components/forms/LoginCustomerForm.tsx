@@ -28,8 +28,7 @@ const LoginCustomerForm = () => {
             const response = resp.data
 
             if (response) {
-
-                setUserType("CUSTOMER") // sätter det i context + att detta kan dra sig, nån får fixa :))
+                setUserType("CUSTOMER")
                 setId(response.userId)
                 goToHomePage(`/CustomerHome`)
             } else {
@@ -50,7 +49,6 @@ const LoginCustomerForm = () => {
                     style={styles.input}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-
                     required
                 />
                 <input
@@ -81,12 +79,10 @@ export default LoginCustomerForm;
 
 const styles = {
     buttonContainer: {
-
     },
     introText: {
         color: 'black'
     },
-
     container: {
         display: 'flex',
         flexDirection: 'column' as 'column',
@@ -101,7 +97,6 @@ const styles = {
         borderRadius: '5px',
         backgroundColor: '#b3d9e3',
         width: "600px",
-        // height: '400px',
     },
     input: {
         marginTop: '25px',

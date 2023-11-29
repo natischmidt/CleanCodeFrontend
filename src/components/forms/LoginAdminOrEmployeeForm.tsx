@@ -13,9 +13,6 @@ const LoginAdminOrEmployeeForm = () => {
         e.preventDefault();
     };
 
-    // userType: 'Admin' | 'Employee'
-    // setUserType(userType);
-    // goToHomePage(`/${userType}Home`);
     const handleLogin = async () => {
 
         try {
@@ -48,12 +45,10 @@ const LoginAdminOrEmployeeForm = () => {
     const quickLoginAsEmployee = () => {
         setEmail("kent.andersson@stadafint.se")
         setPassword("password")
-        // handleLogin()
     }
     const quickLoginAsAdmin = () => {
         setEmail("lisa.gronberg@stadafint.se")
         setPassword("password")
-        // handleLogin()
     }
 
 
@@ -118,7 +113,6 @@ const styles = {
         border: '2px solid silver',
         borderRadius: '5px',
         backgroundColor: '#b3d9e3',
-        // width: "600px",
         height: '400px',
 
     },

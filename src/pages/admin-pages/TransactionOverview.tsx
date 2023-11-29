@@ -7,7 +7,7 @@ export default function TransactionPage() {
     return (
         <>
             <HeaderComp/>
-           <BookingHistoryTable/>
+            <BookingHistoryTable/>
             <AdminFooter/>
         </>
 
