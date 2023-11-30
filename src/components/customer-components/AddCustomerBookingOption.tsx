@@ -15,7 +15,6 @@ const AddCustomerBookingOption = () => {
         const [showExtraInfoDia, setShowExtraInfoDia] = useState(false);
         const [showExtraInfoWin, setShowExtraInfoWin] = useState(false);
         const [squareMetersStyle, setSquareMetersStyle] = useState(styles.input)
-
         const [infoText, setInfoText] = useState('');
         const [infoTextAdv, setInfoTextAdv] = useState('');
         const [infoTextDia, setInfoTextDia] = useState('');
@@ -608,23 +607,25 @@ const AddCustomerBookingOption = () => {
                                     {
                                         loggedIn ?
 
-                                            <p>
+                                            <p><>
                                                 You want to have your accommodation cleaned
                                                 on {date}, {timeList[0].toLowerCase()} o'clock.<br/>
                                                 You have chosen our {jobType.toLowerCase()} service which
                                                 takes {hours} hour(s)
                                                 for completion.<br/>
                                                 The size of your accommodation is {squareMeters.current} square meters.
+                                            </>
                                             </p>
                                          :
                                             // JSX content when loggedIn is false
-                                            <p>
+                                            <p><>
                                                 You want to have your accommodation cleaned
                                                 on {date}, {timeList[0].toLowerCase()} o'clock.<br/>
                                                 You have chosen our {jobType.toLowerCase()} service which
                                                 takes {hours} hour(s)
                                                 for completion.<br/>
                                                 The size of your accommodation is {squareMeters.current} square meters.
+                                            </>
                                             </p>
 
                                     }
